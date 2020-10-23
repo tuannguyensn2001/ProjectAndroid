@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".View.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -20,6 +20,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="42dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -36,5 +37,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+=======
+        android:text="Button"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="151dp"
+        tools:ignore="MissingConstraints" />
+>>>>>>> ddb65c9b54053bdeb3f08419e4352017bfad3ea1
 
 </androidx.constraintlayout.widget.ConstraintLayout>
