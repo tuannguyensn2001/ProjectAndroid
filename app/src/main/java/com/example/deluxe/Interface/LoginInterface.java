@@ -1,12 +1,18 @@
 package com.example.deluxe.Interface;
 
-public interface LoginInterface {
-    public interface LoginView{
+import com.example.deluxe.Core.Presenter;
+import com.example.deluxe.Core.View;
+
+public interface LoginInterface  {
+    public interface LoginView extends View {
         void handleClickButton();
-        void setError();
+        void setError(String value);
+        void handleLoginResult(boolean check);
     }
 
-    public interface LoginPresenter{
+    public interface LoginPresenter extends Presenter {
         void handleLogin(String usernane,String password);
     }
+
+
 }
