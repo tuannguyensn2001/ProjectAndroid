@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/passwordInput"
         android:layout_width="840px"
         android:layout_height="140px"
         android:layout_marginTop="20px"
@@ -79,9 +79,9 @@
         android:textColor="@color/light_background"
         android:textSize="60px"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/emailInput"
-        app:layout_constraintStart_toStartOf="@+id/emailInput"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <LinearLayout
         android:layout_width="840px"

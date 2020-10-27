@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.L
         this.submitButton = (Button) findViewById(R.id.submitButton);
         this.Login = new LoginPresenter(this);
         this.username = (EditText) findViewById(R.id.usernameInput);
-        this.password = (EditText) findViewById(R.id.emailInput);
+        this.password = (EditText) findViewById(R.id.passwordInput);
 
     }
 
