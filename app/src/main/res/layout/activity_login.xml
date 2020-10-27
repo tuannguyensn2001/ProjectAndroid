@@ -95,7 +95,7 @@
 
 
         <Button
-            android:id="@+id/resendButton"
+            android:id="@+id/forgotPasswordButton"
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="4"
@@ -106,7 +106,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/signinButton"
+            android:id="@+id/signupButton"
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="3"
