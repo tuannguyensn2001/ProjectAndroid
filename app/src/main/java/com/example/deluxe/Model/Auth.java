@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.AuthLogin;
+import com.example.deluxe.Interface.Model.AuthSignUp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -59,5 +60,22 @@ public class Auth {
         this.mAuth.signOut();
     }
 
+    public void signUp(User user , final AuthSignUp authSignUp)
+    {
+        String email= user.getEmail();
+        String password = user.getPassword();
+        this.mAuth.createUserWithEmailAndPassword(email, password ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    authSignUp.signUpSuccessful();
+                } else {
+                    authSignUp.signUpunSuccessful();
+                }
+            }
+        });
+    }
 
 }
+
+

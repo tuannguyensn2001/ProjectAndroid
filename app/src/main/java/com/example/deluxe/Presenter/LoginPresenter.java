@@ -35,9 +35,6 @@ public class LoginPresenter  implements LoginInterface.LoginPresenter{
         this.loginView.handleLoginResult(true);
 
 
-
-
-
     }
 
 

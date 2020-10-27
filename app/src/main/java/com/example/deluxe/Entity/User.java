@@ -3,11 +3,17 @@ package com.example.deluxe.Entity;
 
 public class User {
 
-    String username,password;
+    String username,password,email;
 
 
     public User(){
 
+    }
+
+    public User(String user, String password, String email) {
+        this.username=user;
+        this.password=password;
+        this.email=email;
     }
 
     public User(String user, String password) {
@@ -30,6 +36,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmail(){return email;}
+
+    public void  setEmail(String email){ this.email=email;}
 
 
 
