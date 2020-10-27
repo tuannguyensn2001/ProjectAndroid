@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Auth {
     private static Auth auth = null;
-
     private FirebaseAuth mAuth;
     private Auth()
     {
