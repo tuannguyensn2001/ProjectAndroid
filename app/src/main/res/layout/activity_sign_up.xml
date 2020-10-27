@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="840px"
-        android:layout_height="120px"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
         android:layout_marginTop="120dp"
         android:backgroundTint="@color/light_background"
         android:fontFamily="@font/seguibl"
@@ -17,7 +17,7 @@
         android:text="@string/signup_title"
         android:textAlignment="center"
         android:textColor="@color/light_title"
-        android:textSize="72px"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -26,12 +26,12 @@
 
     <TextView
         android:id="@+id/errorText"
-        android:layout_width="840px"
-        android:layout_height="120px"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
         android:gravity="center|start"
         android:text="@string/signup_errorText"
         android:textColor="@color/light_error"
-        android:textSize="48px"
+        android:textSize="18sp"
         android:textStyle="normal"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/title"
@@ -40,29 +40,29 @@
 
     <EditText
         android:id="@+id/usernameInput"
-        android:layout_width="840px"
-        android:layout_height="140px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
         android:background="@color/light_form"
         android:ems="10"
         android:hint="@string/signup_usernameInput"
         android:inputType="textPersonName"
         android:textColor="@color/light_hint"
-        android:textSize="48px"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/errorText"
         app:layout_constraintStart_toStartOf="@+id/errorText"
         app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="840px"
-        android:layout_height="140px"
-        android:layout_marginTop="20px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="7dp"
         android:background="@color/light_form"
         android:ems="10"
         android:hint="@string/signup_passwordInput"
         android:inputType="textPassword"
         android:textColor="@color/light_hint"
-        android:textSize="48px"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/emailInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailInput"
@@ -70,15 +70,15 @@
 
     <EditText
         android:id="@+id/passwordCheckInput"
-        android:layout_width="840px"
-        android:layout_height="140px"
-        android:layout_marginTop="20px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="7dp"
         android:background="@color/light_form"
         android:ems="10"
         android:hint="@string/signup_passwordCheckInput"
         android:inputType="textPassword"
         android:textColor="@color/light_hint"
-        android:textSize="48px"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/passwordInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/passwordInput"
@@ -86,15 +86,15 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="840px"
-        android:layout_height="140px"
-        android:layout_marginTop="20px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="7dp"
         android:background="@color/light_form"
         android:ems="10"
         android:hint="@string/signup_emailInput"
         android:inputType="textEmailAddress"
         android:textColor="@color/light_hint"
-        android:textSize="48px"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/usernameInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/usernameInput"
@@ -102,15 +102,15 @@
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="840px"
-        android:layout_height="140px"
-        android:layout_marginTop="100px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="38dp"
         android:background="@drawable/botron"
         android:fontFamily="@font/seguibl"
         android:text="@string/signup_submitButton"
         android:textAlignment="center"
         android:textColor="@color/light_background"
-        android:textSize="60px"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/passwordCheckInput"
         app:layout_constraintHorizontal_bias="0.0"
@@ -118,18 +118,18 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordCheckInput" />
 
     <LinearLayout
-        android:layout_width="840px"
-        android:layout_height="140px"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
         android:orientation="horizontal"
         android:weightSum="7"
-        android:layout_marginTop="60px"
+        android:layout_marginTop="22dp"
         app:layout_constraintEnd_toEndOf="@+id/submitButton"
         app:layout_constraintStart_toStartOf="@+id/submitButton"
         app:layout_constraintTop_toBottomOf="@+id/submitButton">
 
         <TextView
             android:id="@+id/alreadyText"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:fontFamily="@font/segoeuil"
@@ -137,12 +137,12 @@
             android:text="@string/signup_alreadyText"
             android:textAlignment="center"
             android:textColor="@color/light_title"
-            android:textSize="48px"
+            android:textSize="18sp"
             android:textStyle="italic" />
 
         <Button
             android:id="@+id/signinButton"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:background="@color/light_background"
@@ -151,7 +151,7 @@
             android:text="@string/signup_signinButton"
             android:textAlignment="center"
             android:textColor="@color/light_mainColor"
-            android:textSize="48px"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
 

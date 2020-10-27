@@ -54,6 +54,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/errorText"
         android:importantForAutofill="no" />
 
+<<<<<<< HEAD
 	<EditText
 		android:id="@+id/passwordInput"
 		android:layout_width="320dp"
@@ -123,3 +124,36 @@
 
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:text="LOGIN"
+        android:background="#F4511E"
+        android:fontFamily="sans-serif" />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
+>>>>>>> 416578df728d7a326742e0b568958ca0cf2798df
