@@ -30,11 +30,6 @@ public class LoginPresenter  implements LoginInterface.LoginPresenter{
     {
         User user=new User(username,password);
 
-//        boolean check=
-
-        this.loginView.handleLoginResult(true);
-
-
 
 
 
