@@ -16,4 +16,19 @@
     <string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
     <string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
     <string name="signin_signupButton">ĐĂNG KÝ</string>
+    <string name="forgotPassword_title">Lấy lại mật khẩu</string>
+    <string name="forgotPassword_subtitle">Nhập vào email để lấy lại mật khẩu</string>
+    <string name="forgotPassword_errorText">Nhập sai rồi, mời nhập lại</string>
+    <string name="forgotPassword_emailInput">Email</string>
+    <string name="forgotPassword_submitButton">Gửi email xác thực</string>
+    <string name="verify_resendButton">Thử gửi lại mã</string>
+    <string name="verify_signinButton">ĐĂNG NHẬP</string>
+    <string name="verify_title">Xác thực</string>
+    <string name="verify_subtitle">Nhập mã xác thực gồm 6 chữ số được gửi qua Email</string>
+    <string name="verify_submitButton">Xác nhận</string>
+    <string name="newpass_title">Nhập mật khẩu mới</string>
+    <string name="newpass_passwordInput">Mật khẩu mới</string>
+    <string name="newpass_errorText">Nhập sai rồi, mời nhập lại!</string>
+    <string name="newpass_passwordCheckInput">Nhập lại mật khẩu</string>
+    <string name="newpass_submitButton">Xác nhận</string>
 </resources>

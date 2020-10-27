@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="840px"
+        android:layout_height="120px"
+        android:layout_marginTop="120dp"
+        android:backgroundTint="@color/light_background"
+        android:fontFamily="@font/seguibl"
+        android:gravity="center"
+        android:text="@string/newpass_title"
+        android:textAlignment="center"
+        android:textColor="@color/light_title"
+        android:textSize="72px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="840px"
+        android:layout_height="120px"
+        android:gravity="center|start"
+        android:text="@string/newpass_errorText"
+        android:textColor="@color/light_error"
+        android:textSize="48px"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:ems="10"
+        android:textSize="48px"
+        android:textColor="@color/light_hint"
+        android:background="@color/light_form"
+        android:hint="@string/newpass_passwordInput"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/errorText"
+        app:layout_constraintStart_toStartOf="@+id/errorText"
+        app:layout_constraintTop_toBottomOf="@+id/errorText" />
+
+    <EditText
+        android:id="@+id/passwordCheckInput"
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:layout_marginTop="20px"
+        android:ems="10"
+        android:textSize="48px"
+        android:hint="@string/newpass_passwordCheckInput"
+        android:textColor="@color/light_hint"
+        android:background="@color/light_form"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:layout_marginTop="100px"
+        android:text="@string/newpass_submitButton"
+        android:background="@drawable/botron"
+        android:textSize="60px"
+        android:textColor="@color/light_background"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/passwordCheckInput"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/passwordCheckInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

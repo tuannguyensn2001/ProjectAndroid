@@ -33,7 +33,7 @@
         android:textColor="@color/light_error"
         android:textSize="48px"
         android:textStyle="normal"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/title"
         app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
     <EditText
-        android:id="@+id/passwordInput"
+        android:id="@+id/emailInput"
         android:layout_width="840px"
         android:layout_height="140px"
         android:layout_marginTop="20px"
@@ -79,10 +79,10 @@
         android:inputType="textPassword"
         android:textColor="@color/light_hint"
         android:textSize="48px"
-        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+        app:layout_constraintEnd_toEndOf="@+id/emailInput"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordInput"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <EditText
         android:id="@+id/emailInput"

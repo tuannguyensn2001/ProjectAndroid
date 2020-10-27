@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="840px"
+        android:layout_height="120px"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/segoeuib"
+        android:gravity="center"
+        android:text="@string/verify_title"
+        android:textAlignment="center"
+        android:textColor="@color/light_title"
+        android:textSize="72px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="840px"
+        android:layout_height="120px"
+        android:layout_marginTop="0px"
+        android:gravity="center"
+        android:text="@string/verify_subtitle"
+        android:textAlignment="center"
+        android:textColor="@color/light_title"
+        android:textSize="48px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="840px"
+        android:layout_height="120px"
+        android:layout_marginTop="40px"
+        android:text="@string/forgotPassword_errorText"
+        android:textSize="48px"
+        android:visibility="invisible"
+        android:gravity="center|left"
+        android:textColor="@color/light_error"
+        app:layout_constraintEnd_toEndOf="@+id/subtitle"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        app:layout_constraintEnd_toEndOf="@+id/errorText"
+        app:layout_constraintStart_toStartOf="@+id/errorText"
+        app:layout_constraintTop_toBottomOf="@+id/errorText">
+
+        <EditText
+            android:id="@+id/verifyNumber0"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/verifyNumber1"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/verifyNumber2"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/verifyNumber3"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/verifyNumber4"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/verifyNumber5"
+            android:layout_width="0px"
+            android:background="@color/light_form"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:layout_marginTop="100px"
+        android:text="@string/verify_submitButton"
+        android:textColor="@color/light_background"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="60px"
+        android:background="@drawable/botron"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+    <LinearLayout
+        android:layout_width="840px"
+        android:layout_height="140px"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        app:layout_constraintEnd_toEndOf="@+id/submitButton"
+        app:layout_constraintStart_toStartOf="@+id/submitButton"
+        app:layout_constraintTop_toBottomOf="@+id/submitButton"
+        android:layout_marginTop="60px">
+
+
+        <Button
+            android:id="@+id/resendButton"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/light_background"
+            android:text="@string/verify_resendButton"
+            android:textColor="@color/light_mainColor"
+            android:textSize="48px"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/signinButton"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/light_background"
+            android:gravity="center"
+            android:text="@string/verify_signinButton"
+            android:textAlignment="center"
+            android:textColor="@color/light_mainColor"
+            android:textSize="48px"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
