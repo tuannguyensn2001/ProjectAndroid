@@ -14,18 +14,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class UserModel implements Model {
-    ArrayList<String> listUser;
-    DatabaseReference ref;
-    public UserModel()
-    {
-        this.listUser = new ArrayList<>();
-       this.ref = FirebaseDatabase.getInstance().getReference().child("user");
+	ArrayList<String> listUser;
+	DatabaseReference ref;
+
+	public UserModel() {
+		this.listUser = new ArrayList<>();
+		this.ref = FirebaseDatabase.getInstance().getReference().child("user");
 
 
-
-
-
-    }
+	}
 //    public boolean checkUserExist(User user){
 //
 //        for(User i : listUser){
@@ -48,28 +45,25 @@ public class UserModel implements Model {
 //
 //    }
 
-    public void getListUser(final DataFirebase userInterface)
-    {
-        this.ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listUser.clear();
-                for(DataSnapshot item : snapshot.getChildren()){
-                    User user = item.getValue(User.class);
-                    listUser.add(user.getUser());
+	public void getListUser(final DataFirebase userInterface) {
+		this.ref.addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				listUser.clear();
+				for (DataSnapshot item : snapshot.getChildren()) {
+					User user = item.getValue(User.class);
+					listUser.add(user.getUser());
 
-                }
-                userInterface.dataIsLoaded(listUser);
-            }
+				}
+				userInterface.dataIsLoaded(listUser);
+			}
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
-
-
+			}
+		});
+	}
 
 
 }
