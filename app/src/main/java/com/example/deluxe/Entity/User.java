@@ -3,24 +3,24 @@ package com.example.deluxe.Entity;
 
 public class User {
 
-    String user,password;
+    String username,password;
 
 
-    public void User() {
+    public User(){
 
     }
 
     public User(String user, String password) {
-        this.user=user;
+        this.username=user;
         this.password=password;
     }
 
     public String getUser() {
-        return user;
+        return username;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        this.username = user;
     }
 
     public String getPassword() {
