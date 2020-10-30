@@ -32,7 +32,7 @@
 		android:textColor="@color/light_error"
 		android:textSize="18sp"
 		android:textStyle="normal"
-		android:visibility="visible"
+		android:visibility="invisible"
 		app:layout_constraintEnd_toEndOf="@+id/title"
 		app:layout_constraintStart_toStartOf="@+id/title"
 		app:layout_constraintTop_toBottomOf="@+id/title" />

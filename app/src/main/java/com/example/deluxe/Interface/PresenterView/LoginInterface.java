@@ -6,18 +6,19 @@ import com.example.deluxe.Entity.User;
 
 import java.util.ArrayList;
 
-public interface LoginInterface  {
-    public interface LoginView extends View {
-        void handleClickButton();
-        void setError(String value);
-        void handleLoginResult(boolean check);
+public interface LoginInterface {
+	public interface LoginView extends View {
+		void handleClickButton();
 
-    }
+		void setError(String value);
 
-    public interface LoginPresenter extends Presenter {
-        void handleLogin(String usernane,String password);
+		void handleLoginResult(boolean check);
+	}
 
-    }
+	public interface LoginPresenter extends Presenter {
+		void handleLogin(String username, String password);
 
+		void switchSignUpButton();
+	}
 
 }

@@ -1,46 +1,67 @@
 package com.example.deluxe.Presenter;
 
+import android.util.Log;
+
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Interface.Model.AuthLogin;
+import com.example.deluxe.Interface.Model.AuthSignUp;
+import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
+import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
+import com.example.deluxe.View.MainActivity;
+import com.example.deluxe.View.SignUpActivity;
 
-public class LoginPresenter  implements LoginInterface.LoginPresenter{
-    LoginInterface.LoginView loginView;
-    UserModel userModel;
+import java.util.ArrayList;
 
-
-    public LoginPresenter(LoginInterface.LoginView Activity)
-    {
-        this.loginView = Activity;
-
-        initModel();
+public class LoginPresenter implements LoginInterface.LoginPresenter {
+	LoginInterface.LoginView loginView;
+	UserModel userModel;
 
 
+	public LoginPresenter(LoginInterface.LoginView Activity) {
+		this.loginView = Activity;
 
-    }
+		initModel();
 
-    public void initModel()
-    {
-        this.userModel = new UserModel();
-    }
-
-
-    @Override
-    public void handleLogin(String username,String password)
-    {
-        User user=new User(username,password);
-
-//        boolean check=
-
-        this.loginView.handleLoginResult(true);
+		checkAuth();
 
 
+	}
 
+	public void initModel() {
+		this.userModel = new UserModel();
+	}
 
+	@Override
+	public void handleLogin(String username, String password) {
+		User user = new User(username, password);
+		Auth.getInstance().attempt(user, new AuthLogin() {
+			@Override
+			public void loginSuccessful() {
+				loginView.loadView(MainActivity.class);
+			}
 
-    }
+			@Override
+			public void loginUnsuccessful() {
+				loginView.handleLoginResult(false);
+			}
 
+			@Override
+			public void canceled() {
+				Log.e("user","That bai");
+			}
+		});
 
+	}
 
+	public void checkAuth()
+	{
+		if (Auth.getInstance().check()) loginView.loadView(MainActivity.class);
+	}
 
+	@Override
+	public void switchSignUpButton() {
+		this.loginView.loadView(SignUpActivity.class);
+	}
 }
