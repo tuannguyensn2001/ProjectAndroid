@@ -1,10 +1,12 @@
 package com.example.deluxe.Presenter;
 
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Interface.Model.AuthLogin;
 import com.example.deluxe.Interface.Model.AuthSignUp;
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
+import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.SignUpActivity;
 
 public class LoginPresenter implements LoginInterface.LoginPresenter {
@@ -16,6 +18,8 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 		this.loginView = Activity;
 
 		initModel();
+
+		checkAuth();
 	}
 
 	public void initModel() {
@@ -25,19 +29,23 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 	@Override
 	public void handleLogin(String username, String password) {
 		User user = new User(username, password);
-		Auth.getInstance().signUp(user, new AuthSignUp() {
+		Auth.getInstance().attempt(user, new AuthLogin() {
 			@Override
-			public void signUpSuccessful() {
-
+			public void loginSuccessful() {
+				loginView.loadView(MainActivity.class);
 			}
 
 			@Override
-			public void signUpunSuccessful() {
-
+			public void loginUnsuccessful() {
+				loginView.handleLoginResult(false);
 			}
 		});
-		this.loginView.handleLoginResult(true);
 
+	}
+
+	public void checkAuth()
+	{
+		if (Auth.getInstance().check()) loginView.loadView(MainActivity.class);
 	}
 
 	@Override

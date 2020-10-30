@@ -15,7 +15,8 @@ public class Rules {
         if(!flag) return false;
         return true;
     }
-
-
-
+    public static boolean stringLength( String value, int length){
+        if(value.length()==length) return true;
+        return false;
+    }
 }

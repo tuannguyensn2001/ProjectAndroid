@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="164dp"
+        android:fontFamily="@font/seguibl"
+        android:gravity="center"
+        android:text="@string/deposit_title"
+        android:textAlignment="center"
+        android:textColor="@color/light_title"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:gravity="center|start"
+        android:text="@string/signup_errorText"
+        android:textColor="@color/light_error"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/serialInput"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:background="@color/light_form"
+        android:ems="10"
+        android:hint="@string/deposit_serialInput"
+        android:importantForAutofill="no"
+        android:fontFamily="@font/segoeui"
+        android:inputType="number"
+        android:maxLength="10"
+        android:textColor="@color/light_hint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/errorText"
+        app:layout_constraintStart_toStartOf="@+id/errorText"
+        app:layout_constraintTop_toBottomOf="@+id/errorText" />
+
+    <EditText
+        android:id="@+id/cardCodeInput"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20px"
+        android:background="@color/light_form"
+        android:ems="10"
+        android:hint="@string/deposit_cardCodeInput"
+        android:importantForAutofill="no"
+        android:fontFamily="@font/segoeui"
+        android:inputType="number"
+        android:maxLength="14"
+        android:textColor="@color/light_hint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/serialInput"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/serialInput"
+        app:layout_constraintTop_toBottomOf="@+id/serialInput" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/botron"
+        android:text="@string/deposit_submitButton"
+        android:textAlignment="center"
+        android:textColor="@color/light_background"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:fontFamily="@font/segoeuib"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cardCodeInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cardCodeInput"
+        app:layout_constraintTop_toBottomOf="@+id/cardCodeInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

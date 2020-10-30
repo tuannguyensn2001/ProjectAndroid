@@ -52,7 +52,7 @@
 		app:layout_constraintHorizontal_bias="1.0"
 		app:layout_constraintStart_toStartOf="@+id/errorText"
 		app:layout_constraintTop_toBottomOf="@+id/errorText"
-        android:importantForAutofill="no" />
+		android:importantForAutofill="no" />
 
 	<EditText
 		android:id="@+id/passwordInput"
@@ -69,7 +69,7 @@
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="@+id/usernameInput"
 		app:layout_constraintTop_toBottomOf="@+id/usernameInput"
-        android:importantForAutofill="no" />
+		android:importantForAutofill="no" />
 
 	<Button
 		android:id="@+id/submitButton"

@@ -14,9 +14,10 @@ import com.example.deluxe.Interface.Model.AuthSignUp;
 public class Auth {
 	private static Auth auth = null;
 	private FirebaseAuth mAuth;
-
+	private UserModel userModel;
 	private Auth() {
 		this.mAuth = FirebaseAuth.getInstance();
+		this.userModel = new UserModel();
 
 	}
 
@@ -55,13 +56,15 @@ public class Auth {
 		this.mAuth.signOut();
 	}
 
-	public void signUp(User user, final AuthSignUp authSignUp) {
+	public void signUp(final User user, final AuthSignUp authSignUp) {
 		String email = user.getEmail();
 		String password = user.getPassword();
 		this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
+					String key = Auth.getInstance().user().getUid();
+					userModel.create(user,key);
 					authSignUp.signUpSuccessful();
 				} else {
 					authSignUp.signUpunSuccessful();

@@ -65,5 +65,11 @@ public class UserModel implements Model {
 		});
 	}
 
+	public void create(User user,String key)
+	{
+//		String key = this.ref.push().getKey();
+		this.ref.child(key).setValue(user);
+	}
+
 
 }

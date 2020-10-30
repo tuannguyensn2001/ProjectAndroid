@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoMo2</string>
+    <string name="app_name">Deluxe</string>
     <string name="signup_title">Đăng ký tài khoản</string>
     <string name="signup_errorText">Nhập sai rồi, mời nhập lại!</string>
     <string name="signup_usernameInput">    Tên đăng nhập</string>
@@ -16,4 +16,13 @@
     <string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
     <string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
     <string name="signin_signupButton">ĐĂNG KÝ</string>
+    <string name="Seri">Nhập số seri</string>
+    <string name="mathe">Nhập mã thẻ</string>
+    <string name="deposit_title">Nạp thẻ</string>
+    <string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
+    <string name="deposit_serialInput">Nhập vào số series</string>
+    <string name="deposit_submitButton">NẠP THẺ</string>
 </resources>
+
+
+

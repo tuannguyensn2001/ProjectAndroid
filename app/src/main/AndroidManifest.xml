@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.deluxe">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.SignUpActivity"></activity>
-        <activity android:name=".View.LoginActivity">
-            <intent-filter>
+
+        <activity android:name=".View.MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".View.DepositActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".View.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.LoginActivity"
+            android:screenOrientation="portrait">
+                    <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
