@@ -3,6 +3,7 @@ package com.example.deluxe.Model;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -11,14 +12,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.deluxe.Interface.Model.AuthSignUp;
 
+import java.util.Date;
+
 public class Auth {
 	private static Auth auth = null;
 	private FirebaseAuth mAuth;
 	private UserModel userModel;
+	private WalletModel walletModel;
 	private Auth() {
 		this.mAuth = FirebaseAuth.getInstance();
 		this.userModel = new UserModel();
-
+		this.walletModel = new WalletModel();
 	}
 
 	public static Auth getInstance() {
@@ -64,7 +68,18 @@ public class Auth {
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
 					String key = Auth.getInstance().user().getUid();
+					user.setCreated_at(new Date().toString());
+					user.setUpdated_at(new Date().toString());
 					userModel.create(user,key);
+
+					Wallet wallet = new Wallet(0+"");
+					wallet.setCreated_at(new Date().toString());
+					wallet.setUpdated_at(new Date().toString());
+
+					walletModel.add(key,wallet);
+
+
+
 					authSignUp.signUpSuccessful();
 				} else {
 					authSignUp.signUpunSuccessful();
