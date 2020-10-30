@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,13 +15,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.deluxe.Interface.Model.AuthSignUp;
 
+import java.util.Date;
+
 public class Auth {
 	private static Auth auth = null;
 	private FirebaseAuth mAuth;
 	private UserModel userModel;
+	private WalletModel walletModel;
 	private Auth() {
 		this.mAuth = FirebaseAuth.getInstance();
 		this.userModel = new UserModel();
+		this.walletModel = new WalletModel();
 
 	}
 
@@ -74,6 +79,10 @@ public class Auth {
 				if (task.isSuccessful()) {
 					String key = Auth.getInstance().user().getUid();
 					userModel.create(user,key);
+
+					Wallet wallet = new Wallet(0,new Date().toString());
+					walletModel.add(key,wallet);
+
 					authSignUp.signUpSuccessful();
 				} else {
 					authSignUp.signUpunSuccessful();
@@ -83,3 +92,4 @@ public class Auth {
 	}
 
 }
+
