@@ -72,7 +72,7 @@ public class Auth {
 					user.setUpdated_at(new Date().toString());
 					userModel.create(user,key);
 
-					Wallet wallet = new Wallet(0+"");
+					Wallet wallet = new Wallet(0);
 					wallet.setCreated_at(new Date().toString());
 					wallet.setUpdated_at(new Date().toString());
 
@@ -86,6 +86,11 @@ public class Auth {
 				}
 			}
 		});
+	}
+
+	public void update()
+	{
+
 	}
 
 }

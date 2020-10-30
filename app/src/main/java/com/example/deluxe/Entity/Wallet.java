@@ -1,7 +1,7 @@
 package com.example.deluxe.Entity;
 
 public class Wallet {
-    private String amount;
+    private double amount;
     private String created_at;
     private String updated_at;
 
@@ -10,16 +10,16 @@ public class Wallet {
 
     }
 
-    public Wallet(String amount)
+    public Wallet(double amount)
     {
         this.amount = amount;
     }
 
-    public String getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

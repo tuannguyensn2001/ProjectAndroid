@@ -95,6 +95,10 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.L
 	@Override
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
+		if (view.equals(MainActivity.class)) {
+			startActivity(intent);
+			finish();
+		}
 		startActivity(intent);
 	}
 

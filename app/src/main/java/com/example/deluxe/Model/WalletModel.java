@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.Wallet;
+import com.example.deluxe.Interface.Model.WalletInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,15 +25,15 @@ public class WalletModel {
         this.ref.child(key).setValue(wallet);
     }
 
-    public void deposit(final String key, final String value)
+    public void deposit(final String key, final double value)
     {
-        FirebaseDatabase.getInstance().getReference().child("wallet/"+key).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("wallet").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Wallet wallet = snapshot.getValue(Wallet.class);
-                double valueConveted = Double.parseDouble(value);
-                double money = Double.parseDouble(wallet.getAmount());
-                wallet.setAmount(money+valueConveted+"");
+                Log.e("card",wallet.getAmount()+"");
+                double money = wallet.getAmount();
+                wallet.setAmount(money+value);
                 Log.e("card",wallet.getAmount()+"");
                 FirebaseDatabase.getInstance().getReference().child("wallet").child(key).setValue(wallet);
 
@@ -44,4 +45,24 @@ public class WalletModel {
             }
         });
     }
+
+    public void getMoney(String key, final WalletInterface walletInterface)
+    {
+        this.ref.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Wallet wallet = snapshot.getValue(Wallet.class);
+
+                walletInterface.dataIsLoaded(wallet.getAmount());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
 }

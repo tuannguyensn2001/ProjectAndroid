@@ -31,24 +31,10 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 
 		checkAuth();
 
-//		CardModel  cardModel = new CardModel();
-//		Card card = new Card();
-//		card.setKey("card1");
-//		card.setSerial("serial1");
-//		cardModel.getListCard(card, new CardInterface() {
-//			@Override
-//			public void failed() {
-//				Log.e("card","failed");
-//			}
-//
-//			@Override
-//			public void done(Card card) {
-//				String value = card.getValue();
-//				new WalletModel().deposit("THnYtxjSnpTn79L6Oqp0YcmDs3D3",value);
-//			}
-//
-//
-//		});
+
+
+
+
 	}
 
 	public void initModel() {

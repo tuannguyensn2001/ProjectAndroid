@@ -5,8 +5,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.Entity.AttemptDeposit;
 import com.example.deluxe.Entity.Card;
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Helper.Rules;
+import com.example.deluxe.Interface.Model.AttemptDepositInterface;
 import com.example.deluxe.Interface.Model.CardInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CardModel {
 
@@ -22,28 +26,59 @@ public class CardModel {
 
     public CardModel()
     {
-        this.ref = FirebaseDatabase.getInstance().getReference().child("card");
+        this.ref = FirebaseDatabase.getInstance().getReference("card");
     }
 
     public void getListCard(Card card, final CardInterface cardInterface)
     {
-        String key = card.getKey();
+
+
+
+        final String key = card.getKey();
         final String serial = card.getSerial();
 
-        DatabaseReference newref = FirebaseDatabase.getInstance().getReference().child("card/"+key);
-        newref.addValueEventListener(new ValueEventListener() {
+        this.ref.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Card card = snapshot.getValue(Card.class);
-                if (card  == null)
-                cardInterface.failed();
-                else
+                String recentKey = null;
+                Card card = null;
+                for (DataSnapshot item : snapshot.getChildren())
                 {
-                    Log.e("card",card.getSerial());
-                    if (card.getSerial().equals(serial))
+                    card = item.getValue(Card.class);
+                    recentKey=item.getKey();
+                }
+
+
+//                if (card == null || !card.getKey().equals(key) ||  card.getSerial().equals(serial)) {
+//                    cardInterface.failed();
+//                }
+//                else {
+//                    if (card.isIs_active()) cardInterface.inValid();
+//                    else {
+//                        cardInterface.done(card);
+//                        card.setIs_active(true);
+//                        ref.child(recentKey).setValue(card);
+//                    }
+//                }
+
+                if (card != null){
+                    if (card.getSerial().equals(serial) && card.getKey().equals(key) && !card.isIs_active()){
                         cardInterface.done(card);
-                    else
+                        card.setIs_active(true);
+                        ref.child(recentKey).setValue(card);
+                        Log.e("user","done");
+                    }
+                    else if (card.getSerial().equals(serial) && card.getKey().equals(key) && card.isIs_active()){
+                        cardInterface.inValid();
+                        Log.e("user","invalid");
+                    }
+                    else {
                         cardInterface.failed();
+                        Log.e("user","invalid");
+                    }
+                } else {
+                    Log.e("user","invalid");
+                    cardInterface.failed();
                 }
 
 
@@ -55,4 +90,19 @@ public class CardModel {
             }
         });
     }
+
+    public void add()
+    {
+        String key = this.ref.push().getKey();
+        Card card = new Card();
+        card.setKey("12345678901234");
+        card.setSerial("1234567890");
+        card.setValue(30000);
+        this.ref.child(key).setValue(card);
+    }
+
+
+
+
+
 }

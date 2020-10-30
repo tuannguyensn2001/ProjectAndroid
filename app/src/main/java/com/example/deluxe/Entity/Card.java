@@ -4,19 +4,15 @@ public class Card
 {
     String key;
     String serial;
-    String value;
+    double  value;
+    boolean is_active;
 
-    public Card()
-    {
-
+    public boolean isIs_active() {
+        return is_active;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    public void setIs_active(boolean is_active) {
+        this.is_active = is_active;
     }
 
     public String getKey() {
@@ -33,5 +29,13 @@ public class Card
 
     public void setSerial(String serial) {
         this.serial = serial;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 }

@@ -10,4 +10,6 @@ public interface CardInterface {
     void failed();
 
     void done(Card card);
+
+    void inValid();
 }
