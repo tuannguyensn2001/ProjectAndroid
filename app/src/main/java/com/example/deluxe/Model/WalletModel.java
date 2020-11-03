@@ -12,6 +12,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
+
 public class WalletModel {
     private DatabaseReference ref;
 
@@ -34,6 +36,7 @@ public class WalletModel {
                 Log.e("card",wallet.getAmount()+"");
                 double money = wallet.getAmount();
                 wallet.setAmount(money+value);
+                wallet.setUpdated_at(new Date().toString());
                 Log.e("card",wallet.getAmount()+"");
                 FirebaseDatabase.getInstance().getReference().child("wallet").child(key).setValue(wallet);
 
