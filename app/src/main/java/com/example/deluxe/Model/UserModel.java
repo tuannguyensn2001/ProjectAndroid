@@ -1,10 +1,13 @@
 package com.example.deluxe.Model;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Core.Model;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.DataFirebase;
+import com.example.deluxe.Interface.Model.UserInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,4 +75,34 @@ public class UserModel implements Model {
 	}
 
 
+	public void search(User user, final UserInterface userInterface)
+	{
+//		String email = user.getEmail();
+		String query = user.getEmail();
+
+
+		//SELECT * FROM user WHERE email = "huongtran76@gmail.com"
+			this.ref.orderByChild("email")
+				.startAt(query)
+				.endAt(query+"\uf8ff")
+				.addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				ArrayList<User> list = new ArrayList<>();
+				for (DataSnapshot item : snapshot.getChildren())
+				{
+					User user = item.getValue(User.class);
+					list.add(user);
+				}
+				userInterface.dataIsLoaded(list);
+
+			}
+
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
 }

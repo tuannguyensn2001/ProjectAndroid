@@ -60,5 +60,10 @@ public class User {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
+
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
 }
 
