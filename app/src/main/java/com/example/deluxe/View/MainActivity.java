@@ -8,12 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
+import com.example.deluxe.Interface.PresenterView.SearchUser;
 import com.example.deluxe.Presenter.MainPresenter;
 import com.example.deluxe.R;
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
 
     private MainInterface.MainPresenter mainPresenter;
-    private Button logoutButton, napThe;
+    private Button logoutButton, napThe, chuyenTien;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,12 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
             }
         });
 
-
+        this.chuyenTien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadView(SearchUserActivity.class);
+            }
+        });
     }
 
     private void init()
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
         this.mainPresenter = new MainPresenter(this);
         this.logoutButton = (Button) findViewById(R.id.logoutButton);
         this.napThe =(Button) findViewById(R.id.NapThe);
+        this.chuyenTien = (Button) findViewById(R.id.transfer);
     }
 
     @Override

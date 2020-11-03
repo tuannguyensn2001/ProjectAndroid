@@ -1,11 +1,15 @@
 package com.example.deluxe.Interface.PresenterView;
 
 import com.example.deluxe.Core.View;
+import com.example.deluxe.Entity.User;
+
+import java.util.ArrayList;
 
 public interface SearchUser {
 
     public interface SearchUserView extends View
     {
+        public void setList(ArrayList<User> users);
 
     }
 
