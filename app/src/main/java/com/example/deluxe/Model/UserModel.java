@@ -74,6 +74,36 @@ public class UserModel implements Model {
 		this.ref.child(key).setValue(user);
 	}
 
+	public void search(User user, final UserInterface userInterface)
+	{
+//		String email = user.getEmail();
+		String query = user.getEmail();
+
+		//SELECT * FROM user WHERE email = "huongtran76@gmail.com"
+		this.ref.orderByChild("email")
+				.startAt(query)
+				.endAt(query+"\uf8ff")
+				.addValueEventListener(new ValueEventListener() {
+					@Override
+					public void onDataChange(@NonNull DataSnapshot snapshot) {
+						ArrayList<User> list = new ArrayList<>();
+						for (DataSnapshot item : snapshot.getChildren())
+						{
+							User user = item.getValue(User.class);
+							list.add(user);
+						}
+						userInterface.dataIsLoaded(list);
+
+					}
+
+
+					@Override
+					public void onCancelled(@NonNull DatabaseError error) {
+
+					}
+				});
+	}
+
 
 	public void search(User user, final UserInterface userInterface)
 	{
