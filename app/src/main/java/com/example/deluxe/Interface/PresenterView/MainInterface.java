@@ -6,6 +6,7 @@ public interface MainInterface {
     public interface MainPresenter
     {
         void handleLogOut();
+        void handleNapThe();
 
     }
 

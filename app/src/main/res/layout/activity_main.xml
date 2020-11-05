@@ -10,8 +10,21 @@
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
         android:text="ĐĂNG XUẤT"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="99dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/NapThe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:text="NapThe"
+        app:layout_constraintEnd_toEndOf="@+id/logoutButton"
+        app:layout_constraintStart_toStartOf="@+id/logoutButton"
+        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

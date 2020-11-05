@@ -12,10 +12,19 @@ public class Rules {
     public static boolean isEmail(String value){
         String emailPattern = "\\w+@\\w+[.]\\w+";
         boolean flag = value.matches(emailPattern);
-        if(!flag) return false;
-        return true;
+        return flag;
     }
 
 
+    public static boolean stringLength(String serialInput, int i) {
+        return serialInput.length() == i ;
+    }
 
+    public static boolean isSameDate(String str1,String str2)
+    {
+        String []date1=str1.split("\\s");
+        String []date2=str2.split("\\s");
+
+        return date1[1].equals(date2[1]) && date1[2].equals(date2[2]) && date1[5].equals(date2[5]);
+    }
 }

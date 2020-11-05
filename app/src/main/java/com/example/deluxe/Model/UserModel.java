@@ -1,5 +1,7 @@
 package com.example.deluxe.Model;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Core.Model;
@@ -53,9 +55,7 @@ public class UserModel implements Model {
 				for (DataSnapshot item : snapshot.getChildren()) {
 					User user = item.getValue(User.class);
 					listUser.add(user.getUser());
-
 				}
-				userInterface.dataIsLoaded(listUser);
 			}
 
 			@Override
@@ -69,6 +69,31 @@ public class UserModel implements Model {
 	{
 //		String key = this.ref.push().getKey();
 		this.ref.child(key).setValue(user);
+	}
+
+	public void read(final DataFirebase dataFirebase)
+	{
+
+		final ArrayList<User> userArrayList = new ArrayList<>();
+		this.ref.addValueEventListener(new ValueEventListener() {
+
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				userArrayList.clear();
+				for ( DataSnapshot item : snapshot.getChildren())
+				{
+					User user = item.getValue(User.class);
+					userArrayList.add(user);
+				}
+
+				dataFirebase.dataIsLoaded(userArrayList);
+
+			}
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
 	}
 
 

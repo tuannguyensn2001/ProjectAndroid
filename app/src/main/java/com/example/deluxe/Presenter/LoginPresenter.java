@@ -3,14 +3,17 @@ package com.example.deluxe.Presenter;
 import android.util.Log;
 
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.example.deluxe.Interface.Model.AuthSignUp;
-import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
 import com.example.deluxe.Model.Auth;
+import com.example.deluxe.Model.CardModel;
 import com.example.deluxe.Model.UserModel;
+import com.example.deluxe.Model.WalletModel;
 import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.SignUpActivity;
+
 
 import java.util.ArrayList;
 
