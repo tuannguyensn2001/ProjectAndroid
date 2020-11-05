@@ -6,6 +6,8 @@
 	android:layout_height="match_parent"
 	android:background="#ffff">
 
+	<!--	TODO quay deu quay deu quay deu-->
+
 	<ProgressBar
 		android:id="@+id/progressBar"
 		style="@style/Widget.AppCompat.ProgressBar"

@@ -5,7 +5,6 @@ import com.example.deluxe.Core.View;
 
 public interface SignUpInterface {
 	public interface SignUpView extends View {
-		void setNotification(Enum e);
 	}
 
 	public interface SignUpPresenter extends Presenter {

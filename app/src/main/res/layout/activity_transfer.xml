@@ -7,6 +7,12 @@
 	android:visibility="visible"
 	tools:context=".View.TransferActivity">
 
+<!--	TODO nen avatar
+		TODO dong chu loi
+		TODO tin nhan keo dai vo han
+		TODO gioi han chuyen tien 9 chu so
+		TODO chuyen tien thanh cong-->
+
 	<View
 		android:id="@+id/appBar"
 		android:layout_width="match_parent"
@@ -73,7 +79,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
 
 	<TextView
-		android:id="@+id/account_Email"
+		android:id="@+id/accountEmail"
 		android:layout_width="350dp"
 		android:layout_height="30dp"
 		android:fontFamily="@font/segoeuil"
@@ -98,9 +104,9 @@
 		android:inputType="number"
 		android:textColor="@color/light_hint"
 		android:textSize="20sp"
-		app:layout_constraintEnd_toEndOf="@+id/account_Email"
-		app:layout_constraintStart_toStartOf="@+id/account_Email"
-		app:layout_constraintTop_toBottomOf="@+id/account_Email" />
+		app:layout_constraintEnd_toEndOf="@+id/accountEmail"
+		app:layout_constraintStart_toStartOf="@+id/accountEmail"
+		app:layout_constraintTop_toBottomOf="@+id/accountEmail" />
 
 	<EditText
 		android:id="@+id/messageTransferInput"

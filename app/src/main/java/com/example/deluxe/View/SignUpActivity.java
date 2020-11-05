@@ -17,6 +17,8 @@ import com.example.deluxe.Interface.PresenterView.SignUpInterface;
 import com.example.deluxe.Presenter.SignUpPresenter;
 import com.example.deluxe.R;
 
+//TODO ban ve tuong lai tai khoan sau khi dang ky
+
 public class SignUpActivity extends AppCompatActivity implements SignUpInterface.SignUpView {
 	SignUpInterface.SignUpPresenter signUp;
 	EditText username, email, password, passwordCheck;
@@ -38,21 +40,28 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 				emailInput = email.getText().toString();
 				passwordInput = password.getText().toString();
 				passwordCheckInput = passwordCheck.getText().toString();
+
 				boolean[] list = {
+						Rules.required(usernameInput),
+						Rules.required(emailInput),
+						Rules.required(passwordInput),
+						Rules.required(passwordCheckInput),
+
 						Rules.isEmail(emailInput),
 						Rules.min(passwordInput, 6),
 						passwordCheckInput.equals(passwordInput),
-						Rules.required(usernameInput),
+
 				};
 				boolean check = validate(list);
 
 				if (check) {
 					signUp.handleSignUp(usernameInput, passwordInput, emailInput);
 				} else {
-					if (!list[3]) setNotification(ErrorMessage.ERR000000);
-					else if (!list[0]) setNotification(ErrorMessage.ERR000003);
-					else if (!list[1]) setNotification(ErrorMessage.ERR000002);
-					else if (!list[2]) setNotification(ErrorMessage.ERR000001);
+					if (!(list[0] && list[1] && list[2] && list[3]))
+						setNotification(ErrorMessage.ERR000000);
+					else if (!list[4]) setNotification(ErrorMessage.ERR000003);
+					else if (!list[5]) setNotification(ErrorMessage.ERR000002);
+					else if (!list[6]) setNotification(ErrorMessage.ERR000001);
 				}
 			}
 
@@ -68,6 +77,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	}
 
 	private void init() {
+		notiText = findViewById(R.id.notiText);
+
 		username = findViewById(R.id.usernameInput);
 		email = findViewById(R.id.emailInput);
 		password = findViewById(R.id.passwordInput);

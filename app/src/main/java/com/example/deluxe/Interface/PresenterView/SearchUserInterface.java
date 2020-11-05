@@ -5,7 +5,7 @@ import com.example.deluxe.Entity.User;
 
 import java.util.ArrayList;
 
-public interface SearchUser {
+public interface SearchUserInterface {
 
     public interface SearchUserView extends View
     {

@@ -4,16 +4,16 @@ import android.util.Log;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.UserInterface;
-import com.example.deluxe.Interface.PresenterView.SearchUser;
+import com.example.deluxe.Interface.PresenterView.SearchUserInterface;
 import com.example.deluxe.Model.UserModel;
 
 import java.util.ArrayList;
 
-public class SearchUserPresenter implements SearchUser.SearchUserPresenter {
+public class SearchUserPresenter implements SearchUserInterface.SearchUserPresenter {
     UserModel userModel;
-    SearchUser.SearchUserView searchUserView;
+    SearchUserInterface.SearchUserView searchUserView;
 
-    public SearchUserPresenter(SearchUser.SearchUserView searchUserView) {
+    public SearchUserPresenter(SearchUserInterface.SearchUserView searchUserView) {
         this.searchUserView = searchUserView;
         this.userModel = new UserModel();
     }

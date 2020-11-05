@@ -8,6 +8,4 @@ import java.util.HashMap;
 
 public interface Presenter {
 
-
-
 }

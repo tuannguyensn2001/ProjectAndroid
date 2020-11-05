@@ -57,4 +57,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void setNotification(Enum e) {
+
+    }
 }

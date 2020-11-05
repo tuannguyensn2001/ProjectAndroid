@@ -101,9 +101,7 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 	@Override
 	public void handleLoginResult(boolean check) {
-		//if (check) this.setError("Được rồi");
-
-		//else this.setError(getString(R.string.login_failed));
+//		TODO dieu khien dang nhap
 	}
 
 	@Override

@@ -41,8 +41,8 @@ public class UserListAdapter extends BaseAdapter {
 
         //Bind sữ liệu phần tử vào View
         User user = (User) getItem(position);
-        ((TextView) viewProduct.findViewById(R.id.profileUsername)).setText(String.format("Ten: %s", user.getUser()));
-        ((TextView) viewProduct.findViewById(R.id.profileEmail)).setText(String.format("Email: %s", user.getEmail()));
+        ((TextView) viewProduct.findViewById(R.id.profileUsername)).setText(String.format("%s", user.getUser()));
+        ((TextView) viewProduct.findViewById(R.id.profileEmail)).setText(String.format("%s", user.getEmail()));
 
         return viewProduct;
     }

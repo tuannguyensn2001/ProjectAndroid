@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public interface LoginInterface {
 	public interface LoginView extends View {
 		void handleClickButton();
-		void setNotification(Enum e);
 		void handleLoginResult(boolean check);
 	}
 

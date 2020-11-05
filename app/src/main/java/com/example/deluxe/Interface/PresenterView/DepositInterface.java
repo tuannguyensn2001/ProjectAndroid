@@ -8,7 +8,6 @@ public interface DepositInterface {
         void handleDeposit(String serialInput, String cardCodeInput);
     }
     public interface DepositView extends View{
-        void setNotification(Enum e);
         void setMoney(double money);
     }
 
