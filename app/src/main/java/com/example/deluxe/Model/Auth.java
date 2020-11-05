@@ -19,6 +19,7 @@ public class Auth {
 	private FirebaseAuth mAuth;
 	private UserModel userModel;
 	private WalletModel walletModel;
+
 	private Auth() {
 		this.mAuth = FirebaseAuth.getInstance();
 		this.userModel = new UserModel();
@@ -70,14 +71,13 @@ public class Auth {
 					String key = Auth.getInstance().user().getUid();
 					user.setCreated_at(new Date().toString());
 					user.setUpdated_at(new Date().toString());
-					userModel.create(user,key);
+					userModel.create(user, key);
 
 					Wallet wallet = new Wallet(0);
 					wallet.setCreated_at(new Date().toString());
 					wallet.setUpdated_at(new Date().toString());
 
-					walletModel.add(key,wallet);
-
+					walletModel.add(key, wallet);
 
 
 					authSignUp.signUpSuccessful();
@@ -88,8 +88,7 @@ public class Auth {
 		});
 	}
 
-	public void update()
-	{
+	public void update() {
 
 	}
 

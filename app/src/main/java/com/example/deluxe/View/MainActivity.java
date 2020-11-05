@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
-import com.example.deluxe.Interface.PresenterView.SearchUser;
 import com.example.deluxe.Presenter.MainPresenter;
 import com.example.deluxe.R;
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
 
     private MainInterface.MainPresenter mainPresenter;
-    private Button logoutButton, napThe, chuyenTien;
+    private Button logoutButton, depositButton, transferButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +28,14 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
                 mainPresenter.handleLogOut();
             }
         });
-        this.napThe.setOnClickListener(new View.OnClickListener() {
+        this.depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainPresenter.handleNapThe();
+                mainPresenter.handleDeposit();
             }
         });
 
-        this.chuyenTien.setOnClickListener(new View.OnClickListener() {
+        this.transferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadView(SearchUserActivity.class);
@@ -47,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
     private void init()
     {
         this.mainPresenter = new MainPresenter(this);
-        this.logoutButton = (Button) findViewById(R.id.logoutButton);
-        this.napThe =(Button) findViewById(R.id.NapThe);
-        this.chuyenTien = (Button) findViewById(R.id.transfer);
+        this.logoutButton = findViewById(R.id.logoutButton);
+        this.depositButton = findViewById(R.id.NapThe);
+        this.transferButton = findViewById(R.id.transfer);
     }
 
     @Override

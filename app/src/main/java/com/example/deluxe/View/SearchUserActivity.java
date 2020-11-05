@@ -1,13 +1,12 @@
 package com.example.deluxe.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Adapter.UserListAdapter;
 import com.example.deluxe.Entity.User;
@@ -59,19 +58,15 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUser.
         adapter = new UserListAdapter(users);
         adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.user_list, users);
 
-        userListView = (ListView) findViewById(R.id.home_userListView);
+        userListView = findViewById(R.id.home_userListView);
         userListView.setAdapter(adapter);
 
-        searchBar = (SearchView) findViewById(R.id.home_searchView);
+        searchBar = findViewById(R.id.home_searchView);
 
         searchWaitTime = System.currentTimeMillis();
         deltaTime = 0;
 
         searchUserPresenter = new SearchUserPresenter(this);
-    }
-
-    void initAdapter() {
-
     }
 
     public void loadView(Class view) {

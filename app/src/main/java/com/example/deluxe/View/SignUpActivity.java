@@ -1,15 +1,17 @@
 package com.example.deluxe.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.deluxe.Entity.User;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import com.example.deluxe.Enum.ErrorMessage;
+import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.SignUpInterface;
 import com.example.deluxe.Presenter.SignUpPresenter;
@@ -20,7 +22,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	EditText username, email, password, passwordCheck;
 	String usernameInput, emailInput, passwordInput, passwordCheckInput;
 	Button submitButton;
-	Button signinButton;
+	TextView signinButton, notiText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +38,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 				emailInput = email.getText().toString();
 				passwordInput = password.getText().toString();
 				passwordCheckInput = passwordCheck.getText().toString();
-//                if(Rules.isEmail(emailInput) && Rules.min(passwordInput,6) && passwordCheckInput.equals(passwordInput))
-//                {
-//                    signUp.handleSignUp(usernameInput, passwordInput, emailInput);
-//                } else setError("Thông tin không hợp lệ");
 				boolean[] list = {
 						Rules.isEmail(emailInput),
 						Rules.min(passwordInput, 6),
@@ -51,7 +49,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 				if (check) {
 					signUp.handleSignUp(usernameInput, passwordInput, emailInput);
 				} else {
-					setError("Thông tin không hợp lệ");
+					if (!list[3]) setNotification(ErrorMessage.ERR000000);
+					else if (!list[0]) setNotification(ErrorMessage.ERR000003);
+					else if (!list[1]) setNotification(ErrorMessage.ERR000002);
+					else if (!list[2]) setNotification(ErrorMessage.ERR000001);
 				}
 			}
 
@@ -67,13 +68,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	}
 
 	private void init() {
-		username = (EditText) findViewById(R.id.usernameInput);
-		email = (EditText) findViewById(R.id.emailInput);
-		password = (EditText) findViewById(R.id.passwordInput);
-		passwordCheck = (EditText) findViewById(R.id.passwordCheckInput);
+		username = findViewById(R.id.usernameInput);
+		email = findViewById(R.id.emailInput);
+		password = findViewById(R.id.passwordInput);
+		passwordCheck = findViewById(R.id.passwordCheckInput);
 
-		submitButton = (Button) findViewById(R.id.submitButton);
-		signinButton = (Button) findViewById(R.id.signinButton);
+		submitButton = findViewById(R.id.submitButton);
+		signinButton = findViewById(R.id.signinButton);
 
 		signUp = new SignUpPresenter(this);
 	}
@@ -85,8 +86,15 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	}
 
 	@Override
-	public void setError(String s) {
-		Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+	public void setNotification(Enum e) {
+		if (e instanceof ErrorMessage) {
+			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
+			notiText.setText(((ErrorMessage) e).getValue());
+		} else {
+			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_mainColor));
+			notiText.setText(((SuccessMessage) e).getValue());
+		}
+		notiText.setVisibility(View.VISIBLE);
 	}
 
 	public boolean validate(boolean[] list) {
@@ -96,60 +104,3 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 		return true;
 	}
 }
-
-/*
-* package com.example.deluxe.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.deluxe.Entity.User;
-import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.SignUpInterface;
-import com.example.deluxe.Presenter.SignUpPresenter;
-import com.example.deluxe.R;
-
-public class SignUpActivity extends AppCompatActivity implements SignUpInterface.SignUpView {
-    SignUpInterface.SignUpPresenter signUp;
-    EditText username, email, password, passwordCheck;
-    String usernameInput, emailInput, passwordInput, passwordCheckInput;
-    Button submitButton;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        init();
-
-    }
-
-    private void init()
-    {
-        username=(EditText) findViewById(R.id.usernameInput);
-        email=(EditText) findViewById(R.id.emailInput);
-        password=(EditText) findViewById(R.id.passwordInput);
-        passwordCheck=(EditText) findViewById(R.id.passwordCheckInput);
-        submitButton=(Button) findViewById(R.id.signupButton);
-        signUp= new SignUpPresenter(this);
-    }
-
-    @Override
-    public void loadView(Class view) {
-        Intent intent=new Intent(this,view);
-        startActivity(intent);
-    }
-
-    @Override
-    public void setError(String s) {
-        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
-    }
-
-
-
-
-}*/

@@ -10,7 +10,6 @@ public interface SearchUser {
     public interface SearchUserView extends View
     {
         public void setList(ArrayList<User> users);
-
     }
 
     public interface SearchUserPresenter

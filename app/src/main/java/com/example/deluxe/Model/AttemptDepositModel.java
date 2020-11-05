@@ -16,85 +16,82 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Date;
 
 public class AttemptDepositModel {
-    private DatabaseReference ref;
+	private DatabaseReference ref;
 
-    public AttemptDepositModel()
-    {
-        this.ref = FirebaseDatabase.getInstance().getReference().child("attempt_deposit");
-    }
+	public AttemptDepositModel() {
+		this.ref = FirebaseDatabase.getInstance().getReference().child("attempt_deposit");
+	}
 
-    public void add(final String key,final AttemptDeposit attemptDeposit)
-    {
+	public void add(final String key, final AttemptDeposit attemptDeposit) {
 
 
-        this.ref.child(key).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()) ref.child(key).setValue(attemptDeposit);
-            }
+		this.ref.child(key).addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				if (!snapshot.exists()) ref.child(key).setValue(attemptDeposit);
+			}
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+			}
+		});
 
-    }
+	}
 
-    public void update(final String key)
-    {
-        this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                AttemptDeposit attemptDeposit = snapshot.getValue(AttemptDeposit.class);
-                attemptDeposit.increaseCount();
+	public void update(final String key) {
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				AttemptDeposit attemptDeposit = snapshot.getValue(AttemptDeposit.class);
+				attemptDeposit.increaseCount();
 
 
-                Log.e("user","Tang len ne");
-                boolean check = Rules.isSameDate(attemptDeposit.getUpdated_at(),new Date().toString());
+				Log.e("user", "Tang len ne");
+				boolean check = Rules.isSameDate(attemptDeposit.getUpdated_at(), new Date().toString());
 
-                attemptDeposit.setUpdated_at(new Date().toString());
-                if (!check){
-                    attemptDeposit.setUpdated_at(new Date().toString());
-                    attemptDeposit.setCount(0);
-                }
+				attemptDeposit.setUpdated_at(new Date().toString());
+				if (!check) {
+					attemptDeposit.setUpdated_at(new Date().toString());
+					attemptDeposit.setCount(0);
+				}
 
-                ref.child(key).setValue(attemptDeposit);
-            }
+				ref.child(key).setValue(attemptDeposit);
+			}
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
-    public void check(String key, final AttemptDepositInterface attemptDepositInterface)
-    {
-        this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                AttemptDeposit attemptDeposit = snapshot.getValue(AttemptDeposit.class);
-                if (attemptDeposit == null){
-                    attemptDeposit = new AttemptDeposit();
-                    attemptDeposit.setCount(0);
-                    attemptDeposit.setUpdated_at(new Date().toString());
-                    add(Auth.getInstance().user().getUid(),attemptDeposit);
-                }
+			}
+		});
+	}
 
-                String now = new Date().toString();
-                String before = attemptDeposit.getUpdated_at();
-                if (Rules.isSameDate(now,before) && attemptDeposit.getCount() == 5)
-                    attemptDepositInterface.inValid();
-                else {
-                    attemptDepositInterface.valid();
-                }
-            }
+	public void check(String key, final AttemptDepositInterface attemptDepositInterface) {
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				AttemptDeposit attemptDeposit = snapshot.getValue(AttemptDeposit.class);
+				if (attemptDeposit == null) {
+					attemptDeposit = new AttemptDeposit();
+					attemptDeposit.setCount(0);
+					attemptDeposit.setUpdated_at(new Date().toString());
+					add(Auth.getInstance().user().getUid(), attemptDeposit);
+				}
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+				String now = new Date().toString();
+				String before = attemptDeposit.getUpdated_at();
+				if (Rules.isSameDate(now, before) && attemptDeposit.getCount() == 5)
+					attemptDepositInterface.inValid();
+				else {
+					attemptDepositInterface.valid();
+				}
+			}
 
-            }
-        });
-    }
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
 
 }
