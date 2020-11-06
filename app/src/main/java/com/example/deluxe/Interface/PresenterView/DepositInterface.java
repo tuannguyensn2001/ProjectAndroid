@@ -1,15 +1,13 @@
 package com.example.deluxe.Interface.PresenterView;
 
+import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
-import com.example.deluxe.Enum.ErrorMessage;
 
 public interface DepositInterface {
-    public interface DepositPresenter{
+    interface DepositPresenter extends Presenter {
         void handleDeposit(String serialInput, String cardCodeInput);
     }
-    public interface DepositView extends View{
+    interface DepositView extends View{
         void setMoney(double money);
     }
-
-
 }

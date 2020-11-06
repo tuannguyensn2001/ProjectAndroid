@@ -18,14 +18,11 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 
 	@Override
 	public void handleTransfer(final User user, final double money, final String message) {
-		//TODO lam xong phan chuyen tien;
-
-
 		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
 			@Override
 			public void dataIsLoaded(double money_now) {
 				if (money > money_now) {
-					transferView.setNotification(ErrorMessage.ERR300000);
+					transferView.setNotification(ErrorMessage.ERR310000);
 				} else {
 					final Transfer transfer = new Transfer(Auth.getInstance().user().getEmail(), user.getEmail(), money, message);
 					(new TransferModel()).transfer(transfer);

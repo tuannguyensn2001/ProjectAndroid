@@ -4,6 +4,109 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".View.WithdrawActivity">
+	android:visibility="visible"
+	tools:context=".View.TransferActivity">
+
+	<View
+		android:id="@+id/view"
+		android:layout_width="408dp"
+		android:layout_height="46dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="4dp"
+		android:background="@color/light_mainColor"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+	</View>
+
+	<TextView
+		android:id="@+id/title"
+		android:layout_width="272dp"
+		android:layout_height="48dp"
+		android:fontFamily="@font/segoeui"
+		android:gravity="center|start"
+		android:text=" Rút tiền về ví"
+		android:textColor="@color/light_background"
+		android:textSize="26sp"
+		android:textStyle="normal"
+		app:layout_constraintBottom_toBottomOf="@+id/view"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.881"
+		app:layout_constraintStart_toStartOf="@+id/view"
+		app:layout_constraintTop_toTopOf="@+id/view"
+		app:layout_constraintVertical_bias="0.0" />
+
+	<ImageView
+		android:id="@+id/backButton"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:background="@drawable/abc_vector_test"
+		android:clickable="true"
+		app:layout_constraintBottom_toBottomOf="@+id/view"
+		app:layout_constraintEnd_toEndOf="@+id/view"
+		app:layout_constraintHorizontal_bias="0.03"
+		app:layout_constraintStart_toStartOf="@+id/view"
+		app:layout_constraintTop_toTopOf="@+id/view" />
+
+	<TextView
+		android:id="@+id/authUsername"
+		android:layout_width="163dp"
+		android:layout_height="48dp"
+		android:layout_marginStart="8dp"
+		android:text="số dư"
+		app:layout_constraintEnd_toStartOf="@+id/authBalance"
+		app:layout_constraintStart_toStartOf="@+id/view"
+		app:layout_constraintTop_toBottomOf="@+id/view" />
+
+	<TextView
+		android:id="@+id/authBalance"
+		android:layout_width="167dp"
+		android:layout_height="48dp"
+		app:layout_constraintEnd_toEndOf="@+id/title"
+		app:layout_constraintTop_toBottomOf="@+id/title" />
+
+	<TextView
+		android:id="@+id/notiText"
+		android:layout_width="333dp"
+		android:layout_height="41dp"
+		android:text="123"
+		app:layout_constraintBottom_toTopOf="@+id/noteInput"
+		app:layout_constraintEnd_toEndOf="@+id/authBalance"
+		app:layout_constraintStart_toStartOf="@+id/authUsername"
+		app:layout_constraintTop_toBottomOf="@+id/view" />
+
+	<EditText
+		android:id="@+id/moneyInput"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:inputType="numberSigned"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.497"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/notiText" />
+
+	<EditText
+		android:id="@+id/noteInput"
+		android:layout_width="246dp"
+		android:layout_height="65dp"
+		android:text="hdsb"
+		app:layout_constraintBottom_toTopOf="@+id/submitButton"
+		app:layout_constraintEnd_toEndOf="@+id/moneyInput"
+		app:layout_constraintStart_toStartOf="@+id/moneyInput" />
+
+	<Button
+		android:id="@+id/submitButton"
+		android:layout_width="90dp"
+		android:layout_height="65dp"
+		android:text="Rút Tiền"
+		android:textSize="15dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

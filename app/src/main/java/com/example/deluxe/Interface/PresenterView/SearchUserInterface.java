@@ -1,5 +1,6 @@
 package com.example.deluxe.Interface.PresenterView;
 
+import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
 import com.example.deluxe.Entity.User;
 
@@ -7,13 +8,11 @@ import java.util.ArrayList;
 
 public interface SearchUserInterface {
 
-    public interface SearchUserView extends View
-    {
-        public void setList(ArrayList<User> users);
-    }
+	interface SearchUserView extends View {
+		void setList(ArrayList<User> users);
+	}
 
-    public interface SearchUserPresenter
-    {
-        public void handleInput(String emailSearch);
-    }
+	interface SearchUserPresenter extends Presenter {
+		void handleInput(String emailSearch);
+	}
 }

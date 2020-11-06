@@ -33,7 +33,13 @@ public enum ErrorMessage {
 	ERR300001("Ki bo vừa thôi!"),
 	//	---------
 	ERR310000("Có đủ đâu mà đòi chuyển?"),
-	ERR310001("Mạng lag, đợi nha.");
+	ERR310001("Mạng lag, đợi nha."),
+	//	Rut tien --------------------------
+	ERR400000("Trống trường"),
+	ERR400001("Ki bo vừa thôi!"),
+	//	---------
+	ERR410000("Có đủ đâu mà đòi rút?"),
+	ERR410001("Mạng lag, đợi nha.");
 
 	private final String value;
 

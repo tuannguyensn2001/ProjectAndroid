@@ -39,4 +39,14 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/NapThe" />
 
+	<Button
+		android:id="@+id/ruttien"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Rut tien"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/transfer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
