@@ -5,6 +5,7 @@ import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.wallet.Wallet;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
