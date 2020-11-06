@@ -34,7 +34,7 @@ public class CardModel {
 		final String key = card.getKey();
 		final String serial = card.getSerial();
 
-		this.ref.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+		this.ref.orderByChild("serial").equalTo(serial).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				String recentKey = null;

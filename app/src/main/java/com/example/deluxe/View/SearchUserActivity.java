@@ -25,6 +25,8 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 	UserListAdapter adapter;
 	ListView userListView;
 
+	User choose;
+
 	SearchView searchBar;
 
 	long searchWaitTime, deltaTime;
@@ -70,7 +72,7 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 		userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				TODO xu ly phan an
+				choose = (User) userListView.getItemAtPosition(position);
 				loadView(TransferActivity.class);
 			}
 		});
@@ -85,7 +87,17 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 
 	@Override
 	public void loadView(Class view) {
+
 		Intent intent = new Intent(this, view);
+
+		if (view == TransferActivity.class) {
+			Bundle bundle = new Bundle();
+			bundle.putString("Username", choose.getUser());
+			bundle.putString("Email", choose.getEmail());
+			bundle.putString("profilePicture", "cc");
+			intent.putExtras(bundle);
+		}
+
 		startActivity(intent);
 	}
 

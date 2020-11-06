@@ -24,7 +24,7 @@ public class SignUpPresenter implements SignUpInterface.SignUpPresenter {
 
 	@Override
 	public void handleSignUp(String username, String password, String email) {
-		User user = new User(username, password, email);
+		User user = new User(username, password, email.toLowerCase());
 		Auth.getInstance().signUp(user, new AuthSignUp() {
 			@Override
 			public void signUpSuccessful() {
@@ -33,6 +33,7 @@ public class SignUpPresenter implements SignUpInterface.SignUpPresenter {
 
 			@Override
 			public void signUpunSuccessful() {
+//				signUpView
 				signUpView.setNotification(ErrorMessage.ERR010002);
 			}
 		});

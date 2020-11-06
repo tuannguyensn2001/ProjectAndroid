@@ -14,7 +14,7 @@
 	<string name="signin_submitButton">ĐĂNG NHẬP</string>
 	<string name="signin_title">Đăng nhập</string>
 	<string name="signin_passwordInput">Nhập mật khẩu</string>
-	<string name="signin_usernameInput">Tên đăng nhập</string>
+	<string name="signin_usernameInput">Nhập Email</string>
 	<string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
 	<string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
 	<string name="signin_signupButton">ĐĂNG KÝ</string>
@@ -24,5 +24,11 @@
 	<string name="deposit_serialInput">Nhập vào số series</string>
 	<string name="deposit_submitButton">NẠP THẺ</string>
 	<string name="deposit_cailonquegivay">Ban dang co %1$d dong</string>
+	<string name="transfer_moneyTransferInput">Nhập số tiền</string>
+	<string name="transfer_messageTransferInput">Nhập lời nhắn cho người nhận</string>
+	<string name="transfer_submitButton">Chuyển tiền</string>
+	<string name="transfer_title">Chuyển tiền tới tài khoản</string>
+	<string name="transfer_accountUsername">NGUYEN NGOC CHAU BUI</string>
+	<string name="transfer_accountEmail">ccccccc@gmail.com</string>
 
 </resources>

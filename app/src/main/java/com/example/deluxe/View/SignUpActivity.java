@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,14 +18,13 @@ import com.example.deluxe.Interface.PresenterView.SignUpInterface;
 import com.example.deluxe.Presenter.SignUpPresenter;
 import com.example.deluxe.R;
 
-//TODO ban ve tuong lai tai khoan sau khi dang ky
-
 public class SignUpActivity extends AppCompatActivity implements SignUpInterface.SignUpView {
 	SignUpInterface.SignUpPresenter signUp;
 	EditText username, email, password, passwordCheck;
 	String usernameInput, emailInput, passwordInput, passwordCheckInput;
 	Button submitButton;
 	TextView signinButton, notiText;
+	ProgressBar progressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 
 				if (check) {
 					signUp.handleSignUp(usernameInput, passwordInput, emailInput);
+					setSubmitable(false);
 				} else {
 					if (!(list[0] && list[1] && list[2] && list[3]))
 						setNotification(ErrorMessage.ERR000000);
@@ -88,6 +89,18 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 		signinButton = findViewById(R.id.signinButton);
 
 		signUp = new SignUpPresenter(this);
+
+		progressBar = findViewById(R.id.progressBar);
+	}
+
+	public void setSubmitable(boolean can) {
+		if (can) {
+			progressBar.setVisibility(View.INVISIBLE);
+			submitButton.setClickable(true);
+		} else {
+			progressBar.setVisibility(View.VISIBLE);
+			submitButton.setClickable(false);
+		}
 	}
 
 	@Override
