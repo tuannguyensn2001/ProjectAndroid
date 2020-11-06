@@ -5,89 +5,7 @@
 	android:layout_height="match_parent"
 	android:background="#ffff">
 
-	<TextView
-		android:id="@+id/title"
-		android:layout_width="320dp"
-		android:layout_height="45dp"
-		android:layout_marginTop="120dp"
-		android:fontFamily="@font/seguibl"
-		android:gravity="center"
-		android:text="@string/signin_title"
-		android:textAlignment="center"
-		android:textColor="@color/light_title"
-		android:textSize="27sp"
-		android:textStyle="bold"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.494"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
-
-	<TextView
-		android:id="@+id/notiText"
-		android:layout_width="320dp"
-		android:layout_height="45dp"
-		android:gravity="center|start"
-		android:text="@string/signup_errorText"
-		android:textColor="@color/light_error"
-		android:textSize="18sp"
-		android:textStyle="normal"
-		android:visibility="invisible"
-		app:layout_constraintEnd_toEndOf="@+id/title"
-		app:layout_constraintStart_toStartOf="@+id/title"
-		app:layout_constraintTop_toBottomOf="@+id/title" />
-
-	<EditText
-		android:id="@+id/usernameInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="7dp"
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:hint="@string/signin_usernameInput"
-		android:importantForAutofill="no"
-		android:inputType="textPersonName"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/notiText"
-		app:layout_constraintHorizontal_bias="1.0"
-		app:layout_constraintStart_toStartOf="@+id/notiText"
-		app:layout_constraintTop_toBottomOf="@+id/notiText" />
-
-	<EditText
-		android:id="@+id/passwordInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="7dp"
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:hint="@string/signin_passwordInput"
-		android:importantForAutofill="no"
-		android:inputType="textPassword"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/usernameInput"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/usernameInput"
-		app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
-
-	<Button
-		android:id="@+id/submitButton"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="38dp"
-		android:background="@drawable/button_corner"
-		android:text="@string/signin_submitButton"
-		android:textAlignment="center"
-		android:textColor="@color/light_background"
-		android:textSize="22sp"
-		android:textStyle="bold"
-		app:layout_constraintEnd_toEndOf="@+id/passwordInput"
-		app:layout_constraintStart_toStartOf="@+id/passwordInput"
-		app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+	<include layout="@layout/layout_sign_up" />
 
 	<LinearLayout
 		android:layout_width="320dp"
@@ -102,30 +20,19 @@
 
 		<TextView
 			android:id="@+id/forgotPasswordButton"
+			style="@style/ClickableText"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="4"
-			android:background="@color/light_background"
-			android:clickable="true"
-			android:gravity="center"
-			android:text="@string/signin_forgotPasswordButton"
-			android:textColor="@color/light_mainColor"
-			android:textSize="18sp"
-			android:textStyle="bold" />
+			android:text="@string/signin_forgotPasswordButton" />
 
 		<TextView
 			android:id="@+id/signupButton"
+			style="@style/ClickableText"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="3"
-			android:background="@color/light_background"
-			android:clickable="true"
-			android:gravity="center"
-			android:text="@string/signin_signupButton"
-			android:textAlignment="center"
-			android:textColor="@color/light_mainColor"
-			android:textSize="18sp"
-			android:textStyle="bold" />
+			android:text="@string/signin_signupButton" />
 
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

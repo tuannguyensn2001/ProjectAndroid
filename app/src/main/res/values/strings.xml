@@ -23,7 +23,8 @@
 	<string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
 	<string name="deposit_serialInput">Nhập vào số series</string>
 	<string name="deposit_submitButton">NẠP THẺ</string>
-	<string name="deposit_cailonquegivay">Ban dang co %1$d dong</string>
+	<string name="deposit_cailonquegivay">Ban dang co %1$s dong</string>
+
 	<string name="transfer_moneyTransferInput">Nhập số tiền</string>
 	<string name="transfer_messageTransferInput">Nhập lời nhắn cho người nhận</string>
 	<string name="transfer_submitButton">Chuyển tiền</string>

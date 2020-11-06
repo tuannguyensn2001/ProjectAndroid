@@ -23,16 +23,12 @@
 	</View>
 
 	<Button
+		style="@style/SubmitButton"
 		android:id="@+id/submitButton"
 		android:layout_width="200dp"
-		android:layout_height="50dp"
-		android:layout_marginTop="80dp"
-		android:background="@drawable/button_corner"
-		android:fontFamily="@font/segoeuib"
+		android:layout_marginTop="38dp"
 		android:text="@string/transfer_submitButton"
 		android:textColor="@color/light_background"
-		android:textSize="20sp"
-		android:textStyle="bold"
 		app:layout_constraintEnd_toEndOf="@+id/messageTransferInput"
 		app:layout_constraintStart_toStartOf="@+id/messageTransferInput"
 		app:layout_constraintTop_toBottomOf="@+id/messageTransferInput" />
@@ -54,20 +50,16 @@
 		app:layout_constraintTop_toTopOf="@+id/appBar" />
 
 	<EditText
+		android:layout_height="wrap_content"
+		style="@style/Field"
 		android:id="@+id/messageTransferInput"
-		android:layout_width="350dp"
-		android:layout_height="150dp"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
-		android:gravity="bottom"
+		android:background="@drawable/field_corner"
 		android:hint="@string/transfer_messageTransferInput"
 		android:inputType="textMultiLine"
-		android:lines="5"
 		android:maxLength="180"
+		android:maxLines="5"
 		android:scrollbarStyle="insideInset"
 		android:scrollbars="vertical"
-		android:textColor="@color/light_hint"
-		android:textSize="20sp"
 		app:layout_constraintEnd_toEndOf="@+id/moneyTransferInput"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="@+id/moneyTransferInput"
@@ -76,7 +68,7 @@
 	<View
 		android:id="@+id/uselessView"
 		android:layout_width="match_parent"
-		android:layout_height="130dp"
+		android:layout_height="100dp"
 		android:background="@color/light_form"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.0"
@@ -97,25 +89,22 @@
 
 	<ImageView
 		android:id="@+id/profilePicture"
-		android:layout_width="83dp"
-		android:layout_height="73dp"
-		android:layout_marginTop="96dp"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		android:background="@drawable/button_corner"
+		app:layout_constraintBottom_toBottomOf="@+id/uselessView"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/appBar"
-		tools:srcCompat="@tools:sample/avatars" />
+		app:layout_constraintTop_toBottomOf="@+id/uselessView" />
 
 	<TextView
+		style="@style/Title"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:maxWidth="320dp"
 		android:id="@+id/accountUsername"
-		android:layout_width="350dp"
-		android:layout_height="40dp"
 		android:layout_marginTop="16dp"
-		android:fontFamily="@font/segoeuib"
-		android:gravity="center"
 		android:text="@string/transfer_accountUsername"
-		android:textColor="@color/light_title"
-		android:textSize="22sp"
-		android:textStyle="bold"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
@@ -131,43 +120,27 @@
 		android:textSize="18sp"
 		android:textStyle="normal"
 		app:layout_constraintEnd_toEndOf="@+id/accountUsername"
-		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="@+id/accountUsername"
 		app:layout_constraintTop_toBottomOf="@+id/accountUsername" />
 
 	<EditText
 		android:id="@+id/moneyTransferInput"
-		android:layout_width="350dp"
-		android:layout_height="60dp"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
+		style="@style/Field"
+		android:autofillHints=""
 		android:hint="@string/transfer_moneyTransferInput"
 		android:inputType="number"
 		android:maxLength="9"
-		android:textColor="@color/light_hint"
-		android:textSize="20sp"
 		app:layout_constraintEnd_toEndOf="@+id/notiText"
 		app:layout_constraintStart_toStartOf="@+id/notiText"
-		app:layout_constraintTop_toBottomOf="@+id/notiText"
-		android:autofillHints="" />
+		app:layout_constraintTop_toBottomOf="@+id/notiText" />
 
 	<TextView
+		style="@style/ErrorText"
 		android:id="@+id/notiText"
-		android:layout_width="350dp"
-		android:layout_height="40dp"
-		android:layout_marginTop="20dp"
-		android:fontFamily="@font/segoeui"
-		android:gravity="center|start"
-		android:textColor="@color/light_error"
-		android:paddingStart="10dp"
-		android:paddingEnd="10dp"
-		android:text=""
 		android:visibility="invisible"
 		app:layout_constraintEnd_toEndOf="@+id/accountEmail"
-		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="@+id/accountEmail"
 		app:layout_constraintTop_toBottomOf="@+id/accountEmail" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

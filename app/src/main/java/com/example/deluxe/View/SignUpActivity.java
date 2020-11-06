@@ -36,6 +36,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				notiText.setVisibility(View.INVISIBLE);
+
 				usernameInput = username.getText().toString();
 				emailInput = email.getText().toString();
 				passwordInput = password.getText().toString();
@@ -51,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 						Rules.min(passwordInput, 6),
 						passwordCheckInput.equals(passwordInput),
 
+						Rules.isPassword(passwordInput),
 				};
 				boolean check = validate(list);
 
@@ -63,6 +66,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 					else if (!list[4]) setNotification(ErrorMessage.ERR000003);
 					else if (!list[5]) setNotification(ErrorMessage.ERR000002);
 					else if (!list[6]) setNotification(ErrorMessage.ERR000001);
+					else if(!list[7]) setNotification((ErrorMessage.ERR000004));
 				}
 			}
 

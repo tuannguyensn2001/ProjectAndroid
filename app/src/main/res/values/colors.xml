@@ -7,7 +7,5 @@
 	<color name="light_hint">#7c7c7c</color>
 	<color name="light_mainColor">#1f72a0</color>
 
-	<style name="MyProgressBarCircular" parent="@style/Widget.AppCompat.ProgressBar">
-		<item name="android:indeterminateTint">#1f72a0</item>
-	</style>
+
 </resources>

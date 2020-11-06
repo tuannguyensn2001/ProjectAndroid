@@ -6,6 +6,8 @@ public enum ErrorMessage {
 	ERR000001("Có khớp quái đâu mà đòi đăng ký?"),
 	ERR000002("Ngắn quá!"),
 	ERR000003("Đấy mà là email à???"),
+	ERR000004("Không được chứa kí tự đặc biệt"),
+
 	//	---------
 	ERR010000("Tên tài khoản có rồi"),
 	ERR010001("Email trùng rồi"),
@@ -15,6 +17,8 @@ public enum ErrorMessage {
 	ERR100000("Trống trường"),
 	ERR100001("Nhập email má ơi."),
 	ERR100002("Ngắn quá!"),
+	ERR100003("Không được chứa kí tự đặc biệt"),
+
 	//	---------
 	ERR110000("Sai tài khoản hoặc mật khẩu"),
 	ERR110001("Mạng lag, thử lại!"),
@@ -28,12 +32,14 @@ public enum ErrorMessage {
 	ERR210001("Thẻ không tồn tại!"),
 	ERR210002("Thẻ nạp rồi. Chúc bạn may mắn lần sau"),
 	ERR210003("Mạng lag, đợi nha."),
-	//	Rut tien --------------------------
+
+	//	Chuyen tien --------------------------
 	ERR300000("Trống trường"),
 	ERR300001("Ki bo vừa thôi!"),
 	//	---------
 	ERR310000("Có đủ đâu mà đòi chuyển?"),
 	ERR310001("Mạng lag, đợi nha."),
+
 	//	Rut tien --------------------------
 	ERR400000("Trống trường"),
 	ERR400001("Ki bo vừa thôi!"),

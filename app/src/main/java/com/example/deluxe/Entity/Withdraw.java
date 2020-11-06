@@ -1,7 +1,9 @@
 package com.example.deluxe.Entity;
 
+import java.util.Date;
+
 public class Withdraw {
-	private String email, nameUser;
+	private String email, username;
 	private double amount;
 	private String created_at, update_at;
 	private boolean is_active;
@@ -11,11 +13,14 @@ public class Withdraw {
 
 	}
 
-	public Withdraw(String email, String nameUser, double amount, String note) {
+	public Withdraw(String email, String username, double amount, String note) {
 		this.email = email;
-		this.nameUser = nameUser;
+		this.username = username;
 		this.amount = amount;
 		this.note = note;
+
+		created_at = new Date().toString();
+		update_at = new Date().toString();
 	}
 
 	public String getEmail() {
@@ -26,12 +31,12 @@ public class Withdraw {
 		this.email = email;
 	}
 
-	public String getNameUser() {
-		return nameUser;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNameUser(String nameUser) {
-		this.nameUser = nameUser;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public double getAmount() {

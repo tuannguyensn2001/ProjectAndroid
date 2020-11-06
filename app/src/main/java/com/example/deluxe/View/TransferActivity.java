@@ -96,6 +96,8 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 	@Override
 	public void handleButton() {
+		this.notiText.setVisibility(View.INVISIBLE);
+
 		moneyInput = money.getText().toString();
 		messageInput = message.getText().toString();
 
