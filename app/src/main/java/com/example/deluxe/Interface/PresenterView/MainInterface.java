@@ -6,12 +6,10 @@ public interface MainInterface {
     public interface MainPresenter
     {
         void handleLogOut();
-        void handleNapThe();
-
+        void handleDeposit();
     }
 
     public interface MainView extends View
     {
-
     }
 }

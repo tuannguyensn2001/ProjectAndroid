@@ -5,12 +5,11 @@ import com.example.deluxe.Core.View;
 
 public interface SignUpInterface {
 	public interface SignUpView extends View {
-		public void setError(String s);
+		void setNotification(Enum e);
 	}
 
 	public interface SignUpPresenter extends Presenter {
 		public void handleSignUp(String username, String password, String email);
-
 		public void switchSignInButton();
 	}
 }

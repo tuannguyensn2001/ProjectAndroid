@@ -20,6 +20,16 @@ public class Wallet {
             return amount;
         }
 
+        public void increaseAmount(double amount)
+        {
+            this.amount+= amount;
+        }
+
+        public void decreaseAmount(double amount)
+        {
+            this.amount-=amount;
+        }
+
 
             public void setAmount(double amount) {
                 this.amount = amount;
@@ -38,3 +48,4 @@ public class Wallet {
                 this.updated_at = updated_at;
             }
         }
+

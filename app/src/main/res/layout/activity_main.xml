@@ -13,7 +13,6 @@
         android:layout_marginTop="132dp"
         android:text="ĐĂNG XUẤT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -22,9 +21,20 @@
         android:id="@+id/NapThe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="32dp"
         android:text="NapThe"
         app:layout_constraintEnd_toEndOf="@+id/logoutButton"
         app:layout_constraintStart_toStartOf="@+id/logoutButton"
         app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+
+    <Button
+        android:id="@+id/transfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Chuyen tien"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NapThe" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

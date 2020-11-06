@@ -6,6 +6,18 @@
 	android:layout_height="match_parent"
 	android:background="#ffff">
 
+	<ProgressBar
+		android:id="@+id/progressBar"
+		style="@style/Widget.AppCompat.ProgressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:indeterminate="false"
+		android:visibility="visible"
+		app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+		app:layout_constraintEnd_toEndOf="@+id/submitButton"
+		app:layout_constraintStart_toStartOf="@+id/submitButton"
+		app:layout_constraintTop_toTopOf="@+id/submitButton" />
+
 	<TextView
 		android:id="@+id/title"
 		android:layout_width="320dp"
@@ -25,7 +37,7 @@
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/errorText"
+		android:id="@+id/notiText"
 		android:layout_width="320dp"
 		android:layout_height="45dp"
 		android:gravity="center|start"
@@ -42,25 +54,31 @@
 		android:id="@+id/usernameInput"
 		android:layout_width="320dp"
 		android:layout_height="53dp"
-		android:background="@color/light_form"
+		android:autofillHints=""
+		android:background="@drawable/field_corner"
 		android:ems="10"
 		android:hint="@string/signup_usernameInput"
 		android:inputType="textPersonName"
+		android:paddingStart="12dp"
+		android:paddingEnd="12dp"
 		android:textColor="@color/light_hint"
 		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/errorText"
-		app:layout_constraintStart_toStartOf="@+id/errorText"
-		app:layout_constraintTop_toBottomOf="@+id/errorText" />
+		app:layout_constraintEnd_toEndOf="@+id/notiText"
+		app:layout_constraintStart_toStartOf="@+id/notiText"
+		app:layout_constraintTop_toBottomOf="@+id/notiText" />
 
 	<EditText
 		android:id="@+id/passwordInput"
 		android:layout_width="320dp"
 		android:layout_height="53dp"
 		android:layout_marginTop="7dp"
-		android:background="@color/light_form"
+		android:autofillHints=""
+		android:background="@drawable/field_corner"
 		android:ems="10"
 		android:hint="@string/signup_passwordInput"
 		android:inputType="textPassword"
+		android:paddingStart="12dp"
+		android:paddingEnd="12dp"
 		android:textColor="@color/light_hint"
 		android:textSize="18sp"
 		app:layout_constraintEnd_toEndOf="@+id/emailInput"
@@ -73,10 +91,13 @@
 		android:layout_width="320dp"
 		android:layout_height="53dp"
 		android:layout_marginTop="7dp"
-		android:background="@color/light_form"
+		android:autofillHints=""
+		android:background="@drawable/field_corner"
 		android:ems="10"
 		android:hint="@string/signup_passwordCheckInput"
 		android:inputType="textPassword"
+		android:paddingStart="12dp"
+		android:paddingEnd="12dp"
 		android:textColor="@color/light_hint"
 		android:textSize="18sp"
 		app:layout_constraintEnd_toEndOf="@+id/passwordInput"
@@ -89,10 +110,13 @@
 		android:layout_width="320dp"
 		android:layout_height="53dp"
 		android:layout_marginTop="7dp"
-		android:background="@color/light_form"
+		android:autofillHints=""
+		android:background="@drawable/field_corner"
 		android:ems="10"
 		android:hint="@string/signup_emailInput"
 		android:inputType="textEmailAddress"
+		android:paddingStart="12dp"
+		android:paddingEnd="12dp"
 		android:textColor="@color/light_hint"
 		android:textSize="18sp"
 		app:layout_constraintEnd_toEndOf="@+id/usernameInput"
@@ -105,7 +129,7 @@
 		android:layout_width="320dp"
 		android:layout_height="53dp"
 		android:layout_marginTop="38dp"
-		android:background="@drawable/botron"
+		android:background="@drawable/button_corner"
 		android:fontFamily="@font/seguibl"
 		android:text="@string/signup_submitButton"
 		android:textAlignment="center"
@@ -118,6 +142,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/passwordCheckInput" />
 
 	<LinearLayout
+		android:id="@+id/linearLayout"
 		android:layout_width="320dp"
 		android:layout_height="53dp"
 		android:layout_marginTop="22dp"
@@ -135,17 +160,17 @@
 			android:fontFamily="@font/segoeuil"
 			android:gravity="center"
 			android:text="@string/signup_alreadyText"
-			android:textAlignment="center"
 			android:textColor="@color/light_title"
 			android:textSize="18sp"
 			android:textStyle="italic" />
 
-		<Button
+		<TextView
 			android:id="@+id/signinButton"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="3"
 			android:background="@color/light_background"
+			android:clickable="true"
 			android:fontFamily="@font/segoeuib"
 			android:gravity="center"
 			android:text="@string/signup_signinButton"

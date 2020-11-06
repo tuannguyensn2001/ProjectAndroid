@@ -1,25 +1,28 @@
 <resources>
-    <string name="app_name">Deluxe</string>
-    <string name="signup_title">Đăng ký tài khoản</string>
-    <string name="signup_errorText">Nhập sai rồi, mời nhập lại!</string>
-    <string name="signup_usernameInput">    Tên đăng nhập</string>
-    <string name="signup_passwordInput">    Nhập mật khẩu</string>
-    <string name="signup_passwordCheckInput">   Nhập lại mật khẩu</string>
-    <string name="signup_emailInput">   Nhập Email</string>
-    <string name="signup_submitButton">ĐĂNG KÝ</string>
-    <string name="signup_alreadyText">ĐÃ CÓ TÀI KHOẢN?</string>
-    <string name="signin_submitButton">ĐĂNG NHẬP</string>
-    <string name="signup_signinButton">ĐĂNG NHẬP</string>
-    <string name="signin_title">Đăng nhập</string>
-    <string name="signin_passwordInput">    Nhập mật khẩu</string>
-    <string name="signin_usernameInput">    Tên đăng nhập</string>
-    <string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
-    <string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
-    <string name="signin_signupButton">ĐĂNG KÝ</string>
-    <string name="Seri">Nhập số seri</string>
-    <string name="mathe">Nhập mã thẻ</string>
-    <string name="deposit_title">Nạp thẻ</string>
-    <string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
-    <string name="deposit_serialInput">Nhập vào số series</string>
-    <string name="deposit_submitButton">NẠP THẺ</string>
+	<string name="app_name">Deluxe</string>
+
+	<string name="signup_title">Đăng ký tài khoản</string>
+	<string name="signup_errorText">Nhập sai rồi, mời nhập lại!</string>
+	<string name="signup_usernameInput">Tên đăng nhập</string>
+	<string name="signup_passwordInput">Nhập mật khẩu</string>
+	<string name="signup_passwordCheckInput">Nhập lại mật khẩu</string>
+	<string name="signup_emailInput">Nhập Email</string>
+	<string name="signup_submitButton">ĐĂNG KÝ</string>
+	<string name="signup_alreadyText">ĐÃ CÓ TÀI KHOẢN?</string>
+	<string name="signup_signinButton">ĐĂNG NHẬP</string>
+
+	<string name="signin_submitButton">ĐĂNG NHẬP</string>
+	<string name="signin_title">Đăng nhập</string>
+	<string name="signin_passwordInput">Nhập mật khẩu</string>
+	<string name="signin_usernameInput">Tên đăng nhập</string>
+	<string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
+	<string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
+	<string name="signin_signupButton">ĐĂNG KÝ</string>
+
+	<string name="deposit_title">Nạp thẻ</string>
+	<string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
+	<string name="deposit_serialInput">Nhập vào số series</string>
+	<string name="deposit_submitButton">NẠP THẺ</string>
+	<string name="deposit_cailonquegivay">Ban dang co %1$d dong</string>
+
 </resources>

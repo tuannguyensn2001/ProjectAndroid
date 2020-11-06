@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
+import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.example.deluxe.Interface.Model.AuthSignUp;
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
@@ -29,7 +30,6 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 
 		checkAuth();
 
-
 	}
 
 	public void initModel() {
@@ -47,6 +47,7 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 
 			@Override
 			public void loginUnsuccessful() {
+				loginView.setNotification(ErrorMessage.ERR110001);
 				loginView.handleLoginResult(false);
 			}
 
@@ -58,8 +59,7 @@ public class LoginPresenter implements LoginInterface.LoginPresenter {
 
 	}
 
-	public void checkAuth()
-	{
+	public void checkAuth() {
 		if (Auth.getInstance().check()) loginView.loadView(MainActivity.class);
 	}
 

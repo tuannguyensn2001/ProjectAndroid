@@ -13,7 +13,7 @@ import com.example.deluxe.R;
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
 
     private MainInterface.MainPresenter mainPresenter;
-    private Button logoutButton, napThe;
+    private Button logoutButton, depositButton, transferButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +28,27 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
                 mainPresenter.handleLogOut();
             }
         });
-        this.napThe.setOnClickListener(new View.OnClickListener() {
+        this.depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainPresenter.handleNapThe();
+                mainPresenter.handleDeposit();
             }
         });
 
-
+        this.transferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadView(SearchUserActivity.class);
+            }
+        });
     }
 
     private void init()
     {
         this.mainPresenter = new MainPresenter(this);
-        this.logoutButton = (Button) findViewById(R.id.logoutButton);
-        this.napThe =(Button) findViewById(R.id.NapThe);
+        this.logoutButton = findViewById(R.id.logoutButton);
+        this.depositButton = findViewById(R.id.NapThe);
+        this.transferButton = findViewById(R.id.transfer);
     }
 
     @Override
