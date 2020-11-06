@@ -25,7 +25,7 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 			@Override
 			public void dataIsLoaded(double money_now) {
 				if (money > money_now) {
-					transferView.setNotification(ErrorMessage.ERR300000);
+					transferView.setNotification(ErrorMessage.ERR310000);
 				} else {
 					final Transfer transfer = new Transfer(Auth.getInstance().user().getEmail(), user.getEmail(), money, message);
 					(new TransferModel()).transfer(transfer);
