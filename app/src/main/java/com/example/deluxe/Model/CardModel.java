@@ -37,7 +37,7 @@ public class CardModel {
         final String key = card.getKey();
         final String serial = card.getSerial();
 
-        this.ref.orderByChild("key").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        this.ref.orderByChild("serial").equalTo(serial).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String recentKey = null;
@@ -48,6 +48,8 @@ public class CardModel {
                     recentKey=item.getKey();
                 }
 
+                Log.e("card",card.getSerial());
+                Log.e("card",card.getKey());
 
 //                if (card == null || !card.getKey().equals(key) ||  card.getSerial().equals(serial)) {
 //                    cardInterface.failed();
@@ -62,6 +64,8 @@ public class CardModel {
 //                }
 
                 if (card != null){
+
+
                     if (card.getSerial().equals(serial) && card.getKey().equals(key) && !card.isIs_active()){
                         cardInterface.done(card);
                         card.setIs_active(true);

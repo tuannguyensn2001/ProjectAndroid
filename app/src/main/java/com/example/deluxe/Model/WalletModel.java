@@ -40,6 +40,8 @@ public class WalletModel {
                 Log.e("card",wallet.getAmount()+"");
                 FirebaseDatabase.getInstance().getReference().child("wallet").child(key).setValue(wallet);
 
+
+
             }
 
             @Override

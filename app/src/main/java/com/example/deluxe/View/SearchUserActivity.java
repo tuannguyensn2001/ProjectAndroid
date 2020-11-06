@@ -81,7 +81,6 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUser.
 
     @Override
     public void setList(ArrayList<User> users) {
-
         this.users.clear();
         this.users = users;
         adapter = new UserListAdapter(users);

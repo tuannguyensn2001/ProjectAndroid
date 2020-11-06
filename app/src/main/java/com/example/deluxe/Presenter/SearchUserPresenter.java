@@ -16,6 +16,8 @@ public class SearchUserPresenter implements SearchUser.SearchUserPresenter {
     public SearchUserPresenter(SearchUser.SearchUserView searchUserView) {
         this.searchUserView = searchUserView;
         this.userModel = new UserModel();
+
+
     }
 
     @Override

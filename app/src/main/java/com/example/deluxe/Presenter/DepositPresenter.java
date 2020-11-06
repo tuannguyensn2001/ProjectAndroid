@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.deluxe.Entity.AttemptDeposit;
 import com.example.deluxe.Entity.Card;
+import com.example.deluxe.Entity.Deposit;
+import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.AttemptDepositInterface;
 import com.example.deluxe.Interface.Model.CardInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
@@ -11,6 +13,7 @@ import com.example.deluxe.Interface.PresenterView.DepositInterface;
 import com.example.deluxe.Model.AttemptDepositModel;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.CardModel;
+import com.example.deluxe.Model.DepositModel;
 import com.example.deluxe.Model.UserModel;
 import com.example.deluxe.Model.WalletModel;
 import com.example.deluxe.View.MainActivity;
@@ -33,6 +36,7 @@ public class DepositPresenter implements DepositInterface.DepositPresenter {
                 depositView.setMoney(money);
             }
         });
+
     }
 
     @Override
@@ -66,8 +70,23 @@ public class DepositPresenter implements DepositInterface.DepositPresenter {
 
                     @Override
                     public void done(Card card) {
-                        Double value = card.getValue();
+                        final Double value = card.getValue();
                         new WalletModel().deposit(Auth.getInstance().user().getUid(),value);
+
+                        new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.DepositInterface() {
+                            @Override
+                            public void dataIsLoaded(User user) {
+                                Deposit deposit = new Deposit();
+                                deposit.setEmail(user.getEmail());
+                                deposit.setUsername(user.getUser());
+                                deposit.setMoney(value);
+                                deposit.setCreated_at(new Date().toString());
+                                deposit.setUpdated_at(new Date().toString());
+
+                                new DepositModel().create(deposit);
+                            }
+                        });
+
                     }
 
                     @Override
