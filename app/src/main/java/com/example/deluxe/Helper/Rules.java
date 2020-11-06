@@ -2,17 +2,14 @@ package com.example.deluxe.Helper;
 
 public class Rules {
     public static boolean required(String s){
-        if(s.length()>0) return true;
-        return false;
+        return s.length() > 0;
     }
     public static boolean min(String value,int length){
-        if(value.length()>=length) return true;
-        return false;
+        return value.length() >= length;
     }
     public static boolean isEmail(String value){
         String emailPattern = "\\w+@\\w+[.]\\w+";
-        boolean flag = value.matches(emailPattern);
-        return flag;
+        return value.matches(emailPattern);
     }
 
 

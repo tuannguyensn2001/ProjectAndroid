@@ -27,7 +27,13 @@ public enum ErrorMessage {
 	ERR210000("Nạp quá nhiều rồi."),
 	ERR210001("Thẻ không tồn tại!"),
 	ERR210002("Thẻ nạp rồi. Chúc bạn may mắn lần sau"),
-	ERR210003("Mạng lag, đợi nha.");
+	ERR210003("Mạng lag, đợi nha."),
+	//	Rut tien --------------------------
+	ERR300000("Trống trường"),
+	ERR300001("Ki bo vừa thôi!"),
+	//	---------
+	ERR310000("Có đủ đâu mà đòi chuyển?"),
+	ERR310001("Mạng lag, đợi nha.");
 
 	private final String value;
 

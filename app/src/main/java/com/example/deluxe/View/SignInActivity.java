@@ -73,17 +73,14 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 	@Override
 	public void handleClickButton() {
-
-		if (Rules.min(usernameInput, 6) && Rules.min(passwordInput, 6)) {
+		if (!Rules.required(usernameInput) || !Rules.required(passwordInput))
+			setNotification(ErrorMessage.ERR100000);
+		else if (!Rules.min(usernameInput, 6) || !Rules.min(passwordInput, 6))
+			setNotification(ErrorMessage.ERR100002);
+		else if (!Rules.isEmail(usernameInput))
+			setNotification(ErrorMessage.ERR100001);
+		else
 			Login.handleLogin(usernameInput, passwordInput);
-		} else {
-			if (!Rules.required(usernameInput) || !Rules.required(passwordInput))
-				setNotification(ErrorMessage.ERR100000);
-			else if (!Rules.min(usernameInput, 6) || !Rules.min(passwordInput, 6))
-				setNotification(ErrorMessage.ERR100002);
-			else if (!Rules.isEmail(usernameInput))
-				setNotification(ErrorMessage.ERR100001);
-		}
 
 	}
 
@@ -101,9 +98,7 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 	@Override
 	public void handleLoginResult(boolean check) {
-		//if (check) this.setError("Được rồi");
-
-		//else this.setError(getString(R.string.login_failed));
+//		TODO dieu khien dang nhap
 	}
 
 	@Override

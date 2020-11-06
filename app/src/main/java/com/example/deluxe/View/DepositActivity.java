@@ -47,6 +47,7 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		});
 	}
 
+	@Override
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
@@ -61,6 +62,7 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		deposit = new DepositPresenter(this);
 	}
 
+	@Override
 	public void setNotification(Enum e) {
 		if (e instanceof ErrorMessage) {
 			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
