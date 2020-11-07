@@ -10,8 +10,8 @@
 
 	<Button
 		android:id="@+id/logoutButton"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		style="@style/SubmitButton"
+		android:layout_width="300dp"
 		android:layout_marginTop="132dp"
 		android:text="ĐĂNG XUẤT"
 		app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
 	<Button
 		android:id="@+id/NapThe"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		style="@style/SubmitButton"
+		android:layout_width="320dp"
 		android:layout_marginTop="32dp"
 		android:text="NapThe"
 		app:layout_constraintEnd_toEndOf="@+id/logoutButton"
@@ -31,12 +31,22 @@
 
 	<Button
 		android:id="@+id/transfer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		style="@style/SubmitButton"
+		android:layout_width="320dp"
 		android:layout_marginTop="32dp"
 		android:text="Chuyen tien"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/NapThe"
+		app:layout_constraintStart_toStartOf="@+id/NapThe"
 		app:layout_constraintTop_toBottomOf="@+id/NapThe" />
+
+	<Button
+		android:id="@+id/ruttien"
+		style="@style/SubmitButton"
+		android:layout_width="320dp"
+		android:text="Rut tien"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/transfer"
+		app:layout_constraintStart_toStartOf="@+id/transfer"
+		app:layout_constraintTop_toBottomOf="@+id/transfer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

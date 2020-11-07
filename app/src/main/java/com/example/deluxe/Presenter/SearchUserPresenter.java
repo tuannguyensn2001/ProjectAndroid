@@ -27,8 +27,10 @@ public class SearchUserPresenter implements SearchUserInterface.SearchUserPresen
 			public void dataIsLoaded(ArrayList<User> list) {
 				if (!list.isEmpty())
 					for (User userInList : list) {
-						if (userInList.getEmail().equals(Auth.getInstance().user().getEmail()))
+						if (userInList.getEmail().equals(Auth.getInstance().user().getEmail())) {
 							list.remove(userInList);
+							break;
+						}
 					}
 
 				searchUserView.setList(list);

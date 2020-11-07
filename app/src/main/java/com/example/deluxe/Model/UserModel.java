@@ -25,8 +25,6 @@ public class UserModel implements Model {
 	public UserModel() {
 		this.listUser = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("user");
-
-
 	}
 
 	public void getListUser(final DataFirebase userInterface) {
@@ -48,12 +46,12 @@ public class UserModel implements Model {
 		});
 	}
 
-	public void create(User user,String key)
-	{
+	public void create(User user, String key) {
 //		String key = this.ref.push().getKey();
 		this.ref.child(key).setValue(user);
 	}
 
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 //
 //	public void read(final DataFirebase dataFirebase)
@@ -88,18 +86,21 @@ public class UserModel implements Model {
 //	{
 ////		String email = user.getEmail();
 //>>>>>>> 90beacaf579479388b35c4001f3ad09a29db41f5
+//=======
+//	public void search(User user, final UserInterface userInterface) {
+////		String email = user.getEmail();
+//>>>>>>> 92716b6266d46bb7adccc7e4396f86613de31eda
 		String query = user.getEmail();
 
 		//SELECT * FROM user WHERE email = "huongtran76@gmail.com"
 		this.ref.orderByChild("email")
 				.startAt(query)
-				.endAt(query+"\uf8ff")
+				.endAt(query + "\uf8ff")
 				.addValueEventListener(new ValueEventListener() {
 					@Override
 					public void onDataChange(@NonNull DataSnapshot snapshot) {
 						ArrayList<User> list = new ArrayList<>();
-						for (DataSnapshot item : snapshot.getChildren())
-						{
+						for (DataSnapshot item : snapshot.getChildren()) {
 							User user = item.getValue(User.class);
 							list.add(user);
 						}
@@ -116,8 +117,7 @@ public class UserModel implements Model {
 	}
 
 
-	public void show(String key, final DepositInterface depositInterface)
-	{
+	public void show(String key, final DepositInterface depositInterface) {
 		this.ref.child(key).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {

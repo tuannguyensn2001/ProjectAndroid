@@ -83,8 +83,6 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 	@Override
 	public void setNotification(Enum e) {
-//		TODO lam xong cai notiText de con bo comment
-
         if (e instanceof ErrorMessage) {
             notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
             notiText.setText(((ErrorMessage) e).getValue());
@@ -98,6 +96,8 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 	@Override
 	public void handleButton() {
+		this.notiText.setVisibility(View.INVISIBLE);
+
 		moneyInput = money.getText().toString();
 		messageInput = message.getText().toString();
 

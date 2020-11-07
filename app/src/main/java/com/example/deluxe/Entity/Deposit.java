@@ -1,5 +1,7 @@
 package com.example.deluxe.Entity;
 
+import java.util.Date;
+
 public class Deposit {
 
 	private String email;
@@ -13,13 +15,14 @@ public class Deposit {
 
 	}
 
-	public Deposit(String email, String username, double money, String created_at,String updated_at)
+	public Deposit(String email, String username, double money)
 	{
 		this.email=email;
 		this.username=username;
 		this.money=money;
-		this.created_at=created_at;
-		this.updated_at=updated_at;
+		this.created_at= new Date().toString();
+		this.updated_at = new Date().toString();
+
 	}
 
 	public String getEmail() {
