@@ -38,6 +38,7 @@ public class UserModel implements Model {
 					User user = item.getValue(User.class);
 					listUser.add(user.getUser());
 				}
+				userInterface.dataIsLoaded(listUser);
 			}
 
 			@Override
@@ -53,40 +54,40 @@ public class UserModel implements Model {
 		this.ref.child(key).setValue(user);
 	}
 
-<<<<<<< HEAD
-
-	public void read(final DataFirebase dataFirebase)
-	{
-
-		final ArrayList<User> userArrayList = new ArrayList<>();
-		this.ref.addValueEventListener(new ValueEventListener() {
-
-			@Override
-			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				userArrayList.clear();
-				for ( DataSnapshot item : snapshot.getChildren())
-				{
-					User user = item.getValue(User.class);
-					userArrayList.add(user);
-				}
-
-				dataFirebase.dataIsLoaded(userArrayList);
-
-			}
-			@Override
-			public void onCancelled(@NonNull DatabaseError error) {
-
-			}
-		});
-	}
-
+//<<<<<<< HEAD
+//
+//	public void read(final DataFirebase dataFirebase)
+//	{
+//
+//		final ArrayList<User> userArrayList = new ArrayList<>();
+//		this.ref.addValueEventListener(new ValueEventListener() {
+//
+//			@Override
+//			public void onDataChange(@NonNull DataSnapshot snapshot) {
+//				userArrayList.clear();
+//				for ( DataSnapshot item : snapshot.getChildren())
+//				{
+//					User user = item.getValue(User.class);
+//					userArrayList.add(user);
+//				}
+//
+//				dataFirebase.dataIsLoaded(userArrayList);
+//
+//			}
+//			@Override
+//			public void onCancelled(@NonNull DatabaseError error) {
+//
+//			}
+//		});
+//	}
+//
 
 	public void search(User user, final UserInterface userInterface) {
-=======
-	public void search(User user, final UserInterface userInterface)
-	{
-//		String email = user.getEmail();
->>>>>>> 90beacaf579479388b35c4001f3ad09a29db41f5
+//=======
+//	public void search(User user, final UserInterface userInterface)
+//	{
+////		String email = user.getEmail();
+//>>>>>>> 90beacaf579479388b35c4001f3ad09a29db41f5
 		String query = user.getEmail();
 
 		//SELECT * FROM user WHERE email = "huongtran76@gmail.com"

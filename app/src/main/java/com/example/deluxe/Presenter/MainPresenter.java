@@ -1,14 +1,19 @@
 package com.example.deluxe.Presenter;
 
 
+import android.util.Log;
+
+import com.example.deluxe.Entity.Deposit;
+import com.example.deluxe.Interface.Model.DataFirebase;
+import com.example.deluxe.Interface.Model.ListDepositInterface;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
-import com.example.deluxe.Model.PersonModel;
-import com.example.deluxe.Model.TransferModel;
-import com.example.deluxe.Model.UserModel;
-import com.example.deluxe.Model.WalletModel;
+import com.example.deluxe.Model.DepositModel;
 import com.example.deluxe.View.DepositActivity;
 import com.example.deluxe.View.SignInActivity;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MainPresenter implements MainInterface.MainPresenter {
 
@@ -22,7 +27,6 @@ public class MainPresenter implements MainInterface.MainPresenter {
 
 //        new WalletModel().read();
 //        new UserModel().read();
-
 
     }
 

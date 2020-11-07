@@ -13,6 +13,15 @@ public class Deposit {
 
 	}
 
+	public Deposit(String email, String username, double money, String created_at,String updated_at)
+	{
+		this.email=email;
+		this.username=username;
+		this.money=money;
+		this.created_at=created_at;
+		this.updated_at=updated_at;
+	}
+
 	public String getEmail() {
 		return email;
 	}

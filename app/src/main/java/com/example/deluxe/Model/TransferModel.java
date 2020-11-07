@@ -4,13 +4,16 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.Wallet;
+import com.example.deluxe.Interface.Model.DataFirebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 //<<<<<<< HEAD
@@ -133,6 +136,7 @@ public class TransferModel {
 	DatabaseReference ref;
 	DatabaseReference userRef;
 	DatabaseReference walletRef;
+	ArrayList<String> listTransfer;
 
 	public TransferModel() {
 		this.ref = FirebaseDatabase.getInstance().getReference().child("transfer");
@@ -145,8 +149,6 @@ public class TransferModel {
 		String depositer = transfer.getEmailDepositor();
 		final String receiver = transfer.getEmailReceiver();
 		final double money = transfer.getMoney();
-
-
 
 		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(depositer).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
@@ -231,6 +233,26 @@ public class TransferModel {
 		});
 
 
+	}
+
+	public void  getListTransfer(final DataFirebase transferInterface) {
+		this.ref.addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				listTransfer.clear();
+				for (DataSnapshot item : snapshot.getChildren()) {
+					Transfer transfer = item.getValue(Transfer.class);
+					listTransfer.add(transfer.getEmailDepositor());
+				}
+				transferInterface.dataIsLoaded(listTransfer);
+
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
 	}
 
 }
