@@ -9,7 +9,7 @@ import com.example.deluxe.Model.UserModel;
 import java.util.ArrayList;
 
 public class SearchUserPresenter implements SearchUserInterface.SearchUserPresenter {
-<<<<<<< HEAD
+
     UserModel userModel;
     SearchUserInterface.SearchUserView searchUserView;
 
@@ -38,7 +38,6 @@ public class SearchUserPresenter implements SearchUserInterface.SearchUserPresen
             }
         });
     }
-=======
 	UserModel userModel;
 	SearchUserInterface.SearchUserView searchUserView;
 
@@ -65,5 +64,4 @@ public class SearchUserPresenter implements SearchUserInterface.SearchUserPresen
 			}
 		});
 	}
->>>>>>> 92716b6266d46bb7adccc7e4396f86613de31eda
 }
