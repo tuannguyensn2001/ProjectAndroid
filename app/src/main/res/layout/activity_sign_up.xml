@@ -1,138 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="#ffff">
 
-
-	<TextView
-		android:id="@+id/title"
-		android:layout_width="320dp"
-		android:layout_height="45dp"
-		android:layout_marginTop="120dp"
-		android:backgroundTint="@color/light_background"
-		android:fontFamily="@font/seguibl"
-		android:gravity="center"
-		android:text="@string/signup_title"
-		android:textAlignment="center"
-		android:textColor="@color/light_title"
-		android:textSize="27sp"
-		android:textStyle="bold"
+	<include
+		layout="@layout/layout_sign_up"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.494"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
-
-	<TextView
-		android:id="@+id/notiText"
-		android:layout_width="320dp"
-		android:layout_height="45dp"
-		android:gravity="center|start"
-		android:text="@string/signup_errorText"
-		android:textColor="@color/light_error"
-		android:textSize="18sp"
-		android:textStyle="normal"
-		android:visibility="invisible"
-		app:layout_constraintEnd_toEndOf="@+id/title"
-		app:layout_constraintStart_toStartOf="@+id/title"
-		app:layout_constraintTop_toBottomOf="@+id/title" />
-
-	<EditText
-		android:id="@+id/usernameInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:autofillHints=""
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
-		android:hint="@string/signup_usernameInput"
-		android:inputType="textPersonName"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/notiText"
-		app:layout_constraintStart_toStartOf="@+id/notiText"
-		app:layout_constraintTop_toBottomOf="@+id/notiText" />
-
-	<EditText
-		android:id="@+id/passwordInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="7dp"
-		android:autofillHints=""
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
-		android:hint="@string/signup_passwordInput"
-		android:inputType="textPassword"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/emailInput"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/emailInput"
-		app:layout_constraintTop_toBottomOf="@+id/emailInput" />
-
-	<EditText
-		android:id="@+id/passwordCheckInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="7dp"
-		android:autofillHints=""
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
-		android:hint="@string/signup_passwordCheckInput"
-		android:inputType="textPassword"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/passwordInput"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/passwordInput"
-		app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
-
-	<EditText
-		android:id="@+id/emailInput"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="7dp"
-		android:autofillHints=""
-		android:background="@drawable/field_corner"
-		android:ems="10"
-		android:fontFamily="@font/segoeui"
-		android:hint="@string/signup_emailInput"
-		android:inputType="textEmailAddress"
-		android:paddingStart="12dp"
-		android:paddingEnd="12dp"
-		android:textColor="@color/light_hint"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="@+id/usernameInput"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/usernameInput"
-		app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
-
-	<Button
-		android:id="@+id/submitButton"
-		android:layout_width="320dp"
-		android:layout_height="53dp"
-		android:layout_marginTop="38dp"
-		android:background="@drawable/button_corner"
-		android:fontFamily="@font/seguibl"
-		android:text="@string/signup_submitButton"
-		android:textAlignment="center"
-		android:textColor="@color/light_background"
-		android:textSize="22sp"
-		android:textStyle="bold"
-		app:layout_constraintEnd_toEndOf="@+id/passwordCheckInput"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/passwordCheckInput"
-		app:layout_constraintTop_toBottomOf="@+id/passwordCheckInput" />
 
 	<LinearLayout
 		android:id="@+id/linearLayout"
@@ -159,18 +38,11 @@
 
 		<TextView
 			android:id="@+id/signinButton"
+			style="@style/ClickableText"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="3"
-			android:background="@color/light_background"
-			android:clickable="true"
-			android:fontFamily="@font/segoeuib"
-			android:gravity="center"
-			android:text="@string/signup_signinButton"
-			android:textAlignment="center"
-			android:textColor="@color/light_mainColor"
-			android:textSize="18sp"
-			android:textStyle="bold" />
+			android:text="@string/signup_signinButton" />
 
 	</LinearLayout>
 

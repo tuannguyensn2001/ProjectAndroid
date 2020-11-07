@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
@@ -17,12 +18,16 @@ import com.example.deluxe.Interface.PresenterView.DepositInterface;
 import com.example.deluxe.Presenter.DepositPresenter;
 import com.example.deluxe.R;
 
+import java.text.DecimalFormat;
+
 public class DepositActivity extends AppCompatActivity implements DepositInterface.DepositView {
+	TextView authUsername, authEmail, authBalance;
+	TextView notiText;
 	EditText serial, cardCode;
 	String serialInput, cardCodeInput;
 	Button submitButton;
+
 	DepositInterface.DepositPresenter deposit;
-	TextView notiText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,8 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				notiText.setVisibility(View.INVISIBLE);
+
 				serialInput = serial.getText().toString();
 				cardCodeInput = cardCode.getText().toString();
 
@@ -54,6 +61,10 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 	}
 
 	private void init() {
+		authUsername = findViewById(R.id.authUsername);
+		authBalance = findViewById(R.id.authBalance);
+		authEmail = findViewById(R.id.authEmail);
+
 		serial = findViewById(R.id.serialInput);
 		cardCode = findViewById(R.id.cardCodeInput);
 		submitButton = findViewById(R.id.submitButton);
@@ -67,16 +78,21 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		if (e instanceof ErrorMessage) {
 			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
 			notiText.setText(((ErrorMessage) e).getValue());
-		} else
-		{
+		} else {
 			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_mainColor));
 			notiText.setText(((SuccessMessage) e).getValue());
 		}
 		notiText.setVisibility(View.VISIBLE);
 	}
 
-	public void setMoney(double count) {
-		TextView money = findViewById(R.id.money);
-		money.setText(getString(R.string.deposit_cailonquegivay, (int) count));
+	@Override
+	public void setMoney(double money) {
+		authBalance.setText(new DecimalFormat("#,###,###").format(money));
+	}
+
+	@Override
+	public void setUserInfo(User user) {
+		authUsername.setText(user.getUser());
+		authEmail.setText(user.getEmail());
 	}
 }

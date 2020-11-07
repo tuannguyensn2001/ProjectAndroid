@@ -1,13 +1,66 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/light_mainColor</item>
+		<item name="colorPrimaryDark">@color/light_mainColor</item>
+		<item name="colorAccent">@color/light_mainColor</item>
+	</style>
 
-    <color name="colorAccent">#742A24</color>
-    <color name="colorPrimaryDark">#922F27</color>
-    <color name="colorPrimary">#1E88E5</color>
+	<style name="SubmitButton" parent="Widget.AppCompat.Button">
+		<item name="android:background">@drawable/button_corner</item>
+		<item name="android:layout_height">50dp</item>
+		<item name="android:minWidth">150dp</item>
+		<item name="android:textAlignment">center</item>
+		<item name="android:textSize">22sp</item>
+		<item name="android:textColor">@color/light_background</item>
+		<item name="fontFamily">@font/segoeuib</item>
+	</style>
+
+	<style name="Title" parent="Widget.AppCompat.TextView">
+		<item name="android:layout_width">320dp</item>
+		<item name="android:layout_height">45dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textAlignment">center</item>
+		<item name="android:textSize">27sp</item>
+		<item name="fontFamily">@font/seguibl</item>
+		<item name="android:textColor">@color/light_title</item>
+	</style>
+
+	<style name="ErrorText" parent="Widget.AppCompat.TextView">
+		<item name="android:layout_width">320dp</item>
+		<item name="android:layout_height">45dp</item>
+		<item name="android:gravity">center|start</item>
+		<item name="android:textSize">18sp</item>
+		<item name="fontFamily">@font/segoeui</item>
+		<item name="android:textColor">@color/light_error</item>
+	</style>
+
+	<style name="ClickableText">
+		<item name="android:background">@color/light_background</item>
+		<item name="android:clickable">true</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textAlignment">center</item>
+		<item name="android:textColor">@color/light_mainColor</item>
+		<item name="fontFamily">@font/segoeuib</item>
+		<item name="android:textSize">18sp</item>
+	</style>
+
+	<style name="Field">
+		<item name="android:layout_marginTop">7dp</item>
+		<item name="android:minHeight">50dp</item>
+		<item name="android:layout_width">320dp</item>
+		<item name="android:layout_height">53dp</item>
+		<item name="android:background">@drawable/field_corner</item>
+		<item name="android:ems">10</item>
+		<item name="android:paddingStart">12dp</item>
+		<item name="android:paddingEnd">12dp</item>
+		<item name="android:paddingTop">12dp</item>
+		<item name="android:paddingBottom">12dp</item>
+		<item name="android:textColor">@color/light_hint</item>
+		<item name="android:textSize">18sp</item>
+	</style>
+
+	<style name="MyProgressBarCircular" parent="@style/Widget.AppCompat.ProgressBar">
+		<item name="android:indeterminateTint">@color/light_mainColor</item>
+	</style>
 </resources>

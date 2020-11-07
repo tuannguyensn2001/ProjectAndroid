@@ -9,6 +9,7 @@ import com.example.deluxe.Model.UserModel;
 import java.util.ArrayList;
 
 public class SearchUserPresenter implements SearchUserInterface.SearchUserPresenter {
+<<<<<<< HEAD
     UserModel userModel;
     SearchUserInterface.SearchUserView searchUserView;
 
@@ -37,4 +38,32 @@ public class SearchUserPresenter implements SearchUserInterface.SearchUserPresen
             }
         });
     }
+=======
+	UserModel userModel;
+	SearchUserInterface.SearchUserView searchUserView;
+
+	public SearchUserPresenter(SearchUserInterface.SearchUserView searchUserView) {
+		this.searchUserView = searchUserView;
+		this.userModel = new UserModel();
+	}
+
+	@Override
+	public void handleInput(String emailSearch) {
+		final User user = new User(null, null, emailSearch);
+		this.userModel.search(user, new UserInterface() {
+			@Override
+			public void dataIsLoaded(ArrayList<User> list) {
+				if (!list.isEmpty())
+					for (User userInList : list) {
+						if (userInList.getEmail().equals(Auth.getInstance().user().getEmail())) {
+							list.remove(userInList);
+							break;
+						}
+					}
+
+				searchUserView.setList(list);
+			}
+		});
+	}
+>>>>>>> 92716b6266d46bb7adccc7e4396f86613de31eda
 }

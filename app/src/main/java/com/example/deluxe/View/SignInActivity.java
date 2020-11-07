@@ -21,13 +21,15 @@ import com.example.deluxe.Presenter.LoginPresenter;
 import com.example.deluxe.R;
 
 public class SignInActivity extends AppCompatActivity implements LoginInterface.LoginView {
+	private TextView title, notiText;
+	private EditText email, password;
 	private Button submitButton;
 	private TextView signupButton;
+
+	private String emailInput, passwordInput;
+
 	private LoginInterface.LoginPresenter Login;
-	private EditText username, password;
-	private String usernameInput, passwordInput;
-	private TextView notiText;
-	private ListView listView;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 		this.submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				usernameInput = username.getText().toString();
+				emailInput = email.getText().toString();
 				passwordInput = password.getText().toString();
 
 				handleClickButton();
@@ -59,6 +61,7 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 
 	public void init() {
+		this.title = findViewById(R.id.title);
 
 		this.notiText = findViewById(R.id.notiText);
 
@@ -66,22 +69,30 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 		this.submitButton = findViewById(R.id.submitButton);
 		this.Login = new LoginPresenter(this);
 
-		this.username = findViewById(R.id.usernameInput);
+		this.email = findViewById(R.id.emailInput);
 		this.password = findViewById(R.id.passwordInput);
 
+		findViewById(R.id.usernameInput).setVisibility(View.GONE);
+		findViewById(R.id.passwordCheckInput).setVisibility(View.GONE);
+
+		this.title.setText(getString(R.string.signin_title));
+		this.submitButton.setText(getString(R.string.signin_submitButton));
 	}
 
 	@Override
 	public void handleClickButton() {
-		if (!Rules.required(usernameInput) || !Rules.required(passwordInput))
-			setNotification(ErrorMessage.ERR100000);
-		else if (!Rules.min(usernameInput, 6) || !Rules.min(passwordInput, 6))
-			setNotification(ErrorMessage.ERR100002);
-		else if (!Rules.isEmail(usernameInput))
-			setNotification(ErrorMessage.ERR100001);
-		else
-			Login.handleLogin(usernameInput, passwordInput);
+		this.notiText.setVisibility(View.INVISIBLE);
 
+		if (!Rules.required(emailInput) || !Rules.required(passwordInput))
+			setNotification(ErrorMessage.ERR100000);
+		else if (!Rules.min(emailInput, 6) || !Rules.min(passwordInput, 6))
+			setNotification(ErrorMessage.ERR100002);
+		else if (!Rules.isEmail(emailInput))
+			setNotification(ErrorMessage.ERR100001);
+		else if (!Rules.isPassword(passwordInput))
+			setNotification((ErrorMessage.ERR100003));
+		else
+			Login.handleLogin(emailInput, passwordInput);
 	}
 
 	@Override
@@ -98,7 +109,8 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 	@Override
 	public void handleLoginResult(boolean check) {
-//		TODO dieu khien dang nhap
+		if (check) setNotification(SuccessMessage.SUC000002);
+		else setNotification(ErrorMessage.ERR110001);
 	}
 
 	@Override
