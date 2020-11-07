@@ -18,6 +18,7 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 
 	@Override
 	public void handleTransfer(final User user, final double money, final String message) {
+
 		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
 			@Override
 			public void dataIsLoaded(double money_now) {
