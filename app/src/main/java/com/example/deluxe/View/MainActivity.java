@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
-		finish();
+
 	}
 
 	@Override
