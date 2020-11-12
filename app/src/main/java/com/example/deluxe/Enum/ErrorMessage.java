@@ -39,6 +39,7 @@ public enum ErrorMessage {
 	//	---------
 	ERR310000("Có đủ đâu mà đòi chuyển?"),
 	ERR310001("Mạng lag, đợi nha."),
+	ERR310002("Thất bại chả vì lí do gì"),
 
 	//	Rut tien --------------------------
 	ERR400000("Trống trường"),

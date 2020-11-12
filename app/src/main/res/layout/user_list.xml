@@ -6,10 +6,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<!--    TODO chinh cho dep-->
-
 	<ImageView
-		android:id="@+id/profileImage"
+		android:id="@+id/profile_picture"
 		android:layout_width="60dp"
 		android:layout_height="60dp"
 		android:layout_marginStart="16dp"
@@ -18,10 +16,11 @@
 		android:background="@drawable/button_corner"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toTopOf="parent"
+		android:contentDescription="@string/user_list_profile_picture" />
 
 	<TextView
-		android:id="@+id/profileUsername"
+		android:id="@+id/profile_username"
 		android:layout_width="wrap_content"
 		android:layout_height="30dp"
 		android:layout_marginStart="16dp"
@@ -29,11 +28,11 @@
 		android:gravity="center|start"
 		android:textSize="24sp"
 		android:textStyle="bold"
-		app:layout_constraintStart_toEndOf="@+id/profileImage"
+		app:layout_constraintStart_toEndOf="@+id/profile_picture"
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/profileEmail"
+		android:id="@+id/profile_email"
 		android:layout_width="wrap_content"
 		android:layout_height="22dp"
 		android:layout_marginStart="16dp"
@@ -41,7 +40,7 @@
 		android:gravity="center|start"
 		android:textSize="14sp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/profileImage"
-		app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
+		app:layout_constraintStart_toEndOf="@+id/profile_picture"
+		app:layout_constraintTop_toBottomOf="@+id/profile_username" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

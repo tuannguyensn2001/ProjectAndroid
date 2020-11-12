@@ -7,91 +7,66 @@
 	android:visibility="visible"
 	tools:context=".View.TransferActivity">
 
-	<View
-		android:id="@+id/view"
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.ActionBarFragment"
 		android:layout_width="match_parent"
-		android:layout_height="50dp"
-		android:background="@color/light_mainColor"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent">
-
-	</View>
-
-	<TextView
-		android:id="@+id/title"
-		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:fontFamily="@font/segoeui"
-		android:gravity="center"
-		android:text=" Rút tiền về ví"
-		android:textColor="@color/light_background"
-		android:textSize="26sp"
-		android:textStyle="normal"
-		app:layout_constraintBottom_toBottomOf="@+id/view"
-		app:layout_constraintEnd_toEndOf="@+id/view"
-		app:layout_constraintStart_toStartOf="@+id/view"
-		app:layout_constraintTop_toTopOf="@+id/view" />
-
-	<ImageView
-		android:id="@+id/backButton"
-		android:layout_width="30dp"
-		android:layout_height="30dp"
-		android:background="@drawable/abc_vector_test"
-		android:clickable="true"
-		android:contentDescription="back"
-		app:layout_constraintBottom_toBottomOf="@+id/view"
-		app:layout_constraintEnd_toEndOf="@+id/view"
-		app:layout_constraintHorizontal_bias="0.03"
-		app:layout_constraintStart_toStartOf="@+id/view"
-		app:layout_constraintTop_toTopOf="@+id/view" />
-
-	<include
-		android:id="@+id/include"
-		layout="@layout/layout_auth_bar"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/view" />
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
+	<fragment
+		android:id="@+id/auth_bar"
+		android:name="com.example.deluxe.View.AuthBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/action_bar"
+		tools:layout="@layout/fragment_auth_bar" />
 
 
 	<TextView
-		android:id="@+id/notiText"
+		android:id="@+id/notification_text"
 		style="@style/ErrorText"
 		android:layout_marginTop="32dp"
 		android:visibility="invisible"
-		app:layout_constraintStart_toStartOf="@+id/moneyInput"
-		app:layout_constraintTop_toBottomOf="@+id/include" />
+		app:layout_constraintStart_toStartOf="@+id/money_input"
+		app:layout_constraintTop_toBottomOf="@+id/auth_bar" />
 
 	<EditText
-		android:id="@+id/moneyInput"
+		android:id="@+id/money_input"
 		style="@style/Field"
 		android:layout_height="wrap_content"
-		android:hint="Bao nhieu?"
+		android:autofillHints=""
+		android:hint="@string/withdraw_money_input"
 		android:inputType="number"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/notiText" />
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
 
 	<EditText
-		android:id="@+id/noteInput"
+		android:id="@+id/message_input"
 		style="@style/Field"
 		android:layout_height="wrap_content"
-		android:hint="Ghi chu"
+		android:autofillHints=""
+		android:hint="@string/withdraw_message_input"
 		android:inputType="textMultiLine"
 		android:maxLines="8"
-		app:layout_constraintEnd_toEndOf="@+id/moneyInput"
-		app:layout_constraintStart_toStartOf="@+id/moneyInput"
-		app:layout_constraintTop_toBottomOf="@+id/moneyInput" />
+		app:layout_constraintEnd_toEndOf="@+id/money_input"
+		app:layout_constraintStart_toStartOf="@+id/money_input"
+		app:layout_constraintTop_toBottomOf="@+id/money_input" />
 
 	<Button
-		android:id="@+id/submitButton"
+		android:id="@+id/submit_button"
 		style="@style/SubmitButton"
 		android:layout_width="150dp"
 		android:layout_marginTop="32dp"
-		android:text="Rút Tiền"
-		app:layout_constraintEnd_toEndOf="@+id/noteInput"
-		app:layout_constraintStart_toStartOf="@+id/noteInput"
-		app:layout_constraintTop_toBottomOf="@+id/noteInput" />
-
+		android:text="@string/withdraw_submit_button"
+		app:layout_constraintEnd_toEndOf="@+id/message_input"
+		app:layout_constraintStart_toStartOf="@+id/message_input"
+		app:layout_constraintTop_toBottomOf="@+id/message_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

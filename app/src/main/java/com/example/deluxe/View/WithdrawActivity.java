@@ -11,25 +11,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.WithdrawInterface;
-import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Presenter.WithdrawPresenter;
 import com.example.deluxe.R;
 
-import java.text.DecimalFormat;
-
 public class WithdrawActivity extends AppCompatActivity implements WithdrawInterface.WithdrawView {
 	ImageView backButton;
-	WithdrawPresenter withdrawPresenter;
-	TextView authUsername, authEmail, authBalance;
 	TextView notiText;
 	EditText money, note;
 	String moneyInput, noteInput;
 	Button submitButton;
+
+	WithdrawPresenter withdrawPresenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,18 +68,15 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 		withdrawPresenter = new WithdrawPresenter(this);
 
 		backButton = findViewById(R.id.backButton);
-		authUsername = findViewById(R.id.authUsername);
-		authBalance = findViewById(R.id.authBalance);
-		authEmail = findViewById(R.id.authEmail);
 
-		notiText = findViewById(R.id.notiText);
+		notiText = findViewById(R.id.notification_text);
 
-		money = findViewById(R.id.moneyInput);
-		note = findViewById(R.id.noteInput);
+		money = findViewById(R.id.money_input);
+		note = findViewById(R.id.message_input);
 
-		submitButton = findViewById(R.id.submitButton);
+		submitButton = findViewById(R.id.submit_button);
 
-		authUsername.setText(Auth.getInstance().user().getEmail());
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.withdraw_action_bar_title));
 	}
 
 	@Override
@@ -102,16 +95,5 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 			notiText.setText(((SuccessMessage) e).getValue());
 		}
 		notiText.setVisibility(View.VISIBLE);
-	}
-
-	@Override
-	public void setMoney(double money) {
-		authBalance.setText(new DecimalFormat("#,###,###").format(money));
-	}
-
-	@Override
-	public void setUserInfo(User user) {
-		authUsername.setText(user.getUser());
-		authEmail.setText(user.getEmail());
 	}
 }

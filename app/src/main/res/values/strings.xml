@@ -1,35 +1,55 @@
 <resources>
 	<string name="app_name">Deluxe</string>
 
-	<string name="signup_title">Đăng ký tài khoản</string>
-	<string name="signup_errorText">Nhập sai rồi, mời nhập lại!</string>
-	<string name="signup_usernameInput">Tên đăng nhập</string>
-	<string name="signup_passwordInput">Nhập mật khẩu</string>
-	<string name="signup_passwordCheckInput">Nhập lại mật khẩu</string>
-	<string name="signup_emailInput">Nhập Email</string>
-	<string name="signup_submitButton">ĐĂNG KÝ</string>
-	<string name="signup_alreadyText">ĐÃ CÓ TÀI KHOẢN?</string>
-	<string name="signup_signinButton">ĐĂNG NHẬP</string>
+	<string name="sign_up_title">Đăng ký tài khoản</string>
+	<string name="sign_up_error_text">Nhập sai rồi, mời nhập lại!</string>
+	<string name="sign_up_username_input">Tên đăng nhập</string>
+	<string name="sign_up_password_input">Nhập mật khẩu</string>
+	<string name="sign_up_password_check_input">Nhập lại mật khẩu</string>
+	<string name="sign_up_email_input">Nhập Email</string>
+	<string name="sign_up_submit_button">ĐĂNG KÝ</string>
+	<string name="sign_up_already_text">ĐÃ CÓ TÀI KHOẢN?</string>
+	<string name="sign_up_sign_in_button">ĐĂNG NHẬP</string>
 
-	<string name="signin_submitButton">ĐĂNG NHẬP</string>
-	<string name="signin_title">Đăng nhập</string>
-	<string name="signin_passwordInput">Nhập mật khẩu</string>
-	<string name="signin_usernameInput">Nhập Email</string>
-	<string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
-	<string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
-	<string name="signin_signupButton">ĐĂNG KÝ</string>
+	<string name="sign_in_submit_button">ĐĂNG NHẬP</string>
+	<string name="sign_in_title">Đăng nhập</string>
+	<string name="sign_in_password_input">Nhập mật khẩu</string>
+	<string name="sign_in_username_input">Nhập Email</string>
+	<string name="sign_in_error_text">Nhập sai rồi, mời nhập lại!</string>
+	<string name="sign_in_forgot_password_button">QUÊN MẬT KHẨU</string>
+	<string name="sign_in_sign_up_button">ĐĂNG KÝ</string>
 
+	<string name="deposit_action_bar_title">Nạp thẻ</string>
 	<string name="deposit_title">Nạp thẻ</string>
-	<string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
-	<string name="deposit_serialInput">Nhập vào số series</string>
-	<string name="deposit_submitButton">NẠP THẺ</string>
-	<string name="deposit_cailonquegivay">Ban dang co %1$s dong</string>
+	<string name="deposit_error_text">Sai cmn roi</string>
+	<string name="deposit_card_code_input">Nhập vào mã thẻ</string>
+	<string name="deposit_serial_input">Nhập vào số series</string>
+	<string name="deposit_submit_button">NẠP THẺ</string>
 
-	<string name="transfer_moneyTransferInput">Nhập số tiền</string>
-	<string name="transfer_messageTransferInput">Nhập lời nhắn cho người nhận</string>
-	<string name="transfer_submitButton">Chuyển tiền</string>
+	<string name="transfer_search_action_bar_title">Chuyển tiền</string>
+
+	<string name="transfer_action_bar_title">Chuyển tiền cho tài khoản</string>
+	<string name="transfer_money_input">Nhập số tiền</string>
+	<string name="transfer_message_input">Nhập lời nhắn cho người nhận</string>
+	<string name="transfer_submit_button">Chuyển tiền</string>
 	<string name="transfer_title">Chuyển tiền tới tài khoản</string>
-	<string name="transfer_accountUsername">NGUYEN NGOC CHAU BUI</string>
-	<string name="transfer_accountEmail">ccccccc@gmail.com</string>
+	<string name="transfer_account_email">email</string>
 
+	<string name="withdraw_action_bar_title">Rút tiền về ví</string>
+	<string name="withdraw_money_input">Bao nhieu?</string>
+	<string name="withdraw_message_input">Ghi chu</string>
+	<string name="withdraw_submit_button">Rút Tiền</string>
+	<string name="transfer_account_username">name</string>
+
+	<string name="deposit_success_title">Nap tiền thành công</string>
+	<string name="deposit_success_subtitle">SO tien hien tai</string>
+	<string name="deposit_success_home_button">Ve man hinh chinh</string>
+	<string name="deposit_success_continue_deposit_button">Tiếp tục nap tiền</string>
+	<string name="deposit_success_profile_picture">TODO</string>
+	<string name="transfer_success_profile_picture">TODO</string>
+	<string name="transfer_success_title_success">Chuyển tiền thành công cho</string>
+
+	<string name="action_bar_back_button">back</string>
+
+	<string name="user_list_profile_picture">user_list_profile_picture</string>
 </resources>

@@ -6,12 +6,25 @@
 	android:layout_height="match_parent"
 	android:background="#ffff">
 
-	<include
-		android:id="@+id/include"
-		layout="@layout/layout_auth_bar"
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.ActionBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="parent" />
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
+	<fragment
+		android:id="@+id/auth_bar"
+		android:name="com.example.deluxe.View.AuthBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/action_bar"
+		tools:layout="@layout/fragment_auth_bar" />
 
 	<TextView
 		android:id="@+id/title"
@@ -20,56 +33,47 @@
 		android:text="@string/deposit_title"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@id/action_bar" />
 
 	<TextView
-		android:id="@+id/notiText"
+		android:id="@+id/notification_text"
 		style="@style/ErrorText"
-		android:text="@string/signup_errorText"
+		android:text="@string/deposit_error_text"
 		android:visibility="invisible"
 		app:layout_constraintEnd_toEndOf="@+id/title"
 		app:layout_constraintStart_toStartOf="@+id/title"
 		app:layout_constraintTop_toBottomOf="@+id/title" />
 
 	<EditText
-		android:id="@+id/serialInput"
+		android:id="@+id/serial_input"
 		style="@style/Field"
-		android:hint="@string/deposit_serialInput"
+		android:hint="@string/deposit_serial_input"
 		android:importantForAutofill="no"
 		android:inputType="number"
 		android:maxLength="10"
-		app:layout_constraintEnd_toEndOf="@+id/notiText"
-		app:layout_constraintStart_toStartOf="@+id/notiText"
-		app:layout_constraintTop_toBottomOf="@+id/notiText" />
+		app:layout_constraintEnd_toEndOf="@+id/notification_text"
+		app:layout_constraintStart_toStartOf="@+id/notification_text"
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
 
 	<EditText
-		android:id="@+id/cardCodeInput"
+		android:id="@+id/card_code_input"
 		style="@style/Field"
-		android:hint="@string/deposit_cardCodeInput"
+		android:hint="@string/deposit_card_code_input"
 		android:importantForAutofill="no"
 		android:inputType="number"
-		app:layout_constraintEnd_toEndOf="@+id/serialInput"
+		app:layout_constraintEnd_toEndOf="@+id/serial_input"
 		app:layout_constraintHorizontal_bias="1.0"
-		app:layout_constraintStart_toStartOf="@+id/serialInput"
-		app:layout_constraintTop_toBottomOf="@+id/serialInput" />
+		app:layout_constraintStart_toStartOf="@+id/serial_input"
+		app:layout_constraintTop_toBottomOf="@+id/serial_input" />
 
 	<Button
-		android:id="@+id/submitButton"
+		android:id="@+id/submit_button"
 		style="@style/SubmitButton"
 		android:layout_width="320dp"
 		android:layout_marginTop="38dp"
-		android:text="@string/deposit_submitButton"
-		app:layout_constraintEnd_toEndOf="@+id/cardCodeInput"
-		app:layout_constraintStart_toStartOf="@+id/cardCodeInput"
-		app:layout_constraintTop_toBottomOf="@+id/cardCodeInput" />
-
-	<TextView
-		android:id="@+id/money"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text=""
-		tools:ignore="MissingConstraints"
-		tools:layout_editor_absoluteX="136dp"
-		tools:layout_editor_absoluteY="64dp" />
+		android:text="@string/deposit_submit_button"
+		app:layout_constraintEnd_toEndOf="@+id/card_code_input"
+		app:layout_constraintStart_toStartOf="@+id/card_code_input"
+		app:layout_constraintTop_toBottomOf="@+id/card_code_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

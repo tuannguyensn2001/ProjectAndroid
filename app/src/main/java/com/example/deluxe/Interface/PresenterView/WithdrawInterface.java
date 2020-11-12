@@ -8,9 +8,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public interface WithdrawInterface {
 	interface WithdrawView extends View {
-		void setMoney(double money);
-
-		void setUserInfo(User user);
 	}
 
 	interface WithDrawPresenter extends Presenter {

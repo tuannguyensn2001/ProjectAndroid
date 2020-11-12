@@ -62,15 +62,17 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 	private void init() {
 		backButton = findViewById(R.id.backButton);
-		username = findViewById(R.id.accountUsername);
-		email = findViewById(R.id.accountEmail);
+		username = findViewById(R.id.account_username);
+		email = findViewById(R.id.account_email);
 
-		notiText = findViewById(R.id.notiText);
+		notiText = findViewById(R.id.notification_text);
 
-		money = findViewById(R.id.moneyTransferInput);
-		message = findViewById(R.id.messageTransferInput);
+		money = findViewById(R.id.money_input);
+		message = findViewById(R.id.message_input);
 
-		submitButton = findViewById(R.id.submitButton);
+		submitButton = findViewById(R.id.submit_button);
+
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
 
 		transferPresenter = new TransferPresenter(this);
 	}
@@ -78,20 +80,33 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 	@Override
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
+
+		if (view == TransferSuccessActivity.class) {
+			Bundle bundle = new Bundle();
+
+			bundle.putString("Username", this.username.getText().toString());
+			bundle.putString("profilePicture", "cc");
+
+			bundle.putString("Money", this.moneyInput);
+			bundle.putString("Message", this.messageInput);
+
+			intent.putExtras(bundle);
+		}
+
 		startActivity(intent);
+		finish();
 	}
 
 	@Override
 	public void setNotification(Enum e) {
-        if (e instanceof ErrorMessage) {
-            notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
-            notiText.setText(((ErrorMessage) e).getValue());
-        } else
-        {
-            notiText.setTextColor(ContextCompat.getColor(this, R.color.light_mainColor));
-            notiText.setText(((SuccessMessage) e).getValue());
-        }
-        notiText.setVisibility(View.VISIBLE);
+		if (e instanceof ErrorMessage) {
+			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_error));
+			notiText.setText(((ErrorMessage) e).getValue());
+		} else {
+			notiText.setTextColor(ContextCompat.getColor(this, R.color.light_mainColor));
+			notiText.setText(((SuccessMessage) e).getValue());
+		}
+		notiText.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -109,7 +124,5 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 			User user = new User(this.username.getText().toString(), null, this.email.getText().toString());
 			transferPresenter.handleTransfer(user, Double.parseDouble(moneyInput), messageInput);
 		}
-
-
 	}
 }

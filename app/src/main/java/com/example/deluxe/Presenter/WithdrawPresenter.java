@@ -16,20 +16,6 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 
 	public WithdrawPresenter(final WithdrawInterface.WithdrawView withdrawView) {
 		this.withdrawView = withdrawView;
-
-		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money) {
-				withdrawView.setMoney(money);
-			}
-		});
-
-		new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
-			@Override
-			public void dataIsLoaded(User user) {
-				withdrawView.setUserInfo(user);
-			}
-		});
 	}
 
 	@Override

@@ -6,26 +6,35 @@
 	android:layout_height="match_parent"
 	tools:context=".View.SearchUserActivity">
 
-	<!--    TODO head bar
-			TODO chua tim
+	<!-- 			TODO chua tim
 			TODO khong tim thay-->
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.ActionBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
 	<SearchView
-		android:id="@+id/home_searchView"
+		android:id="@+id/search_view"
 		android:layout_width="match_parent"
 		android:layout_height="50dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/action_bar"
 		app:layout_constraintVertical_bias="0.0" />
 
 	<ListView
-		android:id="@+id/home_userListView"
+		android:id="@+id/user_list_search_view"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/home_searchView" />
+		app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

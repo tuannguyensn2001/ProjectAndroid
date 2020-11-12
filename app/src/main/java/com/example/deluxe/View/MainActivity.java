@@ -1,20 +1,19 @@
 package com.example.deluxe.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
-import com.example.deluxe.Presenter.MainPresenter;
 import com.example.deluxe.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
-
-	private MainInterface.MainPresenter mainPresenter;
-	private Button logoutButton, depositButton, transferButton, ruttienButton;
+	BottomNavigationView bottomNav;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,47 +22,43 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 
 		init();
 
-		this.logoutButton.setOnClickListener(new View.OnClickListener() {
+		bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 			@Override
-			public void onClick(View v) {
-				mainPresenter.handleLogOut();
-			}
-		});
-		this.depositButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mainPresenter.handleDeposit();
+			public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+				Fragment selectedFragment = null;
+				switch (item.getItemId()) {
+					case R.id.nav_transaction:
+						selectedFragment = new TransactionFragment();
+						break;
+					case R.id.nav_history:
+						selectedFragment = new HistoryFragment();
+						break;
+					case R.id.nav_chat:
+						selectedFragment = new ChatFragment();
+						break;
+					case R.id.nav_account:
+						selectedFragment = new AccountFragment();
+						break;
+				}
+				assert selectedFragment != null;
+				getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment,
+						selectedFragment).commit();
+				return true;
 			}
 		});
 
-		this.transferButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadView(SearchUserActivity.class);
-			}
-		});
-
-		this.ruttienButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadView(WithdrawActivity.class);
-			}
-		});
+		getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment,
+				new TransactionFragment()).commit();
 	}
 
 	private void init() {
-		this.mainPresenter = new MainPresenter(this);
-		this.logoutButton = findViewById(R.id.logoutButton);
-		this.depositButton = findViewById(R.id.NapThe);
-		this.transferButton = findViewById(R.id.transfer);
-		this.ruttienButton = findViewById(R.id.ruttien);
+		this.bottomNav = findViewById(R.id.bottom_navigation);
 	}
 
 	@Override
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
-		finish();
 	}
 
 	@Override

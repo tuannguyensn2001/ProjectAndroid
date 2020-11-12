@@ -9,8 +9,5 @@ public interface DepositInterface {
         void handleDeposit(String serialInput, String cardCodeInput);
     }
     interface DepositView extends View{
-        void setMoney(double money);
-
-		void setUserInfo(User user);
 	}
 }
