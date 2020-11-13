@@ -4,8 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Interface.Model.MessageInterface;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
+import com.example.deluxe.Model.MessageModel;
 import com.example.deluxe.View.DepositActivity;
 import com.example.deluxe.View.SignInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.ArrayList;
 
 public class MainPresenter implements MainInterface.MainPresenter {
 
@@ -24,15 +29,9 @@ public class MainPresenter implements MainInterface.MainPresenter {
 
         if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        String token = task.getResult();
-                        Log.e("token",token);
-                        Log.e("token",FirebaseInstanceId.getInstance().getToken());
-                    }
-                });
+
+
+
 
 
 

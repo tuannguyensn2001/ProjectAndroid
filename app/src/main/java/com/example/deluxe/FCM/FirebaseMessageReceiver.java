@@ -34,6 +34,8 @@ public class FirebaseMessageReceiver extends FirebaseMessagingService {
             showNotification(remoteMessage.getData());
         }
 
+        Log.e("token","nhan duoc thong bao roi");
+
 
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {

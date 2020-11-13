@@ -14,7 +14,7 @@ import com.example.deluxe.R;
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
 
 	private MainInterface.MainPresenter mainPresenter;
-	private Button logoutButton, depositButton, transferButton, ruttienButton;
+	private Button logoutButton, depositButton, transferButton, ruttienButton, chatButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 				loadView(WithdrawActivity.class);
 			}
 		});
+
+		this.chatButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(ChatUserActivity.class);
+			}
+		});
 	}
 
 	private void init() {
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 		this.depositButton = findViewById(R.id.NapThe);
 		this.transferButton = findViewById(R.id.transfer);
 		this.ruttienButton = findViewById(R.id.ruttien);
+		this.chatButton = findViewById(R.id.chatnhucondien);
 	}
 
 	@Override
