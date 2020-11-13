@@ -1,8 +1,11 @@
 package com.example.deluxe.Presenter;
 
+import android.util.Log;
+
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Withdraw;
 import com.example.deluxe.Enum.ErrorMessage;
+import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DepositInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.WithdrawInterface;
@@ -38,6 +41,16 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 						}
 					});
 				}
+			}
+		});
+	}
+
+	@Override
+	public void handleConfirmUser(String passwordInput) {
+		new UserModel().checkEmailPassword(new User(Auth.getInstance().user().getEmail(), passwordInput, null), new CheckInterface() {
+			@Override
+			public void dataIsLoaded(boolean b) {
+				withdrawView.handleIsUserCorrect(b);
 			}
 		});
 	}

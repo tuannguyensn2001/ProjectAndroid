@@ -83,11 +83,11 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 		users = new ArrayList<User>();
 
 		adapter = new UserListAdapter(users);
-		adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.user_list, users);
+		adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.component_user_list, users);
 
 		userListView = findViewById(R.id.user_list_search_view);
 
-		backButton = findViewById(R.id.backButton);
+		backButton = findViewById(R.id.back_button);
 		searchBar = findViewById(R.id.search_view);
 
 		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_search_action_bar_title));

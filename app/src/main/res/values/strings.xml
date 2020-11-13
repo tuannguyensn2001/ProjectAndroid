@@ -52,4 +52,11 @@
 	<string name="action_bar_back_button">back</string>
 
 	<string name="user_list_profile_picture">user_list_profile_picture</string>
+	<string name="withdraw_success_continue_withdraw_button">Tiep tuc rut tien %1s</string>
+	<string name="withdraw_success_home_button">Tro ve man hinh chinh</string>
+	<string name="withdraw_success_title_success">Chuc mung ban da rut tien thanh cong</string>
+	<string name="withdraw_code_text">Mã giao dịch</string>
+	<string name="withdraw_success_qr_des">TODO</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

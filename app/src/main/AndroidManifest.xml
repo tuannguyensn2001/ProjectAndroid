@@ -11,7 +11,11 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".View.DepositSuccessActivity"></activity>
+		<activity android:name=".View.ChatActivity"></activity>
+		<activity android:name=".View.WithdrawSuccessActivity" />
+		<activity android:name=".View.LimitActivity" />
+		<activity android:name=".View.StatisticsActivity" />
+		<activity android:name=".View.DepositSuccessActivity" />
 		<activity android:name=".View.TransferSuccessActivity" />
 		<activity android:name=".View.WithdrawActivity" />
 		<activity android:name=".View.TransferActivity" />

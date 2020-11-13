@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 						selectedFragment = new HistoryFragment();
 						break;
 					case R.id.nav_chat:
-						selectedFragment = new ChatFragment();
+						selectedFragment = new ChatUserFragment();
 						break;
 					case R.id.nav_account:
 						selectedFragment = new AccountFragment();

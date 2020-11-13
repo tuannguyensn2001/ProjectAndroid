@@ -5,51 +5,65 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<LinearLayout
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/appBar"
 		android:layout_width="match_parent"
-		android:layout_height="57dp"
-		android:orientation="horizontal"
-		android:weightSum="20">
+		android:layout_height="50dp">
 
 		<TextView
 			android:id="@+id/auth_balance"
-			android:layout_width="0dp"
+			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:layout_weight="11"
+			android:fontFamily="@font/segoeuib"
 			android:gravity="center"
+			android:maxWidth="200dp"
+			android:paddingStart="20dp"
+			android:paddingEnd="20dp"
 			android:text="100000000"
-			android:textSize="30sp"
-			android:textStyle="bold"
-			android:weightSum="3" />
+			android:textSize="20sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<ImageView
 			android:id="@+id/change_theme_button"
-			android:layout_width="0dp"
-			android:layout_height="match_parent"
-			android:layout_weight="3"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:background="@drawable/button_corner"
 			android:clickable="true"
-			android:contentDescription="ChangeTheme" />
+			android:contentDescription="ChangeTheme"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/notification_button"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<ImageView
 			android:id="@+id/notification_button"
-			android:layout_width="0dp"
-			android:layout_height="match_parent"
-			android:layout_weight="3"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:background="@drawable/button_corner"
 			android:clickable="true"
-			android:contentDescription="Notification" />
+			android:contentDescription="Notification"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/sign_out_button"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<ImageView
 			android:id="@+id/sign_out_button"
-			android:layout_width="0dp"
-			android:layout_height="match_parent"
-			android:layout_weight="3"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:background="@drawable/button_corner"
 			android:clickable="true"
-			android:contentDescription="SignOut" />
-	</LinearLayout>
+			android:contentDescription="SignOut"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 	<FrameLayout
 		android:id="@+id/home_fragment"

@@ -67,7 +67,7 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 	}
 
 	private void init() {
-		backButton = findViewById(R.id.backButton);
+		backButton = findViewById(R.id.back_button);
 
 		serial = findViewById(R.id.serial_input);
 		cardCode = findViewById(R.id.card_code_input);

@@ -46,7 +46,11 @@ public enum ErrorMessage {
 	ERR400001("Ki bo vừa thôi!"),
 	//	---------
 	ERR410000("Có đủ đâu mà đòi rút?"),
-	ERR410001("Mạng lag, đợi nha.");
+	ERR410001("Mạng lag, đợi nha."),
+
+	// Xac nhan mat khau------
+	ERR500000("Vui long xac nhan mat khau"),
+	ERR500001("Mat khau xac nhan ngan qua");
 
 	private final String value;
 

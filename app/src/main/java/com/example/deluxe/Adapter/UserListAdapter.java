@@ -36,7 +36,7 @@ public class UserListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View viewProduct;
         if (convertView == null) {
-            viewProduct = View.inflate(parent.getContext(), R.layout.user_list, null);
+            viewProduct = View.inflate(parent.getContext(), R.layout.component_user_list, null);
         } else viewProduct = convertView;
 
         User user = (User) getItem(position);
