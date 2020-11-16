@@ -2,16 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/authBar"
+	android:id="@+id/auth_bar"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	app:layout_constraintEnd_toEndOf="parent"
-	app:layout_constraintStart_toStartOf="parent"
-	app:layout_constraintTop_toBottomOf="@+id/view"
-	tools:showIn="@layout/activity_withdraw">
+	android:layout_height="wrap_content">
 
 	<TextView
-		android:id="@+id/authUsername"
+		android:id="@+id/auth_username"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="16dp"
@@ -23,17 +19,17 @@
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/authEmail"
+		android:id="@+id/auth_email"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="8dp"
 		android:maxWidth="200dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toStartOf="@+id/authUsername"
-		app:layout_constraintTop_toBottomOf="@+id/authUsername" />
+		app:layout_constraintStart_toStartOf="@+id/auth_username"
+		app:layout_constraintTop_toBottomOf="@+id/auth_username" />
 
 	<TextView
-		android:id="@+id/authBalance"
+		android:id="@+id/auth_balance"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginEnd="16dp"

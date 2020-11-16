@@ -20,34 +20,34 @@
 		android:layout_marginTop="22dp"
 		android:orientation="horizontal"
 		android:weightSum="7"
-		app:layout_constraintEnd_toEndOf="@+id/submitButton"
-		app:layout_constraintStart_toStartOf="@+id/submitButton"
-		app:layout_constraintTop_toBottomOf="@+id/submitButton">
+		app:layout_constraintEnd_toEndOf="@+id/submit_button"
+		app:layout_constraintStart_toStartOf="@+id/submit_button"
+		app:layout_constraintTop_toBottomOf="@+id/submit_button">
 
 		<TextView
-			android:id="@+id/alreadyText"
+			android:id="@+id/already_text"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="4"
 			android:fontFamily="@font/segoeuil"
 			android:gravity="center"
-			android:text="@string/signup_alreadyText"
+			android:text="@string/sign_up_already_text"
 			android:textColor="@color/light_title"
 			android:textSize="18sp"
 			android:textStyle="italic" />
 
 		<TextView
-			android:id="@+id/signinButton"
+			android:id="@+id/sign_in_button"
 			style="@style/ClickableText"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="3"
-			android:text="@string/signup_signinButton" />
+			android:text="@string/sign_up_sign_in_button" />
 
 	</LinearLayout>
 
 	<ProgressBar
-		android:id="@+id/progressBar"
+		android:id="@+id/progress_bar"
 		style="@style/MyProgressBarCircular"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

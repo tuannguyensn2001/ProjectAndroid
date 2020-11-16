@@ -36,7 +36,6 @@
 	</style>
 
 	<style name="ClickableText">
-		<item name="android:background">@color/light_background</item>
 		<item name="android:clickable">true</item>
 		<item name="android:gravity">center</item>
 		<item name="android:textAlignment">center</item>

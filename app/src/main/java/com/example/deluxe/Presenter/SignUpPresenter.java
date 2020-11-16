@@ -32,8 +32,7 @@ public class SignUpPresenter implements SignUpInterface.SignUpPresenter {
 			}
 
 			@Override
-			public void signUpunSuccessful() {
-//				signUpView
+			public void signUpUnSuccessful() {
 				signUpView.setNotification(ErrorMessage.ERR010002);
 			}
 		});

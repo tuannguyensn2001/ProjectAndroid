@@ -14,7 +14,6 @@ public class MainPresenter implements MainInterface.MainPresenter {
         this.mainView = view;
 
         if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
-
     }
 
     @Override

@@ -1,52 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".View.MainActivity">
+	android:layout_height="match_parent">
 
-	<!--    TODO thiet ke lai trang chu-->
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/appBar"
+		android:layout_width="match_parent"
+		android:layout_height="50dp">
 
-	<Button
-		android:id="@+id/logoutButton"
-		style="@style/SubmitButton"
-		android:layout_width="300dp"
-		android:layout_marginTop="132dp"
-		android:text="ĐĂNG XUẤT"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:ignore="MissingConstraints" />
+		<TextView
+			android:id="@+id/auth_balance"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:fontFamily="@font/segoeuib"
+			android:gravity="center"
+			android:maxWidth="200dp"
+			android:paddingStart="20dp"
+			android:paddingEnd="20dp"
+			android:text="100000000"
+			android:textSize="20sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<Button
-		android:id="@+id/NapThe"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:layout_marginTop="32dp"
-		android:text="NapThe"
-		app:layout_constraintEnd_toEndOf="@+id/logoutButton"
-		app:layout_constraintStart_toStartOf="@+id/logoutButton"
-		app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+		<ImageView
+			android:id="@+id/change_theme_button"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:background="@drawable/button_corner"
+			android:clickable="true"
+			android:contentDescription="ChangeTheme"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/notification_button"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<Button
-		android:id="@+id/transfer"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:layout_marginTop="32dp"
-		android:text="Chuyen tien"
-		app:layout_constraintEnd_toEndOf="@+id/NapThe"
-		app:layout_constraintStart_toStartOf="@+id/NapThe"
-		app:layout_constraintTop_toBottomOf="@+id/NapThe" />
+		<ImageView
+			android:id="@+id/notification_button"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:background="@drawable/button_corner"
+			android:clickable="true"
+			android:contentDescription="Notification"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/sign_out_button"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<Button
-		android:id="@+id/ruttien"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:text="Rut tien"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="@+id/transfer"
-		app:layout_constraintStart_toStartOf="@+id/transfer"
-		app:layout_constraintTop_toBottomOf="@+id/transfer" />
+		<ImageView
+			android:id="@+id/sign_out_button"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:background="@drawable/button_corner"
+			android:clickable="true"
+			android:contentDescription="SignOut"
+			android:scaleX="0.75"
+			android:scaleY="0.75"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+	<FrameLayout
+		android:id="@+id/home_fragment"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/bottom_navigation"
+		android:layout_below="@id/appBar" />
+
+	<com.google.android.material.bottomnavigation.BottomNavigationView
+		android:id="@+id/bottom_navigation"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:background="?android:attr/windowBackground"
+		app:menu="@menu/bottom_nav" />
+</RelativeLayout>

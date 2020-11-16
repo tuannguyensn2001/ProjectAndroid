@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/relativeLayout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-
-	<!--    TODO chinh cho dep-->
+	android:layout_height="wrap_content">
 
 	<ImageView
-		android:id="@+id/profileImage"
+		android:id="@+id/profile_picture"
 		android:layout_width="60dp"
 		android:layout_height="60dp"
 		android:layout_marginStart="16dp"
 		android:layout_marginTop="8dp"
 		android:layout_marginBottom="8dp"
 		android:background="@drawable/button_corner"
+		android:contentDescription="@string/user_list_profile_picture"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/profileUsername"
+		android:id="@+id/username"
 		android:layout_width="wrap_content"
 		android:layout_height="30dp"
 		android:layout_marginStart="16dp"
@@ -29,11 +27,11 @@
 		android:gravity="center|start"
 		android:textSize="24sp"
 		android:textStyle="bold"
-		app:layout_constraintStart_toEndOf="@+id/profileImage"
+		app:layout_constraintStart_toEndOf="@+id/profile_picture"
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/profileEmail"
+		android:id="@+id/message"
 		android:layout_width="wrap_content"
 		android:layout_height="22dp"
 		android:layout_marginStart="16dp"
@@ -41,7 +39,7 @@
 		android:gravity="center|start"
 		android:textSize="14sp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/profileImage"
-		app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
+		app:layout_constraintStart_toEndOf="@+id/profile_picture"
+		app:layout_constraintTop_toBottomOf="@+id/username" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

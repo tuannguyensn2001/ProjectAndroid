@@ -11,7 +11,13 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".View.WithdrawActivity"></activity>
+		<activity android:name=".View.ChatActivity"></activity>
+		<activity android:name=".View.WithdrawSuccessActivity" />
+		<activity android:name=".View.LimitActivity" />
+		<activity android:name=".View.StatisticsActivity" />
+		<activity android:name=".View.DepositSuccessActivity" />
+		<activity android:name=".View.TransferSuccessActivity" />
+		<activity android:name=".View.WithdrawActivity" />
 		<activity android:name=".View.TransferActivity" />
 		<activity android:name=".View.SearchUserActivity" />
 		<activity android:name=".View.MainActivity">
@@ -23,7 +29,14 @@
 		</activity>
 		<activity android:name=".View.DepositActivity" />
 		<activity android:name=".View.SignUpActivity" />
-		<activity android:name=".View.SignInActivity" />
+		<activity android:name=".View.SignInActivity" /> <!-- [START firebase_service] -->
+		<service
+			android:name=".FCM.FirebaseMessageReceiver"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
 	</application>
 
 </manifest>
