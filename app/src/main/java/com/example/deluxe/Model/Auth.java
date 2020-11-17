@@ -3,7 +3,11 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
+<<<<<<< HEAD
 import com.example.deluxe.Interface.Model.DepositInterface;
+=======
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,14 +42,24 @@ public class Auth {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
+<<<<<<< HEAD
 					new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
+=======
+					new UserModel().show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 						@Override
 						public void dataIsLoaded(User user) {
 							user.setToken(FirebaseInstanceId.getInstance().getToken());
 							FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
+<<<<<<< HEAD
 							authFirebase.loginSuccessful();
 						}
 					});
+=======
+						}
+					});
+					authFirebase.loginSuccessful();
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 				} else {
 					authFirebase.loginUnsuccessful();
 				}
@@ -85,7 +99,7 @@ public class Auth {
 
 					authSignUp.signUpSuccessful();
 				} else {
-					authSignUp.signUpunSuccessful();
+					authSignUp.signUpUnSuccessful();
 				}
 			}
 		});

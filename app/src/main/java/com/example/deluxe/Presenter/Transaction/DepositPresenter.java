@@ -1,15 +1,11 @@
-package com.example.deluxe.Presenter;
+package com.example.deluxe.Presenter.Transaction;
 
-import android.util.Log;
-
-import com.example.deluxe.Entity.AttemptDeposit;
 import com.example.deluxe.Entity.Card;
 import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AttemptDepositInterface;
 import com.example.deluxe.Interface.Model.CardInterface;
-import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.DepositInterface;
 import com.example.deluxe.Model.AttemptDepositModel;
 import com.example.deluxe.Model.Auth;
@@ -17,7 +13,7 @@ import com.example.deluxe.Model.CardModel;
 import com.example.deluxe.Model.DepositModel;
 import com.example.deluxe.Model.UserModel;
 import com.example.deluxe.Model.WalletModel;
-import com.example.deluxe.View.MainActivity;
+import com.example.deluxe.View.Status.DepositSuccessActivity;
 
 import java.util.Date;
 
@@ -30,19 +26,6 @@ public class DepositPresenter implements DepositInterface.DepositPresenter {
 
 		initModel();
 
-		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money) {
-				depositView.setMoney(money);
-			}
-		});
-
-		new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.DepositInterface() {
-			@Override
-			public void dataIsLoaded(User user) {
-				depositView.setUserInfo(user);
-			}
-		});
 	}
 
 	@Override
@@ -70,10 +53,10 @@ public class DepositPresenter implements DepositInterface.DepositPresenter {
 
 					@Override
 					public void done(Card card) {
-						final Double value = card.getValue();
+						final double value = card.getValue();
 						new WalletModel().deposit(Auth.getInstance().user().getUid(), value);
 
-						new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.DepositInterface() {
+						new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.UserDetailsInterface() {
 							@Override
 							public void dataIsLoaded(User user) {
 								Deposit deposit = new Deposit();
@@ -87,6 +70,7 @@ public class DepositPresenter implements DepositInterface.DepositPresenter {
 							}
 						});
 
+						depositView.loadView(DepositSuccessActivity.class);
 					}
 
 					@Override

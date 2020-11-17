@@ -1,27 +1,26 @@
-package com.example.deluxe.View;
+package com.example.deluxe.View.Transaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.DepositInterface;
-import com.example.deluxe.Presenter.DepositPresenter;
+import com.example.deluxe.Presenter.Transaction.DepositPresenter;
 import com.example.deluxe.R;
-
-import java.text.DecimalFormat;
+import com.example.deluxe.View.MainActivity;
 
 public class DepositActivity extends AppCompatActivity implements DepositInterface.DepositView {
-	TextView authUsername, authEmail, authBalance;
+	ImageView backButton;
 	TextView notiText;
 	EditText serial, cardCode;
 	String serialInput, cardCodeInput;
@@ -35,6 +34,13 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		setContentView(R.layout.activity_deposit);
 
 		init();
+
+		backButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(MainActivity.class);
+			}
+		});
 
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -58,17 +64,18 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
+		finish();
 	}
 
 	private void init() {
-		authUsername = findViewById(R.id.authUsername);
-		authBalance = findViewById(R.id.authBalance);
-		authEmail = findViewById(R.id.authEmail);
+		backButton = findViewById(R.id.back_button);
 
-		serial = findViewById(R.id.serialInput);
-		cardCode = findViewById(R.id.cardCodeInput);
-		submitButton = findViewById(R.id.submitButton);
-		notiText = findViewById(R.id.notiText);
+		serial = findViewById(R.id.serial_input);
+		cardCode = findViewById(R.id.card_code_input);
+		submitButton = findViewById(R.id.submit_button);
+		notiText = findViewById(R.id.notification_text);
+
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.deposit_action_bar_title));
 
 		deposit = new DepositPresenter(this);
 	}
@@ -83,16 +90,5 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 			notiText.setText(((SuccessMessage) e).getValue());
 		}
 		notiText.setVisibility(View.VISIBLE);
-	}
-
-	@Override
-	public void setMoney(double money) {
-		authBalance.setText(new DecimalFormat("#,###,###").format(money));
-	}
-
-	@Override
-	public void setUserInfo(User user) {
-		authUsername.setText(user.getUser());
-		authEmail.setText(user.getEmail());
 	}
 }

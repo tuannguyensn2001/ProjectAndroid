@@ -1,4 +1,4 @@
-package com.example.deluxe.Presenter;
+package com.example.deluxe.Presenter.Auth;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
@@ -6,7 +6,7 @@ import com.example.deluxe.Interface.Model.AuthSignUp;
 import com.example.deluxe.Interface.PresenterView.SignUpInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
-import com.example.deluxe.View.SignInActivity;
+import com.example.deluxe.View.Auth.SignInActivity;
 
 public class SignUpPresenter implements SignUpInterface.SignUpPresenter {
 	SignUpInterface.SignUpView signUpView;
@@ -32,8 +32,7 @@ public class SignUpPresenter implements SignUpInterface.SignUpPresenter {
 			}
 
 			@Override
-			public void signUpunSuccessful() {
-//				signUpView
+			public void signUpUnSuccessful() {
 				signUpView.setNotification(ErrorMessage.ERR010002);
 			}
 		});

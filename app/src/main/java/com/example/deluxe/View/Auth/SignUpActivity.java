@@ -1,4 +1,4 @@
-package com.example.deluxe.View;
+package com.example.deluxe.View.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.SignUpInterface;
-import com.example.deluxe.Presenter.SignUpPresenter;
+import com.example.deluxe.Presenter.Auth.SignUpPresenter;
 import com.example.deluxe.R;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpInterface.SignUpView {
@@ -82,19 +82,19 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	}
 
 	private void init() {
-		notiText = findViewById(R.id.notiText);
+		notiText = findViewById(R.id.notification_text);
 
-		username = findViewById(R.id.usernameInput);
-		email = findViewById(R.id.emailInput);
-		password = findViewById(R.id.passwordInput);
-		passwordCheck = findViewById(R.id.passwordCheckInput);
+		username = findViewById(R.id.username_input);
+		email = findViewById(R.id.email_input);
+		password = findViewById(R.id.password_input);
+		passwordCheck = findViewById(R.id.password_check_input);
 
-		submitButton = findViewById(R.id.submitButton);
-		signinButton = findViewById(R.id.signinButton);
+		submitButton = findViewById(R.id.submit_button);
+		signinButton = findViewById(R.id.sign_in_button);
 
 		signUp = new SignUpPresenter(this);
 
-		progressBar = findViewById(R.id.progressBar);
+		progressBar = findViewById(R.id.progress_bar);
 	}
 
 	public void setSubmitable(boolean can) {

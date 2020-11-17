@@ -110,8 +110,11 @@ public class WalletModel {
 				wallet.setUpdated_at(new Date().toString());
 				Log.e("card", wallet.getAmount() + "");
 				FirebaseDatabase.getInstance().getReference().child("wallet").child(key).setValue(wallet);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 			}
 
 			@Override
@@ -138,11 +141,18 @@ public class WalletModel {
 	}
 
 	public void getMoneyOnce(String key, final WalletInterface walletInterface) {
+<<<<<<< HEAD
 		{
 			this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
 				@Override
 				public void onDataChange(@NonNull DataSnapshot snapshot) {
 					Wallet wallet = snapshot.getValue(Wallet.class);
+=======
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				Wallet wallet = snapshot.getValue(Wallet.class);
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 					walletInterface.dataIsLoaded(wallet.getAmount());
 				}
@@ -157,4 +167,8 @@ public class WalletModel {
 	}
 }
 
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74

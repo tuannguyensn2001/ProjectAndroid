@@ -15,6 +15,7 @@ import com.example.deluxe.Interface.Model.ListTransferInterface;
 import com.example.deluxe.Interface.Model.ListWithdrawInterface;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
+<<<<<<< HEAD
 import com.example.deluxe.Model.DepositModel;
 import com.example.deluxe.Model.TransferModel;
 import com.example.deluxe.Model.UserModel;
@@ -27,6 +28,10 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
+=======
+import com.example.deluxe.View.Transaction.DepositActivity;
+import com.example.deluxe.View.Auth.SignInActivity;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 public class MainPresenter implements MainInterface.MainPresenter {
 
@@ -37,6 +42,7 @@ public class MainPresenter implements MainInterface.MainPresenter {
         this.mainView = view;
 
         if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
+<<<<<<< HEAD
 
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
@@ -71,6 +77,8 @@ public class MainPresenter implements MainInterface.MainPresenter {
 
 
 
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
     }
 
     @Override

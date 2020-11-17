@@ -2,12 +2,13 @@ package com.example.deluxe.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.PresenterView.SearchUserInterface;
 import com.example.deluxe.Presenter.SearchUserPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Transaction.TransferActivity;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 
 	User choose;
 
+	ImageView backButton;
 	SearchView searchBar;
 
 	long searchWaitTime, deltaTime;
@@ -39,6 +42,22 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 		setContentView(R.layout.activity_search_user);
 
 		init();
+
+		userListView.setAdapter(adapter);
+		userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				choose = (User) userListView.getItemAtPosition(position);
+				loadView(TransferActivity.class);
+			}
+		});
+
+		backButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(MainActivity.class);
+			}
+		});
 
 		searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
@@ -65,19 +84,14 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 		users = new ArrayList<User>();
 
 		adapter = new UserListAdapter(users);
-		adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.user_list, users);
+		adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.component_user_list, users);
 
-		userListView = findViewById(R.id.home_userListView);
-		userListView.setAdapter(adapter);
-		userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				choose = (User) userListView.getItemAtPosition(position);
-				loadView(TransferActivity.class);
-			}
-		});
+		userListView = findViewById(R.id.user_list_search_view);
 
-		searchBar = findViewById(R.id.home_searchView);
+		backButton = findViewById(R.id.back_button);
+		searchBar = findViewById(R.id.search_view);
+
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_search_action_bar_title));
 
 		searchWaitTime = System.currentTimeMillis();
 		deltaTime = 0;

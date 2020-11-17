@@ -8,7 +8,8 @@ import com.example.deluxe.Core.Model;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
-import com.example.deluxe.Interface.Model.DepositInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.UserInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -119,13 +120,13 @@ public class UserModel implements Model {
 	}
 
 
-	public void show(String key, final DepositInterface depositInterface) {
+	public void show(String key, final UserDetailsInterface userDetailsInterface) {
 		this.ref.child(key).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				User user = snapshot.getValue(User.class);
 
-				depositInterface.dataIsLoaded(user);
+				userDetailsInterface.dataIsLoaded(user);
 
 			}
 
@@ -139,6 +140,7 @@ public class UserModel implements Model {
 	public void checkEmailPassword(final User user, final CheckInterface checkInterface)
 	{
 		final ArrayList<User> list = new ArrayList<>();
+<<<<<<< HEAD
 
 		final ArrayList<User> list1 = new ArrayList<>();
 
@@ -214,5 +216,46 @@ public class UserModel implements Model {
 
 	}
 
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
+		String email = user.getEmail();
+		final String password = user.getPassword();
+
+		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+				FirebaseDatabase.getInstance().getReference().child("user").orderByChild("password").equalTo(password).addValueEventListener(new ValueEventListener() {
+					@Override
+					public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+						for (DataSnapshot item : snapshot.getChildren()) {
+							User user1 = item.getValue(User.class);
+							list.add(user1);
+						}
+
+						if (list.size() == 0) {
+							checkInterface.dataIsLoaded(false);
+
+						} else checkInterface.dataIsLoaded(true);
+
+
+					}
+
+					@Override
+					public void onCancelled(@NonNull DatabaseError error) {
+
+					}
+				});
+
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+
+	}
 }

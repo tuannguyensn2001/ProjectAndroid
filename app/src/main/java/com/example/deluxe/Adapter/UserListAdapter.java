@@ -36,13 +36,12 @@ public class UserListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View viewProduct;
         if (convertView == null) {
-            viewProduct = View.inflate(parent.getContext(), R.layout.user_list, null);
+            viewProduct = View.inflate(parent.getContext(), R.layout.component_user_list, null);
         } else viewProduct = convertView;
 
-        //Bind sữ liệu phần tử vào View
         User user = (User) getItem(position);
-        ((TextView) viewProduct.findViewById(R.id.profileUsername)).setText(String.format("%s", user.getUser()));
-        ((TextView) viewProduct.findViewById(R.id.profileEmail)).setText(String.format("%s", user.getEmail()));
+        ((TextView) viewProduct.findViewById(R.id.profile_username)).setText(String.format("%s", user.getUser()));
+        ((TextView) viewProduct.findViewById(R.id.profile_email)).setText(String.format("%s", user.getEmail()));
 
         return viewProduct;
     }

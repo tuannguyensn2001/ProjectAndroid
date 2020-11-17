@@ -1,9 +1,13 @@
-package com.example.deluxe.Presenter;
+package com.example.deluxe.Presenter.Transaction;
+
+import android.util.Log;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Withdraw;
 import com.example.deluxe.Enum.ErrorMessage;
-import com.example.deluxe.Interface.Model.DepositInterface;
+import com.example.deluxe.Interface.Model.CheckInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.WithdrawInterface;
 import com.example.deluxe.Model.Auth;
@@ -16,20 +20,6 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 
 	public WithdrawPresenter(final WithdrawInterface.WithdrawView withdrawView) {
 		this.withdrawView = withdrawView;
-
-		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money) {
-				withdrawView.setMoney(money);
-			}
-		});
-
-		new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
-			@Override
-			public void dataIsLoaded(User user) {
-				withdrawView.setUserInfo(user);
-			}
-		});
 	}
 
 	@Override
@@ -43,7 +33,7 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 				if (money > money_now) {
 					withdrawView.setNotification(ErrorMessage.ERR410000);
 				} else {
-					(new UserModel()).show(Auth.getInstance().user().getUid(), new DepositInterface() {
+					(new UserModel()).show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
 						@Override
 						public void dataIsLoaded(User user) {
 							Withdraw withdraw = new Withdraw(user.getEmail(), user.getUser(), money, note);
@@ -52,6 +42,16 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 						}
 					});
 				}
+			}
+		});
+	}
+
+	@Override
+	public void handleConfirmUser(String passwordInput) {
+		new UserModel().checkEmailPassword(new User(Auth.getInstance().user().getEmail(), passwordInput, null), new CheckInterface() {
+			@Override
+			public void dataIsLoaded(boolean b) {
+				withdrawView.handleIsUserCorrect(b);
 			}
 		});
 	}

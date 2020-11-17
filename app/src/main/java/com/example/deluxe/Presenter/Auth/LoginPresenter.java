@@ -1,22 +1,29 @@
-package com.example.deluxe.Presenter;
+package com.example.deluxe.Presenter.Auth;
 
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/LoginPresenter.java
 import android.util.Log;
 
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/Auth/LoginPresenter.java
 import com.example.deluxe.Entity.User;
-import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AuthLogin;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/LoginPresenter.java
 import com.example.deluxe.Interface.Model.AuthSignUp;
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/Auth/LoginPresenter.java
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
 import com.example.deluxe.Model.Auth;
-import com.example.deluxe.Model.CardModel;
 import com.example.deluxe.Model.UserModel;
-import com.example.deluxe.Model.WalletModel;
 import com.example.deluxe.View.MainActivity;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/LoginPresenter.java
 import com.example.deluxe.View.SignUpActivity;
 
 
 import java.util.ArrayList;
+=======
+import com.example.deluxe.View.Auth.SignUpActivity;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/Auth/LoginPresenter.java
 
 public class LoginPresenter implements LoginInterface.LoginPresenter {
 	LoginInterface.LoginView loginView;

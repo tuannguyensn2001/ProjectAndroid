@@ -1,23 +1,34 @@
 package com.example.deluxe.View;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+=======
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+=======
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
-import com.example.deluxe.Presenter.MainPresenter;
 import com.example.deluxe.R;
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,11 +41,16 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
+=======
+import com.example.deluxe.View.Account.AccountFragment;
+import com.example.deluxe.View.Chat.ChatUserFragment;
+import com.example.deluxe.View.History.HistoryFragment;
+import com.example.deluxe.View.Transaction.TransactionFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
-
-	private MainInterface.MainPresenter mainPresenter;
-	private Button logoutButton, depositButton, transferButton, ruttienButton;
+	BottomNavigationView bottomNav;
 
 	private Uri filePath;
 
@@ -53,19 +69,32 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 
 		init();
 
-		this.logoutButton.setOnClickListener(new View.OnClickListener() {
+		bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 			@Override
-			public void onClick(View v) {
-				mainPresenter.handleLogOut();
-			}
-		});
-		this.depositButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mainPresenter.handleDeposit();
+			public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+				Fragment selectedFragment = null;
+				switch (item.getItemId()) {
+					case R.id.nav_transaction:
+						selectedFragment = new TransactionFragment();
+						break;
+					case R.id.nav_history:
+						selectedFragment = new HistoryFragment();
+						break;
+					case R.id.nav_chat:
+						selectedFragment = new ChatUserFragment();
+						break;
+					case R.id.nav_account:
+						selectedFragment = new AccountFragment();
+						break;
+				}
+				assert selectedFragment != null;
+				getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment,
+						selectedFragment).commit();
+				return true;
 			}
 		});
 
+<<<<<<< HEAD
 		this.transferButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -178,13 +207,20 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 
 
 
+=======
+		getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment,
+				new TransactionFragment()).commit();
+	}
+
+	private void init() {
+		this.bottomNav = findViewById(R.id.bottom_navigation);
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 	}
 
 	@Override
 	public void loadView(Class view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
-		finish();
 	}
 
 	@Override

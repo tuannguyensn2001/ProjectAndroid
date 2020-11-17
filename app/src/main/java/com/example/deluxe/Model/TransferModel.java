@@ -7,8 +7,18 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
+<<<<<<< HEAD
 import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.Model.ListTransferInterface;
+=======
+import com.example.deluxe.Enum.ErrorMessage;
+import com.example.deluxe.Enum.SuccessMessage;
+import com.example.deluxe.Interface.Model.TransferFirebase;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -151,14 +161,13 @@ public class TransferModel {
 		this.walletRef = FirebaseDatabase.getInstance().getReference().child("wallet");
 	}
 
-	public void transfer(final Transfer transfer) {
+	public void transfer(final Transfer transfer, final TransferFirebase transferFirebase) {
 
 		String depositer = transfer.getEmailDepositor();
 		final String receiver = transfer.getEmailReceiver();
 		final double money = transfer.getMoney();
 
 		Log.e("test",depositer+" ");
-
 
 		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(depositer).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
@@ -206,7 +215,26 @@ public class TransferModel {
 										transfer.setCreated_at(new Date().toString());
 										transfer.setUpdated_at(new Date().toString());
 
-										ref.child(key).setValue(transfer);
+										Task<Void> check = ref.child(key).setValue(transfer);
+
+										check.addOnCanceledListener(new OnCanceledListener() {
+											@Override
+											public void onCanceled() {
+												transferFirebase.failed(ErrorMessage.ERR310001);
+											}
+										});
+										check.addOnCompleteListener(new OnCompleteListener<Void>() {
+											@Override
+											public void onComplete(@NonNull Task<Void> task) {
+												transferFirebase.success(SuccessMessage.SUC000003);
+											}
+										});
+										check.addOnFailureListener(new OnFailureListener() {
+											@Override
+											public void onFailure(@NonNull Exception e) {
+												transferFirebase.failed(ErrorMessage.ERR310002);
+											}
+										});
 									}
 
 									@Override

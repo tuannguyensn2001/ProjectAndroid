@@ -4,12 +4,17 @@ public class User {
 
 	String username, password;
 	String email;
+<<<<<<< HEAD
 	String created_at,updated_at;
+=======
+	String created_at, updated_at;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 	String token;
 
 	public User() {
 
 	}
+
 
 	public User(String username, String password) {
 			this.username = username;
@@ -20,6 +25,14 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+	}
+
+	public String getToken() {
+		return this.token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public String getUser() {
@@ -72,4 +85,3 @@ public class User {
 		this.token = token;
 	}
 }
-

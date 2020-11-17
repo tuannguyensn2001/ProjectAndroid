@@ -11,8 +11,14 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".View.WithdrawActivity"></activity>
-		<activity android:name=".View.TransferActivity" />
+		<activity android:name=".View.Chat.ChatActivity"></activity>
+		<activity android:name=".View.Status.WithdrawSuccessActivity" />
+		<activity android:name=".View.History.LimitActivity" />
+		<activity android:name=".View.History.StatisticsActivity" />
+		<activity android:name=".View.Status.DepositSuccessActivity" />
+		<activity android:name=".View.Status.TransferSuccessActivity" />
+		<activity android:name=".View.Transaction.WithdrawActivity" />
+		<activity android:name=".View.Transaction.TransferActivity" />
 		<activity android:name=".View.SearchUserActivity" />
 		<activity android:name=".View.MainActivity">
 			<intent-filter>
@@ -21,11 +27,17 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+<<<<<<< HEAD
 		<activity android:name=".View.DepositActivity" />
 		<activity android:name=".View.SignUpActivity" />
 		<activity android:name=".View.SignInActivity" />
 
 		<!-- [START firebase_service] -->
+=======
+		<activity android:name=".View.Transaction.DepositActivity" />
+		<activity android:name=".View.Auth.SignUpActivity" />
+		<activity android:name=".View.Auth.SignInActivity" /> <!-- [START firebase_service] -->
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 		<service
 			android:name=".FCM.FirebaseMessageReceiver"
 			android:exported="false">

@@ -1,4 +1,4 @@
-package com.example.deluxe.View;
+package com.example.deluxe.View.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +16,9 @@ import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.LoginInterface;
 import com.example.deluxe.Model.Auth;
-import com.example.deluxe.Presenter.LoginPresenter;
+import com.example.deluxe.Presenter.Auth.LoginPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.MainActivity;
 
 public class SignInActivity extends AppCompatActivity implements LoginInterface.LoginView {
 	private TextView title, notiText;
@@ -63,20 +63,20 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 	public void init() {
 		this.title = findViewById(R.id.title);
 
-		this.notiText = findViewById(R.id.notiText);
+		this.notiText = findViewById(R.id.notification_text);
 
-		this.signupButton = findViewById(R.id.signupButton);
-		this.submitButton = findViewById(R.id.submitButton);
+		this.signupButton = findViewById(R.id.sign_up_button);
+		this.submitButton = findViewById(R.id.submit_button);
 		this.Login = new LoginPresenter(this);
 
-		this.email = findViewById(R.id.emailInput);
-		this.password = findViewById(R.id.passwordInput);
+		this.email = findViewById(R.id.email_input);
+		this.password = findViewById(R.id.password_input);
 
-		findViewById(R.id.usernameInput).setVisibility(View.GONE);
-		findViewById(R.id.passwordCheckInput).setVisibility(View.GONE);
+		findViewById(R.id.username_input).setVisibility(View.GONE);
+		findViewById(R.id.password_check_input).setVisibility(View.GONE);
 
-		this.title.setText(getString(R.string.signin_title));
-		this.submitButton.setText(getString(R.string.signin_submitButton));
+		this.title.setText(getString(R.string.sign_in_title));
+		this.submitButton.setText(getString(R.string.sign_in_submit_button));
 	}
 
 	@Override
