@@ -68,6 +68,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 		this.recyclerView = findViewById(R.id.list_message);
 		this.recyclerView.setHasFixedSize(false);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+		layoutManager.setStackFromEnd(true);
 		this.recyclerView.setLayoutManager(layoutManager);
 
 	}

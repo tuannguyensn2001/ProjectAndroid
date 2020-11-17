@@ -81,6 +81,7 @@ public class Auth {
 					String key = Auth.getInstance().user().getUid();
 					user.setCreated_at(new Date().toString());
 					user.setUpdated_at(new Date().toString());
+					user.setAvatar("https://firebasestorage.googleapis.com/v0/b/projectandroid-8d413.appspot.com/o/avatar%2Fdefault-avatar.png?alt=media&token=e7aa4b47-8849-4474-a722-fd67466a1519");
 					userModel.create(user, key);
 
 					Wallet wallet = new Wallet(0);

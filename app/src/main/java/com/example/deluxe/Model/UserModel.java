@@ -1,5 +1,6 @@
 package com.example.deluxe.Model;
 
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -12,21 +13,31 @@ import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.UserInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.UUID;
 
 public class UserModel implements Model {
 	ArrayList<String> listUser;
 	DatabaseReference ref;
+	StorageReference storageReference;
 
 	public UserModel() {
 		this.listUser = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("user");
+		this.storageReference = FirebaseStorage.getInstance().getReference().child("avatar");
 	}
 
 	public void getListUser(final DataFirebase userInterface) {
@@ -141,5 +152,41 @@ public class UserModel implements Model {
 			}
 		});
 
+	}
+
+
+	public void uploadAvatar(Uri filePath)
+	{
+		final String key = UUID.randomUUID().toString();
+		this.storageReference.child(key).putFile(filePath)
+				.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+					@Override
+					public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+						storageReference.child(key).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+							@Override
+							public void onComplete(@NonNull Task<Uri> task) {
+								String url = task.getResult().toString();
+								updateAvatar(Auth.getInstance().user().getUid(),url);
+							}
+						});
+					}
+				});
+	}
+
+	public void updateAvatar(final String key,final  String url)
+	{
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				User user = snapshot.getValue(User.class);
+				user.setAvatar(url);
+				ref.child(key).setValue(user);
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
 	}
 }

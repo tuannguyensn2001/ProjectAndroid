@@ -6,11 +6,22 @@ public class User {
 	String email;
 	String created_at, updated_at;
 	String token;
+	String avatar;
 
 	public User() {
 
 	}
 
+
+	public String getAvatar()
+	{
+		return this.avatar;
+	}
+
+	public void setAvatar(String avatar)
+	{
+		this.avatar = avatar;
+	}
 
 	public User(String username, String password) {
 		this.username = username;
