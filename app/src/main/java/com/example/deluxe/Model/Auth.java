@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
-import com.example.deluxe.Interface.Model.DepositInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -44,7 +44,7 @@ public class Auth {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
-					new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
+					new UserModel().show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
 						@Override
 						public void dataIsLoaded(User user) {
 							user.setToken(FirebaseInstanceId.getInstance().getToken());

@@ -9,7 +9,8 @@ import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
-import com.example.deluxe.Interface.Model.DepositInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.UserInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -81,13 +82,13 @@ public class UserModel implements Model {
 	}
 
 
-	public void show(String key, final DepositInterface depositInterface) {
+	public void show(String key, final UserDetailsInterface userDetailsInterface) {
 		this.ref.child(key).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				User user = snapshot.getValue(User.class);
 
-				depositInterface.dataIsLoaded(user);
+				userDetailsInterface.dataIsLoaded(user);
 
 			}
 

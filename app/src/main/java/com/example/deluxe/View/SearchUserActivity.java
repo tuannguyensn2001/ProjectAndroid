@@ -17,6 +17,7 @@ import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.PresenterView.SearchUserInterface;
 import com.example.deluxe.Presenter.SearchUserPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Transaction.TransferActivity;
 
 import java.util.ArrayList;
 

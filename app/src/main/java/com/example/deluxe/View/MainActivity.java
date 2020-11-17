@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Account.AccountFragment;
+import com.example.deluxe.View.Chat.ChatUserFragment;
+import com.example.deluxe.View.History.HistoryFragment;
+import com.example.deluxe.View.Transaction.TransactionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
