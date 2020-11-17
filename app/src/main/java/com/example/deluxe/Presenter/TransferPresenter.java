@@ -1,5 +1,7 @@
 package com.example.deluxe.Presenter;
 
+import android.util.Log;
+
 import com.example.deluxe.Entity.Transfer;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
@@ -19,9 +21,11 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 	@Override
 	public void handleTransfer(final User user, final double money, final String message) {
 
+		Log.e("transer","vao duoc day roi");
 		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
 			@Override
 			public void dataIsLoaded(double money_now) {
+
 				if (money > money_now) {
 					transferView.setNotification(ErrorMessage.ERR310000);
 				} else {

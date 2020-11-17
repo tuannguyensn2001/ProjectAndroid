@@ -3,12 +3,16 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
+import com.example.deluxe.Interface.Model.DepositInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.deluxe.Interface.Model.AuthSignUp;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import java.util.Date;
 public class Auth {
 	private static Auth auth = null;
@@ -34,7 +38,14 @@ public class Auth {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
-					authFirebase.loginSuccessful();
+					new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
+						@Override
+						public void dataIsLoaded(User user) {
+							user.setToken(FirebaseInstanceId.getInstance().getToken());
+							FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
+							authFirebase.loginSuccessful();
+						}
+					});
 				} else {
 					authFirebase.loginUnsuccessful();
 				}

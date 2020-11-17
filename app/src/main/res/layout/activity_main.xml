@@ -8,6 +8,7 @@
 
 	<!--    TODO thiet ke lai trang chu-->
 
+
 	<Button
 		android:id="@+id/logoutButton"
 		style="@style/SubmitButton"
@@ -48,5 +49,17 @@
 		app:layout_constraintEnd_toEndOf="@+id/transfer"
 		app:layout_constraintStart_toStartOf="@+id/transfer"
 		app:layout_constraintTop_toBottomOf="@+id/transfer" />
+
+	<ImageView
+		android:id="@+id/profilePicture"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		tools:layout_editor_absoluteY="5dp"
+		tools:srcCompat="@tools:sample/avatars"
+		tools:ignore="MissingConstraints"
+		android:background="@drawable/common_google_signin_btn_icon_dark"
+		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

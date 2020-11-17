@@ -137,32 +137,24 @@ public class WalletModel {
 		});
 	}
 
-	public void getMoneyOnce(String uid, WalletInterface walletInterface) {
+	public void getMoneyOnce(String key, final WalletInterface walletInterface) {
+		{
+			this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+				@Override
+				public void onDataChange(@NonNull DataSnapshot snapshot) {
+					Wallet wallet = snapshot.getValue(Wallet.class);
+
+					walletInterface.dataIsLoaded(wallet.getAmount());
+				}
+
+				@Override
+				public void onCancelled(@NonNull DatabaseError error) {
+
+				}
+			});
+		}
+
 	}
 }
 
-//<<<<<<< HEAD
-//}
-//
-//=======
-//	public void getMoneyOnce(String key, final WalletInterface walletInterface)
-//	{
-//		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-//			@Override
-//			public void onDataChange(@NonNull DataSnapshot snapshot) {
-//				Wallet wallet = snapshot.getValue(Wallet.class);
-//
-//				walletInterface.dataIsLoaded(wallet.getAmount());
-//			}
-//
-//			@Override
-//			public void onCancelled(@NonNull DatabaseError error) {
-//
-//			}
-//		});
-//	}
-//
-//
-//
-//}
-//>>>>>>> 90beacaf579479388b35c4001f3ad09a29db41f5
+

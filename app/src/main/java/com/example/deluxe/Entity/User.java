@@ -5,6 +5,7 @@ public class User {
 	String username, password;
 	String email;
 	String created_at,updated_at;
+	String token;
 
 	public User() {
 
@@ -59,6 +60,16 @@ public class User {
 
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public String  getToken()
+	{
+		return this.token;
+	}
+
+	public void setToken(String token)
+	{
+		this.token = token;
 	}
 }
 

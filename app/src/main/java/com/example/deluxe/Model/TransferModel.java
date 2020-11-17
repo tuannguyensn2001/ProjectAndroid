@@ -5,16 +5,22 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.Deposit;
+import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.DataFirebase;
+import com.example.deluxe.Interface.Model.ListTransferInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 //<<<<<<< HEAD
 //public class TransferModel {
@@ -136,9 +142,10 @@ public class TransferModel {
 	DatabaseReference ref;
 	DatabaseReference userRef;
 	DatabaseReference walletRef;
-	ArrayList<String> listTransfer;
+	ArrayList<Transfer> listTransfer;
 
 	public TransferModel() {
+		this.listTransfer = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("transfer");
 		this.userRef = FirebaseDatabase.getInstance().getReference().child("user");
 		this.walletRef = FirebaseDatabase.getInstance().getReference().child("wallet");
@@ -149,6 +156,9 @@ public class TransferModel {
 		String depositer = transfer.getEmailDepositor();
 		final String receiver = transfer.getEmailReceiver();
 		final double money = transfer.getMoney();
+
+		Log.e("test",depositer+" ");
+
 
 		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(depositer).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
@@ -235,15 +245,43 @@ public class TransferModel {
 
 	}
 
-	public void  getListTransfer(final DataFirebase transferInterface) {
-		this.ref.addValueEventListener(new ValueEventListener() {
+	public void  getListTransfer(final ListTransferInterface
+										 transferInterface) {
+
+		String email = Auth.getInstance().user().getEmail();
+
+		FirebaseDatabase.getInstance().getReference().child("transfer").orderByChild("emailDepositor").equalTo(email).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				listTransfer.clear();
 				for (DataSnapshot item : snapshot.getChildren()) {
 					Transfer transfer = item.getValue(Transfer.class);
-					listTransfer.add(transfer.getEmailDepositor());
+					listTransfer.add(transfer);
 				}
+
+				Set<String> month = getListMonth(listTransfer);
+
+
+				Log.e("test" , month.size()+" ");
+
+				HashMap<String,ArrayList<Transfer>> transferList = new HashMap<>();
+
+				for(String item : month){
+					transferList.put(item, new ArrayList<Transfer>());
+				}
+
+
+
+				for(Transfer item : listTransfer)
+				{
+					String key = convert(item.getUpdated_at());
+
+					transferList.get(key).add(item);
+				}
+
+				Log.e("transfer" , transferList.get("Tháng 11 năm 2020").size()+" ");
+				Log.e("aaa","aaaaaa");
+
 				transferInterface.dataIsLoaded(listTransfer);
 
 			}
@@ -253,6 +291,50 @@ public class TransferModel {
 
 			}
 		});
+	}
+
+	public Set getListMonth(ArrayList<Transfer> listTransfer)
+	{
+
+		Set<String> hashSet = new HashSet<>();
+		for(Transfer item : listTransfer)
+		{
+			String date = item.getUpdated_at();
+			hashSet.add(convert(date));
+
+		}
+
+		return hashSet;
+	}
+
+	public static String convert(String date)
+	{
+		String dateArray[] = date.split("\\s");
+		String month= dateArray[1];
+		return getMonth(month) + " năm " + dateArray[5];
+	}
+
+	public static String getMonth(String month)
+	{
+		String result = null;
+
+
+		HashMap<String,String> monthList = new HashMap<>();
+
+		monthList.put("Oct", "Tháng 10");
+		monthList.put("Jan","Tháng 1");
+		monthList.put("Feb", "Tháng 2");
+		monthList.put("Mar","Tháng 3");
+		monthList.put("Apr", "Tháng 4");
+		monthList.put("May", "Tháng 5");
+		monthList.put("Jun", "Tháng 6");
+		monthList.put("Jul", "Tháng 7");
+		monthList.put("Aug", "Tháng 8");
+		monthList.put("Sep", "Tháng 9");
+		monthList.put("Dec", "Tháng 12");
+		monthList.put("Nov", "Tháng 11");
+
+		return monthList.get(month);
 	}
 
 }

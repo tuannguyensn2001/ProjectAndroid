@@ -1,5 +1,6 @@
 package com.example.deluxe.Entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Deposit {
@@ -23,6 +24,11 @@ public class Deposit {
 		this.created_at= new Date().toString();
 		this.updated_at = new Date().toString();
 
+	}
+
+	public Deposit(String email)
+	{
+		this.email=email;
 	}
 
 	public String getEmail() {
@@ -49,7 +55,7 @@ public class Deposit {
 		this.money = money;
 	}
 
-	public String getCreated_at() {
+	public String  getCreated_at() {
 		return created_at;
 	}
 
