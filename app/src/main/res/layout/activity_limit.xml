@@ -4,11 +4,11 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".View.LimitActivity">
+	tools:context=".View.History.LimitActivity">
 
 	<fragment
 		android:id="@+id/action_bar"
-		android:name="com.example.deluxe.View.ActionBarFragment"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"

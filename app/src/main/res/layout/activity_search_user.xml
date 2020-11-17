@@ -10,7 +10,7 @@
 			TODO khong tim thay-->
 	<fragment
 		android:id="@+id/action_bar"
-		android:name="com.example.deluxe.View.ActionBarFragment"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"

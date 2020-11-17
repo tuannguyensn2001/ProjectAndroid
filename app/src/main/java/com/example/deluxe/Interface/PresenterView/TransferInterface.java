@@ -7,6 +7,8 @@ import com.example.deluxe.Entity.User;
 public interface TransferInterface {
 	interface TransferView extends View {
 		void handleButton();
+
+		void handleIsUserCorrect(boolean b);
 	}
 
 	interface TransferPresenter extends Presenter {

@@ -2,8 +2,8 @@ package com.example.deluxe.Presenter;
 
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
-import com.example.deluxe.View.DepositActivity;
-import com.example.deluxe.View.SignInActivity;
+import com.example.deluxe.View.Transaction.DepositActivity;
+import com.example.deluxe.View.Auth.SignInActivity;
 
 public class MainPresenter implements MainInterface.MainPresenter {
 
