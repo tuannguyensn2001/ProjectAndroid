@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface ListTransferInterface {
 
-    public void dataIsLoaded(ArrayList<Transfer> list);
+    void dataIsLoaded(ArrayList<Transfer> list);
 }

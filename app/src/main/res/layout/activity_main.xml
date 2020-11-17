@@ -10,19 +10,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="50dp">
 
-<<<<<<< HEAD
-
-	<Button
-		android:id="@+id/logoutButton"
-		style="@style/SubmitButton"
-		android:layout_width="300dp"
-		android:layout_marginTop="132dp"
-		android:text="ĐĂNG XUẤT"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:ignore="MissingConstraints" />
-=======
 		<TextView
 			android:id="@+id/auth_balance"
 			android:layout_width="wrap_content"
@@ -37,7 +24,6 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 		<ImageView
 			android:id="@+id/change_theme_button"
@@ -79,21 +65,6 @@
 			app:layout_constraintTop_toTopOf="parent" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
-<<<<<<< HEAD
-	<ImageView
-		android:id="@+id/profilePicture"
-		android:layout_width="100dp"
-		android:layout_height="100dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		tools:layout_editor_absoluteY="5dp"
-		tools:srcCompat="@tools:sample/avatars"
-		tools:ignore="MissingConstraints"
-		android:background="@drawable/common_google_signin_btn_icon_dark"
-		/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
 	<FrameLayout
 		android:id="@+id/home_fragment"
 		android:layout_width="match_parent"
@@ -109,4 +80,3 @@
 		android:background="?android:attr/windowBackground"
 		app:menu="@menu/bottom_nav" />
 </RelativeLayout>
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74

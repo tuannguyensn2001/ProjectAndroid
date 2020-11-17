@@ -78,4 +78,6 @@ public class Withdraw {
 	public void setNote(String note) {
 		this.note = note;
 	}
+
+
 }

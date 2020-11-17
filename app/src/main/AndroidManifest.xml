@@ -27,17 +27,9 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-<<<<<<< HEAD
-		<activity android:name=".View.DepositActivity" />
-		<activity android:name=".View.SignUpActivity" />
-		<activity android:name=".View.SignInActivity" />
-
-		<!-- [START firebase_service] -->
-=======
 		<activity android:name=".View.Transaction.DepositActivity" />
 		<activity android:name=".View.Auth.SignUpActivity" />
 		<activity android:name=".View.Auth.SignInActivity" /> <!-- [START firebase_service] -->
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 		<service
 			android:name=".FCM.FirebaseMessageReceiver"
 			android:exported="false">

@@ -1,13 +1,11 @@
 package com.example.deluxe.Model;
+
 import androidx.annotation.NonNull;
+
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
-<<<<<<< HEAD
-import com.example.deluxe.Interface.Model.DepositInterface;
-=======
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Date;
+
 public class Auth {
 	private static Auth auth = null;
 	private FirebaseAuth mAuth;
@@ -29,52 +28,49 @@ public class Auth {
 		this.userModel = new UserModel();
 		this.walletModel = new WalletModel();
 	}
+
 	public static Auth getInstance() {
 		if (auth == null) {
 			auth = new Auth();
 		}
 		return auth;
 	}
+
 	public void attempt(User user, final AuthLogin authFirebase) {
 		String email = user.getUser();
 		String password = user.getPassword();
+
 		this.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
-<<<<<<< HEAD
-					new UserModel().show(Auth.getInstance().user().getUid(), new DepositInterface() {
-=======
 					new UserModel().show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 						@Override
 						public void dataIsLoaded(User user) {
 							user.setToken(FirebaseInstanceId.getInstance().getToken());
 							FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
-<<<<<<< HEAD
-							authFirebase.loginSuccessful();
-						}
-					});
-=======
 						}
 					});
 					authFirebase.loginSuccessful();
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 				} else {
 					authFirebase.loginUnsuccessful();
 				}
 			}
 		});
 	}
+
 	public boolean check() {
 		return mAuth.getCurrentUser() != null;
 	}
+
 	public FirebaseUser user() {
 		return this.check() ? mAuth.getCurrentUser() : null;
 	}
+
 	public void logout() {
 		this.mAuth.signOut();
 	}
+
 	public void signUp(final User user, final AuthSignUp authSignUp) {
 		String email = user.getEmail();
 		String password = user.getPassword();
@@ -85,16 +81,13 @@ public class Auth {
 					String key = Auth.getInstance().user().getUid();
 					user.setCreated_at(new Date().toString());
 					user.setUpdated_at(new Date().toString());
-
 					userModel.create(user, key);
 
 					Wallet wallet = new Wallet(0);
 					wallet.setCreated_at(new Date().toString());
 					wallet.setUpdated_at(new Date().toString());
 
-
 					walletModel.add(key, wallet);
-
 
 
 					authSignUp.signUpSuccessful();

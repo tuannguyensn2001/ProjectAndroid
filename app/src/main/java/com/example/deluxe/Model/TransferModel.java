@@ -4,146 +4,28 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.deluxe.Entity.Deposit;
-import com.example.deluxe.Entity.User;
+import com.example.deluxe.Entity.Transfer;
 import com.example.deluxe.Entity.Wallet;
-<<<<<<< HEAD
-import com.example.deluxe.Interface.Model.DataFirebase;
-import com.example.deluxe.Interface.Model.ListTransferInterface;
-=======
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
+import com.example.deluxe.Interface.Model.ListTransferInterface;
 import com.example.deluxe.Interface.Model.TransferFirebase;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-//<<<<<<< HEAD
-//public class TransferModel {
-//
-//
-//    DatabaseReference ref;
-//    DatabaseReference userRef;
-//    DatabaseReference walletRef;
-//
-//    public TransferModel()
-//    {
-//        this.ref = FirebaseDatabase.getInstance().getReference().child("transfer");
-//        this.userRef = FirebaseDatabase.getInstance().getReference().child("user");
-//        this.walletRef = FirebaseDatabase.getInstance().getReference().child("wallet");
-//    }
-//
-//    public void Transfer(final Transfer transfer)
-//    {
-//
-//        String depositer = transfer.getEmailDepositer();
-//        final String receiver = transfer.getEmailReceiver();
-//        final double money = transfer.getMoney();
-//
-//
-//        FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(depositer).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                String key1 = null;
-//                for (DataSnapshot item: snapshot.getChildren())
-//                {
-//                    key1=item.getKey();
-//                }
-//
-//                Log.e("user",key1);
-//
-//                final String finalKey1 = key1;
-//                walletRef.child(key1).addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        Wallet wallet = snapshot.getValue(Wallet.class);
-//
-//                       wallet.decreaseAmount(money);
-//
-//                       walletRef.child(finalKey1).setValue(wallet);
-//
-//
-//                       userRef.orderByChild("email").equalTo(receiver).addValueEventListener(new ValueEventListener() {
-//                           @Override
-//                           public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                               String key2 = null;
-//                               for (DataSnapshot item : snapshot.getChildren())
-//                                   key2 = item.getKey();
-//
-//                               final String finalKey2 = key2;
-//
-//                               walletRef.child(key2).addListenerForSingleValueEvent(new ValueEventListener() {
-//                                   @Override
-//                                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                       Wallet wallet = snapshot.getValue(Wallet.class);
-//
-//                                       wallet.increaseAmount(money);
-//
-//                                       walletRef.child(finalKey2).setValue(wallet);
-//
-//                                       String key = ref.push().getKey();
-//
-//
-//                                       transfer.setCreated_at(new Date().toString());
-//                                       transfer.setUpdated_at(new Date().toString());
-//
-//                                       ref.child(key).setValue(transfer);
-//                                   }
-//
-//                                   @Override
-//                                   public void onCancelled(@NonNull DatabaseError error) {
-//
-//                                   }
-//                               });
-//
-//
-//                           }
-//
-//                           @Override
-//                           public void onCancelled(@NonNull DatabaseError error) {
-//
-//                           }
-//                       });
-//
-//
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//
-//
-//    }
-//
-//}
-//=======
 import com.example.deluxe.Entity.Transfer;
 
 public class TransferModel {
@@ -152,10 +34,10 @@ public class TransferModel {
 	DatabaseReference ref;
 	DatabaseReference userRef;
 	DatabaseReference walletRef;
-	ArrayList<Transfer> listTransfer;
 
+	ArrayList<Transfer> listTransfer;
 	public TransferModel() {
-		this.listTransfer = new ArrayList<>();
+		listTransfer = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("transfer");
 		this.userRef = FirebaseDatabase.getInstance().getReference().child("user");
 		this.walletRef = FirebaseDatabase.getInstance().getReference().child("wallet");
@@ -167,7 +49,6 @@ public class TransferModel {
 		final String receiver = transfer.getEmailReceiver();
 		final double money = transfer.getMoney();
 
-		Log.e("test",depositer+" ");
 
 		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(depositer).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
@@ -273,8 +154,7 @@ public class TransferModel {
 
 	}
 
-	public void  getListTransfer(final ListTransferInterface
-										 transferInterface) {
+	public void  getListTransfer(final ListTransferInterface transferInterface) {
 
 		String email = Auth.getInstance().user().getEmail();
 
@@ -365,5 +245,7 @@ public class TransferModel {
 		return monthList.get(month);
 	}
 
-}
 
+
+
+}

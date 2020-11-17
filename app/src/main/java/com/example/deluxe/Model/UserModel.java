@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Core.Model;
+import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
@@ -18,8 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import javax.xml.validation.SchemaFactoryLoader;
 
 public class UserModel implements Model {
 	ArrayList<String> listUser;
@@ -54,45 +53,8 @@ public class UserModel implements Model {
 		this.ref.child(key).setValue(user);
 	}
 
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//
-//	public void read(final DataFirebase dataFirebase)
-//	{
-//
-//		final ArrayList<User> userArrayList = new ArrayList<>();
-//		this.ref.addValueEventListener(new ValueEventListener() {
-//
-//			@Override
-//			public void onDataChange(@NonNull DataSnapshot snapshot) {
-//				userArrayList.clear();
-//				for ( DataSnapshot item : snapshot.getChildren())
-//				{
-//					User user = item.getValue(User.class);
-//					userArrayList.add(user);
-//				}
-//
-//				dataFirebase.dataIsLoaded(userArrayList);
-//
-//			}
-//			@Override
-//			public void onCancelled(@NonNull DatabaseError error) {
-//
-//			}
-//		});
-//	}
-//
-
 	public void search(User user, final UserInterface userInterface) {
-//=======
-//	public void search(User user, final UserInterface userInterface)
-//	{
-////		String email = user.getEmail();
-//>>>>>>> 90beacaf579479388b35c4001f3ad09a29db41f5
-//=======
-//	public void search(User user, final UserInterface userInterface) {
-////		String email = user.getEmail();
-//>>>>>>> 92716b6266d46bb7adccc7e4396f86613de31eda
+//		String email = user.getEmail();
 		String query = user.getEmail();
 
 		//SELECT * FROM user WHERE email = "huongtran76@gmail.com"
@@ -140,84 +102,6 @@ public class UserModel implements Model {
 	public void checkEmailPassword(final User user, final CheckInterface checkInterface)
 	{
 		final ArrayList<User> list = new ArrayList<>();
-<<<<<<< HEAD
-
-		final ArrayList<User> list1 = new ArrayList<>();
-
-		 String email = user.getEmail();
-		 final String password = user.getPassword();
-
-
-		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
-			
-					@Override
-					public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-							FirebaseDatabase.getInstance().getReference().child("user").orderByChild("password").equalTo(password).addValueEventListener(new ValueEventListener() {
-								@Override
-								public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-									for (DataSnapshot item : snapshot.getChildren()) {
-										User user1 = item.getValue(User.class);
-										list.add(user1);
-									}
-
-									if (list.size() == 0) {
-										checkInterface.dataIsLoaded(false);
-
-									} else checkInterface.dataIsLoaded(true);
-
-
-								}
-
-								@Override
-								public void onCancelled(@NonNull DatabaseError error) {
-
-								}
-							});
-
-					}
-
-
-
-//						FirebaseDatabase.getInstance().getReference().child("user").orderByChild("password").equalTo(password).addValueEventListener(new ValueEventListener() {
-//							@Override
-//							public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//								for (DataSnapshot item : snapshot.getChildren()) {
-//									User user1 = item.getValue(User.class);
-//									list.add(user1);
-//								}
-//
-//								if (list.size() == 0) {
-//									checkInterface.dataIsLoaded(false);
-//
-//								} else checkInterface.dataIsLoaded(true);
-//
-//
-//							}
-//
-//							@Override
-//							public void onCancelled(@NonNull DatabaseError error) {
-//
-//							}
-//						});
-//
-//					}
-
-
-
-					@Override
-					public void onCancelled(@NonNull DatabaseError error) {
-
-					}
-				});
-
-	}
-
-=======
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 
 		String email = user.getEmail();
 		final String password = user.getPassword();

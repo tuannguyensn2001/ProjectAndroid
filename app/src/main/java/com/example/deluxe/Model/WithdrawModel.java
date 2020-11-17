@@ -1,13 +1,10 @@
 package com.example.deluxe.Model;
 
-
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.deluxe.Entity.Deposit;
 import com.example.deluxe.Entity.Withdraw;
-import com.example.deluxe.Interface.Model.ListDepositInterface;
 import com.example.deluxe.Interface.Model.ListWithdrawInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,10 +20,11 @@ import java.util.Set;
 public class WithdrawModel {
 
 	DatabaseReference ref;
+
 	ArrayList<Withdraw> listWithdraw;
 
 	public WithdrawModel() {
-		this.listWithdraw = new ArrayList<>();
+		listWithdraw = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("withdraw");
 	}
 
@@ -37,28 +35,25 @@ public class WithdrawModel {
 
 	}
 
-
-	public void  getListWithdraw(final ListWithdrawInterface withdrawInterface)
-	{
+	public void  getListWithdraw(final ListWithdrawInterface withdrawInterface) {
 
 		String email = Auth.getInstance().user().getEmail();
-
-		Log.e("email",email+" ");
 
 		FirebaseDatabase.getInstance().getReference().child("withdraw").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				listWithdraw.clear();
-				for(DataSnapshot item: snapshot.getChildren())
-				{
+				for (DataSnapshot item : snapshot.getChildren()) {
 					Withdraw withdraw = item.getValue(Withdraw.class);
 					listWithdraw.add(withdraw);
 				}
 
-
 				Set<String> month = getListMonth(listWithdraw);
 
-				HashMap<String, ArrayList<Withdraw>> withdrawList = new HashMap<>();
+
+				Log.e("test" , month.size()+" ");
+
+				HashMap<String,ArrayList<Withdraw>> withdrawList = new HashMap<>();
 
 				for(String item : month){
 					withdrawList.put(item, new ArrayList<Withdraw>());
@@ -73,8 +68,6 @@ public class WithdrawModel {
 					withdrawList.get(key).add(item);
 				}
 
-				Log.e("date",withdrawList.get("Tháng 11 năm 2020").size()+"");
-
 
 
 				withdrawInterface.dataIsLoaded(listWithdraw);
@@ -88,9 +81,31 @@ public class WithdrawModel {
 		});
 	}
 
+	public Set getListMonth(ArrayList<Withdraw> lisWithdraw)
+	{
+
+		Set<String> hashSet = new HashSet<>();
+		for(Withdraw item : lisWithdraw)
+		{
+			String date = item.getUpdate_at();
+			hashSet.add(convert(date));
+
+		}
+
+		return hashSet;
+	}
+
+	public static String convert(String date)
+	{
+		String dateArray[] = date.split("\\s");
+		String month= dateArray[1];
+		return getMonth(month) + " năm " + dateArray[5];
+	}
+
 	public static String getMonth(String month)
 	{
 		String result = null;
+
 
 		HashMap<String,String> monthList = new HashMap<>();
 
@@ -108,27 +123,6 @@ public class WithdrawModel {
 		monthList.put("Nov", "Tháng 11");
 
 		return monthList.get(month);
-	}
-
-	public Set getListMonth( ArrayList<Withdraw> listWithdraw)
-	{
-
-		Set<String> hashSet = new HashSet<>();
-		for(Withdraw item : listWithdraw)
-		{
-			String date = item.getUpdate_at();
-			hashSet.add(convert(date));
-
-		}
-
-		return hashSet;
-	}
-
-	public static String convert(String date)
-	{
-		String dateArray[] = date.split("\\s");
-		String month= dateArray[1];
-		return getMonth(month) + " năm " + dateArray[5];
 	}
 
 }
