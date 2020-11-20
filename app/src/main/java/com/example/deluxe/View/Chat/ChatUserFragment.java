@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.deluxe.Adapter.ChatUserAdapter;
 import com.example.deluxe.Entity.LastMessage;
-import com.example.deluxe.Interface.PresenterView.ChatUserInterface;
+import com.example.deluxe.Interface.PresenterView.Chat.ChatUserInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Presenter.Chat.ChatUserPresenter;
 import com.example.deluxe.R;
@@ -110,7 +110,6 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 
 	@Override
 	public void loadView(Class view) {
-
 	}
 
 	@Override

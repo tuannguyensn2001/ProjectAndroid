@@ -1,7 +1,7 @@
 package com.example.deluxe.Presenter.Status;
 
 import com.example.deluxe.Interface.Model.WalletInterface;
-import com.example.deluxe.Interface.PresenterView.DepositSuccessInterface;
+import com.example.deluxe.Interface.PresenterView.Status.DepositSuccessInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.WalletModel;
 

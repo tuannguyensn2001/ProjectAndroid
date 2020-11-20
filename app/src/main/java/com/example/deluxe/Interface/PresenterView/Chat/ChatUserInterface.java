@@ -1,4 +1,4 @@
-package com.example.deluxe.Interface.PresenterView;
+package com.example.deluxe.Interface.PresenterView.Chat;
 
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;

@@ -3,18 +3,18 @@ package com.example.deluxe.Presenter.Auth;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AuthLogin;
-import com.example.deluxe.Interface.PresenterView.LoginInterface;
+import com.example.deluxe.Interface.PresenterView.Auth.SignInInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
 import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.Auth.SignUpActivity;
 
-public class LoginPresenter implements LoginInterface.LoginPresenter {
-	LoginInterface.LoginView loginView;
+public class SignInPresenter implements SignInInterface.SignInPresenter {
+	SignInInterface.SignInView loginView;
 	UserModel userModel;
 
 
-	public LoginPresenter(LoginInterface.LoginView Activity) {
+	public SignInPresenter(SignInInterface.SignInView Activity) {
 		this.loginView = Activity;
 
 		initModel();

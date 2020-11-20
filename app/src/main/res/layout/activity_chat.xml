@@ -15,22 +15,6 @@
 		app:layout_constraintTop_toTopOf="parent"
 		tools:layout="@layout/fragment_action_bar" />
 
-	<TextView
-		android:id="@+id/email_receiver"
-		style="@style/Title"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentStart="true"
-		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"
-		android:layout_margin="20dp"
-		android:gravity="center"
-		android:minWidth="50dp"
-		android:text="Tuấn"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/action_bar" />
-
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/list_message"
 		android:layout_width="match_parent"
@@ -39,14 +23,13 @@
 		android:layout_alignParentTop="true"
 		android:layout_alignParentEnd="true"
 		android:layout_marginStart="8dp"
-		android:layout_marginTop="16dp"
 		android:layout_marginEnd="8dp"
 		android:layout_marginBottom="16dp"
 		android:visibility="visible"
 		app:layout_constraintBottom_toTopOf="@+id/message_input"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/email_receiver" />
+		app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
 	<EditText
 		android:id="@+id/message_input"

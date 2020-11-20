@@ -1,6 +1,6 @@
 package com.example.deluxe.Presenter.Components;
 
-import com.example.deluxe.Interface.PresenterView.ActionBarInterface;
+import com.example.deluxe.Interface.PresenterView.Components.ActionBarInterface;
 
 public class ActionBarPresenter implements ActionBarInterface.ActionBarPresenter {
 	ActionBarInterface.ActionBarView actionBarView;

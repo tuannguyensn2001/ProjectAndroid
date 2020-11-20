@@ -17,7 +17,7 @@ import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.TransferInterface;
+import com.example.deluxe.Interface.PresenterView.Transaction.TransferInterface;
 import com.example.deluxe.Presenter.Transaction.TransferPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ConfirmPasswordDialog;
@@ -27,7 +27,6 @@ import com.example.deluxe.View.Status.TransferSuccessActivity;
 import java.text.NumberFormat;
 
 public class TransferActivity extends AppCompatActivity implements TransferInterface.TransferView {
-	ImageView backButton;
 	TextView username, email;
 	TextView notiText;
 	EditText money, message;
@@ -78,13 +77,6 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 			}
 		});
 
-		backButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadView(SearchUserActivity.class);
-			}
-		});
-
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -94,7 +86,6 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 	}
 
 	private void init() {
-		backButton = findViewById(R.id.back_button);
 		username = findViewById(R.id.account_username);
 		email = findViewById(R.id.account_email);
 
@@ -166,5 +157,10 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 			User user = new User(username.getText().toString(), null, email.getText().toString());
 			transferPresenter.handleTransfer(user, Double.parseDouble(moneyInput.toString().replaceAll("[,.]", "")), messageInput);
 		} else setNotification(ErrorMessage.ERR500000);
+	}
+
+	@Override
+	public void handleBackButton() {
+		loadView(SearchUserActivity.class);
 	}
 }

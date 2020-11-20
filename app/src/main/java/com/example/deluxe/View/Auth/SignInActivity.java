@@ -14,21 +14,20 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.LoginInterface;
+import com.example.deluxe.Interface.PresenterView.Auth.SignInInterface;
 import com.example.deluxe.Model.Auth;
-import com.example.deluxe.Presenter.Auth.LoginPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 
-public class SignInActivity extends AppCompatActivity implements LoginInterface.LoginView {
+public class SignInActivity extends AppCompatActivity implements SignInInterface.SignInView {
 	private TextView title, notiText;
 	private EditText email, password;
 	private Button submitButton;
-	private TextView signupButton;
+	private TextView SignUpButton;
 
 	private String emailInput, passwordInput;
 
-	private LoginInterface.LoginPresenter Login;
+	private SignInInterface.SignInPresenter Login;
 
 
 	@Override
@@ -48,7 +47,7 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 			}
 		});
 
-		this.signupButton.setOnClickListener(new View.OnClickListener() {
+		this.SignUpButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Login.switchSignUpButton();
@@ -65,9 +64,9 @@ public class SignInActivity extends AppCompatActivity implements LoginInterface.
 
 		this.notiText = findViewById(R.id.notification_text);
 
-		this.signupButton = findViewById(R.id.sign_up_button);
+		this.SignUpButton = findViewById(R.id.sign_up_button);
 		this.submitButton = findViewById(R.id.submit_button);
-		this.Login = new LoginPresenter(this);
+		this.Login = new com.example.deluxe.Presenter.Auth.SignInPresenter(this);
 
 		this.email = findViewById(R.id.email_input);
 		this.password = findViewById(R.id.password_input);

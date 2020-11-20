@@ -2,7 +2,7 @@ package com.example.deluxe.Presenter.Chat;
 
 import com.example.deluxe.Entity.LastMessage;
 import com.example.deluxe.Interface.Model.MessageInterface;
-import com.example.deluxe.Interface.PresenterView.ChatUserInterface;
+import com.example.deluxe.Interface.PresenterView.Chat.ChatUserInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.MessageModel;
 import com.example.deluxe.View.Chat.ChatActivity;

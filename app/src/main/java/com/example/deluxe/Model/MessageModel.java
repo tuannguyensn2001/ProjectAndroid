@@ -22,22 +22,20 @@ import java.util.Set;
 
 public class MessageModel {
 
-	DatabaseReference ref ;
+	DatabaseReference ref;
 
-	public MessageModel()
-	{
+	public MessageModel() {
 		this.ref = FirebaseDatabase.getInstance().getReference().child("message");
 	}
 
-	public void getUserMessage(final String email, final MessageInterface messageInterface)
-	{
+	public void getUserMessage(final String email, final MessageInterface messageInterface) {
 
 		this.ref.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				ArrayList<Message> listMessage = new ArrayList<>();
 
-				for(DataSnapshot item : snapshot.getChildren()) {
+				for (DataSnapshot item : snapshot.getChildren()) {
 					Message message = item.getValue(Message.class);
 
 					if (message.getEmailReceiver().equals(email) || message.getEmailSender().equals(email)) {
@@ -49,29 +47,22 @@ public class MessageModel {
 
 				ArrayList<String> partner = new ArrayList<>();
 
-				for(Message index : listMessage)
-				{
+				for (Message index : listMessage) {
 					String partnerEmail = index.getEmailSender().equals(email) ? index.getEmailReceiver() : index.getEmailSender();
 					if (!partner.contains(partnerEmail)) partner.add(partnerEmail);
 				}
 
 				ArrayList<LastMessage> lastMessage = new ArrayList<>();
 
-				for(String item : partner)
-				{
-					for(Message index : listMessage){
+				for (String item : partner) {
+					for (Message index : listMessage) {
 						if (index.getEmailSender().equals(email) && index.getEmailReceiver().equals(item) ||
-								index.getEmailSender().equals(item) && index.getEmailReceiver().equals(email)){
-							lastMessage.add(new LastMessage(item,index.getContent(),null));
+								index.getEmailSender().equals(item) && index.getEmailReceiver().equals(email)) {
+							lastMessage.add(new LastMessage(item, index.getContent(), null));
 							break;
 						}
 					}
 				}
-
-
-
-
-
 
 
 				messageInterface.getListMessage(lastMessage);
@@ -85,15 +76,14 @@ public class MessageModel {
 		});
 	}
 
-	public void getItemMessage(final String email, final int position, final MessageInterface.MessageItemInterface messageItemInterface)
-	{
+	public void getItemMessage(final String email, final int position, final MessageInterface.MessageItemInterface messageItemInterface) {
 
 		this.ref.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 				ArrayList<Message> listMessage = new ArrayList<>();
 
-				for(DataSnapshot item : snapshot.getChildren()) {
+				for (DataSnapshot item : snapshot.getChildren()) {
 					Message message = item.getValue(Message.class);
 
 					if (message.getEmailReceiver().equals(email) || message.getEmailSender().equals(email)) {
@@ -105,30 +95,22 @@ public class MessageModel {
 
 				ArrayList<String> partner = new ArrayList<>();
 
-				for(Message index : listMessage)
-				{
+				for (Message index : listMessage) {
 					String partnerEmail = index.getEmailSender().equals(email) ? index.getEmailReceiver() : index.getEmailSender();
 					if (!partner.contains(partnerEmail)) partner.add(partnerEmail);
 				}
 
 				ArrayList<LastMessage> lastMessage = new ArrayList<>();
 
-				for(String item : partner)
-				{
-					for(Message index : listMessage){
+				for (String item : partner) {
+					for (Message index : listMessage) {
 						if (index.getEmailSender().equals(email) && index.getEmailReceiver().equals(item) ||
-								index.getEmailSender().equals(item) && index.getEmailReceiver().equals(email)){
-							lastMessage.add(new LastMessage(item,index.getContent(),null));
+								index.getEmailSender().equals(item) && index.getEmailReceiver().equals(email)) {
+							lastMessage.add(new LastMessage(item, index.getContent(), null));
 							break;
 						}
 					}
 				}
-
-
-
-
-
-
 
 				messageItemInterface.getItem(lastMessage.get(position));
 			}
@@ -141,24 +123,22 @@ public class MessageModel {
 		});
 	}
 
-	public void add(Message message)
-	{
+	public void add(Message message) {
 		String key = this.ref.push().getKey();
 		this.ref.child(key).setValue(message);
 	}
 
-	public void getDetailMessage(Message message, final MessageInterface.MessageListInterface messageListInterface)
-	{
+	public void getDetailMessage(Message message, final MessageInterface.MessageListInterface messageListInterface) {
 		final ArrayList<Message> listMessage = new ArrayList<>();
 		final String emailSender = message.getEmailSender();
 		final String emailReceiver = message.getEmailReceiver();
 		this.ref.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				Log.e("message","reload");
+				Log.e("message", "reload");
 				listMessage.clear();
 
-				for(DataSnapshot item : snapshot.getChildren()) {
+				for (DataSnapshot item : snapshot.getChildren()) {
 					Message message = item.getValue(Message.class);
 
 					if (message.getEmailSender().equals(emailSender) && message.getEmailReceiver().equals(emailReceiver) ||
@@ -168,9 +148,7 @@ public class MessageModel {
 					}
 				}
 
-
 				messageListInterface.getList(listMessage);
-
 
 
 			}

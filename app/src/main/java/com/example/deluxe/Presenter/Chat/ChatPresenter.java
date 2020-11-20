@@ -2,7 +2,7 @@ package com.example.deluxe.Presenter.Chat;
 
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Interface.Model.MessageInterface;
-import com.example.deluxe.Interface.PresenterView.ChatInterface;
+import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.MessageModel;
 
 import java.util.ArrayList;

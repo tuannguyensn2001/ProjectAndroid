@@ -6,7 +6,7 @@ import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Interface.Model.TransferFirebase;
 import com.example.deluxe.Interface.Model.WalletInterface;
-import com.example.deluxe.Interface.PresenterView.TransferInterface;
+import com.example.deluxe.Interface.PresenterView.Transaction.TransferInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.TransferModel;
 import com.example.deluxe.Model.WalletModel;

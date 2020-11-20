@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.deluxe.Interface.PresenterView.TransferSuccessInterface;
+import com.example.deluxe.Interface.PresenterView.Status.TransferSuccessInterface;
 import com.example.deluxe.Presenter.Status.TransferSuccessPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;

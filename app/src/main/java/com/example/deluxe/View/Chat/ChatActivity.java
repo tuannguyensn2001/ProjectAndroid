@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +13,10 @@ import android.widget.TextView;
 
 import com.example.deluxe.Adapter.MessageAdapter;
 import com.example.deluxe.Entity.Message;
-import com.example.deluxe.Interface.PresenterView.ChatInterface;
+import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.MainActivity;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,6 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	private String emailReceiver;
 	private String emailSender;
 	private Button submitButton;
-	private TextView receiver;
 	private EditText content;
 	private RecyclerView recyclerView;
 	private MessageAdapter messageAdapter;
@@ -37,20 +38,15 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 		this.init();
 
-		this.receiver.setText(this.emailReceiver);
-
 		this.chatPresenter.getListMessage(new Message(this.emailSender, this.emailReceiver, null));
 
 		this.submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				Message message = new Message(emailSender, emailReceiver, content.getText().toString());
 
 				chatPresenter.handleInputMessage(message);
 				content.setText(null);
-
-
 			}
 		});
 	}
@@ -62,12 +58,21 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 		this.emailReceiver = getIntent().getStringExtra("emailReceiver");
 		this.emailSender = getIntent().getStringExtra("emailSender");
 		this.submitButton = findViewById(R.id.send_message_button);
-		this.receiver = findViewById(R.id.email_receiver);
 		this.content = findViewById(R.id.message_input);
+
+		((TextView) findViewById(R.id.action_bar_title)).setText(this.emailReceiver);
+		findViewById(R.id.action_bar_title).setClickable(true);
+		findViewById(R.id.action_bar_title).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
 
 		this.recyclerView = findViewById(R.id.list_message);
 		this.recyclerView.setHasFixedSize(false);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+		layoutManager.setStackFromEnd(true);
 		this.recyclerView.setLayoutManager(layoutManager);
 
 	}
@@ -81,11 +86,17 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	@Override
 	public void loadView(Class view) {
-
+		Intent intent = new Intent(this, view);
+		startActivity(intent);
 	}
 
 	@Override
 	public void setNotification(Enum e) {
 
+	}
+
+	@Override
+	public void handleBackButton() {
+		loadView(MainActivity.class);
 	}
 }

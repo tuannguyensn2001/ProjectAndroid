@@ -1,4 +1,4 @@
-package com.example.deluxe.Interface.PresenterView;
+package com.example.deluxe.Interface.PresenterView.Transaction;
 
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
@@ -7,8 +7,7 @@ import com.example.deluxe.Model.Auth;
 import com.google.firebase.auth.FirebaseUser;
 
 public interface WithdrawInterface {
-	interface WithdrawView extends View {
-		void handleIsUserCorrect(boolean b);
+	interface WithdrawView extends View, View.ViewUseActionBar, View.ViewUseCheckPasswordDialog {
 	}
 
 	interface WithDrawPresenter extends Presenter {

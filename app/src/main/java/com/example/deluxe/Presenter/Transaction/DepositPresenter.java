@@ -6,7 +6,7 @@ import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AttemptDepositInterface;
 import com.example.deluxe.Interface.Model.CardInterface;
-import com.example.deluxe.Interface.PresenterView.UserDetailsInterface;
+import com.example.deluxe.Interface.PresenterView.Transaction.DepositInterface;
 import com.example.deluxe.Model.AttemptDepositModel;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.CardModel;
@@ -17,11 +17,11 @@ import com.example.deluxe.View.Status.DepositSuccessActivity;
 
 import java.util.Date;
 
-public class DepositPresenter implements UserDetailsInterface.UserDetailsPresenter {
-	UserDetailsInterface.UserDetailsView userDetailsView;
+public class DepositPresenter implements DepositInterface.DepositPresenter {
+	DepositInterface.DepositView userDetailsView;
 	UserModel userModel;
 
-	public DepositPresenter(final UserDetailsInterface.UserDetailsView userDetailsView) {
+	public DepositPresenter(final DepositInterface.DepositView userDetailsView) {
 		this.userDetailsView = userDetailsView;
 
 		initModel();
@@ -56,7 +56,7 @@ public class DepositPresenter implements UserDetailsInterface.UserDetailsPresent
 						final double value = card.getValue();
 						new WalletModel().deposit(Auth.getInstance().user().getUid(), value);
 
-						new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.DepositInterface() {
+						new UserModel().show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.UserDetailsInterface() {
 							@Override
 							public void dataIsLoaded(User user) {
 								Deposit deposit = new Deposit();

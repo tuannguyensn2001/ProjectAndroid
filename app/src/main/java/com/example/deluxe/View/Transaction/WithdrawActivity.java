@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.WithdrawInterface;
+import com.example.deluxe.Interface.PresenterView.Transaction.WithdrawInterface;
 import com.example.deluxe.Presenter.Transaction.WithdrawPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ConfirmPasswordDialog;
@@ -26,7 +26,6 @@ import com.example.deluxe.View.Status.WithdrawSuccessActivity;
 import java.text.NumberFormat;
 
 public class WithdrawActivity extends AppCompatActivity implements WithdrawInterface.WithdrawView {
-	ImageView backButton;
 	TextView notiText;
 	EditText money, note;
 	String moneyInput, noteInput;
@@ -67,13 +66,6 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 			}
 		});
 
-		backButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadView(MainActivity.class);
-			}
-		});
-
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -100,8 +92,6 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 
 	private void init() {
 		withdrawPresenter = new WithdrawPresenter(this);
-
-		backButton = findViewById(R.id.back_button);
 
 		notiText = findViewById(R.id.notification_text);
 
@@ -137,5 +127,10 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 			withdrawPresenter.handleWithdraw(Double.parseDouble(moneyInput.replaceAll("[,.]", "")), noteInput);
 			loadView(WithdrawSuccessActivity.class);
 		} else setNotification(ErrorMessage.ERR500000);
+	}
+
+	@Override
+	public void handleBackButton() {
+		loadView(MainActivity.class);
 	}
 }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.deluxe.Interface.PresenterView.DepositSuccessInterface;
+import com.example.deluxe.Interface.PresenterView.Status.DepositSuccessInterface;
 import com.example.deluxe.Presenter.Status.DepositSuccessPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Transaction.DepositActivity;

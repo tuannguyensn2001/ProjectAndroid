@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,19 +13,17 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.UserDetailsInterface;
-import com.example.deluxe.Presenter.Transaction.DepositPresenter;
+import com.example.deluxe.Interface.PresenterView.Transaction.DepositInterface;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 
-public class DepositActivity extends AppCompatActivity implements UserDetailsInterface.UserDetailsView {
-	ImageView backButton;
+public class DepositActivity extends AppCompatActivity implements DepositInterface.DepositView {
 	TextView notiText;
 	EditText serial, cardCode;
 	String serialInput, cardCodeInput;
 	Button submitButton;
 
-	UserDetailsInterface.UserDetailsPresenter deposit;
+	DepositInterface.DepositPresenter deposit;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +31,6 @@ public class DepositActivity extends AppCompatActivity implements UserDetailsInt
 		setContentView(R.layout.activity_deposit);
 
 		init();
-
-		backButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadView(MainActivity.class);
-			}
-		});
 
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -68,8 +58,6 @@ public class DepositActivity extends AppCompatActivity implements UserDetailsInt
 	}
 
 	private void init() {
-		backButton = findViewById(R.id.back_button);
-
 		serial = findViewById(R.id.serial_input);
 		cardCode = findViewById(R.id.card_code_input);
 		submitButton = findViewById(R.id.submit_button);
@@ -77,7 +65,7 @@ public class DepositActivity extends AppCompatActivity implements UserDetailsInt
 
 		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.deposit_action_bar_title));
 
-		deposit = new DepositPresenter(this);
+		deposit = new com.example.deluxe.Presenter.Transaction.DepositPresenter(this);
 	}
 
 	@Override
@@ -90,5 +78,10 @@ public class DepositActivity extends AppCompatActivity implements UserDetailsInt
 			notiText.setText(((SuccessMessage) e).getValue());
 		}
 		notiText.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void handleBackButton() {
+		loadView(MainActivity.class);
 	}
 }

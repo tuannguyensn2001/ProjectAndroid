@@ -11,38 +11,38 @@ import com.example.deluxe.R;
 import java.util.ArrayList;
 
 public class UserListAdapter extends BaseAdapter {
-    ArrayList<User> userList;
+	ArrayList<User> userList;
 
-    public UserListAdapter(ArrayList<User> userList) {
-        this.userList = userList;
-    }
+	public UserListAdapter(ArrayList<User> userList) {
+		this.userList = userList;
+	}
 
-    @Override
-    public int getCount() {
-        return this.userList.size();
-    }
+	@Override
+	public int getCount() {
+		return this.userList.size();
+	}
 
-    @Override
-    public Object getItem(int position) {
-        return this.userList.get(position);
-    }
+	@Override
+	public Object getItem(int position) {
+		return this.userList.get(position);
+	}
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+	@Override
+	public long getItemId(int position) {
+		return 0;
+	}
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View viewProduct;
-        if (convertView == null) {
-            viewProduct = View.inflate(parent.getContext(), R.layout.component_user_list, null);
-        } else viewProduct = convertView;
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View viewProduct;
+		if (convertView == null) {
+			viewProduct = View.inflate(parent.getContext(), R.layout.component_user_list, null);
+		} else viewProduct = convertView;
 
-        User user = (User) getItem(position);
-        ((TextView) viewProduct.findViewById(R.id.profile_username)).setText(String.format("%s", user.getUser()));
-        ((TextView) viewProduct.findViewById(R.id.profile_email)).setText(String.format("%s", user.getEmail()));
+		User user = (User) getItem(position);
+		((TextView) viewProduct.findViewById(R.id.profile_title)).setText(String.format("%s", user.getUser()));
+		((TextView) viewProduct.findViewById(R.id.profile_subtitle)).setText(String.format("%s", user.getEmail()));
 
-        return viewProduct;
-    }
+		return viewProduct;
+	}
 }

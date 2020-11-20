@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.SignUpInterface;
+import com.example.deluxe.Interface.PresenterView.Auth.SignUpInterface;
 import com.example.deluxe.Presenter.Auth.SignUpPresenter;
 import com.example.deluxe.R;
 
@@ -23,7 +23,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	EditText username, email, password, passwordCheck;
 	String usernameInput, emailInput, passwordInput, passwordCheckInput;
 	Button submitButton;
-	TextView signinButton, notiText;
+	TextView SignInButton, notiText;
 	ProgressBar progressBar;
 
 	@Override
@@ -73,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 
 		});
 
-		signinButton.setOnClickListener(new View.OnClickListener() {
+		SignInButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				signUp.switchSignInButton();
@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 		passwordCheck = findViewById(R.id.password_check_input);
 
 		submitButton = findViewById(R.id.submit_button);
-		signinButton = findViewById(R.id.sign_in_button);
+		SignInButton = findViewById(R.id.sign_in_button);
 
 		signUp = new SignUpPresenter(this);
 

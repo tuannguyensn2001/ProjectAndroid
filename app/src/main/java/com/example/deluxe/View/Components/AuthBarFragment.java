@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.deluxe.Entity.User;
-import com.example.deluxe.Interface.PresenterView.AuthBarInterface;
+import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
 import com.example.deluxe.Presenter.Components.AuthBarPresenter;
 import com.example.deluxe.R;
 

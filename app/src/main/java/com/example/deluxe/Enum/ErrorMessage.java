@@ -49,7 +49,7 @@ public enum ErrorMessage {
 	ERR410001("Mạng lag, đợi nha."),
 
 	// Xac nhan mat khau------
-	ERR500000("Vui long xac nhan mat khau"),
+	ERR500000("Trống trường"),
 	ERR500001("Mat khau xac nhan ngan qua");
 
 	private final String value;

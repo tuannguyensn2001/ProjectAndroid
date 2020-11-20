@@ -3,7 +3,7 @@ package com.example.deluxe.Presenter.Auth;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Interface.Model.AuthSignUp;
-import com.example.deluxe.Interface.PresenterView.SignUpInterface;
+import com.example.deluxe.Interface.PresenterView.Auth.SignUpInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
 import com.example.deluxe.View.Auth.SignInActivity;

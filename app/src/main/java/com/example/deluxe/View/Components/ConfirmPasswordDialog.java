@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.ConfirmPasswordInterface;
+import com.example.deluxe.Interface.PresenterView.Components.ConfirmPasswordInterface;
 import com.example.deluxe.Presenter.Components.ConfirmPasswordPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Transaction.TransferActivity;

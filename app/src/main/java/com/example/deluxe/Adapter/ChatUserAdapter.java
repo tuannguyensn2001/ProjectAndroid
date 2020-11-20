@@ -21,8 +21,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 	Context context;
 	OnUserListener onUserListener;
 
-	public ChatUserAdapter(ArrayList<LastMessage> list, Context context, OnUserListener onUserListener)
-	{
+	public ChatUserAdapter(ArrayList<LastMessage> list, Context context, OnUserListener onUserListener) {
 		this.onUserListener = onUserListener;
 		this.listMessage = list;
 		this.context = context;
@@ -33,9 +32,9 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-		View itemView = layoutInflater.inflate(R.layout.component_chat_user,parent,false);
+		View itemView = layoutInflater.inflate(R.layout.component_user_list, parent, false);
 
-		return new ViewHolder(itemView,onUserListener);
+		return new ViewHolder(itemView, onUserListener);
 	}
 
 	@Override
@@ -49,16 +48,17 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 		return this.listMessage.size();
 	}
 
-	public class ViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
+	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 		TextView content;
 		TextView email;
 
 		OnUserListener onUserListener;
+
 		public ViewHolder(@NonNull View itemView, OnUserListener onUserListener) {
 			super(itemView);
 			this.onUserListener = onUserListener;
-			content = itemView.findViewById(R.id.message);
-			email = itemView.findViewById(R.id.username);
+			content = itemView.findViewById(R.id.profile_subtitle);
+			email = itemView.findViewById(R.id.profile_title);
 			itemView.setOnClickListener(this);
 		}
 
@@ -68,8 +68,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 		}
 	}
 
-	public interface OnUserListener
-	{
+	public interface OnUserListener {
 		void onUserClick(int position);
 	}
 }
