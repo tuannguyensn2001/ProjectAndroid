@@ -3,6 +3,8 @@ package com.example.deluxe.View.Components;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +13,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
+import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.Components.ConfirmPasswordInterface;
 import com.example.deluxe.Presenter.Components.ConfirmPasswordPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Transaction.TransferActivity;
-import com.example.deluxe.View.Transaction.WithdrawActivity;
 
 public class ConfirmPasswordDialog extends AlertDialog.Builder implements ConfirmPasswordInterface.ConfirmPasswordView {
 	Context parentActivity;
@@ -27,10 +30,11 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 	CheckBox showPasswordButton;
 	TextView authUsername;
 	TextView authEmail;
+	TextView notiText;
+
+	AlertDialog dialog;
 
 	ConfirmPasswordInterface.ConfirmPasswordPresenter confirmPasswordPresenter;
-
-	boolean isCorrect;
 
 	public ConfirmPasswordDialog(Context context) {
 		super(context);
@@ -38,6 +42,24 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 		this.parentActivity = context;
 
 		init();
+
+		password.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				notiText.setVisibility(View.INVISIBLE);
+				password.setError(null);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
 	}
 
 	private void init() {
@@ -51,6 +73,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 		this.authUsername = alertLayout.findViewById(R.id.auth_username);
 		this.authEmail = alertLayout.findViewById(R.id.auth_email);
 
+		this.notiText = alertLayout.findViewById(R.id.notification_text);
 		this.password = alertLayout.findViewById(R.id.password_input);
 		this.showPasswordButton = alertLayout.findViewById(R.id.show_password_button);
 
@@ -63,6 +86,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 					password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 			}
 		});
+
 
 //		Dialog
 		this.setTitle("Xac nhan mat khau");
@@ -78,13 +102,27 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 		this.setPositiveButton("Gui", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
+
+		this.dialog = this.create();
+		dialog.show();
+		dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 				String passwordInput = password.getText().toString();
-				if (!Rules.required(passwordInput))
-					setNotification(ErrorMessage.ERR500000);
-				else if (!Rules.min(passwordInput, 6))
-					setNotification(ErrorMessage.ERR500001);
-				else
+				if (!Rules.required(passwordInput)) {
+//					password.setBackgroundResource(R.drawable.field_corner);
+					password.setError(ErrorMessage.ERR500000.getValue());
+				} else if (!Rules.min(passwordInput, 6)) {
+//					password.setBackgroundResource(R.drawable.field_corner);
+					password.setError(ErrorMessage.ERR500001.getValue());
+				} else if (!Rules.isPassword(passwordInput)) {
+//					password.setBackgroundResource(R.drawable.field_corner);
+					password.setError(ErrorMessage.ERR500002.getValue());
+				} else {
 					confirmPasswordPresenter.handleConfirmUser(passwordInput);
+				}
 			}
 		});
 	}
@@ -96,16 +134,21 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 
 	@Override
 	public void setNotification(Enum e) {
-
+		if (e instanceof ErrorMessage) {
+			notiText.setTextColor(ContextCompat.getColor(this.getContext(), R.color.light_error));
+			notiText.setText(((ErrorMessage) e).getValue());
+		} else {
+			notiText.setTextColor(ContextCompat.getColor(this.getContext(), R.color.light_mainColor));
+			notiText.setText(((SuccessMessage) e).getValue());
+		}
+		notiText.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void handleIsUserCorrect(boolean b) {
-		setCorrect(b);
-		if (parentActivity instanceof WithdrawActivity) {
-			((WithdrawActivity) parentActivity).handleIsUserCorrect(b);
-		} else if (parentActivity instanceof TransferActivity)
-			((TransferActivity) parentActivity).handleIsUserCorrect(b);
+		if (b)
+			dialog.hide();
+		((ViewUseCheckPasswordDialog) parentActivity).handleIsUserCorrect(b);
 	}
 
 	@Override
@@ -114,11 +157,4 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 		authEmail.setText(user.getEmail());
 	}
 
-	public boolean isCorrect() {
-		return isCorrect;
-	}
-
-	public void setCorrect(boolean correct) {
-		isCorrect = correct;
-	}
 }

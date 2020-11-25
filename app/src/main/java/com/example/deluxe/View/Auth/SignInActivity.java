@@ -2,6 +2,8 @@ package com.example.deluxe.View.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -82,16 +84,43 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 	public void handleClickButton() {
 		this.notiText.setVisibility(View.INVISIBLE);
 
-		if (!Rules.required(emailInput) || !Rules.required(passwordInput))
-			setNotification(ErrorMessage.ERR100000);
-		else if (!Rules.min(emailInput, 6) || !Rules.min(passwordInput, 6))
-			setNotification(ErrorMessage.ERR100002);
-		else if (!Rules.isEmail(emailInput))
-			setNotification(ErrorMessage.ERR100001);
-		else if (!Rules.isPassword(passwordInput))
-			setNotification((ErrorMessage.ERR100003));
-		else
-			Login.handleLogin(emailInput, passwordInput);
+		boolean[] list = {Rules.required(emailInput),
+				Rules.min(emailInput, 6),
+				Rules.isEmail(emailInput),
+				Rules.required(passwordInput),
+				Rules.min(passwordInput, 6),
+				Rules.isPassword(passwordInput),
+		};
+		boolean check = validate(list);
+
+		if (check) Login.handleLogin(emailInput, passwordInput);
+		else {
+			if (!list[0]) {
+				email.setError(ErrorMessage.ERR100000.getValue());
+			} else if (!list[1]) {
+				email.setError(ErrorMessage.ERR100002.getValue());
+			} else if (!list[2]) {
+				email.setError(ErrorMessage.ERR100001.getValue());
+			}
+
+			if (!list[3]) {
+				password.setError(ErrorMessage.ERR100000.getValue());
+			} else if (!list[4]) {
+				password.setError(ErrorMessage.ERR100002.getValue());
+			} else if (!list[5]) {
+				password.setError(ErrorMessage.ERR100003.getValue());
+			}
+		}
+
+		addTextChanged(email);
+		addTextChanged(password);
+	}
+
+	private boolean validate(boolean[] list) {
+		for (boolean i : list) {
+			if (!i) return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -122,4 +151,23 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 		startActivity(intent);
 	}
 
+	public void addTextChanged(final EditText editText) {
+		editText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				notiText.setVisibility(View.INVISIBLE);
+				editText.setError(null);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
+	}
 }

@@ -44,4 +44,18 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 		});
 
 	}
+
+	@Override
+	public void checkBalance(final double money) {
+		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
+			@Override
+			public void dataIsLoaded(double money_now) {
+				if (money > money_now) {
+					transferView.setNotification(ErrorMessage.ERR410000);
+				} else {
+					transferView.handleDialog();
+				}
+			}
+		});
+	}
 }

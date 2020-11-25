@@ -2,6 +2,8 @@ package com.example.deluxe.View.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,12 +63,28 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 					signUp.handleSignUp(usernameInput, passwordInput, emailInput);
 					setSubmitable(false);
 				} else {
-					if (!(list[0] && list[1] && list[2] && list[3]))
-						setNotification(ErrorMessage.ERR000000);
-					else if (!list[4]) setNotification(ErrorMessage.ERR000003);
-					else if (!list[5]) setNotification(ErrorMessage.ERR000002);
-					else if (!list[6]) setNotification(ErrorMessage.ERR000001);
-					else if(!list[7]) setNotification((ErrorMessage.ERR000004));
+					if (!list[0]) {
+						username.setError(ErrorMessage.ERR000000.getValue());
+					}
+					if (!list[1]) {
+						email.setError(ErrorMessage.ERR000000.getValue());
+					} else if (!list[4]) {
+						email.setError(ErrorMessage.ERR000003.getValue());
+					}
+					if (!list[2]) {
+						password.setError(ErrorMessage.ERR000000.getValue());
+					} else if (!list[5]) {
+						password.setError(ErrorMessage.ERR000002.getValue());
+					} else if (!list[7]) {
+						password.setError(ErrorMessage.ERR000004.getValue());
+					}
+
+					if (!list[3]) {
+						passwordCheck.setError(ErrorMessage.ERR000000.getValue());
+					} else if (!list[6]) {
+						passwordCheck.setError(ErrorMessage.ERR000001.getValue());
+					}
+
 				}
 			}
 
@@ -79,6 +97,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 				signUp.switchSignInButton();
 			}
 		});
+
+		addTextChanged(username);
+		addTextChanged(email);
+		addTextChanged(password);
+		addTextChanged(passwordCheck);
 	}
 
 	private void init() {
@@ -130,5 +153,25 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 			if (!i) return false;
 		}
 		return true;
+	}
+
+	public void addTextChanged(final EditText editText) {
+		editText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				notiText.setVisibility(View.INVISIBLE);
+				editText.setError(null);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
 	}
 }

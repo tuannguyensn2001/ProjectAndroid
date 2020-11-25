@@ -2,6 +2,8 @@ package com.example.deluxe.View.Transaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,12 +43,25 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 
 				if (Rules.stringLength(serialInput, 10) && Rules.stringLength(cardCodeInput, 14)) {
 					deposit.handleDeposit(serialInput, cardCodeInput);
-				} else if (Rules.stringLength(serialInput, 0) || Rules.stringLength(cardCodeInput, 0)) {
-					setNotification(ErrorMessage.ERR200000);
-				} else setNotification(ErrorMessage.ERR200001);
+				} else {
+					if (!Rules.required(serialInput)) {
+						serial.setError(ErrorMessage.ERR200000.getValue());
+					} else {
+						serial.setError(ErrorMessage.ERR200001.getValue());
+					}
+
+					if (!Rules.required(cardCodeInput)) {
+						cardCode.setError(ErrorMessage.ERR200000.getValue());
+					} else {
+						cardCode.setError(ErrorMessage.ERR200001.getValue());
+					}
+				}
 			}
 
 		});
+
+		addTextChanged(serial);
+		addTextChanged(cardCode);
 	}
 
 	@Override
@@ -79,4 +94,23 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		notiText.setVisibility(View.VISIBLE);
 	}
 
+	public void addTextChanged(final EditText editText) {
+		editText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				editText.setError(null);
+				notiText.setVisibility(View.INVISIBLE);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
+	}
 }

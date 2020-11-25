@@ -50,7 +50,9 @@ public enum ErrorMessage {
 
 	// Xac nhan mat khau------
 	ERR500000("Trống trường"),
-	ERR500001("Mat khau xac nhan ngan qua");
+	ERR500001("Mat khau xac nhan ngan qua"),
+	ERR500002("Day ma la mat khau a?"),
+	ERR500003("Sai roi ban oi!");
 
 	private final String value;
 

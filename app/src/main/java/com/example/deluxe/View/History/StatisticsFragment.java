@@ -89,6 +89,21 @@ public class StatisticsFragment extends Fragment implements StatisticsInterface.
 	public void getView(HashMap<Date, ArrayList<Transaction>> transactions) {
 		ArrayList<StatisticsCardDad> transactionDads = new ArrayList<>();
 
+//		Trong rong len dau
+		{
+			ArrayList<Transaction> transactionsChild = transactions.get(null);
+			if (transactionsChild != null) {
+				String title = Objects.requireNonNull(getContext()).getResources().getString(R.string.statistics_card_dad_title2);
+				ArrayList<StatisticsCardChild> statisticsCardChildren = new ArrayList<>();
+				for (Transaction transaction : transactionsChild) {
+					statisticsCardChildren.add(new StatisticsCardChild(transaction));
+				}
+
+				transactionDads.add(new StatisticsCardDad(title, statisticsCardChildren));
+			}
+		}
+
+//		Khong trong rong
 		for (Map.Entry<Date, ArrayList<Transaction>> pair : transactions.entrySet()) {
 //			Tieu de ngay
 			String title;
@@ -99,17 +114,15 @@ public class StatisticsFragment extends Fragment implements StatisticsInterface.
 				int month = cal.get(Calendar.MONTH);
 				int year = cal.get(Calendar.YEAR);
 				title = getContext().getResources().getString(R.string.statistics_card_dad_title1, month + 1, year);
-			} else {
-				title = getContext().getResources().getString(R.string.statistics_card_dad_title2);
-			}
 
-			//Danh sach giao dich trong thang
-			ArrayList<Transaction> transactionsChild = pair.getValue();
-			ArrayList<StatisticsCardChild> statisticsCardChildren = new ArrayList<>();
-			for (Transaction transaction : transactionsChild) {
-				statisticsCardChildren.add(new StatisticsCardChild(transaction));
+				//Danh sach giao dich trong thang
+				ArrayList<Transaction> transactionsChild = pair.getValue();
+				ArrayList<StatisticsCardChild> statisticsCardChildren = new ArrayList<>();
+				for (Transaction transaction : transactionsChild) {
+					statisticsCardChildren.add(new StatisticsCardChild(transaction));
+				}
+				transactionDads.add(new StatisticsCardDad(title, statisticsCardChildren));
 			}
-			transactionDads.add(new StatisticsCardDad(title, statisticsCardChildren));
 		}
 
 

@@ -3,7 +3,6 @@ package com.example.deluxe.Presenter.Transaction;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Withdraw;
 import com.example.deluxe.Enum.ErrorMessage;
-import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.Transaction.WithdrawInterface;
@@ -44,11 +43,15 @@ public class WithdrawPresenter implements WithdrawInterface.WithDrawPresenter {
 	}
 
 	@Override
-	public void handleConfirmUser(String passwordInput) {
-		new UserModel().checkEmailPassword(new User(Auth.getInstance().user().getEmail(), passwordInput, null), new CheckInterface() {
+	public void checkBalance(final double money) {
+		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
 			@Override
-			public void dataIsLoaded(boolean b) {
-				withdrawView.handleIsUserCorrect(b);
+			public void dataIsLoaded(double money_now) {
+				if (money > money_now) {
+					withdrawView.setNotification(ErrorMessage.ERR410000);
+				} else {
+					withdrawView.handleDialog();
+				}
 			}
 		});
 	}

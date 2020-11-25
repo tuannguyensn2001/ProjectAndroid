@@ -1,8 +1,5 @@
 package com.example.deluxe.View.Transaction;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
@@ -32,6 +32,7 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 	String moneyInput, messageInput;
 
+	ConfirmPasswordDialog confirmPasswordDialog;
 	TransferPresenter transferPresenter;
 
 	@Override
@@ -81,6 +82,8 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 				handleButton();
 			}
 		});
+
+		addTextChanged(money);
 	}
 
 	private void init() {
@@ -139,22 +142,45 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 		moneyInput = money.getText().toString();
 		messageInput = message.getText().toString();
 
-		if (!Rules.required(moneyInput))
-			setNotification(ErrorMessage.ERR300000);
-		else if (!Rules.min(moneyInput, 4))
-			setNotification(ErrorMessage.ERR300001);
-		else {
-			final ConfirmPasswordDialog confirmPasswordDialog = new ConfirmPasswordDialog(this);
-			confirmPasswordDialog.create().show();
+		if (!Rules.required(moneyInput)) {
+			money.setError(ErrorMessage.ERR300000.getValue());
+		} else if (!Rules.min(moneyInput, 4)) {
+			money.setError(ErrorMessage.ERR300001.getValue());
+		} else {
+			transferPresenter.checkBalance(Double.parseDouble(moneyInput.replaceAll("[,.]", "")));
 		}
+	}
+
+	@Override
+	public void handleDialog() {
+		confirmPasswordDialog = new ConfirmPasswordDialog(this);
 	}
 
 	@Override
 	public void handleIsUserCorrect(boolean b) {
 		if (b) {
 			User user = new User(username.getText().toString(), null, email.getText().toString());
-			transferPresenter.handleTransfer(user, Double.parseDouble(moneyInput.toString().replaceAll("[,.]", "")), messageInput);
-		} else setNotification(ErrorMessage.ERR500000);
+			transferPresenter.handleTransfer(user, Double.parseDouble(moneyInput.replaceAll("[,.]", "")), messageInput);
+		} else confirmPasswordDialog.setNotification(ErrorMessage.ERR500000);
 	}
 
+	public void addTextChanged(final EditText edittext) {
+		edittext.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				notiText.setVisibility(View.INVISIBLE);
+				edittext.setError(null);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
+	}
 }

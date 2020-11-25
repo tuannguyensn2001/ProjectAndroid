@@ -8,11 +8,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public interface WithdrawInterface {
 	interface WithdrawView extends View, View.ViewUseActionBar, View.ViewUseCheckPasswordDialog {
+		void handleDialog();
 	}
 
 	interface WithDrawPresenter extends Presenter {
 		void handleWithdraw(double money, String note);
 
-		void handleConfirmUser(String passwordInput);
+		void checkBalance(double money);
 	}
 }
