@@ -39,7 +39,7 @@ public class AuthBarFragment extends Fragment implements AuthBarInterface.AuthBa
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 
 	}
 

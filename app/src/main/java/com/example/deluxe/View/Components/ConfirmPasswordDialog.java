@@ -90,7 +90,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 
 	}
 

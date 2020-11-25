@@ -2,6 +2,7 @@ package com.example.deluxe.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +33,8 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 	ImageView backButton;
 	SearchView searchBar;
 
-	long searchWaitTime, deltaTime;
+	Handler handler;
+	Runnable runnable;
 
 	SearchUserInterface.SearchUserPresenter searchUserPresenter;
 
@@ -42,6 +44,7 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 		setContentView(R.layout.activity_search_user);
 
 		init();
+
 
 		userListView.setAdapter(adapter);
 		userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,18 +73,22 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 
 			@Override
 			public boolean onQueryTextChange(String newText) {
+
+				handler.removeCallbacks(runnable);
+				handler.postDelayed(runnable, 300);
+
 				if (newText.length() > 2) {
 					searchUserPresenter.handleInput(newText);
 				}
 //				TODO dem thoi gian
 				return false;
 			}
-
 		});
+
 	}
 
 	private void init() {
-		users = new ArrayList<User>();
+		users = new ArrayList<>();
 
 		adapter = new UserListAdapter(users);
 		adapterArr = new ArrayAdapter<>(SearchUserActivity.this, R.layout.component_user_list, users);
@@ -93,14 +100,18 @@ public class SearchUserActivity extends AppCompatActivity implements SearchUserI
 
 		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_search_action_bar_title));
 
-		searchWaitTime = System.currentTimeMillis();
-		deltaTime = 0;
+		handler = new Handler();
+		runnable = new Runnable() {
+			@Override
+			public void run() {
+			}
+		};
 
 		searchUserPresenter = new SearchUserPresenter(this);
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 
 		Intent intent = new Intent(this, view);
 

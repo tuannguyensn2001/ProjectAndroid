@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.LastMessage;
-import com.example.deluxe.Entity.Message;
-import com.example.deluxe.Entity.User;
 import com.example.deluxe.R;
 
 import java.util.ArrayList;

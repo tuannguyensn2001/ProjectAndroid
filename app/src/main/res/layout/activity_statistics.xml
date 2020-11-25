@@ -16,13 +16,51 @@
 		app:layout_constraintTop_toTopOf="parent"
 		tools:layout="@layout/fragment_action_bar" />
 
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/transaction_list"
+	<com.google.android.material.tabs.TabLayout
+		android:id="@+id/tab_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/action_bar"
+		app:tabIndicatorColor="#123456"
+		app:tabIndicatorGravity="bottom"
+		app:tabMode="fixed"
+		app:tabSelectedTextColor="#123456">
+
+		<com.google.android.material.tabs.TabItem
+			android:id="@+id/deposit_tab_item"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Nap" />
+
+		<com.google.android.material.tabs.TabItem
+			android:id="@+id/withdraw_tab_item"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Rut" />
+
+		<com.google.android.material.tabs.TabItem
+			android:id="@+id/transfer_tab_item"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Chuyen" />
+
+		<com.google.android.material.tabs.TabItem
+			android:id="@+id/use_tab_item"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Tieu" />
+
+	</com.google.android.material.tabs.TabLayout>
+
+	<androidx.viewpager2.widget.ViewPager2
+		android:id="@+id/statistics_fragment"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+		app:layout_constraintTop_toBottomOf="@+id/tab_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

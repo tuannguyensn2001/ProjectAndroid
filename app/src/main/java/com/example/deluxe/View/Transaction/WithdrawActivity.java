@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.deluxe.Enum.ErrorMessage;
@@ -20,7 +19,6 @@ import com.example.deluxe.Interface.PresenterView.Transaction.WithdrawInterface;
 import com.example.deluxe.Presenter.Transaction.WithdrawPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ConfirmPasswordDialog;
-import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.Status.WithdrawSuccessActivity;
 
 import java.text.NumberFormat;
@@ -104,7 +102,7 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 	}
@@ -129,8 +127,4 @@ public class WithdrawActivity extends AppCompatActivity implements WithdrawInter
 		} else setNotification(ErrorMessage.ERR500000);
 	}
 
-	@Override
-	public void handleBackButton() {
-		loadView(MainActivity.class);
-	}
 }

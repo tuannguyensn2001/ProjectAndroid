@@ -4,12 +4,8 @@
 	android:shape="rectangle">
 
 	<solid
-		android:color="@color/light_form" >
+		android:color="@color/light_form">
 	</solid>
-
-	<stroke
-		android:color="@color/light_mainColor" >
-	</stroke>
 
 	<padding
 		android:left="20px"

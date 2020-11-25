@@ -4,29 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.deluxe.Adapter.StatisticsCard.StatisticsCardChild;
-import com.example.deluxe.Adapter.StatisticsCard.StatisticsCardDad;
-import com.example.deluxe.Adapter.StatisticsCard.StatisticsCardRecyclerAdapter;
+import com.example.deluxe.Core.View;
 import com.example.deluxe.Entity.Transaction;
-import com.example.deluxe.Enum.TransactionType;
 import com.example.deluxe.Interface.PresenterView.History.StatisticsInterface;
-import com.example.deluxe.Presenter.History.StatisticsPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
-
-import java.util.ArrayList;
-import java.util.Date;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class StatisticsActivity extends AppCompatActivity implements StatisticsInterface.StatisticsView {
-	StatisticsInterface.StatisticsPresenter statisticsPresenter;
-
-	RecyclerView transactionRecyclerList;
-	private ArrayList<StatisticsCardDad> transactionDads;
-	private StatisticsCardRecyclerAdapter recyclerAdapter;
+	private String[] tabList = {"Nap", "Rut", "Chuyen", "Tieu"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,44 +24,24 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsI
 		setContentView(R.layout.activity_statistics);
 
 		init();
-
-		initData();
-
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		transactionRecyclerList.setLayoutManager(layoutManager);
-
-		recyclerAdapter = new StatisticsCardRecyclerAdapter(transactionDads);
-		transactionRecyclerList.setAdapter(recyclerAdapter);
-	}
-
-	private void initData() {
-		transactionDads = new ArrayList<>();
-
-		ArrayList<StatisticsCardChild> children0 = new ArrayList<>();
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.DEPOSIT, 1000000, new Date(), true, null, null)));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.WITHDRAW, 1000000, new Date(), true, null, "Chuc be ngu ngon")));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.WITHDRAW, 1000000, new Date(), false, null, "Chuc be ngu ngon")));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.USE, 1000000, new Date(), true, null, "Chuc be ngu ngon")));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.RECEIVE, 1000000, new Date(), true, "caythongotrennui@gmail.com", "Chuc be ngu ngon")));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.DEPOSIT, 1000000, new Date(), true, null, null)));
-		children0.add(new StatisticsCardChild(new Transaction(TransactionType.DEPOSIT, 1000000, new Date(), true, null, null)));
-
-		transactionDads.add(new StatisticsCardDad("Thang 1", children0));
-		transactionDads.add(new StatisticsCardDad("Thang 3", children0));
-		transactionDads.add(new StatisticsCardDad("Thang 4", children0));
-		transactionDads.add(new StatisticsCardDad("Thang 8", children0));
 	}
 
 	private void init() {
-		this.statisticsPresenter = new StatisticsPresenter(this);
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transaction_info_action_bar_title));
 
-		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.statistics_action_bar_title));
-
-		transactionRecyclerList = findViewById(R.id.transaction_list);
+		ViewPager2 statisticsPager = findViewById(R.id.statistics_fragment);
+		statisticsPager.setAdapter(new StatisticsTabAdapter(this));
+		TabLayout tabLayout = findViewById(R.id.tab_bar);
+		new TabLayoutMediator(tabLayout, statisticsPager, true, new TabLayoutMediator.TabConfigurationStrategy() {
+			@Override
+			public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+				tab.setText(tabList[position]);
+			}
+		}).attach();
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 	}
@@ -82,7 +52,11 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsI
 	}
 
 	@Override
-	public void handleBackButton() {
-		loadView(MainActivity.class);
+	public void loadView(Class<? extends View> view, Transaction transaction) {
+		Intent intent = new Intent(this, view);
+
+		intent.putExtra("Transaction", transaction);
+
+		startActivity(intent);
 	}
 }

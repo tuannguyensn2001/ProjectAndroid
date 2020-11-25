@@ -11,7 +11,8 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".View.Chat.ChatActivity"></activity>
+		<activity android:name=".View.Transaction.TransactionInformationActivity"></activity>
+		<activity android:name=".View.Chat.ChatActivity" />
 		<activity android:name=".View.Status.WithdrawSuccessActivity" />
 		<activity android:name=".View.History.LimitActivity" />
 		<activity android:name=".View.History.StatisticsActivity" />

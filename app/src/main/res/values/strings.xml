@@ -57,7 +57,7 @@
 	<string name="withdraw_success_title_success">Chuc mung ban da rut tien thanh cong</string>
 	<string name="withdraw_code_text">Mã giao dịch</string>
 	<string name="withdraw_success_qr_des">TODO</string>
-	<!-- TODO: Remove or change this placeholder text -->
+
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="confirm_password_avatar_des">TODO</string>
 
@@ -65,12 +65,15 @@
 
 	<string name="limit_action_bar_title">Han muc chi tieu</string>
 
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="statistics_card_message"><b>Noi dung:</b> %1$s</string>
+	<string name="statistics_card_dad_title1">Thang %1$d nam %2$d</string>
+	<string name="statistics_card_dad_title2">Chua lam xong</string>
+	<string name="statistics_card_message">Loi nhan: %1$s</string>
 	<string name="statistic_card_user_sender"><b>Nguoi gui:</b> %1$s</string>
 	<string name="statistic_card_user_receiver"><b>Nguoi nhan:</b> %1$s</string>
 	<string name="statistics_card_time"><b>Thoi gian giao dich:</b> %1$s</string>
 	<string name="statistic_card_status_des">TODO</string>
 	<string name="statistic_card_see_more_button">Xem them</string>
 	<string name="statistic_card_type_des">TODO</string>
+
+	<string name="transaction_info_action_bar_title">Thong tin giao dich</string>
 </resources>

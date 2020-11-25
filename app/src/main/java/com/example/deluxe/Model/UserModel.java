@@ -106,39 +106,25 @@ public class UserModel implements Model {
 		});
 	}
 
-	public void checkEmailPassword(final User user, final CheckInterface checkInterface)
-	{
+	public void checkEmailPassword(final User user, final CheckInterface checkInterface) {
 		final ArrayList<User> list = new ArrayList<>();
 
-		String email = user.getEmail();
+		final String email = user.getEmail();
 		final String password = user.getPassword();
 
-		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-				FirebaseDatabase.getInstance().getReference().child("user").orderByChild("password").equalTo(password).addValueEventListener(new ValueEventListener() {
-					@Override
-					public void onDataChange(@NonNull DataSnapshot snapshot) {
+				for (DataSnapshot item : snapshot.getChildren()) {
+					User user = item.getValue(User.class);
+					list.add(user);
+				}
 
-						for (DataSnapshot item : snapshot.getChildren()) {
-							User user1 = item.getValue(User.class);
-							list.add(user1);
-						}
+				if (list.get(0).getPassword().equals(password)) {
+					checkInterface.dataIsLoaded(true);
+				} else checkInterface.dataIsLoaded(false);
 
-						if (list.size() == 0) {
-							checkInterface.dataIsLoaded(false);
-
-						} else checkInterface.dataIsLoaded(true);
-
-
-					}
-
-					@Override
-					public void onCancelled(@NonNull DatabaseError error) {
-
-					}
-				});
 
 			}
 
@@ -147,12 +133,10 @@ public class UserModel implements Model {
 
 			}
 		});
-
 	}
 
 
-	public void uploadAvatar(Uri filePath)
-	{
+	public void uploadAvatar(Uri filePath) {
 		final String key = UUID.randomUUID().toString();
 		this.storageReference.child(key).putFile(filePath)
 				.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -162,15 +146,14 @@ public class UserModel implements Model {
 							@Override
 							public void onComplete(@NonNull Task<Uri> task) {
 								String url = task.getResult().toString();
-								updateAvatar(Auth.getInstance().user().getUid(),url);
+								updateAvatar(Auth.getInstance().user().getUid(), url);
 							}
 						});
 					}
 				});
 	}
 
-	public void updateAvatar(final String key,final  String url)
-	{
+	public void updateAvatar(final String key, final String url) {
 		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {

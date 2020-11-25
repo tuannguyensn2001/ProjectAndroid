@@ -23,7 +23,7 @@ public class ConfirmPasswordPresenter implements ConfirmPasswordInterface.Confir
 
 	@Override
 	public void handleConfirmUser(String passwordInput) {
-		new UserModel().checkEmailPassword(new User(Auth.getInstance().user().getEmail(), passwordInput, null), new CheckInterface() {
+		new UserModel().checkEmailPassword(new User(null, passwordInput, Auth.getInstance().user().getEmail()), new CheckInterface() {
 			@Override
 			public void dataIsLoaded(boolean b) {
 				confirmPasswordView.handleIsUserCorrect(b);

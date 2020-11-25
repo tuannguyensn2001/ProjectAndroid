@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.deluxe.Core.View;
 import com.example.deluxe.Interface.PresenterView.History.LimitInterface;
 import com.example.deluxe.Presenter.History.LimitPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
 
 public class LimitActivity extends AppCompatActivity implements LimitInterface.LimitView {
 	LimitInterface.LimitPresenter limitPresenter;
@@ -29,7 +29,7 @@ public class LimitActivity extends AppCompatActivity implements LimitInterface.L
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 	}
@@ -39,8 +39,4 @@ public class LimitActivity extends AppCompatActivity implements LimitInterface.L
 
 	}
 
-	@Override
-	public void handleBackButton() {
-		loadView(MainActivity.class);
-	}
 }

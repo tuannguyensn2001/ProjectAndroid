@@ -1,12 +1,11 @@
 package com.example.deluxe.Core;
 
 public interface View {
-	void loadView(Class view);
+	void loadView(Class<? extends View> view);
 
 	void setNotification(Enum e);
 
 	interface ViewUseActionBar {
-		void handleBackButton();
 	}
 
 	interface ViewUseCheckPasswordDialog {

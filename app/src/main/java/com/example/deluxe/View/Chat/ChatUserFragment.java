@@ -109,7 +109,7 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 	}
 
 	@Override

@@ -2,9 +2,10 @@ package com.example.deluxe.Entity;
 
 import com.example.deluxe.Enum.TransactionType;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Serializable {
 	private TransactionType type;
 	private long money;
 	private Date date;

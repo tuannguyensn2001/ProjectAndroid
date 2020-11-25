@@ -1,10 +1,10 @@
 package com.example.deluxe.View.Status;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Core.View;
 import com.example.deluxe.R;
@@ -42,9 +42,10 @@ public class WithdrawSuccessActivity extends AppCompatActivity implements View {
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
+		finish();
 	}
 
 	@Override

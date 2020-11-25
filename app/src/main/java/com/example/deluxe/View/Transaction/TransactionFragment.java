@@ -13,10 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.deluxe.Interface.PresenterView.Transaction.TransactionInterface;
 import com.example.deluxe.Presenter.Transaction.TransactionPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.SearchUserActivity;
-
-import java.util.Objects;
 
 public class TransactionFragment extends Fragment implements TransactionInterface.TransactionView {
 	private TransactionInterface.TransactionPresenter transactionPresenter;
@@ -59,7 +56,7 @@ public class TransactionFragment extends Fragment implements TransactionInterfac
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(getActivity(), view);
 		startActivity(intent);
 	}

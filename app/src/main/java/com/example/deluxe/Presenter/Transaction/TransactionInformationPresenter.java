@@ -1,0 +1,11 @@
+package com.example.deluxe.Presenter.Transaction;
+
+import com.example.deluxe.Interface.PresenterView.Transaction.TransactionInformationInterface;
+
+public class TransactionInformationPresenter implements TransactionInformationInterface.TransactionInformationPresenter {
+	TransactionInformationInterface.TransactionInformationView transactionInformationView;
+
+	public TransactionInformationPresenter(TransactionInformationInterface.TransactionInformationView transactionInformationView) {
+		this.transactionInformationView = transactionInformationView;
+	}
+}

@@ -15,7 +15,6 @@ import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.Transaction.DepositInterface;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
 
 public class DepositActivity extends AppCompatActivity implements DepositInterface.DepositView {
 	TextView notiText;
@@ -51,7 +50,7 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 		finish();
@@ -80,8 +79,4 @@ public class DepositActivity extends AppCompatActivity implements DepositInterfa
 		notiText.setVisibility(View.VISIBLE);
 	}
 
-	@Override
-	public void handleBackButton() {
-		loadView(MainActivity.class);
-	}
 }

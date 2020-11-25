@@ -54,9 +54,10 @@ public class DepositSuccessActivity extends AppCompatActivity implements Deposit
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
+		finish();
 	}
 
 	@Override

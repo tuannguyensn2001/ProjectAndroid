@@ -16,7 +16,6 @@ import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
 
 import java.util.ArrayList;
 
@@ -85,7 +84,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 	}
@@ -95,8 +94,4 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	}
 
-	@Override
-	public void handleBackButton() {
-		loadView(MainActivity.class);
-	}
 }

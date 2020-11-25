@@ -113,7 +113,7 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		if (view.equals(MainActivity.class)) {
 			startActivity(intent);

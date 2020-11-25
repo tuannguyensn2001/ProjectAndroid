@@ -30,7 +30,7 @@ public class ActionBarFragment extends Fragment implements ActionBarInterface.Ac
 		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				((ViewUseActionBar) Objects.requireNonNull(getActivity())).handleBackButton();
+				Objects.requireNonNull(getActivity()).onBackPressed();
 			}
 		});
 		homeButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class ActionBarFragment extends Fragment implements ActionBarInterface.Ac
 	}
 
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 
 	}
 

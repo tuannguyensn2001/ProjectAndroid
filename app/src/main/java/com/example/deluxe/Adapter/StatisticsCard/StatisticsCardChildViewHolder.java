@@ -11,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.deluxe.Entity.Transaction;
 import com.example.deluxe.Enum.TransactionType;
 import com.example.deluxe.R;
+import com.example.deluxe.View.History.StatisticsActivity;
+import com.example.deluxe.View.Transaction.TransactionInformationActivity;
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
 
 import java.text.DecimalFormat;
@@ -26,10 +28,10 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		this.view = itemView;
 	}
 
-	public void onBind(Transaction transaction) {
+	public void onBind(final Transaction transaction) {
 
 //		Lay cac thuoc tinh tu giao dich nay ra
-		TransactionType type = transaction.getType();
+		final TransactionType type = transaction.getType();
 		long money = transaction.getMoney();
 		boolean isComplete = transaction.isComplete();
 		Date date = transaction.getDate();
@@ -57,7 +59,7 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 			userEmailText.setVisibility(View.GONE);
 		if (message == null)
 			messageText.setVisibility(View.GONE);
-		if (type == TransactionType.WITHDRAW || type == TransactionType.USE)
+		if (type != TransactionType.DEPOSIT)
 			seeMoreView.setVisibility(View.VISIBLE);
 
 		if (type == TransactionType.RECEIVE || type == TransactionType.DEPOSIT)
@@ -77,9 +79,16 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		if (type == TransactionType.WITHDRAW && !isComplete)
 			moneyText.setTextColor(Color.parseColor("#D8B123"));
 		dateText.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date));
-		timeText.setText(new SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault()).format(date));
-		userEmailText.setText(userEmail);
-		messageText.setText(message);
+		timeText.setText(view.getResources().getString(R.string.statistics_card_time,
+				new SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault()).format(date)));
+
+		if (type == TransactionType.TRANSFER)
+			userEmailText.setText(view.getResources().getString(R.string.statistic_card_user_receiver, userEmail));
+		else if (type == TransactionType.RECEIVE)
+			userEmailText.setText(view.getResources().getString(R.string.statistic_card_user_sender, userEmail));
+		else userEmailText.setVisibility(View.GONE);
+
+		messageText.setText(view.getResources().getString(R.string.statistics_card_message, message));
 
 
 //		Dat su kien bam vao
@@ -97,7 +106,15 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		seeMoreView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				switch (type) {
+					case USE:
+					case WITHDRAW:
+					case TRANSFER:
+					case RECEIVE:
+						((StatisticsActivity) view.getContext()).loadView(TransactionInformationActivity.class, transaction);
+					default:
+						break;
+				}
 			}
 		});
 	}

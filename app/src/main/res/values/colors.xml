@@ -6,6 +6,6 @@
 	<color name="light_error">#ff3e3e</color>
 	<color name="light_hint">#7c7c7c</color>
 	<color name="light_mainColor">#1f72a0</color>
-
+	<color name="light_mainColorLighter">#84B2CC</color>
 
 </resources>
