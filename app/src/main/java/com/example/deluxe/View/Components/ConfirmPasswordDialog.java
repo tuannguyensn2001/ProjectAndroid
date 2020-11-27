@@ -147,7 +147,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 	@Override
 	public void handleIsUserCorrect(boolean b) {
 		if (b)
-			dialog.hide();
+			dialog.dismiss();
 		((ViewUseCheckPasswordDialog) parentActivity).handleIsUserCorrect(b);
 	}
 

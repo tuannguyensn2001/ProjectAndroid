@@ -1,10 +1,8 @@
-package com.example.deluxe.Presenter;
-
-import android.util.Log;
+package com.example.deluxe.Presenter.Components;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.UserInterface;
-import com.example.deluxe.Interface.PresenterView.SearchUserInterface;
+import com.example.deluxe.Interface.PresenterView.Components.SearchUserInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
 

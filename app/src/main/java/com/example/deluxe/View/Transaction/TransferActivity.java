@@ -44,10 +44,10 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 
 //		Lay ten nguoi dung va email
 		Intent intent = getIntent();
-		Bundle bundle = intent.getExtras();
-		if (bundle != null) {
-			username.setText(bundle.getString("Username", ""));
-			email.setText(bundle.getString("Email", ""));
+		User user = (User) intent.getSerializableExtra("User");
+		if (user != null) {
+			username.setText(user.getUser());
+			email.setText(user.getEmail());
 		}
 		money.addTextChangedListener(new TextWatcher() {
 			private String current = "";
@@ -161,7 +161,7 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 		if (b) {
 			User user = new User(username.getText().toString(), null, email.getText().toString());
 			transferPresenter.handleTransfer(user, Double.parseDouble(moneyInput.replaceAll("[,.]", "")), messageInput);
-		} else confirmPasswordDialog.setNotification(ErrorMessage.ERR500000);
+		} else confirmPasswordDialog.setNotification(ErrorMessage.ERR500003);
 	}
 
 	public void addTextChanged(final EditText edittext) {

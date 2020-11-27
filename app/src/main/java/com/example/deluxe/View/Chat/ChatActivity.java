@@ -1,19 +1,23 @@
 package com.example.deluxe.View.Chat;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.example.deluxe.Adapter.MessageAdapter;
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Entity.User;
+import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
+import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
 
@@ -24,7 +28,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	private ChatInterface.ChatPresenter chatPresenter;
 	private String emailReceiver;
 	private String emailSender;
-	private Button submitButton;
+	private TextView submitButton;
 	private EditText content;
 	private RecyclerView recyclerView;
 	private MessageAdapter messageAdapter;
@@ -39,6 +43,24 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 		this.chatPresenter.getListMessage(new Message(this.emailSender, this.emailReceiver, null));
 
+		content.setText(null);
+		this.content.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				submitButton.setEnabled(!Rules.isSpace(content.getText().toString()));
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
+
 		this.submitButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -51,11 +73,14 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	}
 
 	public void init() {
-
 		this.listMessage = new ArrayList<>();
 		this.chatPresenter = new ChatPresenter(this);
-		this.emailReceiver = getIntent().getStringExtra("emailReceiver");
-		this.emailSender = getIntent().getStringExtra("emailSender");
+
+		User user = (User) getIntent().getSerializableExtra("User");
+		if (user != null)
+			this.emailReceiver = user.getEmail();
+
+		this.emailSender = Auth.getInstance().user().getEmail();
 		this.submitButton = findViewById(R.id.send_message_button);
 		this.content = findViewById(R.id.message_input);
 

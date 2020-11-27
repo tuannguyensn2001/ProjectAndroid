@@ -51,7 +51,7 @@ public class TransferPresenter implements TransferInterface.TransferPresenter {
 			@Override
 			public void dataIsLoaded(double money_now) {
 				if (money > money_now) {
-					transferView.setNotification(ErrorMessage.ERR410000);
+					transferView.setNotification(ErrorMessage.ERR310000);
 				} else {
 					transferView.handleDialog();
 				}

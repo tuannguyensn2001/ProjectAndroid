@@ -4,30 +4,28 @@ import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.WalletModel;
-import com.example.deluxe.View.Transaction.DepositActivity;
 import com.example.deluxe.View.Auth.SignInActivity;
 
 public class MainPresenter implements MainInterface.MainPresenter {
 
-    private MainInterface.MainView mainView;
+	private MainInterface.MainView mainView;
 
-    public MainPresenter(MainInterface.MainView view)
-    {
-        this.mainView = view;
+	public MainPresenter(MainInterface.MainView view) {
+		this.mainView = view;
 
-        if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
+		if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
 
-        new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-            @Override
-            public void dataIsLoaded(double money) {
-                mainView.setMoney(money);
-            }
-        });
-    }
+		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
+			@Override
+			public void dataIsLoaded(double money) {
+				mainView.setMoney(money);
+			}
+		});
+	}
 
-    @Override
-    public void handleLogOut() {
-        Auth.getInstance().logout();
-        mainView.loadView(SignInActivity.class);
-    }
+	@Override
+	public void handleLogOut() {
+		Auth.getInstance().logout();
+		mainView.loadView(SignInActivity.class);
+	}
 }

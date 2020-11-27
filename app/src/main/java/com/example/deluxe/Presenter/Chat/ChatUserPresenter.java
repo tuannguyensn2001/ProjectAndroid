@@ -1,11 +1,11 @@
 package com.example.deluxe.Presenter.Chat;
 
 import com.example.deluxe.Entity.LastMessage;
+import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.MessageInterface;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatUserInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.MessageModel;
-import com.example.deluxe.View.Chat.ChatActivity;
 
 import java.util.ArrayList;
 
@@ -22,6 +22,7 @@ public class ChatUserPresenter implements ChatUserInterface.ChatUserPresenter {
 		new MessageModel().getUserMessage(Auth.getInstance().user().getEmail(), new MessageInterface() {
 			@Override
 			public void getListMessage(ArrayList<LastMessage> list) {
+				chatUserInterfaceView.handleIsHaveMessage(list.size() != 0);
 				chatUserInterfaceView.setAdapter(list);
 			}
 		});
@@ -32,7 +33,7 @@ public class ChatUserPresenter implements ChatUserInterface.ChatUserPresenter {
 		new MessageModel().getItemMessage(Auth.getInstance().user().getEmail(), position, new MessageInterface.MessageItemInterface() {
 			@Override
 			public void getItem(LastMessage message) {
-				chatUserInterfaceView.loadView(message.getEmail(), ChatActivity.class);
+				chatUserInterfaceView.handleOnItemClick(new User(null, null, message.getEmail()));
 			}
 		});
 	}

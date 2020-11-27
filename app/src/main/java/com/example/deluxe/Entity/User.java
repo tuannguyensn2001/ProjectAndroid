@@ -1,6 +1,8 @@
 package com.example.deluxe.Entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
 	String username, password;
 	String email;

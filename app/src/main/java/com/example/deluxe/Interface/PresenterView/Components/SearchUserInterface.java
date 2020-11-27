@@ -1,4 +1,4 @@
-package com.example.deluxe.Interface.PresenterView;
+package com.example.deluxe.Interface.PresenterView.Components;
 
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public interface SearchUserInterface {
 
-	interface SearchUserView extends View {
-		void setList(ArrayList<User> users);
+	interface SearchUserView{
+		void setList(ArrayList<User> list);
 	}
 
 	interface SearchUserPresenter extends Presenter {

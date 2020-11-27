@@ -1,7 +1,5 @@
 package com.example.deluxe.Model;
 
-import android.icu.text.SimpleDateFormat;
-
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.Deposit;
@@ -17,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -33,14 +32,12 @@ public class HistoryModel {
 	public Date convertDate(String date) throws ParseException {
 		Date dateConvert = null;
 		try {
-			SimpleDateFormat formatter = new SimpleDateFormat("E, MMM dd HH:mm:ss yyy");
+			SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss yyy");
 			dateConvert = formatter.parse(date);
 		} catch (Exception ignored) {
 
-		} finally {
-			return dateConvert;
 		}
-
+		return dateConvert;
 	}
 
 	public boolean contains(ArrayList<Date> list, Date date) {

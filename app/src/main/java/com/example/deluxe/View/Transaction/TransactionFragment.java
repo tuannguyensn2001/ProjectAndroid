@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.example.deluxe.Interface.PresenterView.Transaction.TransactionInterface;
 import com.example.deluxe.Presenter.Transaction.TransactionPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.SearchUserActivity;
 
 public class TransactionFragment extends Fragment implements TransactionInterface.TransactionView {
 	private TransactionInterface.TransactionPresenter transactionPresenter;
@@ -34,7 +33,7 @@ public class TransactionFragment extends Fragment implements TransactionInterfac
 		this.transferButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				loadView(SearchUserActivity.class);
+				loadView(TransferSearchActivity.class);
 			}
 		});
 

@@ -3,7 +3,6 @@ package com.example.deluxe.Interface.PresenterView.Chat;
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
 import com.example.deluxe.Entity.LastMessage;
-import com.example.deluxe.Interface.Model.MessageInterface;
 
 import java.util.ArrayList;
 
@@ -15,11 +14,10 @@ public interface ChatUserInterface {
 		void getItem(int position);
 	}
 
-	interface ChatUserView extends View {
+	interface ChatUserView extends View, View.ViewUseSearchBar {
 		void setAdapter(ArrayList<LastMessage> list);
 
-		void loadView(String email, Class view);
-
+		void handleIsHaveMessage(boolean isHaveMessage);
 	}
 
 }

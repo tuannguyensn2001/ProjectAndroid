@@ -50,15 +50,19 @@
 		app:layout_constraintEnd_toStartOf="@id/send_message_button"
 		app:layout_constraintStart_toStartOf="@+id/list_message" />
 
-	<Button
+	<TextView
 		android:id="@+id/send_message_button"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="80dp"
+		android:layout_height="0dp"
 		android:layout_alignParentEnd="true"
 		android:layout_alignParentBottom="true"
 		android:layout_marginStart="8dp"
 		android:background="@drawable/field_corner"
+		android:enabled="false"
+		android:gravity="center"
 		android:text="Gui"
+		android:textAllCaps="true"
+		android:textStyle="bold"
 		android:visibility="visible"
 		app:layout_constraintBottom_toBottomOf="@+id/message_input"
 		app:layout_constraintEnd_toEndOf="@+id/list_message"

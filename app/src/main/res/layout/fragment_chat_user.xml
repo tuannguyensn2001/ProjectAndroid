@@ -5,13 +5,38 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
+	<fragment
+		android:id="@+id/search_view"
+		android:name="com.example.deluxe.View.Components.SearchUserFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/component_search_user" />
+
+	<include
+		android:id="@+id/include"
+		layout="@layout/layout_search_user_placeholder"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:visibility="visible"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/chat_user_list"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
+		android:visibility="visible"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/search_view"
 		tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
