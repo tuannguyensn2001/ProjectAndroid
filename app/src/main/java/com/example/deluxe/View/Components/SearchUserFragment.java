@@ -17,21 +17,15 @@ import com.example.deluxe.R;
 import java.util.ArrayList;
 
 public class SearchUserFragment extends Fragment implements SearchUserInterface.SearchUserView {
-	SearchView searchBar;
-
-	Handler handler;
-	Runnable runnable;
-
-	com.example.deluxe.Core.View.ViewUseSearchBar parentContext;
-
-	SearchUserInterface.SearchUserPresenter searchUserPresenter;
-
-
 	// TODO: Rename parameter arguments, choose names that match
 	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
-
+	SearchView searchBar;
+	Handler handler;
+	Runnable runnable;
+	com.example.deluxe.Core.View.ViewUseSearchBar parentContext;
+	SearchUserInterface.SearchUserPresenter searchUserPresenter;
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;

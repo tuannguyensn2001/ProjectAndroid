@@ -2,8 +2,6 @@ package com.example.deluxe.Entity;
 
 import android.widget.FrameLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.deluxe.Core.View;
 
 public class StandardCard {

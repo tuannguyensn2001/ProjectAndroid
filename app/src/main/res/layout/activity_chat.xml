@@ -5,6 +5,20 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
+	<ImageView
+		android:id="@+id/image_background"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"
+		android:src="@drawable/ha_long"
+		android:translationZ="-1dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ha_long"
+		tools:srcCompat="@drawable/ha_long" />
+
 	<fragment
 		android:id="@+id/action_bar"
 		android:name="com.example.deluxe.View.Components.ActionBarFragment"
@@ -13,7 +27,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		tools:layout="@layout/fragment_action_bar" />
+		tools:layout="@layout/fragment_message_action_bar" />
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/list_message"
@@ -33,7 +47,6 @@
 
 	<EditText
 		android:id="@+id/message_input"
-		style="@style/Field"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_alignParentStart="true"
@@ -41,10 +54,12 @@
 		android:layout_alignParentBottom="true"
 		android:layout_marginBottom="8dp"
 		android:autofillHints=""
-		android:ems="10"
+		android:background="@drawable/message_field"
 		android:hint="Nhập tin nhắn"
 		android:inputType="textMultiLine"
 		android:maxLines="4"
+		android:padding="12dp"
+		android:textColor="@color/light_background"
 		android:visibility="visible"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toStartOf="@id/send_message_button"
@@ -57,7 +72,7 @@
 		android:layout_alignParentEnd="true"
 		android:layout_alignParentBottom="true"
 		android:layout_marginStart="8dp"
-		android:background="@drawable/field_corner"
+		android:background="@drawable/message_field"
 		android:enabled="false"
 		android:gravity="center"
 		android:text="Gui"

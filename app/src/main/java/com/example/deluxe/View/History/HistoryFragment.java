@@ -22,12 +22,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class HistoryFragment extends Fragment implements HistoryInterface.HistoryView {
-	private HistoryInterface.HistoryPresenter historyPresenter;
-
 	RecyclerView cardList;
 	ArrayList<StandardCardDad> cardDads;
 	StandardCardRecyclerAdapter recyclerAdapter;
-
+	private HistoryInterface.HistoryPresenter historyPresenter;
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState) {
 

@@ -6,6 +6,17 @@ import android.os.Parcelable;
 import com.example.deluxe.Entity.Transaction;
 
 public class StatisticsCardChild implements Parcelable {
+	public static final Creator<StatisticsCardChild> CREATOR = new Creator<StatisticsCardChild>() {
+		@Override
+		public StatisticsCardChild createFromParcel(Parcel in) {
+			return new StatisticsCardChild(in);
+		}
+
+		@Override
+		public StatisticsCardChild[] newArray(int size) {
+			return new StatisticsCardChild[size];
+		}
+	};
 	private Transaction transaction;
 
 	protected StatisticsCardChild(Parcel in) {
@@ -22,18 +33,6 @@ public class StatisticsCardChild implements Parcelable {
 	public void setTransaction(Transaction transaction) {
 		this.transaction = transaction;
 	}
-
-	public static final Creator<StatisticsCardChild> CREATOR = new Creator<StatisticsCardChild>() {
-		@Override
-		public StatisticsCardChild createFromParcel(Parcel in) {
-			return new StatisticsCardChild(in);
-		}
-
-		@Override
-		public StatisticsCardChild[] newArray(int size) {
-			return new StatisticsCardChild[size];
-		}
-	};
 
 	@Override
 	public int describeContents() {

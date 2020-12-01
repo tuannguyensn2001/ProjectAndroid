@@ -21,8 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
-import com.example.deluxe.Entity.Transfer;
-
 public class TransferModel {
 
 

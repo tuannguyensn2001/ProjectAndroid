@@ -8,13 +8,11 @@ public class DepositModel {
 
 	private DatabaseReference ref;
 
-	public DepositModel()
-	{
+	public DepositModel() {
 		this.ref = FirebaseDatabase.getInstance().getReference().child("deposit");
 	}
 
-	public void create(Deposit deposit)
-	{
+	public void create(Deposit deposit) {
 		String key = this.ref.push().getKey();
 		assert key != null;
 		this.ref.child(key).setValue(deposit);

@@ -30,6 +30,20 @@ import java.util.ArrayList;
  */
 public class ChatUserFragment extends Fragment implements ChatUserInterface.ChatUserView, ChatUserAdapter.OnUserListener {
 
+	/**
+	 * Day la phan khai bao cac loai bien
+	 */
+	ArrayList<User> users;
+	SearchView searchBar;
+	UserListAdapter userSearchAdapter;
+	RecyclerView userSearchListView;
+	ConstraintLayout notYetPlaceholder, noResultPlaceholder;
+	ConstraintLayout searchUserPlaceholder;
+	RecyclerView userMessageRecyclerView;
+	ChatUserInterface.ChatUserPresenter chatUserInterfacePresenter;
+	private boolean isSearching;
+	private boolean isHaveMessage;
+
 	public ChatUserFragment() {
 	}
 
@@ -44,23 +58,6 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-
-	/**
-	 * Day la phan khai bao cac loai bien
-	 */
-	ArrayList<User> users;
-
-	SearchView searchBar;
-
-	UserListAdapter userSearchAdapter;
-	RecyclerView userSearchListView;
-	ConstraintLayout notYetPlaceholder, noResultPlaceholder;
-	ConstraintLayout searchUserPlaceholder;
-	RecyclerView userMessageRecyclerView;
-
-	private boolean isSearching;
-	private boolean isHaveMessage;
-	ChatUserInterface.ChatUserPresenter chatUserInterfacePresenter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

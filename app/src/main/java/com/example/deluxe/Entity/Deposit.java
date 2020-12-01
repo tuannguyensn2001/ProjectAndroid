@@ -8,8 +8,7 @@ public class Deposit {
 	private String created_at;
 	private String updated_at;
 
-	public Deposit()
-	{
+	public Deposit() {
 
 	}
 

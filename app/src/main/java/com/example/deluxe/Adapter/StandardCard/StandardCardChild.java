@@ -6,23 +6,6 @@ import android.os.Parcelable;
 import com.example.deluxe.Entity.StandardCard;
 
 public class StandardCardChild implements Parcelable {
-	private StandardCard standardCard;
-
-	public StandardCard getStandardCard() {
-		return standardCard;
-	}
-
-	public void setStandardCard(StandardCard standardCard) {
-		this.standardCard = standardCard;
-	}
-
-	public StandardCardChild(StandardCard standardCard) {
-		this.standardCard = standardCard;
-	}
-
-	protected StandardCardChild(Parcel in) {
-	}
-
 	public static final Creator<StandardCardChild> CREATOR = new Creator<StandardCardChild>() {
 		@Override
 		public StandardCardChild createFromParcel(Parcel in) {
@@ -34,6 +17,22 @@ public class StandardCardChild implements Parcelable {
 			return new StandardCardChild[size];
 		}
 	};
+	private StandardCard standardCard;
+
+	public StandardCardChild(StandardCard standardCard) {
+		this.standardCard = standardCard;
+	}
+
+	protected StandardCardChild(Parcel in) {
+	}
+
+	public StandardCard getStandardCard() {
+		return standardCard;
+	}
+
+	public void setStandardCard(StandardCard standardCard) {
+		this.standardCard = standardCard;
+	}
 
 	@Override
 	public int describeContents() {

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="50dp"
+	android:background="#111172CD">
+
+	<ImageView
+		android:id="@+id/back_button"
+		android:layout_width="0dp"
+		android:layout_height="50dp"
+		android:clickable="true"
+		android:contentDescription="@string/action_bar_back_button"
+		android:scaleX="0.5"
+		android:scaleY="0.5"
+		android:src="@drawable/abc_vector_test"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintEnd_toStartOf="@+id/profile_image"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintHorizontal_chainStyle="spread_inside"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<ImageView
+		android:id="@+id/profile_image"
+		android:layout_width="0dp"
+		android:layout_height="50dp"
+		android:clickable="true"
+		android:contentDescription="@string/action_bar_back_button"
+		android:scaleType="fitCenter"
+		android:scaleX="0.75"
+		android:scaleY="0.75"
+		android:src="@drawable/field_corner"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintEnd_toStartOf="@+id/action_bar_title"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintHorizontal_chainStyle="spread_inside"
+		app:layout_constraintStart_toEndOf="@id/back_button"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/action_bar_title"
+		android:layout_width="0dp"
+		android:layout_height="25dp"
+		android:gravity="bottom|start"
+		android:maxLines="1"
+		android:paddingHorizontal="8dp"
+		android:text="Giau thay me"
+		android:textColor="@color/light_background"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toStartOf="@+id/info_button"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/profile_image"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/action_bar_subtitle"
+		android:layout_width="0dp"
+		android:layout_height="25dp"
+		android:gravity="top|start"
+		android:maxLines="1"
+		android:paddingHorizontal="8dp"
+		android:text="daigiachau@gmail.com"
+		android:textColor="@color/light_background"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/info_button"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/profile_image"
+		app:layout_constraintTop_toBottomOf="@+id/action_bar_title" />
+
+	<ImageView
+		android:id="@+id/info_button"
+		android:layout_width="0dp"
+		android:layout_height="50dp"
+		android:clickable="true"
+		android:contentDescription="@string/action_bar_back_button"
+		android:scaleX="0.5"
+		android:scaleY="0.5"
+		android:src="@drawable/field_corner"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/action_bar_title"
+		app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

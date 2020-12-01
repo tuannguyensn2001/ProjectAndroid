@@ -4,15 +4,13 @@ public class Message {
 	private String emailSender;
 	private String emailReceiver;
 	private String content;
-	private String created_at,updated_at;
+	private String created_at, updated_at;
 
-	public Message()
-	{
+	public Message() {
 
 	}
 
-	public Message(String sender,String emailReceiver, String content)
-	{
+	public Message(String sender, String emailReceiver, String content) {
 		this.emailReceiver = emailReceiver;
 		this.emailSender = sender;
 		this.content = content;

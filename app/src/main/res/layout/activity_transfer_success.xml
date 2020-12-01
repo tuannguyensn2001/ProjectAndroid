@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
@@ -11,21 +9,21 @@
 		android:layout_width="120dp"
 		android:layout_height="120dp"
 		android:layout_marginTop="120dp"
+		android:background="@drawable/button_corner"
+		android:contentDescription="@string/transfer_success_profile_picture"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		android:background="@drawable/button_corner"
-		android:contentDescription="@string/transfer_success_profile_picture" />
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
 		android:id="@+id/title_success"
 		android:layout_width="300dp"
 		android:layout_height="50dp"
 		android:layout_marginTop="30dp"
+		android:fontFamily="@font/segoeui"
+		android:gravity="center"
 		android:text="@string/transfer_success_title_success"
 		android:textColor="@color/light_title"
-		android:gravity="center"
-		android:fontFamily="@font/segoeui"
 		android:textSize="20sp"
 		app:layout_constraintEnd_toEndOf="@+id/profile_picture"
 		app:layout_constraintStart_toStartOf="@+id/profile_picture"
@@ -33,9 +31,9 @@
 
 	<TextView
 		android:id="@+id/username"
+		style="@style/Title"
 		android:layout_width="300dp"
 		android:layout_height="wrap_content"
-		style="@style/Title"
 		android:textSize="23sp"
 		app:layout_constraintEnd_toEndOf="@+id/title_success"
 		app:layout_constraintStart_toStartOf="@+id/title_success"
@@ -47,8 +45,8 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="30dp"
 		android:ems="10"
-		android:textColor="@color/light_title"
 		android:gravity="center"
+		android:textColor="@color/light_title"
 		android:textSize="25sp"
 		app:layout_constraintEnd_toEndOf="@+id/username"
 		app:layout_constraintStart_toStartOf="@+id/username"
@@ -59,10 +57,10 @@
 		android:layout_width="300dp"
 		android:layout_height="40dp"
 		android:layout_marginTop="20dp"
-		android:textColor="@color/light_hint"
-		android:textStyle="normal"
-		android:textSize="15sp"
 		android:gravity="center"
+		android:textColor="@color/light_hint"
+		android:textSize="15sp"
+		android:textStyle="normal"
 		app:layout_constraintEnd_toEndOf="@+id/money"
 		app:layout_constraintHorizontal_bias="0.492"
 		app:layout_constraintStart_toStartOf="@+id/money"

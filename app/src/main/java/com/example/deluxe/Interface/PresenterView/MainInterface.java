@@ -8,7 +8,7 @@ public interface MainInterface {
 		void handleLogOut();
 	}
 
-	interface MainView extends View{
+	interface MainView extends View {
 		void setMoney(double money);
 	}
 }

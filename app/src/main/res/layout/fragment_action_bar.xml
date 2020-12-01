@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="50dp"
 	android:background="@color/light_mainColor">
 
 	<ImageView
 		android:id="@+id/back_button"
-		android:layout_width="50dp"
+		android:layout_width="0dp"
 		android:layout_height="50dp"
 		android:clickable="true"
 		android:contentDescription="@string/action_bar_back_button"
 		android:scaleX="0.5"
 		android:scaleY="0.5"
 		android:src="@drawable/abc_vector_test"
+		app:layout_constraintDimensionRatio="1:1"
 		app:layout_constraintEnd_toStartOf="@+id/action_bar_title"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -35,13 +36,14 @@
 
 	<ImageView
 		android:id="@+id/home_button"
-		android:layout_width="50dp"
+		android:layout_width="0dp"
 		android:layout_height="50dp"
 		android:clickable="true"
 		android:contentDescription="@string/action_bar_back_button"
 		android:scaleX="0.5"
 		android:scaleY="0.5"
 		android:src="@drawable/field_corner"
+		app:layout_constraintDimensionRatio="1:1"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/action_bar_title"

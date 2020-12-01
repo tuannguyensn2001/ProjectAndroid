@@ -9,13 +9,11 @@ public interface MessageInterface {
 
 	void getListMessage(ArrayList<LastMessage> list);
 
-	public interface MessageItemInterface
-	{
+	public interface MessageItemInterface {
 		void getItem(LastMessage message);
 	}
 
-	public interface MessageListInterface
-	{
+	public interface MessageListInterface {
 		void getList(ArrayList<Message> list);
 	}
 }

@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface UserInterface {
 
-    void dataIsLoaded(ArrayList<User> list);
+	void dataIsLoaded(ArrayList<User> list);
 }

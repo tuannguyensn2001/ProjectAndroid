@@ -46,6 +46,10 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 		return this.listMessage.size();
 	}
 
+	public interface OnUserListener {
+		void onUserClick(int position);
+	}
+
 	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 		TextView content;
 		TextView email;
@@ -64,9 +68,5 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 		public void onClick(View v) {
 			onUserListener.onUserClick(getAdapterPosition());
 		}
-	}
-
-	public interface OnUserListener {
-		void onUserClick(int position);
 	}
 }

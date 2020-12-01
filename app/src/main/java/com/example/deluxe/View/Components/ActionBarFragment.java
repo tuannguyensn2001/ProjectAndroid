@@ -39,6 +39,8 @@ public class ActionBarFragment extends Fragment implements ActionBarInterface.Ac
 				((com.example.deluxe.Core.View) Objects.requireNonNull(getActivity())).loadView(MainActivity.class);
 			}
 		});
+		v.setVisibility(View.GONE);
+		v.setVisibility(View.VISIBLE);
 		return v;
 	}
 

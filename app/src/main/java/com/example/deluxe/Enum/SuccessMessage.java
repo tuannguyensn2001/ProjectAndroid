@@ -7,6 +7,7 @@ public enum SuccessMessage {
 	SUC000005("Mat khau chinh xac!");
 
 	private final String value;
+
 	SuccessMessage(String s) {
 		this.value = s;
 	}

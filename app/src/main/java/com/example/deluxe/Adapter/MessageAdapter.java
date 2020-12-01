@@ -52,6 +52,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 		return this.listMessage.size();
 	}
 
+	@Override
+	public int getItemViewType(int position) {
+		if (listMessage.get(position).getEmailSender().equals(Auth.getInstance().user().getEmail()))
+			return 1;
+		return 0;
+	}
+
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		TextView message;
 
@@ -60,12 +67,5 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			message = (TextView) itemView.findViewById(R.id.message);
 
 		}
-	}
-
-	@Override
-	public int getItemViewType(int position) {
-		if (listMessage.get(position).getEmailSender().equals(Auth.getInstance().user().getEmail()))
-			return 1;
-		return 0;
 	}
 }

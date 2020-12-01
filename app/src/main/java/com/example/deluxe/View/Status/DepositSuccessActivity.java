@@ -1,17 +1,17 @@
 package com.example.deluxe.View.Status;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.deluxe.Interface.PresenterView.Status.DepositSuccessInterface;
 import com.example.deluxe.Presenter.Status.DepositSuccessPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Transaction.DepositActivity;
 import com.example.deluxe.View.MainActivity;
+import com.example.deluxe.View.Transaction.DepositActivity;
 
 import java.text.DecimalFormat;
 

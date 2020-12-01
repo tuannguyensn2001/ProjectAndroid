@@ -6,8 +6,8 @@ import com.example.deluxe.Interface.Model.AuthLogin;
 import com.example.deluxe.Interface.PresenterView.Auth.SignInInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
-import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.Auth.SignUpActivity;
+import com.example.deluxe.View.MainActivity;
 
 public class SignInPresenter implements SignInInterface.SignInPresenter {
 	SignInInterface.SignInView loginView;

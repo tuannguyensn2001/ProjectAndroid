@@ -4,8 +4,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
-
 import com.example.deluxe.Entity.StandardCard;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;

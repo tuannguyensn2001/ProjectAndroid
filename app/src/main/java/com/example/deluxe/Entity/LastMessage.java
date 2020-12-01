@@ -5,8 +5,7 @@ public class LastMessage {
 	private String content;
 	private String image_url;
 
-	public LastMessage(String email, String content, String image_url)
-	{
+	public LastMessage(String email, String content, String image_url) {
 		this.email = email;
 		this.content = content;
 		this.image_url = image_url;
@@ -35,7 +34,6 @@ public class LastMessage {
 	public void setImage_url(String image_url) {
 		this.image_url = image_url;
 	}
-
 
 
 }

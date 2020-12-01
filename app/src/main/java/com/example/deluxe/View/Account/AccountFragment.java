@@ -1,6 +1,5 @@
 package com.example.deluxe.View.Account;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,26 +14,19 @@ import androidx.fragment.app.Fragment;
 import com.example.deluxe.Interface.PresenterView.Account.AccountInterface;
 import com.example.deluxe.Presenter.Account.AccountPresenter;
 import com.example.deluxe.R;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
 public class AccountFragment extends Fragment implements AccountInterface.AccountView {
-	private ImageView avatar;
-	private Uri filePath;
 	private final int PICK_IMAGE_REQUEST = 21;
-
-	private AccountInterface.AccountPresenter accountPresenter;
-
 	FirebaseStorage firebaseStorage;
 	StorageReference storageReference;
+	private ImageView avatar;
+	private Uri filePath;
+	private AccountInterface.AccountPresenter accountPresenter;
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_account, container, false);
