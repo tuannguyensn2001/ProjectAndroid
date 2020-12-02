@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.UserListAdapter;
@@ -52,8 +51,6 @@ public class TransferSearchActivity extends AppCompatActivity implements Transfe
 		notYetPlaceholder = findViewById(R.id.search_not_yet);
 		noResultPlaceholder = findViewById(R.id.search_no_result);
 
-		RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		userListView.setLayoutManager(mLayoutManager);
 		userListView.setItemAnimator(new DefaultItemAnimator());
 
 		searchBar = findViewById(R.id.search_bar);

@@ -10,7 +10,6 @@ import android.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.ChatUserAdapter;
@@ -82,8 +81,6 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 		this.notYetPlaceholder = view.findViewById(R.id.search_not_yet);
 		this.noResultPlaceholder = view.findViewById(R.id.search_no_result);
 
-		RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-		this.userSearchListView.setLayoutManager(mLayoutManager);
 		this.userSearchListView.setItemAnimator(new DefaultItemAnimator());
 
 		this.searchBar = view.findViewById(R.id.search_bar);
@@ -92,8 +89,6 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 //		Phan gan day
 		this.userMessageRecyclerView = view.findViewById(R.id.chat_user_list);
 		this.userMessageRecyclerView.setHasFixedSize(false);
-		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-		this.userMessageRecyclerView.setLayoutManager(layoutManager);
 
 		this.chatUserInterfacePresenter.showData();
 	}
