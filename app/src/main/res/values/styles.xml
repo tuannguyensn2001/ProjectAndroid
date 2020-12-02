@@ -4,6 +4,12 @@
 		<item name="colorPrimary">@color/light_mainColor</item>
 		<item name="colorPrimaryDark">@color/light_mainColor</item>
 		<item name="colorAccent">@color/light_mainColor</item>
+
+		<item name="android:windowTranslucentStatus">true</item>
+		<!--		<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+		<!--		<item name="android:statusBarColor">@android:color/transparent</item>-->
+		<!--		<item name="android:windowTranslucentNavigation">true</item>-->
+		<!--		<item name="windowActionModeOverlay">true</item>-->
 	</style>
 
 	<style name="SubmitButton" parent="Widget.AppCompat.Button">

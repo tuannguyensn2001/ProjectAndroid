@@ -106,6 +106,24 @@ public class UserModel implements Model {
 		});
 	}
 
+	public void getInfoEmail(final String email, final UserDetailsInterface userDetailsInterface) {
+		FirebaseDatabase.getInstance().getReference().child("user").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+				for (DataSnapshot item : snapshot.getChildren()) {
+					User user = item.getValue(User.class);
+					userDetailsInterface.dataIsLoaded(user);
+				}
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
+
 	public void checkEmailPassword(final User user, final CheckInterface checkInterface) {
 		final ArrayList<User> list = new ArrayList<>();
 

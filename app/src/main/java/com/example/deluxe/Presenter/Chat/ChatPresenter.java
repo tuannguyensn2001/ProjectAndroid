@@ -1,9 +1,12 @@
 package com.example.deluxe.Presenter.Chat;
 
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.MessageInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.MessageModel;
+import com.example.deluxe.Model.UserModel;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +35,16 @@ public class ChatPresenter implements ChatInterface.ChatPresenter {
 			@Override
 			public void getList(ArrayList<Message> list) {
 				chatView.setAdapter(list);
+			}
+		});
+	}
+
+	@Override
+	public void getReceiverInformation(String emailReceiver) {
+		new UserModel().getInfoEmail(emailReceiver, new UserDetailsInterface() {
+			@Override
+			public void dataIsLoaded(User user) {
+				chatView.setReceiverInformation(user);
 			}
 		});
 	}

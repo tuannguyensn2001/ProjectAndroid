@@ -173,6 +173,7 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 				noResultPlaceholder.setVisibility(View.VISIBLE);
 				userSearchListView.setVisibility(View.INVISIBLE);
 			} else {
+				this.users.clear();
 				if (isHaveMessage) {
 					userMessageRecyclerView.setVisibility(View.VISIBLE);
 					searchUserPlaceholder.setVisibility(View.GONE);
@@ -189,15 +190,4 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 		this.isSearching = isAlreadySearch;
 	}
 
-	void deCmnBug() {
-//		View.VISIBLE; 0
-//			View.INVISIBLE; 4
-//			View.GONE; 8
-
-		int a = userMessageRecyclerView.getVisibility();
-		int b = searchUserPlaceholder.getVisibility();
-		int c = notYetPlaceholder.getVisibility();
-		int d = noResultPlaceholder.getVisibility();
-		int e = userSearchListView.getVisibility();
-	}
 }

@@ -1,20 +1,26 @@
 package com.example.deluxe.View.Chat;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.MessageAdapter;
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.Auth;
@@ -26,22 +32,33 @@ import java.util.ArrayList;
 public class ChatActivity extends AppCompatActivity implements ChatInterface.ChatView {
 
 	private ChatInterface.ChatPresenter chatPresenter;
+	private boolean isCanSendMessage;
+
+
 	private String emailReceiver;
 	private String emailSender;
-	private TextView submitButton;
+	private ImageView sendMessageButton, sendTransactionButton;
 	private EditText content;
 	private RecyclerView recyclerView;
-	private MessageAdapter messageAdapter;
-	private ArrayList<Message> listMessage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
 
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+		//make fully Android Transparent Status bar
+		setWindowFlag(this);
+		getWindow().setStatusBarColor(Color.TRANSPARENT);
+
 		this.init();
 
 		this.chatPresenter.getListMessage(new Message(this.emailSender, this.emailReceiver, null));
+
+		this.initBehaviour();
+	}
+
+	private void initBehaviour() {
 
 		content.setText(null);
 		this.content.addTextChangedListener(new TextWatcher() {
@@ -52,7 +69,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				submitButton.setEnabled(!Rules.isSpace(content.getText().toString()));
+				setCanSendMessage(!Rules.isSpace(content.getText().toString()));
 			}
 
 			@Override
@@ -61,50 +78,71 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 			}
 		});
 
-		this.submitButton.setOnClickListener(new View.OnClickListener() {
+		this.sendMessageButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Message message = new Message(emailSender, emailReceiver, content.getText().toString());
+				Message message = new Message(emailSender, emailReceiver, ConvertData.normalizeString(content.getText().toString()));
 
 				chatPresenter.handleInputMessage(message);
 				content.setText(null);
 			}
 		});
-	}
 
-	public void init() {
-		this.listMessage = new ArrayList<>();
-		this.chatPresenter = new ChatPresenter(this);
-
-		User user = (User) getIntent().getSerializableExtra("User");
-		if (user != null)
-			this.emailReceiver = user.getEmail();
-
-		this.emailSender = Auth.getInstance().user().getEmail();
-		this.submitButton = findViewById(R.id.send_message_button);
-		this.content = findViewById(R.id.message_input);
-
-		((TextView) findViewById(R.id.action_bar_title)).setText(this.emailReceiver);
-		findViewById(R.id.action_bar_title).setClickable(true);
-		findViewById(R.id.action_bar_title).setOnClickListener(new View.OnClickListener() {
+		this.sendTransactionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
 			}
 		});
 
-		this.recyclerView = findViewById(R.id.list_message);
-		this.recyclerView.setHasFixedSize(false);
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		layoutManager.setStackFromEnd(true);
-		this.recyclerView.setLayoutManager(layoutManager);
+		setCanSendMessage(false);
+	}
 
+	private void setWindowFlag(Activity activity) {
+		Window win = activity.getWindow();
+		WindowManager.LayoutParams winParams = win.getAttributes();
+		winParams.flags &= ~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+		win.setAttributes(winParams);
+	}
+
+	public void init() {
+		this.chatPresenter = new ChatPresenter(this);
+
+		User user = (User) getIntent().getSerializableExtra("User");
+		if (user != null) {
+			this.emailReceiver = user.getEmail();
+			this.chatPresenter.getReceiverInformation(emailReceiver);
+		}
+
+		this.emailSender = Auth.getInstance().user().getEmail();
+		this.sendMessageButton = findViewById(R.id.send_message_button);
+		this.sendTransactionButton = findViewById(R.id.send_transaction_button);
+		this.content = findViewById(R.id.message_input);
+
+		this.recyclerView = findViewById(R.id.list_message);
+		this.recyclerView.setHasFixedSize(true);
+		this.recyclerView.setItemAnimator(new DefaultItemAnimator());
+	}
+
+	public void setCanSendMessage(boolean canSendMessage) {
+		this.isCanSendMessage = canSendMessage;
+
+		this.sendMessageButton.setEnabled(canSendMessage);
+		this.sendTransactionButton.setEnabled(!isCanSendMessage);
+
+		if (isCanSendMessage) {
+			this.sendTransactionButton.setVisibility(View.INVISIBLE);
+			this.sendMessageButton.setVisibility(View.VISIBLE);
+		} else {
+			this.sendMessageButton.setVisibility(View.INVISIBLE);
+			this.sendTransactionButton.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
 	public void setAdapter(ArrayList<Message> list) {
+		MessageAdapter messageAdapter = new MessageAdapter(list, getBaseContext());
 
-		this.messageAdapter = new MessageAdapter(list, getApplicationContext());
 		this.recyclerView.setAdapter(messageAdapter);
 	}
 
@@ -119,4 +157,9 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	}
 
+	@Override
+	public void setReceiverInformation(User user) {
+		((TextView) findViewById(R.id.action_bar_title)).setText(user.getUser());
+		((TextView) findViewById(R.id.action_bar_subtitle)).setText(user.getEmail());
+	}
 }

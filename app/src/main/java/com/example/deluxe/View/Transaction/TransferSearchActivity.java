@@ -2,6 +2,7 @@ package com.example.deluxe.View.Transaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -73,6 +74,7 @@ public class TransferSearchActivity extends AppCompatActivity implements Transfe
 				this.userListView.setVisibility(android.view.View.VISIBLE);
 			}
 		}
+		Log.e("Cc", this.users.size() + ", " + users.size());
 
 		this.users.clear();
 		this.users = users;
@@ -96,6 +98,7 @@ public class TransferSearchActivity extends AppCompatActivity implements Transfe
 				userListView.setVisibility(android.view.View.INVISIBLE);
 				noResultPlaceholder.setVisibility(android.view.View.VISIBLE);
 			} else {
+				users.clear();
 				userListView.setVisibility(android.view.View.GONE);
 				noResultPlaceholder.setVisibility(android.view.View.GONE);
 				notYetPlaceholder.setVisibility(android.view.View.VISIBLE);

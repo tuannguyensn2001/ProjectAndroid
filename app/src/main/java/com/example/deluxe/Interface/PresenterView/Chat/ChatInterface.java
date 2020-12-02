@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface ChatInterface {
 
-	interface ChatView extends View, View.ViewUseActionBar {
+	interface ChatView extends View, View.ViewUseInformationActionBar {
 
 		void setAdapter(ArrayList<Message> list);
 	}
@@ -17,6 +17,8 @@ public interface ChatInterface {
 		void handleInputMessage(Message message);
 
 		void getListMessage(Message message);
+
+		void getReceiverInformation(String emailReceiver);
 	}
 
 }

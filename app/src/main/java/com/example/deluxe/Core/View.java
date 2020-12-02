@@ -12,6 +12,10 @@ public interface View {
 	interface ViewUseActionBar {
 	}
 
+	interface ViewUseInformationActionBar {
+		void setReceiverInformation(User user);
+	}
+
 	interface ViewUseSearchBar {
 		void setList(ArrayList<User> users);
 
