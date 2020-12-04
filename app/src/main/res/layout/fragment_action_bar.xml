@@ -42,7 +42,7 @@
 		android:contentDescription="@string/action_bar_back_button"
 		android:scaleX="0.5"
 		android:scaleY="0.5"
-		android:src="@drawable/field_corner"
+		android:src="@drawable/ic_baseline_account_balance_24"
 		app:layout_constraintDimensionRatio="1:1"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"

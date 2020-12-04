@@ -41,7 +41,7 @@
 		style="@style/Field"
 		android:layout_height="wrap_content"
 		android:autofillHints=""
-		android:hint="@string/withdraw_money_input"
+		android:hint="@string/money_input"
 		android:inputType="number"
 		android:maxLength="9"
 		app:layout_constraintEnd_toEndOf="parent"

@@ -38,7 +38,6 @@
 	<TextView
 		android:id="@+id/notification_text"
 		style="@style/ErrorText"
-		android:text="@string/deposit_error_text"
 		android:visibility="invisible"
 		app:layout_constraintEnd_toEndOf="@+id/title"
 		app:layout_constraintStart_toStartOf="@+id/title"

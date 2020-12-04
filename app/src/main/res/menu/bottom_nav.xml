@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
 		android:id="@+id/nav_transaction"
-		android:icon="@drawable/field_corner"
-		android:title="Giao dich" />
+		android:icon="@drawable/nav_transaction_selector"
+		android:title="@string/main_navigation_transaction" />
 	<item
 		android:id="@+id/nav_history"
-		android:icon="@drawable/field_corner"
-		android:title="Lich su" />
+		android:icon="@drawable/nav_history_selector"
+		android:title="@string/main_navigation_history" />
 	<item
 		android:id="@+id/nav_chat"
-		android:icon="@drawable/field_corner"
-		android:title="Nhan tin" />
+		android:icon="@drawable/nav_chat_selector"
+		android:title="@string/main_navigation_chat" />
 	<item
 		android:id="@+id/nav_account"
-		android:icon="@drawable/field_corner"
-		android:title="Tai khoan" />
+		android:icon="@drawable/nav_account_selector"
+		android:title="@string/main_navigation_account" />
 
 </menu>

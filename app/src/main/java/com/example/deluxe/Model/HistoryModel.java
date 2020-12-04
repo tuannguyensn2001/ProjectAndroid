@@ -20,19 +20,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 public class HistoryModel {
 
-	public static String deleteGMT(String date) {
-		String[] dateArray = date.split("\\s");
-		return dateArray[0] + " " + dateArray[1] + " " + dateArray[2] + " " + dateArray[3] + " " + dateArray[5];
-	}
-
 	public Date convertDate(String date) throws ParseException {
 		Date dateConvert = null;
 		try {
-			SimpleDateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss yyy");
+			SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
 			dateConvert = formatter.parse(date);
 		} catch (Exception ignored) {
 
@@ -75,7 +71,7 @@ public class HistoryModel {
 					Deposit deposit = item.getValue(Deposit.class);
 
 					try {
-						Date date = convertDate(deleteGMT(deposit.getUpdated_at()));
+						Date date = convertDate(deposit.getUpdated_at());
 						long money = (long) deposit.getMoney();
 						String userEmail = deposit.getEmail();
 						Transaction transaction = new Transaction(TransactionType.DEPOSIT, money, date, true, userEmail, null);
@@ -133,7 +129,7 @@ public class HistoryModel {
 				for (DataSnapshot item : snapshot.getChildren()) {
 					Withdraw withdraw = item.getValue(Withdraw.class);
 					try {
-						Date date = convertDate(deleteGMT(withdraw.getCreated_at()));
+						Date date = convertDate(withdraw.getCreated_at());
 						long money = (long) withdraw.getAmount();
 						String userEmail = withdraw.getEmail();
 						boolean isComplete = withdraw.isIs_active();
@@ -204,7 +200,7 @@ public class HistoryModel {
 					if (email.equals(item.getEmailReceiver())) {
 						try {
 							long money = (long) item.getMoney();
-							Date date = convertDate(deleteGMT(item.getUpdated_at()));
+							Date date = convertDate(item.getUpdated_at());
 							String userEmail = item.getEmailDepositor();
 							String message = item.getMessages();
 							Transaction transaction = new Transaction(TransactionType.RECEIVE, money, date, true, userEmail, message);
@@ -218,7 +214,7 @@ public class HistoryModel {
 					if (email.equals(item.getEmailDepositor())) {
 						try {
 							long money = (long) item.getMoney();
-							Date date = convertDate(deleteGMT(item.getUpdated_at()));
+							Date date = convertDate(item.getUpdated_at());
 							String userEmail = item.getEmailReceiver();
 							String message = item.getMessages();
 							Transaction transaction = new Transaction(TransactionType.TRANSFER, money, date, true, userEmail, message);

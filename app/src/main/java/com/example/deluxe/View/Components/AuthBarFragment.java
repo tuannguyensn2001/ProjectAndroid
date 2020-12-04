@@ -39,16 +39,6 @@ public class AuthBarFragment extends Fragment implements AuthBarInterface.AuthBa
 	}
 
 	@Override
-	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
-
-	}
-
-	@Override
-	public void setNotification(Enum e) {
-
-	}
-
-	@Override
 	public void setMoney(double money) {
 		authBalance.setText(new DecimalFormat("#,###,###").format(money));
 	}

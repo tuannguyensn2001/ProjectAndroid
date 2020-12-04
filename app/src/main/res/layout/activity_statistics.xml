@@ -11,7 +11,9 @@
 		android:name="com.example.deluxe.View.Components.ActionBarFragment"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toTopOf="@+id/tab_bar"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		tools:layout="@layout/fragment_action_bar" />
@@ -20,13 +22,15 @@
 		android:id="@+id/tab_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toTopOf="@+id/statistics_fragment"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/action_bar"
-		app:tabIndicatorColor="#123456"
+		app:tabIndicatorColor="@color/light_mainColor"
 		app:tabIndicatorGravity="bottom"
 		app:tabMode="fixed"
-		app:tabSelectedTextColor="#123456">
+		app:tabSelectedTextColor="@color/light_mainColor">
 
 		<com.google.android.material.tabs.TabItem
 			android:id="@+id/deposit_tab_item"
@@ -60,6 +64,7 @@
 		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/tab_bar" />
 

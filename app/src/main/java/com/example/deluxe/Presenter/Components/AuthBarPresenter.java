@@ -2,11 +2,9 @@ package com.example.deluxe.Presenter.Components;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
-import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.UserModel;
-import com.example.deluxe.Model.WalletModel;
 
 public class AuthBarPresenter implements AuthBarInterface.AuthBarPresenter {
 	AuthBarInterface.AuthBarView authBarView;
@@ -16,13 +14,6 @@ public class AuthBarPresenter implements AuthBarInterface.AuthBarPresenter {
 		this.authBarView = authBarView;
 
 		initModel();
-
-		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money) {
-				authBarView.setMoney(money);
-			}
-		});
 
 		userModel.show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
 			@Override

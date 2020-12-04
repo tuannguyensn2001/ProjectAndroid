@@ -67,7 +67,7 @@
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:text="@string/withdraw_success_home_button" />
+			android:text="@string/home_button" />
 
 		<TextView
 			android:id="@+id/continue_withdraw_button"

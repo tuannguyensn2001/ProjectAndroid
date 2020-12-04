@@ -1,17 +1,16 @@
 package com.example.deluxe.Adapter.StatisticsCard;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.TypefaceSpan;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.example.deluxe.Entity.Transaction;
 import com.example.deluxe.Enum.TransactionType;
@@ -52,84 +51,57 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		hiddenView = view.findViewById(R.id.hidden_view);
 		seeMoreView = view.findViewById(R.id.see_more_view);
 
-		ImageView imageView = view.findViewById(R.id.type_transaction_image);
 		TextView moneyText = view.findViewById(R.id.money_transaction);
 		TextView dateText = view.findViewById(R.id.date_transaction);
 
-
 		TextView timeText = view.findViewById(R.id.time_transaction);
-		Spannable sptime1 = new SpannableString(view.getResources().getString(R.string.statistics_card_time) + " ");
-		sptime1.setSpan(new ForegroundColorSpan(view.getResources().getColor(R.color.light_mainColor)), 0, sptime1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		sptime1.setSpan(new TypefaceSpan(Typeface.DEFAULT_BOLD), 0, sptime1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		timeText.setText(sptime1);
-		Spannable sptime2 = new SpannableString(new SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault()).format(date));
-		sptime2.setSpan(new ForegroundColorSpan(Color.BLACK), 0, sptime2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		timeText.append(sptime2);
-
 		TextView userEmailText = view.findViewById(R.id.user_transaction);
-		Spannable emailTitleSpannable;
-		if (type == TransactionType.TRANSFER) {
-			emailTitleSpannable = new SpannableString(view.getResources().getString(R.string.statistic_card_user_receiver) + " ");
-		} else if (type == TransactionType.RECEIVE) {
-			emailTitleSpannable = new SpannableString(view.getResources().getString(R.string.statistic_card_user_receiver) + " ");
-		} else {
-			emailTitleSpannable = new SpannableString("");
-		}
-		emailTitleSpannable.setSpan(new ForegroundColorSpan(view.getResources().getColor(R.color.light_mainColor)), 0, emailTitleSpannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		emailTitleSpannable.setSpan(new TypefaceSpan(Typeface.DEFAULT_BOLD), 0, emailTitleSpannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-		Spannable emailSpannable;
-		if (userEmail != null) {
-			emailSpannable = new SpannableString(userEmail);
-		} else {
-			emailSpannable = new SpannableString("");
-		}
-		emailSpannable.setSpan(new ForegroundColorSpan(Color.BLACK), 0, emailSpannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-
 		TextView messageText = view.findViewById(R.id.message_transaction);
-		Spannable mess1 = new SpannableString(view.getResources().getString(R.string.statistics_card_message) + " ");
-		mess1.setSpan(new ForegroundColorSpan(view.getResources().getColor(R.color.light_mainColor)), 0, mess1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		mess1.setSpan(new TypefaceSpan(Typeface.DEFAULT_BOLD), 0, mess1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		messageText.setText(mess1);
-		if (message != null) {
-			Spannable mess2 = new SpannableString(message);
-			mess2.setSpan(new ForegroundColorSpan(Color.BLACK), 0, mess2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			messageText.append(mess2);
-		}
 
-
-		if (userEmail == null)
-			userEmailText.setVisibility(View.GONE);
-		if (message == null)
-			messageText.setVisibility(View.GONE);
 		if (type != TransactionType.DEPOSIT)
 			seeMoreView.setVisibility(View.VISIBLE);
 
-		if (type == TransactionType.RECEIVE || type == TransactionType.DEPOSIT)
-			moneyText.setTextColor(Color.parseColor("#1FA800"));
-		else
-			moneyText.setTextColor(Color.parseColor("#E60000"));
 
-
-//		Thay doi thuoc tinh cho cac thanh phan
+//		Mau me cac kieu o tieu de
 		if (type == TransactionType.RECEIVE || type == TransactionType.DEPOSIT) {
-			moneyText.setTextColor(Color.parseColor("#1FA800"));
+			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.green));
 			moneyText.setText(new DecimalFormat("+ #,###,###").format(money));
 		} else {
-			moneyText.setTextColor(Color.parseColor("#E60000"));
+			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.red));
 			moneyText.setText(new DecimalFormat("- #,###,###").format(money));
 		}
 		if (type == TransactionType.WITHDRAW && !isComplete)
-			moneyText.setTextColor(Color.parseColor("#D8B123"));
+			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.yellow));
 
 		dateText.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date));
 
+//		Thoi gian
+		timeText.setText(view.getResources().getString(R.string.statistics_card_time));
+		Spannable timeSpan = new SpannableString(" " + new SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault()).format(date));
+		timeSpan.setSpan(new ForegroundColorSpan(ContextCompat.getColor(view.getContext(), R.color.light_title)), 0, timeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		timeSpan.setSpan(new TypefaceSpan(Typeface.DEFAULT), 0, timeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		timeText.append(timeSpan);
 
+//		Nguoi choi
 		if (type == TransactionType.TRANSFER || type == TransactionType.RECEIVE) {
-			userEmailText.setText(emailTitleSpannable);
+			userEmailText.setText(view.getResources().getString((type == TransactionType.TRANSFER)
+					? R.string.statistic_card_user_receiver
+					: R.string.statistic_card_user_sender));
+			Spannable emailSpannable;
+			emailSpannable = new SpannableString(" " + userEmail);
+			emailSpannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(view.getContext(), R.color.light_title)), 0, emailSpannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			emailSpannable.setSpan(new TypefaceSpan(Typeface.DEFAULT), 0, emailSpannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			userEmailText.append(emailSpannable);
 		} else userEmailText.setVisibility(View.GONE);
+
+//		Tin nhan
+		if (type != TransactionType.DEPOSIT) {
+			messageText.setText(view.getResources().getString(R.string.statistics_card_message));
+			Spannable mess2 = new SpannableString(" " + message);
+			mess2.setSpan(new ForegroundColorSpan(ContextCompat.getColor(view.getContext(), R.color.light_title)), 0, mess2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			mess2.setSpan(new TypefaceSpan(Typeface.DEFAULT), 0, mess2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			messageText.append(mess2);
+		} else messageText.setVisibility(View.GONE);
 
 
 //		Dat su kien bam vao

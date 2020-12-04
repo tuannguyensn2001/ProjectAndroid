@@ -73,7 +73,7 @@
 		android:id="@+id/money_input"
 		style="@style/Field"
 		android:autofillHints=""
-		android:hint="@string/transfer_money_input"
+		android:hint="@string/money_input"
 		android:inputType="number"
 		android:maxLength="9"
 		app:layout_constraintEnd_toEndOf="@+id/notification_text"

@@ -13,7 +13,7 @@ public class StatisticsCardDadViewHolder extends GroupViewHolder {
 	public StatisticsCardDadViewHolder(View itemView) {
 		super(itemView);
 
-		month = (TextView) itemView.findViewById(R.id.title);
+		month = itemView.findViewById(R.id.title);
 	}
 
 	@Override

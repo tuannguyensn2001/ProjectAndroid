@@ -15,12 +15,14 @@ public class MainPresenter implements MainInterface.MainPresenter {
 
 		if (!Auth.getInstance().check()) mainView.loadView(SignInActivity.class);
 
-		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money) {
-				mainView.setMoney(money);
-			}
-		});
+		else {
+			new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
+				@Override
+				public void dataIsLoaded(double money) {
+					mainView.setMoney(money);
+				}
+			});
+		}
 	}
 
 	@Override

@@ -77,7 +77,7 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 		findViewById(R.id.password_check_input).setVisibility(View.GONE);
 
 		this.title.setText(getString(R.string.sign_in_title));
-		this.submitButton.setText(getString(R.string.sign_in_submit_button));
+		this.submitButton.setText(getString(R.string.sign_in_button));
 	}
 
 	@Override

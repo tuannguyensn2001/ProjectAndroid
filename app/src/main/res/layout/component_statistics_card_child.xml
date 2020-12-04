@@ -17,28 +17,19 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-
-		<ImageView
-			android:id="@+id/type_transaction_image"
-			android:layout_width="24dp"
-			android:layout_height="24dp"
-			android:contentDescription="@string/statistic_card_type_des"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			app:srcCompat="@drawable/button_corner" />
-
 		<TextView
 			android:id="@+id/money_transaction"
 			android:layout_width="wrap_content"
 			android:layout_height="24dp"
-			android:layout_marginStart="8dp"
+			android:drawablePadding="8dp"
 			android:gravity="center"
 			android:textSize="18sp"
 			android:textStyle="bold"
+			app:drawableStartCompat="@drawable/ic_baseline_north_east_24"
 			app:layout_constraintEnd_toStartOf="@+id/date_transaction"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintHorizontal_chainStyle="spread_inside"
-			app:layout_constraintStart_toEndOf="@+id/type_transaction_image"
+			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
 		<TextView
@@ -59,7 +50,7 @@
 			android:visibility="gone"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/type_transaction_image">
+			app:layout_constraintTop_toBottomOf="@+id/money_transaction">
 
 			<View
 				android:id="@+id/divider"
@@ -119,13 +110,13 @@
 
 				<TextView
 					android:id="@+id/see_more_text"
+					style="@style/statistics_card_content_text"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:gravity="center"
+					android:layout_margin="0dp"
+					android:gravity="center|end"
 					android:paddingTop="16dp"
 					android:text="@string/statistic_card_see_more_button"
-					android:textSize="16sp"
-					android:textStyle="bold"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
