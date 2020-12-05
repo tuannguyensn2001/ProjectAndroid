@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 public interface ChatInterface {
 
-	interface ChatView extends View, View.ViewUseInformationActionBar {
+	interface ChatView extends View, View.ViewUseInformationActionBar, View.ViewUseCheckPasswordDialog {
+		void handleSendTransactionButton();
+
+		void handleDialog();
 
 		void setAdapter(ArrayList<Message> list);
 	}

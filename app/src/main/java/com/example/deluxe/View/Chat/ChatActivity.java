@@ -26,6 +26,7 @@ import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Components.SendTransactionDialog;
 
 import java.util.ArrayList;
 
@@ -87,7 +88,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 		this.sendTransactionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				handleDialog();
 			}
 		});
 
@@ -144,6 +145,16 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	}
 
 	@Override
+	public void handleSendTransactionButton() {
+
+	}
+
+	@Override
+	public void handleDialog() {
+		new SendTransactionDialog(this);
+	}
+
+	@Override
 	public void setAdapter(ArrayList<Message> list) {
 		MessageAdapter messageAdapter = new MessageAdapter(list, getBaseContext());
 
@@ -165,5 +176,10 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	public void setReceiverInformation(User user) {
 		((TextView) findViewById(R.id.action_bar_title)).setText(user.getUser());
 		((TextView) findViewById(R.id.action_bar_subtitle)).setText(user.getEmail());
+	}
+
+	@Override
+	public void handleIsUserCorrect(boolean b) {
+
 	}
 }

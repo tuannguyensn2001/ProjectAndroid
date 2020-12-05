@@ -33,6 +33,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 	TextView notiText;
 
 	AlertDialog dialog;
+	View alertLayout;
 
 	ConfirmPasswordInterface.ConfirmPasswordPresenter confirmPasswordPresenter;
 
@@ -41,54 +42,13 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 
 		this.parentActivity = context;
 
-		init();
+		initView();
 
-		password.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-			}
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				notiText.setVisibility(View.INVISIBLE);
-				password.setError(null);
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-
-			}
-		});
+		initDialog();
 	}
 
-	private void init() {
-//		Presenter
-		confirmPasswordPresenter = new ConfirmPasswordPresenter(this);
-
-//		Layout va cac ban
-		LayoutInflater inflater = LayoutInflater.from(parentActivity);
-		View alertLayout = inflater.inflate(R.layout.layout_password_input, null);
-
-		this.authUsername = alertLayout.findViewById(R.id.auth_username);
-		this.authEmail = alertLayout.findViewById(R.id.auth_email);
-
-		this.notiText = alertLayout.findViewById(R.id.notification_text);
-		this.password = alertLayout.findViewById(R.id.password_input);
-		this.showPasswordButton = alertLayout.findViewById(R.id.show_password_button);
-
-		this.showPasswordButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (isChecked)
-					password.setTransformationMethod(null);
-				else
-					password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-			}
-		});
-
-
-//		Dialog
+	void initDialog() {
+		//		Dialog
 		this.setTitle("Xac nhan mat khau");
 		this.setMessage("Vui lòng nhập mật khẩu để chắc chắn rằng đây là bạn chứ không phải con điên nào hết.");
 		this.setView(alertLayout);
@@ -112,17 +72,58 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 			public void onClick(View v) {
 				String passwordInput = password.getText().toString();
 				if (!Rules.required(passwordInput)) {
-//					password.setBackgroundResource(R.drawable.field_corner);
 					password.setError(ErrorMessage.ERR500000.getValue());
 				} else if (!Rules.min(passwordInput, 6)) {
-//					password.setBackgroundResource(R.drawable.field_corner);
 					password.setError(ErrorMessage.ERR500001.getValue());
 				} else if (!Rules.isPassword(passwordInput)) {
-//					password.setBackgroundResource(R.drawable.field_corner);
 					password.setError(ErrorMessage.ERR500002.getValue());
 				} else {
 					confirmPasswordPresenter.handleConfirmUser(passwordInput);
 				}
+			}
+		});
+	}
+
+	void initView() {
+//		Presenter
+		confirmPasswordPresenter = new ConfirmPasswordPresenter(this);
+
+//		Layout va cac ban
+		LayoutInflater inflater = LayoutInflater.from(parentActivity);
+		alertLayout = inflater.inflate(R.layout.layout_password_input, null);
+
+		this.authUsername = alertLayout.findViewById(R.id.auth_username);
+		this.authEmail = alertLayout.findViewById(R.id.auth_email);
+
+		this.notiText = alertLayout.findViewById(R.id.notification_text);
+		this.password = alertLayout.findViewById(R.id.password_input);
+		this.showPasswordButton = alertLayout.findViewById(R.id.show_password_button);
+
+		password.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				notiText.setVisibility(View.INVISIBLE);
+				password.setError(null);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+		});
+
+		this.showPasswordButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked)
+					password.setTransformationMethod(null);
+				else
+					password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 			}
 		});
 	}

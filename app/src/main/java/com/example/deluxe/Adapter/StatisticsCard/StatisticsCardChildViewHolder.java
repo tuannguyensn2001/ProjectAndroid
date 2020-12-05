@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.deluxe.Entity.Transaction;
 import com.example.deluxe.Enum.TransactionType;
@@ -66,12 +67,22 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		if (type == TransactionType.RECEIVE || type == TransactionType.DEPOSIT) {
 			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.green));
 			moneyText.setText(new DecimalFormat("+ #,###,###").format(money));
+			moneyText.setCompoundDrawablesWithIntrinsicBounds(
+					ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_baseline_north_east_24, null),
+					null, null, null);
 		} else {
 			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.red));
 			moneyText.setText(new DecimalFormat("- #,###,###").format(money));
+			moneyText.setCompoundDrawablesWithIntrinsicBounds(
+					ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_baseline_south_east_24, null),
+					null, null, null);
 		}
-		if (type == TransactionType.WITHDRAW && !isComplete)
+		if (type == TransactionType.WITHDRAW && !isComplete) {
 			moneyText.setTextColor(ContextCompat.getColor(view.getContext(), R.color.yellow));
+			moneyText.setCompoundDrawablesWithIntrinsicBounds(
+					ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_baseline_money_off_24, null),
+					null, null, null);
+		}
 
 		dateText.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date));
 

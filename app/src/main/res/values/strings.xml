@@ -30,7 +30,7 @@
 
 	<string name="transfer_search_action_bar_title">Chuyển tiền</string>
 	<string name="transfer_action_bar_title">Chuyển tiền cho tài khoản</string>
-	<string name="transfer_message_input">Nhập lời nhắn cho người nhận</string>
+	<string name="transfer_message_input">Nhập lời nhắn cho người ta</string>
 	<string name="transfer_submit_button">Chuyển tiền</string>
 	<string name="transfer_title">Chuyển tiền tới tài khoản</string>
 	<string name="transfer_account_email">Email</string>

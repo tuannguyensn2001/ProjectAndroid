@@ -2,14 +2,14 @@
 <resources>
 	<color name="light_background">#ffffff</color>
 	<color name="light_form">#eaeaea</color>
+	<color name="light_hint">#7c7c7c</color>
 	<color name="light_title">#303030</color>
 	<color name="light_error">#ff3e3e</color>
-	<color name="light_hint">#7c7c7c</color>
 	<color name="light_mainColor">#1f72a0</color>
 	<color name="light_mainColorLighter">#84B2CC</color>
 
 	<color name="red">#E83131</color>
-	<color name="yellow">#F6C900</color>
-	<color name="green">#4DC352</color>
+	<color name="yellow">#D5B00B</color>
+	<color name="green">#61B643</color>
 
 </resources>
