@@ -5,6 +5,7 @@ import com.example.deluxe.Entity.Product;
 import com.example.deluxe.Interface.Model.ProductModelInterface;
 import com.example.deluxe.Interface.PresenterView.Shopping.ProductInterface;
 import com.example.deluxe.Model.ProductModel;
+import com.example.deluxe.Model.StatisticModel;
 import com.example.deluxe.View.Shopping.ProductDetailActivity;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class ProductPresenter implements ProductInterface.ProductPresenter {
     public ProductPresenter(ProductInterface.ProductView productView)
     {
         this.productView = productView;
+
+
+        new StatisticModel().getStatistic();
     }
 
     @Override

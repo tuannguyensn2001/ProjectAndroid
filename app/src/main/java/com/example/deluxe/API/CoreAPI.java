@@ -7,7 +7,7 @@ public class CoreAPI {
     public static Retrofit build()
     {
         return new Retrofit.Builder()
-                .baseUrl("http:192.168.43.12/api/mobile/")
+                .baseUrl("http:192.168.1.217/api/mobile/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
