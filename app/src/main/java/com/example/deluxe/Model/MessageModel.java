@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.API.CoreAPI;
+import com.example.deluxe.API.MessageAPI;
 import com.example.deluxe.Entity.LastMessage;
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Interface.Model.MessageInterface;
@@ -12,20 +14,31 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MessageModel {
 
 	DatabaseReference ref;
+	Retrofit retrofit;
+	MessageAPI messageAPI;
 
 	public MessageModel() {
 		this.ref = FirebaseDatabase.getInstance().getReference().child("message");
+		this.retrofit = CoreAPI.build();
+		this.messageAPI = retrofit.create(MessageAPI.class);
 	}
 
 	public void getUserMessage(final String email, final MessageInterface messageInterface) {
@@ -63,6 +76,33 @@ public class MessageModel {
 						}
 					}
 				}
+
+				 final ArrayList<LastMessage> lastMessageData = new ArrayList<>();
+
+				ListMessage list = new ListMessage();
+				list.setLastMessages(lastMessage);
+
+				Log.e("click",new Gson().toJson(list));
+
+				Call<List<LastMessage>> call = messageAPI.getDetailMessage(list);
+
+				call.enqueue(new Callback<List<LastMessage>>() {
+					@Override
+					public void onResponse(Call<List<LastMessage>> call, Response<List<LastMessage>> response) {
+						Object object = response.body();
+					}
+
+					@Override
+					public void onFailure(Call<List<LastMessage>> call, Throwable t) {
+						Log.e("e","e");
+					}
+				});
+
+
+
+
+
+
 
 
 				messageInterface.getListMessage(lastMessage);
@@ -158,6 +198,26 @@ public class MessageModel {
 
 			}
 		});
+	}
+
+
+	public class ListMessage
+	{
+		private List<LastMessage> lastMessages;
+
+		public List<LastMessage> getLastMessages() {
+			return lastMessages;
+		}
+
+		public void setLastMessages(List<LastMessage> lastMessages) {
+			this.lastMessages = lastMessages;
+		}
+
+		public ListMessage()
+		{
+		}
+
+
 	}
 
 }

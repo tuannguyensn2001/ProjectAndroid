@@ -16,11 +16,11 @@
         <activity android:name=".View.Shopping.CartActivity"></activity>
         <activity android:name=".View.Shopping.ProductDetailActivity" />
         <activity android:name=".View.Shopping.ProductActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".View.Chat.ChatActivity" />
         <activity android:name=".View.Status.WithdrawSuccessActivity" />
@@ -32,7 +32,11 @@
         <activity android:name=".View.Transaction.TransferActivity" />
         <activity android:name=".View.SearchUserActivity" />
         <activity android:name=".View.MainActivity" >
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
 
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
         </activity>
 
         <activity android:name=".View.Transaction.DepositActivity" />
