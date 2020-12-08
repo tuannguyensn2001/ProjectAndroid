@@ -4,11 +4,21 @@ public class LastMessage {
 	private String email;
 	private String content;
 	private String image_url;
+	private String username;
+
 
 	public LastMessage(String email, String content, String image_url) {
 		this.email = email;
 		this.content = content;
 		this.image_url = image_url;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {

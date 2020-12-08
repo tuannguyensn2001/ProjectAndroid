@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.example.deluxe.R;
 
 public class AuthBar2Fragment extends Fragment implements AuthBarInterface.AuthBarView {
 	TextView authUsername, authEmail;
+	ImageView profilePicture;
 
 	AuthBarInterface.AuthBarPresenter authBarPresenter;
 
@@ -29,6 +31,7 @@ public class AuthBar2Fragment extends Fragment implements AuthBarInterface.AuthB
 	}
 
 	private void init(View v) {
+		this.profilePicture = v.findViewById(R.id.profile_picture);
 		this.authUsername = v.findViewById(R.id.auth_username);
 		this.authEmail = v.findViewById(R.id.auth_email);
 		v.findViewById(R.id.info_button).setOnClickListener(new View.OnClickListener() {

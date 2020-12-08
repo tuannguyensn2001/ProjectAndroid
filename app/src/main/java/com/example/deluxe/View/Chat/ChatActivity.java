@@ -180,6 +180,22 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	@Override
 	public void handleIsUserCorrect(boolean b) {
+	}
 
+	@Override
+	public void sendTransaction(boolean isTransfer, double moneyInputNumber, String messageInput) {
+		String typeTransaction = isTransfer ? " gửi bạn " : " đòi mày ";
+		String moneyInput = ((long) moneyInputNumber) + "";
+		String laina = Rules.isSpace(messageInput) ? " trống rỗng." : ": \"" + ConvertData.normalizeString(messageInput) + "\".";
+		String tannhauser = Auth.getInstance().user().getEmail() + typeTransaction + moneyInput + " với lời nhắn" + laina;
+		Message message = new Message(emailSender, emailReceiver, tannhauser);
+
+		chatPresenter.handleInputMessage(message);
+		content.setText(null);
+
+		if (isTransfer) {
+			User user = new User(null, null, emailReceiver);
+			chatPresenter.handleTransfer(user, moneyInputNumber, messageInput);
+		}
 	}
 }

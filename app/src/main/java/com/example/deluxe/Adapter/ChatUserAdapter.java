@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.LastMessage;
 import com.example.deluxe.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,8 +39,10 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		holder.email.setText(listMessage.get(position).getEmail());
+		holder.email.setText(listMessage.get(position).getUsername());
 		holder.content.setText(listMessage.get(position).getContent());
+
+		Picasso.get().load(listMessage.get(position).getImage_url()).into(holder.avatar);
 	}
 
 	@Override
@@ -53,6 +57,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 		TextView content;
 		TextView email;
+		ImageView avatar;
 
 		OnUserListener onUserListener;
 
@@ -61,6 +66,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHo
 			this.onUserListener = onUserListener;
 			content = itemView.findViewById(R.id.profile_subtitle);
 			email = itemView.findViewById(R.id.profile_title);
+			avatar = itemView.findViewById(R.id.profile_picture);
 			itemView.setOnClickListener(this);
 		}
 

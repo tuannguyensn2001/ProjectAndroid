@@ -27,4 +27,9 @@ public interface View {
 	interface ViewUseCheckPasswordDialog {
 		void handleIsUserCorrect(boolean b);
 	}
+
+	interface ViewUseSendTransaction extends ViewUseCheckPasswordDialog {
+
+		void sendTransaction(boolean isTransfer, double moneyInputNumber, String messageInput);
+	}
 }

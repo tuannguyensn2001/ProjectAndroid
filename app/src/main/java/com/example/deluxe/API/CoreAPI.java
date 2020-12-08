@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CoreAPI {
 	public static Retrofit build() {
 		return new Retrofit.Builder()
-				.baseUrl("http:192.168.1.92/api/mobile/")
+				.baseUrl("http:192.168.1.154/api/mobile/")
 				.addConverterFactory(GsonConverterFactory.create())
 				.build();
 	}

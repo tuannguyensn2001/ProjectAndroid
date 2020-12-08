@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.API.CoreAPI;
+import com.example.deluxe.API.MessageAPI;
 import com.example.deluxe.Entity.LastMessage;
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Interface.Model.MessageInterface;
@@ -12,16 +14,27 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MessageModel {
 
 	DatabaseReference ref;
+	Retrofit retrofit;
+	MessageAPI messageAPI;
 
 	public MessageModel() {
 		this.ref = FirebaseDatabase.getInstance().getReference().child("message");
+		this.retrofit = CoreAPI.build();
+		this.messageAPI = retrofit.create(MessageAPI.class);
 	}
 
 	public void getUserMessage(final String email, final MessageInterface messageInterface) {
@@ -60,8 +73,29 @@ public class MessageModel {
 					}
 				}
 
+				final ArrayList<LastMessage> lastMessageData = new ArrayList<>();
 
-				messageInterface.getListMessage(lastMessage);
+				ListMessage list = new ListMessage();
+				list.setLastMessages(lastMessage);
+
+				Log.e("click", new Gson().toJson(list));
+
+				Call<ArrayList<LastMessage>> call = messageAPI.getDetailMessage(list);
+
+				call.enqueue(new Callback<ArrayList<LastMessage>>() {
+					@Override
+					public void onResponse(Call<ArrayList<LastMessage>> call, Response<ArrayList<LastMessage>> response) {
+						ArrayList<LastMessage> newList = response.body();
+						messageInterface.getListMessage(newList);
+					}
+
+					@Override
+					public void onFailure(Call<ArrayList<LastMessage>> call, Throwable t) {
+
+					}
+				});
+
+
 			}
 
 
@@ -154,6 +188,24 @@ public class MessageModel {
 
 			}
 		});
+	}
+
+
+	public class ListMessage {
+		private List<LastMessage> lastMessages;
+
+		public ListMessage() {
+		}
+
+		public List<LastMessage> getLastMessages() {
+			return lastMessages;
+		}
+
+		public void setLastMessages(List<LastMessage> lastMessages) {
+			this.lastMessages = lastMessages;
+		}
+
+
 	}
 
 }

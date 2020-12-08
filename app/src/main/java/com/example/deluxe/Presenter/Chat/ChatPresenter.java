@@ -1,20 +1,28 @@
 package com.example.deluxe.Presenter.Chat;
 
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Entity.Transfer;
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Enum.ErrorMessage;
+import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Interface.Model.MessageInterface;
+import com.example.deluxe.Interface.Model.TransferFirebase;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
+import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
+import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.MessageModel;
+import com.example.deluxe.Model.TransferModel;
 import com.example.deluxe.Model.UserModel;
+import com.example.deluxe.Model.WalletModel;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ChatPresenter implements ChatInterface.ChatPresenter {
 
-	private ChatInterface.ChatView chatView;
-	private MessageModel messageModel;
+	private final ChatInterface.ChatView chatView;
+	private final MessageModel messageModel;
 
 	public ChatPresenter(ChatInterface.ChatView chatView) {
 		this.chatView = chatView;
@@ -47,6 +55,29 @@ public class ChatPresenter implements ChatInterface.ChatPresenter {
 				chatView.setReceiverInformation(user);
 			}
 		});
+	}
+
+	@Override
+	public void handleTransfer(final User user, final double money, final String message) {
+		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
+			@Override
+			public void dataIsLoaded(double money_now) {
+				if (money > money_now) {
+				} else {
+					final Transfer transfer = new Transfer(Auth.getInstance().user().getEmail(), user.getEmail(), money, message);
+					(new TransferModel()).transfer(transfer, new TransferFirebase() {
+						@Override
+						public void success(SuccessMessage successMessage) {
+						}
+
+						@Override
+						public void failed(ErrorMessage errorMessage) {
+						}
+					});
+				}
+			}
+		});
+
 	}
 
 

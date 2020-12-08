@@ -3,12 +3,13 @@ package com.example.deluxe.Interface.PresenterView.Chat;
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Entity.User;
 
 import java.util.ArrayList;
 
 public interface ChatInterface {
 
-	interface ChatView extends View, View.ViewUseInformationActionBar, View.ViewUseCheckPasswordDialog {
+	interface ChatView extends View, View.ViewUseInformationActionBar, View.ViewUseSendTransaction {
 		void handleSendTransactionButton();
 
 		void handleDialog();
@@ -22,6 +23,8 @@ public interface ChatInterface {
 		void getListMessage(Message message);
 
 		void getReceiverInformation(String emailReceiver);
+
+		void handleTransfer(final User user, final double money, final String message);
 	}
 
 }

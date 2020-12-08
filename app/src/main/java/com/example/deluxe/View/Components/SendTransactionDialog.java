@@ -19,24 +19,27 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.Model.WalletInterface;
-import com.example.deluxe.Model.Auth;
-import com.example.deluxe.Model.WalletModel;
+import com.example.deluxe.Interface.PresenterView.Components.SendTransactionInterface;
 import com.example.deluxe.Presenter.Components.ConfirmPasswordPresenter;
+import com.example.deluxe.Presenter.Components.SendTransactionPresenter;
 import com.example.deluxe.R;
 
 import java.text.NumberFormat;
 
-public class SendTransactionDialog extends ConfirmPasswordDialog {
+public class SendTransactionDialog extends ConfirmPasswordDialog implements SendTransactionInterface.SendTransactionView {
 	TextView sendMoneyTab, receiveMoneyTab;
 	EditText money, message;
 	Button submitButton;
 
-	String moneyInput, messageInput;
+	String moneyInput, messageInput, passwordInput;
+	double moneyInputNumber;
 	boolean isTransfer;
+
+	SendTransactionPresenter sendTransactionPresenter;
 
 	public SendTransactionDialog(Context context) {
 		super(context);
+		sendTransactionPresenter = new SendTransactionPresenter(this);
 	}
 
 	@Override
@@ -69,11 +72,22 @@ public class SendTransactionDialog extends ConfirmPasswordDialog {
 
 	private void handleSendButton() {
 		this.notiText.setVisibility(View.INVISIBLE);
-		boolean check = false;
 
 		moneyInput = money.getText().toString();
 		messageInput = message.getText().toString();
 
+		boolean check = validateInput();
+		if (check) {
+			moneyInputNumber = Double.parseDouble(moneyInput.replaceAll("[,.]", ""));
+			if (isTransfer)
+				sendTransactionPresenter.checkBalance(moneyInputNumber);
+			else
+				handleSendTransaction();
+		}
+	}
+
+	private boolean validateInput() {
+		boolean check = false;
 		if (!Rules.required(moneyInput)) {
 			check = false;
 			money.setError(ErrorMessage.ERR300000.getValue());
@@ -83,10 +97,9 @@ public class SendTransactionDialog extends ConfirmPasswordDialog {
 		} else {
 			check = true;
 		}
-		if (!check) return;
 
 		if (isTransfer) {
-			String passwordInput = password.getText().toString();
+			passwordInput = password.getText().toString();
 			if (!Rules.required(passwordInput)) {
 				check = false;
 				password.setError(ErrorMessage.ERR500000.getValue());
@@ -94,27 +107,14 @@ public class SendTransactionDialog extends ConfirmPasswordDialog {
 				check = false;
 				password.setError(ErrorMessage.ERR500001.getValue());
 			} else if (!Rules.isPassword(passwordInput)) {
-				check = false;
 				password.setError(ErrorMessage.ERR500002.getValue());
+				check = false;
 			} else {
 				check = true;
 			}
 		}
-		if (!check) return;
 
-		checkBalance(Double.parseDouble(moneyInput.replaceAll("[,.]", "")));
-	}
-
-	private void checkBalance(final double money) {
-		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
-			@Override
-			public void dataIsLoaded(double money_now) {
-				if (money > money_now) {
-					setNotification(ErrorMessage.ERR310000);
-				} else {
-				}
-			}
-		});
+		return check;
 	}
 
 	@Override
@@ -208,5 +208,19 @@ public class SendTransactionDialog extends ConfirmPasswordDialog {
 	@Override
 	public void setUserInfo(User user) {
 
+	}
+
+	@Override
+	public void handleIsEnoughMoney(boolean b) {
+		if (b)
+			sendTransactionPresenter.handleConfirmUser(passwordInput);
+		else
+			setNotification(ErrorMessage.ERR310000);
+	}
+
+	@Override
+	public void handleSendTransaction() {
+		this.dialog.dismiss();
+		((ViewUseSendTransaction) parentActivity).sendTransaction(isTransfer, moneyInputNumber, messageInput);
 	}
 }
