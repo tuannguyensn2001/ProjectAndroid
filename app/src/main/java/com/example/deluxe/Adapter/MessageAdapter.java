@@ -10,12 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 	ArrayList<Message> listMessage;
@@ -57,7 +57,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 		final Message message = listMessage.get(position);
-		holder.message.setText(listMessage.get(position).getContent());
+		String content = listMessage.get(position).getContent();
+		content = Rules.isSpace(listMessage.get(position).getContent()) ? context.getString(R.string.message_content_null) : content;
+		holder.message.setText(content);
 
 		if (message.getType() != 0) {
 			String tao = Auth.getInstance().user().getEmail();
@@ -74,8 +76,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			transactionMoneyFirst = holder.itemView.findViewById(R.id.transaction_money_first);
 			transactionMoneySecond = holder.itemView.findViewById(R.id.transaction_money_second);
 
-//			transactionTitle.setText("Da co mot giao dich gui tien goi la");
-//			transactionMoneyFirst.setText(new DecimalFormat("#,###,###").format(message.getFirstMoney()));
 			moneySecond = new DecimalFormat("#,###,###").format(message.getSecondMoney());
 
 			if (message.getType() == -1) {
@@ -174,14 +174,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 	public int getItemViewType(int position) {
 		Message message = listMessage.get(position);
 
-		if (message.getFirstMoney() == 0) {
-			Random vocungngaunhien = new Random();
-			message.setType(vocungngaunhien.nextInt(3) - 1);
-			message.setStatus(vocungngaunhien.nextInt(3) - 1);
-			message.setFirstMoney(vocungngaunhien.nextInt(100000));
-			message.setSecondMoney(vocungngaunhien.nextInt(100000));
-			listMessage.set(position, message);
-		}
+//		if (message.getFirstMoney() == 0 && message.getType() != 0) {
+//			Random vocungngaunhien = new Random();
+//			message.setType(vocungngaunhien.nextInt(3) - 1);
+//			message.setStatus(vocungngaunhien.nextInt(3) - 1);
+//			message.setFirstMoney(vocungngaunhien.nextInt(100000));
+//			message.setSecondMoney(vocungngaunhien.nextInt(100000));
+//			listMessage.set(position, message);
+//		}
 
 		if (message.getType() == 0) {
 			if (message.getEmailSender().equals(Auth.getInstance().user().getEmail())) {

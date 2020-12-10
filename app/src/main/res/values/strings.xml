@@ -114,6 +114,7 @@
 
 	<string name="chat_send_message_button_description">send_message</string>
 	<string name="chat_send_transaction_button_description">send_transaction</string>
+	<string name="message_content_null">Rỗng tuếch</string>
 	<string name="message_transaction_title">%1$s đã %2$s %3$s số tiền:</string>
 	<string name="message_transaction_status_done">Đã xong</string>
 	<string name="message_transaction_status_cancel">Bùng kèo cmnr</string>

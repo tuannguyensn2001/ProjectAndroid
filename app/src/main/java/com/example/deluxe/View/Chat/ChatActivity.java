@@ -185,11 +185,18 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	@Override
 	public void sendTransaction(boolean isTransfer, double moneyInputNumber, String messageInput) {
-		String typeTransaction = isTransfer ? " gửi bạn " : " đòi mày ";
-		String moneyInput = new DecimalFormat("#,###,###").format(moneyInputNumber);
-		String laina = Rules.isSpace(messageInput) ? " trống rỗng." : ": \"" + ConvertData.normalizeString(messageInput) + "\".";
-		String tannhauser = Auth.getInstance().user().getEmail() + typeTransaction + moneyInput + " với lời nhắn" + laina;
-		Message message = new Message(emailSender, emailReceiver, tannhauser);
+		Message message;
+		if (isTransfer) {
+			message = new Message(-1, 1, moneyInputNumber, emailSender, emailReceiver, ConvertData.normalizeString(messageInput));
+		} else {
+			message = new Message(1, 0, moneyInputNumber, emailSender, emailReceiver, ConvertData.normalizeString(messageInput));
+		}
+
+//		String typeTransaction = isTransfer ? " gửi bạn " : " đòi mày ";
+//		String moneyInput = new DecimalFormat("#,###,###").format(moneyInputNumber);
+//		String laina = Rules.isSpace(messageInput) ? " trống rỗng." : ": \"" + ConvertData.normalizeString(messageInput) + "\".";
+//		String tannhauser = Auth.getInstance().user().getEmail() + typeTransaction + moneyInput + " với lời nhắn" + laina;
+//		message = new Message(emailSender, emailReceiver, tannhauser);
 
 		chatPresenter.handleInputMessage(message);
 		content.setText(null);

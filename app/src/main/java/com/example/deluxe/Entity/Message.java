@@ -13,11 +13,10 @@ public class Message {
 
 	}
 
-	public Message(short type, short status, double firstMoney, double secondMoney, String emailSender, String emailReceiver, String content) {
+	public Message(int type, int status, double firstMoney, String emailSender, String emailReceiver, String content) {
 		this.type = type;
 		this.status = status;
 		this.firstMoney = firstMoney;
-		this.secondMoney = secondMoney;
 		this.emailSender = emailSender;
 		this.emailReceiver = emailReceiver;
 		this.content = content;
