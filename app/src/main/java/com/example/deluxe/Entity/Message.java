@@ -1,6 +1,9 @@
 package com.example.deluxe.Entity;
 
 public class Message {
+	private int type; /* 0 = binh thuong, -1 = gui tien, 1 = doi tien */
+	private int status; /* -1 = bi huy, 0 = dang cho, 1 = xong roi */
+	private double firstMoney, secondMoney;
 	private String emailSender;
 	private String emailReceiver;
 	private String content;
@@ -10,7 +13,18 @@ public class Message {
 
 	}
 
+	public Message(short type, short status, double firstMoney, double secondMoney, String emailSender, String emailReceiver, String content) {
+		this.type = type;
+		this.status = status;
+		this.firstMoney = firstMoney;
+		this.secondMoney = secondMoney;
+		this.emailSender = emailSender;
+		this.emailReceiver = emailReceiver;
+		this.content = content;
+	}
+
 	public Message(String sender, String emailReceiver, String content) {
+		this.type = 0;
 		this.emailReceiver = emailReceiver;
 		this.emailSender = sender;
 		this.content = content;
@@ -54,5 +68,37 @@ public class Message {
 
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public double getFirstMoney() {
+		return firstMoney;
+	}
+
+	public void setFirstMoney(double firstMoney) {
+		this.firstMoney = firstMoney;
+	}
+
+	public double getSecondMoney() {
+		return secondMoney;
+	}
+
+	public void setSecondMoney(double secondMoney) {
+		this.secondMoney = secondMoney;
 	}
 }

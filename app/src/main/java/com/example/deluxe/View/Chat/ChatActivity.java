@@ -28,6 +28,7 @@ import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.SendTransactionDialog;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity implements ChatInterface.ChatView {
@@ -185,7 +186,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 	@Override
 	public void sendTransaction(boolean isTransfer, double moneyInputNumber, String messageInput) {
 		String typeTransaction = isTransfer ? " gửi bạn " : " đòi mày ";
-		String moneyInput = ((long) moneyInputNumber) + "";
+		String moneyInput = new DecimalFormat("#,###,###").format(moneyInputNumber);
 		String laina = Rules.isSpace(messageInput) ? " trống rỗng." : ": \"" + ConvertData.normalizeString(messageInput) + "\".";
 		String tannhauser = Auth.getInstance().user().getEmail() + typeTransaction + moneyInput + " với lời nhắn" + laina;
 		Message message = new Message(emailSender, emailReceiver, tannhauser);

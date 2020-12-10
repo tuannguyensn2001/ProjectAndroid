@@ -107,10 +107,15 @@
 	<string name="search_user_placeholder_search">Tim gi do di ban oi, sao trong rong vay?</string>
 	<string name="background_description">background_description</string>
 
-	<string name="chat_send_message_button_description">send_message</string>
-	<string name="chat_send_transaction_button_description">send_transaction</string>
 	<string name="main_navigation_transaction">Giao dich</string>
 	<string name="main_navigation_history">Lich su</string>
 	<string name="main_navigation_chat">Nhan tin</string>
 	<string name="main_navigation_account">Tai khoan</string>
+
+	<string name="chat_send_message_button_description">send_message</string>
+	<string name="chat_send_transaction_button_description">send_transaction</string>
+	<string name="message_transaction_title">%1$s đã %2$s %3$s số tiền:</string>
+	<string name="message_transaction_status_done">Đã xong</string>
+	<string name="message_transaction_status_cancel">Bùng kèo cmnr</string>
+	<string name="message_transaction_status_waiting">Đang chờ phản hồi</string>
 </resources>

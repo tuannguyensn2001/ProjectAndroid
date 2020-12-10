@@ -58,11 +58,11 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 					if (!s.toString().equals(current)) {
 						String cleanString = s.toString().replaceAll("[,.]", "");
 						double parsed = Double.parseDouble(cleanString);
-						String formated = NumberFormat.getInstance().format((parsed));
+						String formatted = NumberFormat.getInstance().format((parsed));
 
-						current = formated;
-						money.setText(formated);
-						money.setSelection(formated.length());
+						current = formatted;
+						money.setText(formatted);
+						money.setSelection(formatted.length());
 					}
 				}
 			}
