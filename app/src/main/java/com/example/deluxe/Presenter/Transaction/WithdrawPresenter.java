@@ -1,8 +1,18 @@
 package com.example.deluxe.Presenter.Transaction;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/Transaction/WithdrawPresenter.java
+=======
+
+import android.util.Log;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/WithdrawPresenter.java
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Withdraw;
 import com.example.deluxe.Enum.ErrorMessage;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/Transaction/WithdrawPresenter.java
+=======
+import com.example.deluxe.Interface.Model.CheckInterface;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/WithdrawPresenter.java
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.Transaction.WithdrawInterface;

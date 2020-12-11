@@ -11,7 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.deluxe.Entity.User;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Components/AuthBarFragment.java
 import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
+=======
+import com.example.deluxe.Interface.PresenterView.AuthBarInterface;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/AuthBarFragment.java
 import com.example.deluxe.Presenter.Components.AuthBarPresenter;
 import com.example.deluxe.R;
 

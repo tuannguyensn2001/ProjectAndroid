@@ -1,4 +1,9 @@
 package com.example.deluxe.View.Status;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Status/WithdrawSuccessActivity.java
+=======
+
+import androidx.appcompat.app.AppCompatActivity;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/WithdrawSuccessActivity.java
 
 import android.content.Intent;
 import android.os.Bundle;

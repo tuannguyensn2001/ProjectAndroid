@@ -16,7 +16,11 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Auth/SignUpActivity.java
 import com.example.deluxe.Interface.PresenterView.Auth.SignUpInterface;
+=======
+import com.example.deluxe.Interface.PresenterView.SignUpInterface;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/SignUpActivity.java
 import com.example.deluxe.Presenter.Auth.SignUpPresenter;
 import com.example.deluxe.R;
 

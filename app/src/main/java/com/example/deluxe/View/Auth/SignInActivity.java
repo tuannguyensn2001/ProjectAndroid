@@ -18,6 +18,10 @@ import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
 import com.example.deluxe.Interface.PresenterView.Auth.SignInInterface;
 import com.example.deluxe.Model.Auth;
+<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Auth/SignInActivity.java
+=======
+import com.example.deluxe.Presenter.Auth.LoginPresenter;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/SignInActivity.java
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 

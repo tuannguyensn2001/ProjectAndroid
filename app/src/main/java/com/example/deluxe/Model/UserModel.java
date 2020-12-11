@@ -10,6 +10,10 @@ import com.example.deluxe.Interface.Model.ChangePasswordInterface;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
+<<<<<<< HEAD
+=======
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.example.deluxe.Interface.Model.UserInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

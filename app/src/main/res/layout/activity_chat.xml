@@ -5,8 +5,14 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
+<<<<<<< HEAD
 	<ImageView
 		android:id="@+id/image_background"
+=======
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
+>>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:contentDescription="@string/background_description"
