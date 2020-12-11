@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/image_background"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:contentDescription="@string/background_description"
+		android:scaleType="centerCrop"
+		android:src="@drawable/ha_long"
+		app:srcCompat="@drawable/ha_long"
+		tools:srcCompat="@drawable/ha_long" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fitsSystemWindows="true">
+
+		<fragment
+			android:id="@+id/action_bar"
+			android:name="com.example.deluxe.View.Components.MessageActionBarFragment"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout="@layout/fragment_message_action_bar" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/list_message"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:paddingHorizontal="16dp"
+			android:visibility="visible"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintBottom_toTopOf="@+id/message_input_part"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/action_bar"
+			app:stackFromEnd="true" />
+
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/message_input_part"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent">
+
+			<EditText
+				android:id="@+id/message_input"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentEnd="true"
+				android:layout_alignParentBottom="true"
+				android:autofillHints=""
+				android:background="@drawable/message_input"
+				android:hint="@string/chat_message_input"
+				android:inputType="textMultiLine"
+				android:maxLines="4"
+				android:textColor="@color/light_title"
+				android:textColorHint="@color/light_hint"
+				android:visibility="visible"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/send_message_button"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:id="@+id/send_message_button"
+				android:layout_width="0dp"
+				android:layout_height="50dp"
+				android:layout_alignParentEnd="true"
+				android:layout_alignParentBottom="true"
+				android:layout_marginStart="8dp"
+				android:contentDescription="@string/chat_send_message_button_description"
+				android:gravity="center"
+				android:src="@drawable/ic_twotone_drafts_24"
+				android:visibility="visible"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toEndOf="@+id/message_input"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0" />
+
+			<ImageView
+				android:id="@+id/send_transaction_button"
+				android:layout_width="0dp"
+				android:layout_height="50dp"
+				android:layout_alignParentEnd="true"
+				android:layout_alignParentBottom="true"
+				android:layout_marginStart="8dp"
+				android:contentDescription="@string/chat_send_transaction_button_description"
+				android:gravity="center"
+				android:src="@drawable/ic_twotone_money_24"
+				android:visibility="invisible"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toEndOf="@+id/message_input"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingHorizontal="24dp">
+
+
+	<TextView
+		android:id="@+id/send_money_tab"
+		style="@style/visual_tab_background"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:backgroundTint="@color/light_mainColor"
+		android:backgroundTintMode="src_atop"
+		android:text="Gui tien"
+		app:layout_constraintEnd_toStartOf="@+id/receive_money_tab"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/receive_money_tab"
+		style="@style/visual_tab_background"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:backgroundTint="@color/red"
+		android:backgroundTintMode="screen"
+		android:text="Doi tien"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/send_money_tab"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/notification_text"
+		style="@style/ErrorText"
+		android:layout_width="match_parent"
+		android:visibility="invisible"
+		app:layout_constraintBottom_toTopOf="@+id/money_input"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/send_money_tab" />
+
+	<EditText
+		android:id="@+id/money_input"
+		style="@style/Field"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:autofillHints=""
+		android:hint="@string/money_input"
+		android:inputType="number"
+		android:maxLength="9"
+		app:layout_constraintBottom_toTopOf="@+id/message_input"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
+
+	<EditText
+		android:id="@+id/message_input"
+		style="@style/Field"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/transfer_message_input"
+		android:inputType="textMultiLine"
+		android:maxLength="180"
+		android:maxLines="2"
+		android:scrollbarStyle="insideInset"
+		android:scrollbars="vertical"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/money_input" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/hidden_view"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/message_input">
+
+		<CheckBox
+			android:id="@+id/show_password_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="32dp"
+			android:text="@string/password_input_show"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/password_input"
+			style="@style/Field"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:autofillHints=""
+			android:hint="@string/password_input"
+			android:imeOptions="actionDone"
+			android:inputType="textPassword"
+			android:singleLine="true"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/show_password_button" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

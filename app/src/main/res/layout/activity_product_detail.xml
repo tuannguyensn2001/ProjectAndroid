@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".View.Shopping.ProductDetailActivity">
+
+	<ImageView
+		android:id="@+id/thumbnail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.498"
+		app:layout_constraintStart_toStartOf="parent"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteY="41dp"
+		tools:srcCompat="@tools:sample/avatars" />
+
+	<TextView
+		android:id="@+id/name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="TextView"
+		app:layout_constraintTop_toBottomOf="@+id/thumbnail"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="159dp" />
+
+	<TextView
+		android:id="@+id/price"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="36dp"
+		android:text="TextView"
+		app:layout_constraintTop_toBottomOf="@+id/name"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="159dp" />
+
+	<TextView
+		android:id="@+id/description"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="158dp"
+		android:layout_marginTop="130dp"
+		android:layout_marginEnd="195dp"
+		android:layout_marginBottom="374dp"
+		android:text="TextView"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/price"
+		tools:ignore="MissingConstraints" />
+
+	<Button
+		android:id="@+id/addtocart"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="110dp"
+		android:layout_marginTop="89dp"
+		android:layout_marginEnd="213dp"
+		android:layout_marginBottom="219dp"
+		android:text="Thêm vào giỏ hàng"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/description" />
+
+	<Button
+		android:id="@+id/cart"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="126dp"
+		android:layout_marginTop="77dp"
+		android:layout_marginEnd="197dp"
+		android:layout_marginBottom="95dp"
+		android:text="giỏ hàng"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addtocart"
+		tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+
+	<TextView
+		android:id="@+id/title_success"
+		android:layout_width="300dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="76dp"
+		android:fontFamily="@font/segoeuisl"
+		android:gravity="center"
+		android:text="@string/withdraw_success_title_success"
+		android:textColor="@color/light_title"
+		android:textSize="30sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.495"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/amount_withdraw"
+		android:layout_width="100dp"
+		android:layout_height="50dp"
+		app:layout_constraintEnd_toEndOf="@+id/title_success"
+		app:layout_constraintStart_toStartOf="@+id/title_success"
+		app:layout_constraintTop_toBottomOf="@+id/title_success" />
+
+	<TextView
+		android:id="@+id/code_text"
+		android:layout_width="100dp"
+		android:layout_height="50dp"
+		android:text="@string/withdraw_code_text"
+		android:textSize="30sp"
+		app:layout_constraintEnd_toEndOf="@+id/amount_withdraw"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toStartOf="@+id/amount_withdraw"
+		app:layout_constraintTop_toBottomOf="@+id/amount_withdraw" />
+
+	<ImageView
+		android:id="@+id/QR_code"
+		android:layout_width="181dp"
+		android:layout_height="151dp"
+		android:layout_centerHorizontal="true"
+		android:clickable="true"
+		android:contentDescription="@string/withdraw_success_qr_des"
+		android:foreground="?attr/selectableItemBackground"
+		android:src="@android:drawable/ic_menu_gallery"
+		app:layout_constraintEnd_toEndOf="@+id/code_text"
+		app:layout_constraintStart_toStartOf="@+id/code_text"
+		app:layout_constraintTop_toBottomOf="@+id/code_text" />
+
+	<LinearLayout
+		android:layout_width="300dp"
+		android:layout_height="60dp"
+		android:layout_marginTop="32dp"
+		android:weightSum="2"
+		app:layout_constraintEnd_toEndOf="@+id/QR_code"
+		app:layout_constraintStart_toStartOf="@+id/QR_code"
+		app:layout_constraintTop_toBottomOf="@+id/QR_code">
+
+		<TextView
+			android:id="@+id/home_button"
+			style="@style/ClickableText"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/home_button" />
+
+		<TextView
+			android:id="@+id/continue_withdraw_button"
+			style="@style/ClickableText"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="@string/withdraw_success_continue_withdraw_button" />
+	</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

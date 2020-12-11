@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/profile_picture"
+		android:layout_width="120dp"
+		android:layout_height="120dp"
+		android:layout_marginTop="120dp"
+		android:background="@drawable/button_corner"
+		android:contentDescription="@string/success_profile_picture"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/title_success"
+		android:layout_width="300dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="30dp"
+		android:fontFamily="@font/segoeui"
+		android:gravity="center"
+		android:text="@string/transfer_success_title_success"
+		android:textColor="@color/light_title"
+		android:textSize="20sp"
+		app:layout_constraintEnd_toEndOf="@+id/profile_picture"
+		app:layout_constraintStart_toStartOf="@+id/profile_picture"
+		app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
+
+	<TextView
+		android:id="@+id/username"
+		style="@style/Title"
+		android:layout_width="300dp"
+		android:layout_height="wrap_content"
+		android:textSize="23sp"
+		app:layout_constraintEnd_toEndOf="@+id/title_success"
+		app:layout_constraintStart_toStartOf="@+id/title_success"
+		app:layout_constraintTop_toBottomOf="@+id/title_success" />
+
+	<TextView
+		android:id="@+id/money"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="30dp"
+		android:ems="10"
+		android:gravity="center"
+		android:textColor="@color/light_title"
+		android:textSize="25sp"
+		app:layout_constraintEnd_toEndOf="@+id/username"
+		app:layout_constraintStart_toStartOf="@+id/username"
+		app:layout_constraintTop_toBottomOf="@+id/username" />
+
+	<TextView
+		android:id="@+id/message"
+		android:layout_width="300dp"
+		android:layout_height="40dp"
+		android:layout_marginTop="20dp"
+		android:gravity="center"
+		android:textColor="@color/light_hint"
+		android:textSize="15sp"
+		android:textStyle="normal"
+		app:layout_constraintEnd_toEndOf="@+id/money"
+		app:layout_constraintHorizontal_bias="0.492"
+		app:layout_constraintStart_toStartOf="@+id/money"
+		app:layout_constraintTop_toBottomOf="@+id/money" />
+
+	<LinearLayout
+		android:layout_width="300dp"
+		android:layout_height="60dp"
+		android:layout_marginTop="30dp"
+		android:weightSum="2"
+		app:layout_constraintEnd_toEndOf="@+id/message"
+		app:layout_constraintStart_toStartOf="@+id/message"
+		app:layout_constraintTop_toBottomOf="@+id/message">
+
+		<TextView
+			android:id="@+id/home_button"
+			style="@style/ClickableText"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="Ve man hinh chinh" />
+
+		<TextView
+			android:id="@+id/continue_transfer_button"
+			style="@style/ClickableText"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:text="Tiếp tục chuyển tiền" />
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

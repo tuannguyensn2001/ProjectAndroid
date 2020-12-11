@@ -1,17 +1,14 @@
 package com.example.deluxe.Interface.PresenterView;
 
+import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
 
 public interface MainInterface {
-    public interface MainPresenter
-    {
-        void handleLogOut();
-        void handleNapThe();
+	interface MainPresenter extends Presenter {
+		void handleLogOut();
+	}
 
-    }
-
-    public interface MainView extends View
-    {
-
-    }
+	interface MainView extends View {
+		void setMoney(double money);
+	}
 }

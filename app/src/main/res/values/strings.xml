@@ -1,25 +1,122 @@
 <resources>
-    <string name="app_name">Deluxe</string>
-    <string name="signup_title">Đăng ký tài khoản</string>
-    <string name="signup_errorText">Nhập sai rồi, mời nhập lại!</string>
-    <string name="signup_usernameInput">    Tên đăng nhập</string>
-    <string name="signup_passwordInput">    Nhập mật khẩu</string>
-    <string name="signup_passwordCheckInput">   Nhập lại mật khẩu</string>
-    <string name="signup_emailInput">   Nhập Email</string>
-    <string name="signup_submitButton">ĐĂNG KÝ</string>
-    <string name="signup_alreadyText">ĐÃ CÓ TÀI KHOẢN?</string>
-    <string name="signin_submitButton">ĐĂNG NHẬP</string>
-    <string name="signup_signinButton">ĐĂNG NHẬP</string>
-    <string name="signin_title">Đăng nhập</string>
-    <string name="signin_passwordInput">    Nhập mật khẩu</string>
-    <string name="signin_usernameInput">    Tên đăng nhập</string>
-    <string name="signin_errorText">Nhập sai rồi, mời nhập lại!</string>
-    <string name="signin_forgotPasswordButton">QUÊN MẬT KHẨU</string>
-    <string name="signin_signupButton">ĐĂNG KÝ</string>
-    <string name="Seri">Nhập số seri</string>
-    <string name="mathe">Nhập mã thẻ</string>
-    <string name="deposit_title">Nạp thẻ</string>
-    <string name="deposit_cardCodeInput">Nhập vào mã thẻ</string>
-    <string name="deposit_serialInput">Nhập vào số series</string>
-    <string name="deposit_submitButton">NẠP THẺ</string>
+	<string name="app_name">Deluxe</string>
+
+	<string name="email_input">Nhập Email</string>
+	<string name="password_input">Nhập mật khẩu</string>
+	<string name="error_text">Nhập sai rồi, mời nhập lại!</string>
+	<string name="money_input">Nhập số tiền</string>
+	<string name="home_button">Trở về màn hình chính</string>
+
+	<string name="sign_up_title">Đăng ký tài khoản</string>
+	<string name="sign_in_title">Đăng nhập</string>
+	<string name="sign_up_username_input">Tên đăng nhập</string>
+
+	<string name="sign_up_password_check_input">Nhập lại mật khẩu</string>
+	<string name="sign_up_already_text">ĐÃ CÓ TÀI KHOẢN?</string>
+	<string name="sign_in_button">ĐĂNG NHẬP</string>
+	<string name="sign_up_button">ĐĂNG KÝ</string>
+	<string name="sign_in_forgot_password_button">QUÊN MẬT KHẨU</string>
+
+	<string name="transaction_deposit">NẠP THẺ</string>
+	<string name="transaction_transfer">CHUYỂN TIỀN</string>
+	<string name="transaction_withdraw">RÚT TIỀN</string>
+
+	<string name="deposit_action_bar_title">Nạp thẻ</string>
+	<string name="deposit_title">Nạp thẻ</string>
+	<string name="deposit_error_text">Sai cmn roi</string>
+	<string name="deposit_card_code_input">Nhập vào mã thẻ</string>
+	<string name="deposit_serial_input">Nhập vào số series</string>
+	<string name="deposit_submit_button">NẠP THẺ</string>
+
+	<string name="transfer_search_action_bar_title">Chuyển tiền</string>
+	<string name="transfer_action_bar_title">Chuyển tiền cho tài khoản</string>
+	<string name="transfer_message_input">Nhập lời nhắn cho người ta</string>
+	<string name="transfer_submit_button">Chuyển tiền</string>
+	<string name="transfer_title">Chuyển tiền tới tài khoản</string>
+	<string name="transfer_account_email">Email</string>
+	<string name="transfer_account_username">Name</string>
+
+	<string name="withdraw_action_bar_title">Rút tiền về ví</string>
+	<string name="withdraw_message_input">Ghi chú</string>
+	<string name="withdraw_submit_button">Rút Tiền</string>
+
+	<string name="deposit_success_title">Nạp tiền thành công</string>
+	<string name="deposit_success_subtitle">Số tiền hiện tại</string>
+	<string name="deposit_success_continue_deposit_button">Tiếp tục nạp tiền</string>
+
+	<string name="transfer_success_title_success">Chuyển tiền thành công cho</string>
+	<string name="transfer_success_continue_transfer_button">Tiếp tục chuyển tiền</string>
+
+	<string name="withdraw_success_continue_withdraw_button">Tiếp tục rút tiền</string>
+	<string name="withdraw_success_title_success">Chúc mừng bạn đã rút tiền thành công</string>
+	<string name="withdraw_code_text">Mã giao dịch</string>
+	<string name="withdraw_success_qr_des">TODO</string>
+
+	<string name="success_profile_picture">TODO</string>
+
+	<string name="action_bar_back_button">Back</string>
+
+	<string name="user_list_profile_picture">user_list_profile_picture</string>
+
+
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="confirm_password_avatar_des">TODO</string>
+
+	<string name="statistics_action_bar_title">Thống kê</string>
+	<string name="statistics_transfer_tab">Chuyển</string>
+	<string name="statistics_withdraw_tab">Rút</string>
+	<string name="statistics_deposit_tab">Nạp</string>
+	<string name="statistics_spend_tab">Tiêu</string>
+
+	<string name="limit_action_bar_title">Hạn mức chi tiêu</string>
+
+	<string name="transaction_info_action_bar_title">Thông tin giao dịch</string>
+
+	<string name="statistics_card_dad_title1">Tháng %1$d năm %2$d</string>
+	<string name="statistics_card_dad_title2">Chưa làm xong</string>
+	<string name="statistics_card_message">Lời nhắn:</string>
+	<string name="statistic_card_user_sender">Người gửi:</string>
+	<string name="statistic_card_user_receiver">Người nhận:</string>
+	<string name="statistics_card_time">Thời gian giao dịch:</string>
+	<string name="statistic_card_status_des">TODO</string>
+	<string name="statistic_card_see_more_button">Xem thêm</string>
+	<string name="statistic_card_type_des">TODO</string>
+
+
+	<string name="cart_buyProduct">Mua hàng</string>
+
+	<string name="chat_message_input">Nhập tin nhắn</string>
+
+	<string name="order_address">Địa chỉ nhận hàng</string>
+	<string name="order_pay">Thanh toán</string>
+
+	<string name="product_detail_add">Thêm vào giỏ hàng</string>
+	<string name="product_detail_cart">Giỏ hàng</string>
+
+	<string name="product_changeable_remove">Cut</string>
+	<string name="product_changeable_add">+</string>
+	<string name="product_changeable_minus">-</string>
+
+	<string name="password_input_show">Hiện mật khẩu</string>
+
+	<string name="main_sign_out">SignOut</string>
+	<string name="main_notification">Notification</string>
+	<string name="main_change_theme">ChangeTheme</string>
+
+	<string name="search_user_placeholder_not_found">Cha thay ai</string>
+	<string name="search_user_placeholder_search">Tim gi do di ban oi, sao trong rong vay?</string>
+	<string name="background_description">background_description</string>
+
+	<string name="main_navigation_transaction">Giao dich</string>
+	<string name="main_navigation_history">Lich su</string>
+	<string name="main_navigation_chat">Nhan tin</string>
+	<string name="main_navigation_account">Tai khoan</string>
+
+	<string name="chat_send_message_button_description">send_message</string>
+	<string name="chat_send_transaction_button_description">send_transaction</string>
+	<string name="message_content_null">Rỗng tuếch</string>
+	<string name="message_transaction_title">%1$s đã %2$s %3$s số tiền:</string>
+	<string name="message_transaction_status_done">Đã xong</string>
+	<string name="message_transaction_status_cancel">Bùng kèo cmnr</string>
+	<string name="message_transaction_status_waiting">Đang chờ phản hồi</string>
 </resources>

@@ -1,14 +1,19 @@
 package com.example.deluxe.Entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
 	String username, password;
 	String email;
-	String created_at,updated_at;
+	String created_at, updated_at;
+	String token;
+	String avatar;
 
 	public User() {
 
 	}
+
 
 	public User(String username, String password) {
 		this.username = username;
@@ -19,6 +24,14 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+	}
+
+	public String getToken() {
+		return this.token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public String getUser() {
@@ -60,5 +73,12 @@ public class User {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
-}
 
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+}

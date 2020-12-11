@@ -5,12 +5,15 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
+import com.example.deluxe.Interface.Model.AuthSignUp;
+import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.example.deluxe.Interface.Model.AuthSignUp;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Date;
 
@@ -19,6 +22,7 @@ public class Auth {
 	private FirebaseAuth mAuth;
 	private UserModel userModel;
 	private WalletModel walletModel;
+
 	private Auth() {
 		this.mAuth = FirebaseAuth.getInstance();
 		this.userModel = new UserModel();
@@ -40,6 +44,13 @@ public class Auth {
 			@Override
 			public void onComplete(@NonNull Task<AuthResult> task) {
 				if (task.isSuccessful()) {
+					new UserModel().show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
+						@Override
+						public void dataIsLoaded(User user) {
+							user.setToken(FirebaseInstanceId.getInstance().getToken());
+							FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
+						}
+					});
 					authFirebase.loginSuccessful();
 				} else {
 					authFirebase.loginUnsuccessful();
@@ -70,26 +81,25 @@ public class Auth {
 					String key = Auth.getInstance().user().getUid();
 					user.setCreated_at(new Date().toString());
 					user.setUpdated_at(new Date().toString());
-					userModel.create(user,key);
+					user.setAvatar("https://firebasestorage.googleapis.com/v0/b/projectandroid-8d413.appspot.com/o/avatar%2Fdefault-avatar.png?alt=media&token=e7aa4b47-8849-4474-a722-fd67466a1519");
+					userModel.create(user, key);
 
 					Wallet wallet = new Wallet(0);
 					wallet.setCreated_at(new Date().toString());
 					wallet.setUpdated_at(new Date().toString());
 
-					walletModel.add(key,wallet);
-
+					walletModel.add(key, wallet);
 
 
 					authSignUp.signUpSuccessful();
 				} else {
-					authSignUp.signUpunSuccessful();
+					authSignUp.signUpUnSuccessful();
 				}
 			}
 		});
 	}
 
-	public void update()
-	{
+	public void update() {
 
 	}
 

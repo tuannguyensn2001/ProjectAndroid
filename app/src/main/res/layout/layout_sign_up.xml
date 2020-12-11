@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:showIn="@layout/activity_sign_up">
+
+
+	<TextView
+		android:id="@+id/title"
+		style="@style/Title"
+		android:layout_marginTop="120dp"
+		android:text="@string/sign_up_title"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/notification_text"
+		style="@style/ErrorText"
+		android:text="@string/error_text"
+		android:visibility="invisible"
+		app:layout_constraintEnd_toEndOf="@+id/title"
+		app:layout_constraintStart_toStartOf="@+id/title"
+		app:layout_constraintTop_toBottomOf="@+id/title" />
+
+	<EditText
+		android:id="@+id/username_input"
+		style="@style/Field"
+		android:autofillHints=""
+		android:hint="@string/sign_up_username_input"
+		android:inputType="textPersonName"
+		app:layout_constraintEnd_toEndOf="@+id/notification_text"
+		app:layout_constraintStart_toStartOf="@+id/notification_text"
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
+
+	<EditText
+		android:id="@+id/password_input"
+		style="@style/Field"
+		android:autofillHints=""
+		android:hint="@string/password_input"
+		android:inputType="textPassword"
+		app:layout_constraintEnd_toEndOf="@+id/email_input"
+		app:layout_constraintStart_toStartOf="@+id/email_input"
+		app:layout_constraintTop_toBottomOf="@+id/email_input" />
+
+	<EditText
+		android:id="@+id/password_check_input"
+		style="@style/Field"
+		android:autofillHints=""
+		android:hint="@string/sign_up_password_check_input"
+		android:inputType="textPassword"
+		app:layout_constraintEnd_toEndOf="@+id/password_input"
+		app:layout_constraintStart_toStartOf="@+id/password_input"
+		app:layout_constraintTop_toBottomOf="@+id/password_input" />
+
+	<EditText
+		android:id="@+id/email_input"
+		style="@style/Field"
+		android:autofillHints=""
+		android:hint="@string/email_input"
+		android:inputType="textEmailAddress"
+		app:layout_constraintEnd_toEndOf="@+id/username_input"
+		app:layout_constraintStart_toStartOf="@+id/username_input"
+		app:layout_constraintTop_toBottomOf="@+id/username_input" />
+
+	<Button
+		android:id="@+id/submit_button"
+		style="@style/SubmitButton"
+		android:layout_width="320dp"
+		android:layout_marginTop="38dp"
+		android:text="@string/sign_up_button"
+		app:layout_constraintEnd_toEndOf="@+id/password_check_input"
+		app:layout_constraintStart_toStartOf="@+id/password_check_input"
+		app:layout_constraintTop_toBottomOf="@+id/password_check_input" />
+
+
+</merge>

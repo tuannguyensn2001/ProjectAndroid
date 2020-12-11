@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:visibility="visible"
+	tools:context=".View.Transaction.TransferActivity">
+
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
+	<fragment
+		android:id="@+id/auth_bar"
+		android:name="com.example.deluxe.View.Components.AuthBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/action_bar"
+		tools:layout="@layout/fragment_auth_bar" />
+
+
+	<TextView
+		android:id="@+id/notification_text"
+		style="@style/ErrorText"
+		android:layout_marginTop="32dp"
+		android:visibility="invisible"
+		app:layout_constraintStart_toStartOf="@+id/money_input"
+		app:layout_constraintTop_toBottomOf="@+id/auth_bar" />
+
+	<EditText
+		android:id="@+id/money_input"
+		style="@style/Field"
+		android:layout_height="wrap_content"
+		android:autofillHints=""
+		android:hint="@string/money_input"
+		android:inputType="number"
+		android:maxLength="9"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
+
+	<EditText
+		android:id="@+id/message_input"
+		style="@style/Field"
+		android:layout_height="wrap_content"
+		android:autofillHints=""
+		android:hint="@string/withdraw_message_input"
+		android:inputType="textMultiLine"
+		android:maxLength="500"
+		android:maxLines="8"
+		app:layout_constraintEnd_toEndOf="@+id/money_input"
+		app:layout_constraintStart_toStartOf="@+id/money_input"
+		app:layout_constraintTop_toBottomOf="@+id/money_input" />
+
+	<Button
+		android:id="@+id/submit_button"
+		style="@style/SubmitButton"
+		android:layout_width="150dp"
+		android:layout_marginTop="32dp"
+		android:text="@string/withdraw_submit_button"
+		app:layout_constraintEnd_toEndOf="@+id/message_input"
+		app:layout_constraintStart_toStartOf="@+id/message_input"
+		app:layout_constraintTop_toBottomOf="@+id/message_input" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

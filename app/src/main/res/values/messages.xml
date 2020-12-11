@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="login.invalid">Thông tin không hợp lệ</string>
-    <string name="login.failed">Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu</string>
+	<string name="login.invalid">Thông tin không hợp lệ</string>
+	<string name="login.failed">Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu</string>
 </resources>

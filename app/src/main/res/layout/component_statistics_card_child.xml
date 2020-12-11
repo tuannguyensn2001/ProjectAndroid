@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/card_view"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginHorizontal="8dp"
+	android:layout_marginBottom="8dp"
+	android:background="@color/light_mainColor"
+	android:clickable="true"
+	app:cardCornerRadius="8dp"
+	app:cardElevation="0dp"
+	app:contentPadding="16dp">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/card_view_content"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TextView
+			android:id="@+id/money_transaction"
+			android:layout_width="wrap_content"
+			android:layout_height="24dp"
+			android:drawablePadding="8dp"
+			android:gravity="center"
+			android:textSize="18sp"
+			android:textStyle="bold"
+			app:drawableStartCompat="@drawable/ic_baseline_north_east_24"
+			app:layout_constraintEnd_toStartOf="@+id/date_transaction"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintHorizontal_chainStyle="spread_inside"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:id="@+id/date_transaction"
+			android:layout_width="wrap_content"
+			android:layout_height="24dp"
+			android:gravity="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/money_transaction"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/hidden_view"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:visibility="gone"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/money_transaction">
+
+			<View
+				android:id="@+id/divider"
+				android:layout_width="0dp"
+				android:layout_height="1dp"
+				android:background="?android:attr/listDivider"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+
+			<TextView
+				android:id="@+id/time_transaction"
+				style="@style/statistics_card_content_text"
+				android:text="@string/statistics_card_time"
+				app:layout_constraintBottom_toTopOf="@+id/user_transaction"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+			<TextView
+				android:id="@+id/user_transaction"
+				style="@style/statistics_card_content_text"
+				android:text="@string/statistic_card_user_sender"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/time_transaction" />
+
+			<TextView
+				android:id="@+id/message_transaction"
+				style="@style/statistics_card_content_text"
+				android:text="@string/statistics_card_message"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/user_transaction" />
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/see_more_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:visibility="gone"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/message_transaction">
+
+				<View
+					android:id="@+id/divider2"
+					android:layout_width="0dp"
+					android:layout_height="1dp"
+					android:layout_marginTop="8dp"
+					android:background="?android:attr/listDivider"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/see_more_text"
+					style="@style/statistics_card_content_text"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_margin="0dp"
+					android:gravity="center|end"
+					android:paddingTop="16dp"
+					android:text="@string/statistic_card_see_more_button"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/divider2" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
