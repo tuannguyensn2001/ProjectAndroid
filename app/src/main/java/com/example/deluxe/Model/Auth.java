@@ -5,10 +5,7 @@ import androidx.annotation.NonNull;
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
-<<<<<<< HEAD
 import com.example.deluxe.Interface.Model.AuthSignUp;
-=======
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

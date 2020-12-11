@@ -1,16 +1,10 @@
 package com.example.deluxe.View.Status;
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Status/TransferSuccessActivity.java
-=======
-
-import androidx.appcompat.app.AppCompatActivity;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/TransferSuccessActivity.java
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Status/TransferSuccessActivity.java
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Interface.PresenterView.Status.TransferSuccessInterface;
@@ -18,13 +12,6 @@ import com.example.deluxe.Presenter.Status.TransferSuccessPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.Transaction.TransferSearchActivity;
-=======
-import com.example.deluxe.Interface.PresenterView.TransferSuccessInterface;
-import com.example.deluxe.Presenter.Status.TransferSuccessPresenter;
-import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
-import com.example.deluxe.View.SearchUserActivity;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/TransferSuccessActivity.java
 
 public class TransferSuccessActivity extends AppCompatActivity implements TransferSuccessInterface.TransferSuccessView {
 	TransferSuccessInterface.TransferSuccessPresenter transferSuccessPresenter;

@@ -1,5 +1,6 @@
 package com.example.deluxe.View.Transaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +10,9 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Transaction/TransactionFragment.java
 import com.example.deluxe.Interface.PresenterView.Transaction.TransactionInterface;
-=======
-import com.example.deluxe.Interface.PresenterView.TransactionInterface;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/TransactionFragment.java
 import com.example.deluxe.Presenter.Transaction.TransactionPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
-import com.example.deluxe.View.SearchUserActivity;
 
 public class TransactionFragment extends Fragment implements TransactionInterface.TransactionView {
 	private TransactionInterface.TransactionPresenter transactionPresenter;

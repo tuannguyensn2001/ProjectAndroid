@@ -9,16 +9,14 @@
 		android:label="@string/app_name"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
-<<<<<<< HEAD
+
 		android:theme="@style/AppTheme"
 		android:usesCleartextTraffic="true">
 		<activity android:name=".View.Transaction.TransferSearchActivity" />
 		<activity android:name=".View.Transaction.TransactionInformationActivity" />
 		<activity android:name=".View.Chat.ChatActivity" />
-=======
+
 		android:theme="@style/AppTheme">
-		<activity android:name=".View.Chat.ChatActivity"></activity>
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 		<activity android:name=".View.Status.WithdrawSuccessActivity" />
 		<activity android:name=".View.History.LimitActivity" />
 		<activity android:name=".View.History.StatisticsActivity" />
@@ -26,10 +24,6 @@
 		<activity android:name=".View.Status.TransferSuccessActivity" />
 		<activity android:name=".View.Transaction.WithdrawActivity" />
 		<activity android:name=".View.Transaction.TransferActivity" />
-<<<<<<< HEAD
-=======
-		<activity android:name=".View.SearchUserActivity" />
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
 		<activity android:name=".View.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -37,15 +31,13 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-<<<<<<< HEAD
 		<activity android:name=".View.Shopping.CartActivity" />
 		<activity android:name=".View.Shopping.OrderActivity" />
 		<activity android:name=".View.Shopping.ProductActivity">
 
 		</activity>
 		<activity android:name=".View.Shopping.ProductDetailActivity" />
-=======
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74
+
 		<activity android:name=".View.Transaction.DepositActivity" />
 		<activity android:name=".View.Auth.SignUpActivity" />
 		<activity android:name=".View.Auth.SignInActivity" /> <!-- [START firebase_service] -->

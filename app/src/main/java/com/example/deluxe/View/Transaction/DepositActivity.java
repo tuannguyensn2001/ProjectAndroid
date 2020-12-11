@@ -15,14 +15,8 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Transaction/DepositActivity.java
 import com.example.deluxe.Interface.PresenterView.Transaction.DepositInterface;
-=======
-import com.example.deluxe.Interface.PresenterView.DepositInterface;
-import com.example.deluxe.Presenter.Transaction.DepositPresenter;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/DepositActivity.java
 import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
 
 public class DepositActivity extends AppCompatActivity implements DepositInterface.DepositView {
 	TextView notiText;

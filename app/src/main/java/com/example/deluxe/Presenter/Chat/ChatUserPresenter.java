@@ -6,10 +6,6 @@ import com.example.deluxe.Interface.Model.MessageInterface;
 import com.example.deluxe.Interface.PresenterView.Chat.ChatUserInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.MessageModel;
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/Chat/ChatUserPresenter.java
-=======
-import com.example.deluxe.View.Chat.ChatActivity;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/ChatUserPresenter.java
 
 import java.util.ArrayList;
 

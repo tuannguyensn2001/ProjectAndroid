@@ -24,11 +24,7 @@ public class AuthBarPresenter implements AuthBarInterface.AuthBarPresenter {
 			}
 		});
 
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/Presenter/Components/AuthBarPresenter.java
 		new WalletModel().getMoney(Auth.getInstance().user().getUid(), new WalletInterface() {
-=======
-		userModel.show(Auth.getInstance().user().getUid(), new com.example.deluxe.Interface.Model.UserDetailsInterface() {
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/Presenter/AuthBarPresenter.java
 			@Override
 			public void dataIsLoaded(double money) {
 				authBarView.setMoney(money);

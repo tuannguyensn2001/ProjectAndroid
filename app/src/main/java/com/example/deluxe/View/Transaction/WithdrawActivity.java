@@ -4,11 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Transaction/WithdrawActivity.java
-=======
-import android.text.method.PasswordTransformationMethod;
-import android.view.LayoutInflater;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/WithdrawActivity.java
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,17 +15,10 @@ import androidx.core.content.ContextCompat;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
-<<<<<<< HEAD:app/src/main/java/com/example/deluxe/View/Transaction/WithdrawActivity.java
 import com.example.deluxe.Interface.PresenterView.Transaction.WithdrawInterface;
 import com.example.deluxe.Presenter.Transaction.WithdrawPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ConfirmPasswordDialog;
-=======
-import com.example.deluxe.Interface.PresenterView.WithdrawInterface;
-import com.example.deluxe.Presenter.Transaction.WithdrawPresenter;
-import com.example.deluxe.R;
-import com.example.deluxe.View.MainActivity;
->>>>>>> 6e52742c5d4d535db56eda368b46d114b2de4a74:app/src/main/java/com/example/deluxe/View/WithdrawActivity.java
 import com.example.deluxe.View.Status.WithdrawSuccessActivity;
 
 import java.text.NumberFormat;
