@@ -1,6 +1,7 @@
 package com.example.deluxe.Entity;
 
 public class Message {
+	private String id;
 	private int type; /* 0 = binh thuong, -1 = gui tien, 1 = doi tien */
 	private int status; /* -1 = bi huy, 0 = dang cho, 1 = xong roi */
 	private double firstMoney, secondMoney;
@@ -11,6 +12,16 @@ public class Message {
 
 	public Message() {
 
+	}
+
+	public void setId(String id)
+	{
+		this.id = id ;
+	}
+
+	public String getId()
+	{
+		return this.id;
 	}
 
 	public Message(int type, int status, double firstMoney, String emailSender, String emailReceiver, String content) {

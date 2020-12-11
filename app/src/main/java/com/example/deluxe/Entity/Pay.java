@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Pay {
+public class Pay
+{
 
 	private Date dateConvert;
 	@SerializedName("date")

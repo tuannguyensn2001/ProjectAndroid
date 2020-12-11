@@ -80,5 +80,14 @@ public class ChatPresenter implements ChatInterface.ChatPresenter {
 
 	}
 
+	@Override
+	public void updateTransaction(Message message) {
+		if (message.getStatus() == 1 && message.getType() == 1) {
+			User user = new User(null, null, message.getEmailSender());
+			handleTransfer(user, message.getSecondMoney(), message.getContent());
+		}
+		new MessageModel().updateMessage(message);
+	}
+
 
 }

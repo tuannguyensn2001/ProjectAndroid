@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Helper.Rules;
+import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Chat.ChatActivity;
+import com.example.deluxe.View.Components.ReplyTransactionDialog;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,6 +60,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 		final Message message = listMessage.get(position);
+		View transactionPart, statusPart, actionPart;
+		TextView transactionTitle, transactionStatus, transactionMoneyFirst, transactionMoneySecond;
+		String title, status, moneyFirst, moneySecond;
+
 		String content = listMessage.get(position).getContent();
 		content = Rules.isSpace(listMessage.get(position).getContent()) ? context.getString(R.string.message_content_null) : content;
 		holder.message.setText(content);
@@ -64,9 +71,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 		if (message.getType() != 0) {
 			String tao = Auth.getInstance().user().getEmail();
 
-			View transactionPart, statusPart, actionPart;
-			TextView transactionTitle, transactionStatus, transactionMoneyFirst, transactionMoneySecond;
-			String title, status, moneyFirst, moneySecond;
+
 
 			transactionPart = holder.itemView.findViewById(R.id.transaction_part);
 			statusPart = holder.itemView.findViewById(R.id.status_part);
@@ -152,14 +157,23 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			holder.itemView.findViewById(R.id.positive_button).setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					new ReplyTransactionDialog(context, message.getFirstMoney(), message.getId());
+//					String messageId = message.getId();
+//					message.setStatus(1);
+//					message.setSecondMoney(message.getFirstMoney());
+//					listMessage.set(position, message);
+//					((com.example.deluxe.Core.View.ViewUseSendTransaction) context).updateTransaction(message);
 				}
 			});
 
 			holder.itemView.findViewById(R.id.negative_button).setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					String messageId = message.getId();
 					message.setStatus(-1);
+					message.setSecondMoney(0);
 					listMessage.set(position, message);
+					((com.example.deluxe.Core.View.ViewUseSendTransaction) context).updateTransaction(message);
 				}
 			});
 		}
@@ -173,15 +187,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 	@Override
 	public int getItemViewType(int position) {
 		Message message = listMessage.get(position);
-
-//		if (message.getFirstMoney() == 0 && message.getType() != 0) {
-//			Random vocungngaunhien = new Random();
-//			message.setType(vocungngaunhien.nextInt(3) - 1);
-//			message.setStatus(vocungngaunhien.nextInt(3) - 1);
-//			message.setFirstMoney(vocungngaunhien.nextInt(100000));
-//			message.setSecondMoney(vocungngaunhien.nextInt(100000));
-//			listMessage.set(position, message);
-//		}
 
 		if (message.getType() == 0) {
 			if (message.getEmailSender().equals(Auth.getInstance().user().getEmail())) {
@@ -198,7 +203,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 		}
 	}
 
-	public class ViewHolder extends RecyclerView.ViewHolder {
+	public static class ViewHolder extends RecyclerView.ViewHolder {
 		TextView message;
 
 		View itemView;
@@ -207,7 +212,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			super(itemView);
 			this.itemView = itemView;
 
-			message = (TextView) itemView.findViewById(R.id.message);
+			message = itemView.findViewById(R.id.message);
 		}
 	}
 }

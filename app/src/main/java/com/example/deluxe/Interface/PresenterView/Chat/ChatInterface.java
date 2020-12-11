@@ -25,6 +25,8 @@ public interface ChatInterface {
 		void getReceiverInformation(String emailReceiver);
 
 		void handleTransfer(final User user, final double money, final String message);
+
+		void updateTransaction(Message message);
 	}
 
 }

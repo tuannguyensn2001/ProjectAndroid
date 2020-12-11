@@ -6,13 +6,17 @@ import androidx.annotation.NonNull;
 
 import com.example.deluxe.Core.Model;
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Interface.Model.ChangePasswordInterface;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
 import com.example.deluxe.Interface.Model.UserInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,11 +33,15 @@ public class UserModel implements Model {
 	ArrayList<String> listUser;
 	DatabaseReference ref;
 	StorageReference storageReference;
+	FirebaseUser firebaseUser;
+	FirebaseAuth mAuth;
 
 	public UserModel() {
 		this.listUser = new ArrayList<>();
 		this.ref = FirebaseDatabase.getInstance().getReference().child("user");
 		this.storageReference = FirebaseStorage.getInstance().getReference().child("avatar");
+		this.mAuth = FirebaseAuth.getInstance();
+		this.firebaseUser = mAuth.getCurrentUser();
 	}
 
 	public void getListUser(final DataFirebase userInterface) {
@@ -178,6 +186,46 @@ public class UserModel implements Model {
 				User user = snapshot.getValue(User.class);
 				user.setAvatar(url);
 				ref.child(key).setValue(user);
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
+
+	public void updatePassword(final String currentPassword, final String newPassword, final String confirmPassword, final ChangePasswordInterface changePasswordInterface) {
+		if (!newPassword.equals(confirmPassword)) {
+			changePasswordInterface.failedPassword();
+			return;
+		}
+
+		this.ref.child(Auth.getInstance().user().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				final User user = snapshot.getValue(User.class);
+
+				if (currentPassword.equals(user.getPassword()) && newPassword.equals(confirmPassword)) {
+
+					firebaseUser.updatePassword(newPassword)
+							.addOnSuccessListener(new OnSuccessListener<Void>() {
+								@Override
+								public void onSuccess(Void aVoid) {
+									user.setPassword(newPassword);
+									ref.child(Auth.getInstance().user().getUid()).setValue(user);
+									changePasswordInterface.success();
+
+								}
+							})
+							.addOnFailureListener(new OnFailureListener() {
+								@Override
+								public void onFailure(@NonNull Exception e) {
+									changePasswordInterface.failedUpdate(e);
+								}
+							});
+
+				} else changePasswordInterface.failedPassword();
 			}
 
 			@Override

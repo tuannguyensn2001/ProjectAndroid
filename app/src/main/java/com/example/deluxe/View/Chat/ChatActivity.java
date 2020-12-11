@@ -28,7 +28,6 @@ import com.example.deluxe.Presenter.Chat.ChatPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.SendTransactionDialog;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity implements ChatInterface.ChatView {
@@ -157,7 +156,7 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 
 	@Override
 	public void setAdapter(ArrayList<Message> list) {
-		MessageAdapter messageAdapter = new MessageAdapter(list, getBaseContext());
+		MessageAdapter messageAdapter = new MessageAdapter(list, this);
 
 		this.recyclerView.setAdapter(messageAdapter);
 	}
@@ -192,12 +191,6 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 			message = new Message(1, 0, moneyInputNumber, emailSender, emailReceiver, ConvertData.normalizeString(messageInput));
 		}
 
-//		String typeTransaction = isTransfer ? " gửi bạn " : " đòi mày ";
-//		String moneyInput = new DecimalFormat("#,###,###").format(moneyInputNumber);
-//		String laina = Rules.isSpace(messageInput) ? " trống rỗng." : ": \"" + ConvertData.normalizeString(messageInput) + "\".";
-//		String tannhauser = Auth.getInstance().user().getEmail() + typeTransaction + moneyInput + " với lời nhắn" + laina;
-//		message = new Message(emailSender, emailReceiver, tannhauser);
-
 		chatPresenter.handleInputMessage(message);
 		content.setText(null);
 
@@ -205,5 +198,12 @@ public class ChatActivity extends AppCompatActivity implements ChatInterface.Cha
 			User user = new User(null, null, emailReceiver);
 			chatPresenter.handleTransfer(user, moneyInputNumber, messageInput);
 		}
+	}
+
+	@Override
+	public void updateTransaction(Message message) {
+		message.setEmailReceiver(emailSender);
+		message.setEmailSender(emailReceiver);
+		chatPresenter.updateTransaction(message);
 	}
 }

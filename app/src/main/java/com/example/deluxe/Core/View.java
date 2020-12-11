@@ -1,5 +1,6 @@
 package com.example.deluxe.Core;
 
+import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Entity.User;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public interface View {
 	}
 
 	interface ViewUseSendTransaction extends ViewUseCheckPasswordDialog {
-
 		void sendTransaction(boolean isTransfer, double moneyInputNumber, String messageInput);
+
+		void updateTransaction(Message message);
 	}
 }

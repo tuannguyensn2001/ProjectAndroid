@@ -78,8 +78,6 @@ public class MessageModel {
 				ListMessage list = new ListMessage();
 				list.setLastMessages(lastMessage);
 
-				Log.e("click", new Gson().toJson(list));
-
 				Call<ArrayList<LastMessage>> call = messageAPI.getDetailMessage(list);
 
 				call.enqueue(new Callback<ArrayList<LastMessage>>() {
@@ -91,7 +89,7 @@ public class MessageModel {
 
 					@Override
 					public void onFailure(Call<ArrayList<LastMessage>> call, Throwable t) {
-
+						Log.e("e","E");
 					}
 				});
 
@@ -165,11 +163,12 @@ public class MessageModel {
 		this.ref.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				Log.e("message", "reload");
+
 				listMessage.clear();
 
 				for (DataSnapshot item : snapshot.getChildren()) {
 					Message message = item.getValue(Message.class);
+					message.setId(item.getKey());
 
 					if (message.getEmailSender().equals(emailSender) && message.getEmailReceiver().equals(emailReceiver) ||
 							message.getEmailSender().equals(emailReceiver) && message.getEmailReceiver().equals(emailSender)
@@ -206,6 +205,28 @@ public class MessageModel {
 		}
 
 
+	}
+
+	public void updateMessage(final Message message)
+	{
+		final String id = message.getId();
+		final int status = message.getStatus();
+		final double secondMoney= message.getSecondMoney();
+
+		this.ref.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				Message message1 = snapshot.getValue(Message.class);
+				message1.setStatus(status);
+				message1.setSecondMoney(secondMoney);
+				ref.child(id).setValue(message1);
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
 	}
 
 }
