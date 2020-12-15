@@ -12,7 +12,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Date;
@@ -68,7 +71,21 @@ public class Auth {
 	}
 
 	public void logout() {
-		this.mAuth.signOut();
+		final String token ="";
+		FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				User user = snapshot.getValue(User.class);
+				user.setToken(token);
+				FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
+				mAuth.signOut();
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
 	}
 
 	public void signUp(final User user, final AuthSignUp authSignUp) {

@@ -16,7 +16,7 @@
 		<activity android:name=".View.Transaction.TransactionInformationActivity" />
 		<activity android:name=".View.Chat.ChatActivity" />
 
-		android:theme="@style/AppTheme">
+<!--		android:theme="@style/AppTheme">-->
 		<activity android:name=".View.Status.WithdrawSuccessActivity" />
 		<activity android:name=".View.History.LimitActivity" />
 		<activity android:name=".View.History.StatisticsActivity" />
