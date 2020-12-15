@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.Design.NoActionBar">
+		<item name="colorPrimary">@color/light_mainColor</item>
+		<item name="colorPrimaryDark">@color/light_mainColor</item>
+		<item name="colorAccent">@color/light_mainColor</item>
+	</style>
 
+	<style name="AppThemeDark" parent="Theme.Design.NoActionBar">
+		<item name="colorPrimary">@color/light_mainColorLighter</item>
+		<item name="colorPrimaryDark">@color/light_mainColorLighter</item>
+		<item name="colorAccent">@color/light_mainColorLighter</item>
+		<item name="backgroundColor">@color/dark_background</item>
+	</style>
 </resources>
