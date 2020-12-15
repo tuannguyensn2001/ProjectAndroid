@@ -55,16 +55,16 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 				Fragment selectedFragment = null;
 				switch (item.getItemId()) {
 					case R.id.nav_transaction:
-						selectedFragment = new TransactionFragment();
+						selectedFragment = TransactionFragment.newInstance();
 						break;
 					case R.id.nav_history:
-						selectedFragment = new HistoryFragment();
+						selectedFragment = HistoryFragment.newInstance();
 						break;
 					case R.id.nav_chat:
-						selectedFragment = new ChatUserFragment();
+						selectedFragment = ChatUserFragment.newInstance();
 						break;
 					case R.id.nav_account:
-						selectedFragment = new AccountFragment();
+						selectedFragment = AccountFragment.newInstance();
 						break;
 				}
 				assert selectedFragment != null;

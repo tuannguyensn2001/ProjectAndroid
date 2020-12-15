@@ -17,6 +17,7 @@ import com.example.deluxe.Entity.StandardCard;
 import com.example.deluxe.Interface.PresenterView.History.HistoryInterface;
 import com.example.deluxe.Presenter.History.HistoryPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Account.AccountFragment;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -26,6 +27,13 @@ public class HistoryFragment extends Fragment implements HistoryInterface.Histor
 	ArrayList<StandardCardDad> cardDads;
 	StandardCardRecyclerAdapter recyclerAdapter;
 	private HistoryInterface.HistoryPresenter historyPresenter;
+
+	public static HistoryFragment newInstance() {
+		HistoryFragment fragment = new HistoryFragment();
+		Bundle args = new Bundle();
+		fragment.setArguments(args);
+		return fragment;
+	}
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState) {
 

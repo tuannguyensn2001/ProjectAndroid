@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -32,25 +33,30 @@ public class ChatUserFragment extends Fragment implements ChatUserInterface.Chat
 	/**
 	 * Day la phan khai bao cac loai bien
 	 */
-	ArrayList<User> users;
-	SearchView searchBar;
-	UserListAdapter userSearchAdapter;
-	RecyclerView userSearchListView;
-	ConstraintLayout notYetPlaceholder, noResultPlaceholder;
-	ConstraintLayout searchUserPlaceholder;
-	RecyclerView userMessageRecyclerView;
-	ChatUserInterface.ChatUserPresenter chatUserInterfacePresenter;
+	private ArrayList<User> users;
+	private SearchView searchBar;
+	private UserListAdapter userSearchAdapter;
+	private RecyclerView userSearchListView;
+	private ConstraintLayout notYetPlaceholder, noResultPlaceholder;
+	private ConstraintLayout searchUserPlaceholder;
+	private RecyclerView userMessageRecyclerView;
+	private ChatUserInterface.ChatUserPresenter chatUserInterfacePresenter;
 	private boolean isSearching;
 	private boolean isHaveMessage;
 
 	public ChatUserFragment() {
 	}
 
-	public static ChatUserFragment newInstance(String param1, String param2) {
+	public static ChatUserFragment newInstance() {
 		ChatUserFragment fragment = new ChatUserFragment();
 		Bundle args = new Bundle();
 		fragment.setArguments(args);
 		return fragment;
+	}
+
+	@Override
+	public void onSaveInstanceState(@NonNull Bundle outState) {
+		super.onSaveInstanceState(outState);
 	}
 
 	@Override

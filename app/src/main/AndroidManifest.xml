@@ -5,9 +5,9 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 
 	<application
-		android:icon="@mipmap/ic_launcher"
+		android:icon="@drawable/ic_twotone_nights_stay_24"
 		android:label="@string/app_name"
-		android:roundIcon="@mipmap/ic_launcher_round"
+		android:roundIcon="@drawable/ic_twotone_nights_stay_24"
 		android:supportsRtl="true"
 
 		android:theme="@style/AppTheme"
