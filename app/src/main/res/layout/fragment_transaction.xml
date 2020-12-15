@@ -6,34 +6,169 @@
 	android:layout_height="match_parent"
 	tools:context=".View.MainActivity">
 
-	<Button
-		android:id="@+id/NapThe"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:text="NapThe"
-		app:layout_constraintBottom_toTopOf="@+id/transfer"
+	<ImageView
+		android:id="@+id/deposit_button"
+		android:layout_width="100dp"
+		android:layout_height="0dp"
+		android:layout_margin="32dp"
+		android:rotation="45"
+		app:layout_constraintBottom_toTopOf="@+id/transfer_button"
+		app:layout_constraintDimensionRatio="h,1:1"
+		app:layout_constraintEnd_toStartOf="@+id/withdraw_button"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed"
+		app:srcCompat="@drawable/button" />
+
+	<ImageView
+		android:id="@+id/withdraw_button"
+		android:layout_width="100dp"
+		android:layout_height="0dp"
+		android:layout_margin="32dp"
+		android:rotation="45"
+		app:layout_constraintBottom_toTopOf="@+id/use_button"
+		app:layout_constraintDimensionRatio="h,1:1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/deposit_button"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed"
+		app:srcCompat="@drawable/button" />
+
+	<ImageView
+		android:id="@+id/transfer_button"
+		android:layout_width="100dp"
+		android:layout_height="0dp"
+		android:layout_margin="32dp"
+		android:rotation="45"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="h,1:1"
+		app:layout_constraintEnd_toStartOf="@+id/use_button"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/deposit_button"
+		app:srcCompat="@drawable/button" />
+
+	<ImageView
+		android:id="@+id/use_button"
+		android:layout_width="100dp"
+		android:layout_height="0dp"
+		android:layout_margin="32dp"
+		android:rotation="45"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="h,1:1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/transfer_button"
+		app:layout_constraintTop_toBottomOf="@+id/withdraw_button"
+		app:srcCompat="@drawable/button" />
+
+	<TextView
+		android:id="@+id/deposit_text"
+		style="@style/ClickableText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="24dp"
+		android:text="NẠP THẺ"
+		android:textSize="20dp"
+		android:textStyle="bold"
+		android:visibility="visible"
+		app:layout_constraintBottom_toTopOf="@+id/deposit_button"
+		app:layout_constraintEnd_toEndOf="@+id/deposit_button"
+		app:layout_constraintStart_toStartOf="@+id/deposit_button" />
+
+	<TextView
+		android:id="@+id/withdraw_text"
+		style="@style/ClickableText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="24dp"
+		android:text="RÚT TIỀN"
+		android:textSize="20dp"
+		android:textStyle="bold"
+		android:visibility="visible"
+		app:layout_constraintBottom_toTopOf="@+id/withdraw_button"
+		app:layout_constraintEnd_toEndOf="@+id/withdraw_button"
+		app:layout_constraintStart_toStartOf="@+id/withdraw_button" />
+
+	<TextView
+		android:id="@+id/transfer_text"
+		style="@style/ClickableText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="24dp"
+		android:text="CHUYỂN TIỀN"
+		android:textSize="20dp"
+		android:textStyle="bold"
+		android:visibility="visible"
+		app:layout_constraintEnd_toEndOf="@+id/transfer_button"
+		app:layout_constraintStart_toStartOf="@+id/transfer_button"
+		app:layout_constraintTop_toBottomOf="@+id/transfer_button" />
+
+	<TextView
+		android:id="@+id/use_text"
+		style="@style/ClickableText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="24dp"
+		android:text="TIÊU TIỀN"
+		android:textSize="20dp"
+		android:textStyle="bold"
+		android:visibility="visible"
+		app:layout_constraintEnd_toEndOf="@+id/use_button"
+		app:layout_constraintStart_toStartOf="@+id/use_button"
+		app:layout_constraintTop_toBottomOf="@+id/use_button" />
+
+	<ImageView
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:src="@drawable/ic_baseline_style_24"
+		app:layout_constraintBottom_toBottomOf="@+id/deposit_button"
+		app:layout_constraintEnd_toEndOf="@+id/deposit_button"
+		app:layout_constraintStart_toStartOf="@+id/deposit_button"
+		app:layout_constraintTop_toTopOf="@+id/deposit_button" />
+
+	<ImageView
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:src="@drawable/ic_baseline_credit_card_24"
+		app:layout_constraintBottom_toBottomOf="@+id/withdraw_button"
+		app:layout_constraintEnd_toEndOf="@+id/withdraw_button"
+		app:layout_constraintStart_toStartOf="@+id/withdraw_button"
+		app:layout_constraintTop_toTopOf="@+id/withdraw_button" />
+
+	<ImageView
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:src="@drawable/ic_baseline_wifi_protected_setup_24"
+		app:layout_constraintBottom_toBottomOf="@+id/transfer_button"
+		app:layout_constraintEnd_toEndOf="@+id/transfer_button"
+		app:layout_constraintStart_toStartOf="@+id/transfer_button"
+		app:layout_constraintTop_toTopOf="@+id/transfer_button" />
+
+	<ImageView
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:src="@drawable/ic_baseline_shopping_basket_24"
+		app:layout_constraintBottom_toBottomOf="@+id/use_button"
+		app:layout_constraintEnd_toEndOf="@+id/use_button"
+		app:layout_constraintStart_toStartOf="@+id/use_button"
+		app:layout_constraintTop_toTopOf="@+id/use_button" />
+
+	<ImageView
+		android:id="@+id/logo"
+		android:layout_width="120dp"
+		android:layout_height="120dp"
+		android:contentDescription="TODO"
+		android:src="@drawable/ic_round_toys_24"
+		android:visibility="visible"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="h,1:1"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
-
-	<Button
-		android:id="@+id/transfer"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:text="Chuyen tien"
-		app:layout_constraintBottom_toTopOf="@+id/ruttien"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/NapThe" />
-
-	<Button
-		android:id="@+id/ruttien"
-		style="@style/SubmitButton"
-		android:layout_width="320dp"
-		android:text="Rut tien"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/transfer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

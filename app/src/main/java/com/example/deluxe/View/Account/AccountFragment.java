@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.deluxe.Interface.PresenterView.Account.AccountInterface;
 import com.example.deluxe.Presenter.Account.AccountPresenter;
 import com.example.deluxe.R;
+import com.example.deluxe.View.Chat.ChatUserFragment;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -27,6 +28,13 @@ public class AccountFragment extends Fragment implements AccountInterface.Accoun
 	private ImageView avatar;
 	private Uri filePath;
 	private AccountInterface.AccountPresenter accountPresenter;
+
+	public static AccountFragment newInstance() {
+		AccountFragment fragment = new AccountFragment();
+		Bundle args = new Bundle();
+		fragment.setArguments(args);
+		return fragment;
+	}
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_account, container, false);

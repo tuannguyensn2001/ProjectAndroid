@@ -1,11 +1,4 @@
 <resources>
-	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<item name="colorPrimary">@color/light_mainColor</item>
-		<item name="colorPrimaryDark">@color/light_mainColor</item>
-		<item name="colorAccent">@color/light_mainColor</item>
-	</style>
-
 	<style name="SubmitButton" parent="Widget.AppCompat.Button">
 		<item name="android:background">@drawable/button_corner</item>
 		<item name="android:layout_height">50dp</item>

@@ -8,6 +8,8 @@
 	<color name="light_mainColor">#1f72a0</color>
 	<color name="light_mainColorLighter">#84B2CC</color>
 
+	<color name="dark_background">#012744</color>
+
 	<color name="red">#E83131</color>
 	<color name="yellow">#D5B00B</color>
 	<color name="green">#61B643</color>
