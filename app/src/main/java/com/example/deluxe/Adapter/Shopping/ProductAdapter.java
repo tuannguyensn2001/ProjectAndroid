@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.Product;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.R;
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +39,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 		holder.name.setText(this.listProduct.get(position).getName());
-		holder.price.setText(this.listProduct.get(position).getPrice() + "");
+		holder.price.setText(ConvertData.moneyToString(this.listProduct.get(position).getPrice()));
 
 		Picasso.get().load(this.listProduct.get(position).getThumbnail()).into(holder.image);
 	}

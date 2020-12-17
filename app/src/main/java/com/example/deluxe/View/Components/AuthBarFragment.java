@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
 import com.example.deluxe.Presenter.Components.AuthBarPresenter;
 import com.example.deluxe.R;
@@ -40,7 +41,7 @@ public class AuthBarFragment extends Fragment implements AuthBarInterface.AuthBa
 
 	@Override
 	public void setMoney(double money) {
-		authBalance.setText(new DecimalFormat("#,###,###").format(money));
+		authBalance.setText(ConvertData.moneyToString(money));
 	}
 
 	@Override

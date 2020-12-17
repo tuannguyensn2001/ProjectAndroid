@@ -7,13 +7,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.Status.DepositSuccessInterface;
 import com.example.deluxe.Presenter.Status.DepositSuccessPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 import com.example.deluxe.View.Transaction.DepositActivity;
-
-import java.text.DecimalFormat;
 
 public class DepositSuccessActivity extends AppCompatActivity implements DepositSuccessInterface.DepositSuccessView {
 	DepositSuccessInterface.DepositSuccessPresenter depositSuccessPresenter;
@@ -67,6 +66,6 @@ public class DepositSuccessActivity extends AppCompatActivity implements Deposit
 
 	@Override
 	public void setAuthBalance(double authBalance) {
-		this.authBalance.setText(new DecimalFormat("#,###,###").format(authBalance));
+		this.authBalance.setText(ConvertData.moneyToString(authBalance));
 	}
 }

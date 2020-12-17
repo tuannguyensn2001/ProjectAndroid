@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Presenter.MainPresenter;
 import com.example.deluxe.R;
@@ -24,8 +25,6 @@ import com.example.deluxe.View.Chat.ChatUserFragment;
 import com.example.deluxe.View.History.HistoryFragment;
 import com.example.deluxe.View.Transaction.TransactionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity implements MainInterface.MainView {
 	MainInterface.MainPresenter mainPresenter;
@@ -125,6 +124,6 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Mai
 
 	@Override
 	public void setMoney(double money) {
-		((TextView) findViewById(R.id.auth_balance)).setText(new DecimalFormat("#,###,###").format(money));
+		((TextView) findViewById(R.id.auth_balance)).setText(ConvertData.moneyToString(money));
 	}
 }

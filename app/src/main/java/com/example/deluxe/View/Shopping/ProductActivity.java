@@ -2,9 +2,10 @@ package com.example.deluxe.View.Shopping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.Shopping.CollectionAdapter;
@@ -32,8 +33,9 @@ public class ProductActivity extends AppCompatActivity implements ProductInterfa
 	}
 
 	@Override
-	public void loadView(Class view) {
-
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
+		Intent intent = new Intent(this, view);
+		startActivity(intent);
 	}
 
 	@Override
@@ -45,8 +47,14 @@ public class ProductActivity extends AppCompatActivity implements ProductInterfa
 		this.productPresenter = new ProductPresenter(this);
 		this.recyclerView = findViewById(R.id.products);
 		this.recyclerView.setHasFixedSize(true);
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		this.recyclerView.setLayoutManager(layoutManager);
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.product_action_bar_title));
+
+		findViewById(R.id.cart_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(CartActivity.class);
+			}
+		});
 	}
 
 	@Override

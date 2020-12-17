@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Helper.ConvertData;
 
 import java.text.DecimalFormat;
 
@@ -14,7 +15,7 @@ public class ReplyTransactionDialog extends SendTransactionDialog {
 	public ReplyTransactionDialog(Context context, double firstMoney, String id) {
 		super(context);
 		this.firstMoney = firstMoney;
-		this.money.setText(new DecimalFormat("#,###,###").format(firstMoney));
+		this.money.setText(ConvertData.moneyToString(firstMoney));
 		this.id = id;
 	}
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -15,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.CartItem;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.R;
 import com.squareup.picasso.Picasso;
 
@@ -47,8 +47,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 		holder.number.setText(cartItem.getNumber() + "");
 		holder.name.setText(cartItem.getProduct().getName());
 		holder.description.setText(cartItem.getProduct().getDescription());
-		holder.price.setText(cartItem.getProduct().getPrice() + "");
-		holder.total.setText(cartItem.getTotal() + "");
+		holder.price.setText(ConvertData.moneyToString(cartItem.getProduct().getPrice()));
+		holder.total.setText(ConvertData.moneyToString(cartItem.getTotal()));
 		Picasso.get().load(cartItem.getProduct().getThumbnail()).into(holder.thumbnail);
 	}
 
@@ -75,8 +75,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 		TextView price;
 		TextView total;
 		OnAddNumberClick onChangeNumberClick;
-		Button plus;
-		Button minus;
+		TextView plus, minus;
 		CheckBox checkBuyProduct;
 		OnCheckBox onCheckBox;
 
@@ -94,7 +93,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 			this.total = itemView.findViewById(R.id.product_total_price);
 			this.plus = itemView.findViewById(R.id.product_add_button);
 			this.minus = itemView.findViewById(R.id.product_minus_button);
-			this.checkBuyProduct = itemView.findViewById(R.id.checkBuyProduct);
+			this.checkBuyProduct = itemView.findViewById(R.id.choose_button);
 			this.onChangeNumberClick = onChangeNumberClick;
 
 			this.plus.setOnClickListener(new View.OnClickListener() {

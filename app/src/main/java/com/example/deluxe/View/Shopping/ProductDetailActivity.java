@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Entity.Product;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.Shopping.ProductDetailInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.Model.CartModel;
@@ -53,8 +54,9 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
 	}
 
+
 	@Override
-	public void loadView(Class view) {
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
 		Intent intent = new Intent(this, view);
 		startActivity(intent);
 	}
@@ -66,19 +68,20 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
 	public void init() {
 		this.productDetailPresenter = new ProductDetailPresenter(this);
-		this.thumbnail = (ImageView) findViewById(R.id.thumbnail);
-		this.name = (TextView) findViewById(R.id.name);
-		this.price = (TextView) findViewById(R.id.price);
-		this.description = (TextView) findViewById(R.id.description);
-		this.addToCart = (Button) findViewById(R.id.addtocart);
-		this.cart = (Button) findViewById(R.id.cart);
+
+		this.thumbnail = findViewById(R.id.thumbnail);
+		this.name = findViewById(R.id.name);
+		this.price = findViewById(R.id.price);
+		this.description = findViewById(R.id.description);
+		this.addToCart = findViewById(R.id.addtocart);
+		this.cart = findViewById(R.id.cart);
 	}
 
 	@SuppressLint("SetTextI18n")
 	@Override
 	public void loadData(Product product) {
 		this.name.setText(product.getName());
-		this.price.setText(product.getPrice() + "");
+		this.price.setText(ConvertData.moneyToString(product.getPrice()));
 		this.description.setText(product.getDescription());
 
 		Picasso.get().load(product.getThumbnail()).into(this.thumbnail);
