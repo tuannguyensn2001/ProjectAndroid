@@ -193,7 +193,9 @@ public class UserModel implements Model {
 
 			}
 		});
+
 	}
+
 
 	public void updatePassword(final String currentPassword, final String newPassword, final String confirmPassword, final ChangePasswordInterface changePasswordInterface) {
 		if (!newPassword.equals(confirmPassword)) {

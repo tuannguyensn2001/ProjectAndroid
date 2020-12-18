@@ -1,5 +1,8 @@
 package com.example.deluxe.Presenter;
 
+import android.util.Log;
+
+import com.example.deluxe.Interface.Model.LimitInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.MainInterface;
 import com.example.deluxe.Model.Auth;
@@ -21,8 +24,10 @@ public class MainPresenter implements MainInterface.MainPresenter {
 				public void dataIsLoaded(double money) {
 					mainView.setMoney(money);
 				}
+
 			});
 		}
+
 	}
 
 	@Override
@@ -30,4 +35,5 @@ public class MainPresenter implements MainInterface.MainPresenter {
 		Auth.getInstance().logout();
 		mainView.loadView(SignInActivity.class);
 	}
+
 }

@@ -1,13 +1,19 @@
 package com.example.deluxe.Model;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.User;
 import com.example.deluxe.Entity.Wallet;
 import com.example.deluxe.Interface.Model.AuthLogin;
 import com.example.deluxe.Interface.Model.AuthSignUp;
+import com.example.deluxe.Interface.Model.SendEmailInterface;
 import com.example.deluxe.Interface.Model.UserDetailsInterface;
+import com.example.deluxe.View.Auth.ForgotPasswordActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +47,7 @@ public class Auth {
 
 	public void attempt(User user, final AuthLogin authFirebase) {
 		String email = user.getUser();
-		String password = user.getPassword();
+		final String password = user.getPassword();
 
 		this.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 			@Override
@@ -51,6 +57,7 @@ public class Auth {
 						@Override
 						public void dataIsLoaded(User user) {
 							user.setToken(FirebaseInstanceId.getInstance().getToken());
+							user.setPassword(password);
 							FirebaseDatabase.getInstance().getReference().child("user").child(Auth.getInstance().user().getUid()).setValue(user);
 						}
 					});
@@ -119,5 +126,23 @@ public class Auth {
 	public void update() {
 
 	}
+
+	public void forgotPassword(String email, final SendEmailInterface sendEmailInterface)
+	{
+		mAuth.sendPasswordResetEmail(email)
+				.addOnSuccessListener(new OnSuccessListener<Void>() {
+					@Override
+					public void onSuccess(Void aVoid) {
+						sendEmailInterface.successful();
+					}
+				})
+				.addOnFailureListener(new OnFailureListener() {
+					@Override
+					public void onFailure(@NonNull Exception e) {
+						sendEmailInterface.failed();
+					}
+				});
+	}
+
 
 }

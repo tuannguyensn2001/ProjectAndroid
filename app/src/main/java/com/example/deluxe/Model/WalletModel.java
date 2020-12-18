@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.deluxe.Entity.Wallet;
+import com.example.deluxe.Interface.Model.LimitInterface;
 import com.example.deluxe.Interface.Model.WalletInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -77,5 +78,48 @@ public class WalletModel {
 		});
 	}
 
+	public void checkPerLimitForTransaction(String key, final double money,final LimitInterface limitInterface)
+	{
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				Wallet wallet = snapshot.getValue(Wallet.class);
+
+				if(money > wallet.getPerLimitForTransaction())
+				{
+					limitInterface.dataIsLoaded(false);
+				} else {
+					limitInterface.dataIsLoaded(true);
+				}
+
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
+
+	public void getPerLimitForMonth(String key, final double totalMoney, final LimitInterface limitInterface)
+	{
+		this.ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				Wallet wallet = snapshot.getValue(Wallet.class);
+
+				if(totalMoney > wallet.getPerLimitForMonth())
+				{
+					limitInterface.dataIsLoaded(false);
+				} else limitInterface.dataIsLoaded(true);
+
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
 
 }

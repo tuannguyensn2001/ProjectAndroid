@@ -22,10 +22,11 @@ import com.example.deluxe.R;
 import com.example.deluxe.View.MainActivity;
 
 public class SignInActivity extends AppCompatActivity implements SignInInterface.SignInView {
-	private TextView title, notiText;
+	private TextView title, notiText,forgotPassword;
 	private EditText email, password;
 	private Button submitButton;
 	private TextView SignUpButton;
+
 
 	private String emailInput, passwordInput;
 
@@ -56,6 +57,13 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 			}
 		});
 
+		this.forgotPassword.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(ForgotPasswordActivity.class);
+			}
+		});
+
 
 		Log.e("user", Auth.getInstance().check() + "");
 	}
@@ -78,6 +86,8 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 
 		this.title.setText(getString(R.string.sign_in_title));
 		this.submitButton.setText(getString(R.string.sign_in_button));
+
+		this.forgotPassword= findViewById(R.id.forgot_password_button);
 	}
 
 	@Override
