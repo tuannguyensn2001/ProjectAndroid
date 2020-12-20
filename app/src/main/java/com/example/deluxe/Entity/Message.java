@@ -14,16 +14,6 @@ public class Message {
 
 	}
 
-	public void setId(String id)
-	{
-		this.id = id ;
-	}
-
-	public String getId()
-	{
-		return this.id;
-	}
-
 	public Message(int type, int status, double firstMoney, String emailSender, String emailReceiver, String content) {
 		this.type = type;
 		this.status = status;
@@ -38,6 +28,14 @@ public class Message {
 		this.emailReceiver = emailReceiver;
 		this.emailSender = sender;
 		this.content = content;
+	}
+
+	public String getId() {
+		return this.id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getEmailSender() {

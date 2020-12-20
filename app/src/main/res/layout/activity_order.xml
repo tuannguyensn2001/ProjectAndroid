@@ -6,101 +6,119 @@
 	android:layout_height="match_parent"
 	tools:context=".View.Shopping.OrderActivity">
 
+
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/orderlist"
-		android:layout_width="356dp"
-		android:layout_height="381dp"
+		android:layout_width="380dp"
+		android:layout_height="380dp"
 		android:layout_marginStart="1dp"
-		android:layout_marginTop="1dp"
-		android:layout_marginBottom="254dp"
-		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="1dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
-		android:id="@+id/textView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="45dp"
-		android:layout_marginTop="32dp"
-		android:layout_marginEnd="258dp"
-		android:layout_marginBottom="205dp"
-		android:text="Địa chỉ nhận hàng"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/orderlist"
-		app:layout_constraintVertical_bias="0.076" />
-
-	<TextView
 		android:id="@+id/name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="17dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="175dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView" />
+		android:layout_width="250dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="40dp"
+		android:text="Aaa"
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		android:textSize="20dp"
+		app:layout_constraintEnd_toEndOf="@+id/orderlist"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/name_text"
+		app:layout_constraintTop_toBottomOf="@+id/orderlist" />
 
 	<TextView
 		android:id="@+id/phone"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="22dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="134dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/name"
-		app:layout_constraintVertical_bias="0.0" />
+		android:layout_width="250dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="40dp"
+		android:text="012345"
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		android:textSize="20dp"
+		app:layout_constraintEnd_toEndOf="@+id/name"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/phone_text"
+		app:layout_constraintTop_toBottomOf="@+id/name" />
 
 	<TextView
 		android:id="@+id/address"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="18dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="97dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		android:layout_width="250dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="40dp"
+		android:text="HaNoi"
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		android:textSize="20dp"
+		app:layout_constraintEnd_toEndOf="@+id/phone"
+		app:layout_constraintHorizontal_bias="1"
+		app:layout_constraintStart_toEndOf="@+id/address_text"
 		app:layout_constraintTop_toBottomOf="@+id/phone" />
 
 	<TextView
 		android:id="@+id/totalMoney"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="23dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="57dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		android:layout_width="150dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="56dp"
+		android:text="1,000,000"
+		android:textSize="20dp"
+		app:layout_constraintStart_toEndOf="@+id/totalmoney_text"
 		app:layout_constraintTop_toBottomOf="@+id/address" />
 
 	<Button
-		android:id="@+id/buy_button"
+		android:id="@+id/buy_product"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="111dp"
-		android:layout_marginTop="120dp"
-		android:layout_marginEnd="63dp"
+		android:layout_height="60dp"
+		android:layout_marginTop="44dp"
 		android:text="Thanh toán"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/phone"
+		app:layout_constraintEnd_toEndOf="@+id/address"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/totalmoney_text"
+		app:layout_constraintTop_toBottomOf="@+id/address" />
+
+	<TextView
+		android:id="@+id/totalmoney_text"
+		android:layout_width="100dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="56dp"
+		android:text="Tổng tiền: "
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		android:textSize="20dp"
+		app:layout_constraintStart_toStartOf="@+id/address_text"
+		app:layout_constraintTop_toBottomOf="@+id/address_text" />
+
+	<TextView
+		android:id="@+id/name_text"
+		android:layout_width="100dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="40dp"
+		android:text="Name:"
+		android:textSize="20dp"
+		app:layout_constraintStart_toStartOf="@+id/orderlist"
 		app:layout_constraintTop_toBottomOf="@+id/orderlist" />
+
+	<TextView
+		android:id="@+id/phone_text"
+		android:layout_width="100dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="40dp"
+		android:text="Phone:"
+		android:textSize="20dp"
+		app:layout_constraintStart_toStartOf="@+id/name_text"
+		app:layout_constraintTop_toBottomOf="@+id/name_text" />
+
+	<TextView
+		android:id="@+id/address_text"
+		android:layout_width="100dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="40dp"
+		android:text="Address: "
+		android:textSize="20dp"
+		app:layout_constraintStart_toStartOf="@+id/phone_text"
+		app:layout_constraintTop_toBottomOf="@+id/phone_text" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

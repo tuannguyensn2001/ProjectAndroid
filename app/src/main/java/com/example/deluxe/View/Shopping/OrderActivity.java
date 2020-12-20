@@ -51,6 +51,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 				confirmBuyProduct();
 			}
 		});
+
 	}
 
 	@Override
@@ -80,7 +81,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 		this.phone = (TextView) findViewById(R.id.phone);
 		this.address = (TextView) findViewById(R.id.address);
 		this.totalMoney = (TextView) findViewById(R.id.totalMoney);
-		this.buyProduct = (Button) findViewById(R.id.buy_button);
+		this.buyProduct = (Button) findViewById(R.id.buy_product);
 	}
 
 	@Override

@@ -25,7 +25,6 @@ public class ProductModel {
 	public void getProducts(final ProductModelInterface productModelInterface) {
 		ProductAPI productAPI = this.retrofit.create(ProductAPI.class);
 		Call<List<Collection>> call = productAPI.getProducts();
-		Log.e("hello", "bb");
 		call.enqueue(new Callback<List<Collection>>() {
 			@Override
 			public void onResponse(Call<List<Collection>> call, Response<List<Collection>> response) {

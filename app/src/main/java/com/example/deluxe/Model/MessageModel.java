@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,7 +88,7 @@ public class MessageModel {
 
 					@Override
 					public void onFailure(Call<ArrayList<LastMessage>> call, Throwable t) {
-						Log.e("e","E");
+						Log.e("e", "E");
 					}
 				});
 
@@ -189,6 +188,26 @@ public class MessageModel {
 		});
 	}
 
+	public void updateMessage(final Message message) {
+		final String id = message.getId();
+		final int status = message.getStatus();
+		final double secondMoney = message.getSecondMoney();
+
+		this.ref.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot) {
+				Message message1 = snapshot.getValue(Message.class);
+				message1.setStatus(status);
+				message1.setSecondMoney(secondMoney);
+				ref.child(id).setValue(message1);
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError error) {
+
+			}
+		});
+	}
 
 	public class ListMessage {
 		private List<LastMessage> lastMessages;
@@ -205,28 +224,6 @@ public class MessageModel {
 		}
 
 
-	}
-
-	public void updateMessage(final Message message)
-	{
-		final String id = message.getId();
-		final int status = message.getStatus();
-		final double secondMoney= message.getSecondMoney();
-
-		this.ref.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-			@Override
-			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				Message message1 = snapshot.getValue(Message.class);
-				message1.setStatus(status);
-				message1.setSecondMoney(secondMoney);
-				ref.child(id).setValue(message1);
-			}
-
-			@Override
-			public void onCancelled(@NonNull DatabaseError error) {
-
-			}
-		});
 	}
 
 }

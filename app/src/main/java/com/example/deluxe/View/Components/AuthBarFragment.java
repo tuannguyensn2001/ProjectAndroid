@@ -16,8 +16,6 @@ import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
 import com.example.deluxe.Presenter.Components.AuthBarPresenter;
 import com.example.deluxe.R;
 
-import java.text.DecimalFormat;
-
 public class AuthBarFragment extends Fragment implements AuthBarInterface.AuthBarView {
 	TextView authUsername, authEmail, authBalance;
 

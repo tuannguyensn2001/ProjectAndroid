@@ -1,6 +1,5 @@
 package com.example.deluxe.Adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Entity.ListViewInfo;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Components.AuthBarFragment;
-import com.example.deluxe.View.Transaction.TransactionFragment;
 
 import java.util.List;
 

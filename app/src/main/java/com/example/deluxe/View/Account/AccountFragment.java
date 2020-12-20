@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.deluxe.Interface.PresenterView.Account.AccountInterface;
 import com.example.deluxe.Presenter.Account.AccountPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Chat.ChatUserFragment;
+import com.example.deluxe.View.Auth.PasswordChangeActivity;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -25,7 +26,8 @@ public class AccountFragment extends Fragment implements AccountInterface.Accoun
 	private final int PICK_IMAGE_REQUEST = 21;
 	FirebaseStorage firebaseStorage;
 	StorageReference storageReference;
-	private ImageView avatar;
+	private ImageView avatar1;
+	private TextView usernamechange, passwordchange;
 	private Uri filePath;
 	private AccountInterface.AccountPresenter accountPresenter;
 
@@ -44,13 +46,24 @@ public class AccountFragment extends Fragment implements AccountInterface.Accoun
 
 		this.accountPresenter.getAvatar();
 
-		this.avatar.setOnClickListener(new View.OnClickListener() {
+		this.avatar1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				choosePicture();
 			}
 		});
-
+		this.usernamechange.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//loadView(UserInformationChange.class);
+			}
+		});
+		this.passwordchange.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadView(PasswordChangeActivity.class);
+			}
+		});
 		return v;
 	}
 
@@ -64,7 +77,9 @@ public class AccountFragment extends Fragment implements AccountInterface.Accoun
 	public void init(View v) {
 		this.accountPresenter = new AccountPresenter(this);
 		this.storageReference = FirebaseStorage.getInstance().getReference().child("images");
-		this.avatar = v.findViewById(R.id.avatar);
+		this.avatar1 = v.findViewById(R.id.avatar1);
+		this.usernamechange = v.findViewById(R.id.user_information_change);
+		this.passwordchange = v.findViewById(R.id.password_change);
 	}
 
 	@Override
@@ -85,6 +100,17 @@ public class AccountFragment extends Fragment implements AccountInterface.Accoun
 
 	@Override
 	public void setAvatar(String url) {
-		Picasso.get().load(url).into(avatar);
+		Picasso.get().load(url).into(avatar1);
+	}
+
+	@Override
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
+		Intent intent = new Intent(getActivity(), view);
+		startActivity(intent);
+	}
+
+	@Override
+	public void setNotification(Enum e) {
+
 	}
 }

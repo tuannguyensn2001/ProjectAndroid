@@ -16,7 +16,6 @@ import com.example.deluxe.Model.Auth;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ReplyTransactionDialog;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {

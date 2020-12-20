@@ -23,7 +23,7 @@
 
 	<string name="deposit_action_bar_title">Nạp thẻ</string>
 	<string name="deposit_title">Nạp thẻ</string>
-	<string name="deposit_error_text">Sai cmn roi</string>
+	<string name="deposit_error_text">Sai rồi, vui lòng kiểm tra lại!</string>
 	<string name="deposit_card_code_input">Nhập vào mã thẻ</string>
 	<string name="deposit_serial_input">Nhập vào số series</string>
 	<string name="deposit_submit_button">NẠP THẺ</string>
@@ -83,7 +83,7 @@
 	<string name="statistic_card_type_des">TODO</string>
 
 
-	<string name="product_action_bar_title">Đĩ chó online</string>
+	<string name="product_action_bar_title">Đi chợ online</string>
 	<string name="cart_buyProduct">Mua hàng</string>
 
 	<string name="chat_message_input">Nhập tin nhắn</string>
@@ -104,20 +104,29 @@
 	<string name="main_notification">Notification</string>
 	<string name="main_change_theme">ChangeTheme</string>
 
-	<string name="search_user_placeholder_not_found">Cha thay ai</string>
-	<string name="search_user_placeholder_search">Tim gi do di ban oi, sao trong rong vay?</string>
+	<string name="search_user_placeholder_not_found">Không tìm thấy</string>
+	<string name="search_user_placeholder_search">Tìm gì đó đi bạn ơi!</string>
 	<string name="background_description">background_description</string>
 
-	<string name="main_navigation_transaction">Giao dich</string>
-	<string name="main_navigation_history">Lich su</string>
-	<string name="main_navigation_chat">Nhan tin</string>
-	<string name="main_navigation_account">Tai khoan</string>
+	<string name="main_navigation_transaction">Giao dịch</string>
+	<string name="main_navigation_history">Lịch sự</string>
+	<string name="main_navigation_chat">Nhắn tin</string>
+	<string name="main_navigation_account">Tài khoản</string>
 
 	<string name="chat_send_message_button_description">send_message</string>
 	<string name="chat_send_transaction_button_description">send_transaction</string>
 	<string name="message_content_null">Rỗng tuếch</string>
 	<string name="message_transaction_title">%1$s đã %2$s %3$s số tiền:</string>
 	<string name="message_transaction_status_done">Đã xong</string>
-	<string name="message_transaction_status_cancel">Bùng kèo cmnr</string>
+	<string name="message_transaction_status_cancel">Bùng kèo </string>
 	<string name="message_transaction_status_waiting">Đang chờ phản hồi</string>
+	<string name="account_username_change">Đổi thông tin người dùng</string>
+	<string name="account_password_change">Đổi mật khẩu</string>
+	<string name="pd_description_text">Mô tả sản phẩm</string>
+	<string name="pd_description">Dùng tạm ổn</string>
+	<string name="pd_detail_text">Chi tiết sản phẩm</string>
+	<string name="useless_text">Đã bán: 200</string>
+	<string name="more_detail_image">Ảnh minh họa</string>
+	<string name="add_to_cart_button_text">Add to cart</string>
+	<string name="cart_sum_money">Tổng tiền:</string>
 </resources>

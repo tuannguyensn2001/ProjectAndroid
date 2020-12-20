@@ -7,7 +7,7 @@
 	android:background="@drawable/field_corner"
 	android:iconifiedByDefault="false"
 	android:queryBackground="@null"
-	android:queryHint="Tim cmn kiem"
+	android:queryHint="Tìm kiếm"
 	app:layout_constraintEnd_toEndOf="parent"
 	app:layout_constraintHorizontal_bias="0.5"
 	app:layout_constraintStart_toStartOf="parent"

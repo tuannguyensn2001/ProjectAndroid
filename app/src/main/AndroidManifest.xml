@@ -21,6 +21,8 @@
 		<activity android:name=".View.Status.TransferSuccessActivity" />
 		<activity android:name=".View.Transaction.WithdrawActivity" />
 		<activity android:name=".View.Transaction.TransferActivity" />
+		<activity android:name=".View.Auth.PasswordChangeActivity" />
+		<activity android:name=".View.Account.UserInformationChange" />
 		<activity android:name=".View.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

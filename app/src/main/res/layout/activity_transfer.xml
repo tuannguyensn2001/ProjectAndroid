@@ -17,7 +17,7 @@
 		app:layout_constraintTop_toTopOf="parent"
 		tools:layout="@layout/fragment_action_bar" />
 
-	<View
+	<ImageView
 		android:id="@+id/useless_view"
 		android:layout_width="match_parent"
 		android:layout_height="100dp"

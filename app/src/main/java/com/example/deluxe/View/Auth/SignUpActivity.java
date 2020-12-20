@@ -78,7 +78,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 					} else if (!list[7]) {
 						password.setError(ErrorMessage.ERR000004.getValue());
 					}
-
 					if (!list[3]) {
 						passwordCheck.setError(ErrorMessage.ERR000000.getValue());
 					} else if (!list[6]) {
@@ -107,10 +106,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	private void init() {
 		notiText = findViewById(R.id.notification_text);
 
-		username = findViewById(R.id.username_input);
+		username = findViewById(R.id.password_current);
 		email = findViewById(R.id.email_input);
-		password = findViewById(R.id.password_input);
-		passwordCheck = findViewById(R.id.password_check_input);
+		password = findViewById(R.id.password_new);
+		passwordCheck = findViewById(R.id.password_check_new);
 
 		submitButton = findViewById(R.id.submit_button);
 		SignInButton = findViewById(R.id.sign_in_button);

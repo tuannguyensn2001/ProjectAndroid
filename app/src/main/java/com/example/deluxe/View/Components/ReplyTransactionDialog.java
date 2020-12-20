@@ -6,8 +6,6 @@ import android.view.View;
 import com.example.deluxe.Entity.Message;
 import com.example.deluxe.Helper.ConvertData;
 
-import java.text.DecimalFormat;
-
 public class ReplyTransactionDialog extends SendTransactionDialog {
 	double firstMoney;
 	String id;

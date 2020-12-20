@@ -35,4 +35,5 @@
 			android:text="@string/sign_up_button" />
 
 	</LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

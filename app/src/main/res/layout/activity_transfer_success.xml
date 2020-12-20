@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:background="@drawable/background">
 
 	<ImageView
 		android:id="@+id/profile_picture"
@@ -81,7 +82,7 @@
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:text="Ve man hinh chinh" />
+			android:text="@string/home_button" />
 
 		<TextView
 			android:id="@+id/continue_transfer_button"
@@ -89,7 +90,7 @@
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:text="Tiếp tục chuyển tiền" />
+			android:text="@string/transfer_success_continue_transfer_button" />
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
