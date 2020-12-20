@@ -1,17 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
+	android:layout_width="wrap_content"
 	android:layout_height="match_parent">
 
-	<androidx.recyclerview.widget.RecyclerView
+	<RelativeLayout
 		android:id="@+id/card_list"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:clipToPadding="false"
-		android:paddingBottom="8dp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp">
+
+		<TextView
+			android:id="@+id/title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginBottom="10dp"
+			android:text="Tóm tắt"
+			android:textColor="@color/light_title"
+			android:textSize="30sp"
+			android:textStyle="bold" />
+
+		<RelativeLayout
+			android:id="@+id/re_lay_1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/title">
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/summary_card"
+				style="@style/standard_card_view"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/card_title"
+						style="@style/card_title"
+						android:text="Tóm tắt"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<com.github.mikephil.charting.charts.BarChart
+						android:id="@+id/bar_chart"
+						android:layout_width="match_parent"
+						android:layout_height="400dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/card_title" />
+
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/ratio_card"
+				style="@style/standard_card_view"
+				android:layout_below="@id/summary_card"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/ratio_title"
+						style="@style/card_title"
+						android:text="Tỉ lệ chi trong tháng"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<com.github.mikephil.charting.charts.PieChart
+						android:id="@+id/pie_chart"
+						android:layout_width="match_parent"
+						android:layout_height="300dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/ratio_title" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/see_more_card"
+				style="@style/standard_card_view"
+				android:layout_below="@id/ratio_card"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/see_more_text"
+						style="@style/card_title"
+						android:clickable="true"
+						android:text="Xem thêm"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+		</RelativeLayout>
+
+		<TextView
+			android:id="@+id/second_title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/re_lay_1"
+			android:layout_marginStart="20dp"
+			android:layout_marginBottom="10dp"
+			android:text="Hạn mức chi"
+			android:textColor="@color/light_title"
+			android:textSize="30sp"
+			android:textStyle="bold" />
+
+		<RelativeLayout
+			android:id="@+id/re_lay_2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/second_title">
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/limit_card"
+				style="@style/standard_card_view"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/limit_title"
+						style="@style/card_title"
+						android:text="Hạn mức chi mỗi tháng"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/limit_text_1"
+						style="@style/card_content"
+						android:text="30,000,000 / 1,000,000"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/limit_title" />
+
+					<TextView
+						android:id="@+id/limit_text_2"
+						style="@style/card_content"
+						android:text="Đã vượt: 3000%"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/limit_text_1" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/limit_money_card"
+				style="@style/standard_card_view"
+				android:layout_below="@id/limit_card"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/money_limit"
+						style="@style/card_title"
+						android:text="Hạn mức chi mỗi giao dịch"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/limit_money_text_1"
+						style="@style/card_content"
+						android:text="1,000,000"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/money_limit" />
+
+					<TextView
+						android:id="@+id/limit_money_text_2"
+						style="@style/card_content"
+						android:text="Đã vượt 7 lần"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/limit_money_text_1" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/see_more_card_2"
+				style="@style/standard_card_view"
+				android:layout_below="@id/limit_money_card"
+				android:layout_marginBottom="@dimen/standard_alignX2"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="8dp">
+
+					<TextView
+						android:id="@+id/see_more_text_2"
+						style="@style/card_title"
+						android:clickable="true"
+						android:gravity="center|start"
+						android:text="Xem thêm"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.5"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+		</RelativeLayout>
+	</RelativeLayout>
+</ScrollView>

@@ -7,7 +7,7 @@
 	<ImageView
 		android:id="@+id/cover_image"
 		android:layout_width="match_parent"
-		android:layout_height="@android:dimen/thumbnail_height"
+		android:layout_height="@dimen/standard_alignX6"
 		android:background="@color/light_form"
 		android:contentDescription="TODO"
 		android:scaleType="centerCrop"
@@ -51,7 +51,6 @@
 		android:id="@+id/username"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
 		android:fontFamily="sans-serif-black"
 		android:gravity="center"
 		android:textColor="@color/light_title"
@@ -67,13 +66,50 @@
 		android:layout_height="wrap_content"
 		android:fontFamily="sans-serif"
 		android:gravity="center"
+		android:paddingBottom="@dimen/standard_align"
 		android:textSize="18sp"
 		android:textStyle="bold"
-		app:layout_constraintBottom_toTopOf="@+id/user_com_bar"
+		app:layout_constraintBottom_toTopOf="@+id/phone"
 		app:layout_constraintEnd_toEndOf="@id/guideline2"
 		app:layout_constraintStart_toStartOf="@id/guideline"
 		app:layout_constraintTop_toBottomOf="@+id/username" />
 
+	<TextView
+		android:id="@+id/phone"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:drawablePadding="@dimen/standard_align"
+		android:fontFamily="sans-serif"
+		android:gravity="center|start"
+		android:paddingHorizontal="@dimen/standard_align"
+		android:paddingVertical="@dimen/standard_alignX.5"
+		android:text="000000000000000"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:drawableStartCompat="@drawable/ic_baseline_local_phone_24"
+		app:layout_constraintBottom_toTopOf="@+id/address"
+		app:layout_constraintEnd_toEndOf="@id/guideline2"
+		app:layout_constraintStart_toStartOf="@id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/email" />
+
+	<TextView
+		android:id="@+id/address"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:drawablePadding="@dimen/standard_align"
+		android:drawableTint="@color/light_title"
+		android:fontFamily="sans-serif"
+		android:gravity="center|start"
+		android:paddingHorizontal="@dimen/standard_align"
+		android:paddingVertical="@dimen/standard_alignX.5"
+		android:text="1000 Nguyen Ngoc Chau Bui, Hoang Mai - Viet Nam"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:drawableStartCompat="@drawable/ic_baseline_home_work_24"
+		app:layout_constraintBottom_toTopOf="@+id/user_com_bar"
+		app:layout_constraintEnd_toEndOf="@id/guideline2"
+		app:layout_constraintStart_toStartOf="@id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/phone" />
 
 	<LinearLayout
 		android:id="@+id/user_com_bar"
@@ -85,7 +121,7 @@
 		app:layout_constraintBottom_toTopOf="@+id/user_information_change"
 		app:layout_constraintEnd_toEndOf="@id/guideline2"
 		app:layout_constraintStart_toStartOf="@id/guideline"
-		app:layout_constraintTop_toBottomOf="@+id/email">
+		app:layout_constraintTop_toBottomOf="@+id/address">
 
 		<TextView
 			android:id="@+id/chat_button"
@@ -139,12 +175,11 @@
 		style="@style/visual_tab_background"
 		android:layout_width="0dp"
 		android:layout_height="48dp"
-		android:layout_marginTop="@dimen/standard_align"
+		android:layout_marginTop="@dimen/standard_alignX.5"
 		android:clickable="true"
 		android:gravity="center"
 		android:text="Đổi mật khẩu"
 		app:layout_constraintEnd_toEndOf="@id/guideline2"
-		app:layout_constraintEnd_toStartOf="@+id/guideline2"
 		app:layout_constraintStart_toStartOf="@id/guideline"
 		app:layout_constraintTop_toBottomOf="@+id/user_information_change" />
 

@@ -53,4 +53,64 @@ public class Object {
 		}
 
 	}
+
+	public class getPerMonthAPI {
+		@SerializedName("id")
+		@Expose
+		private String id;
+		@SerializedName("money")
+		@Expose
+		private Integer money;
+		@SerializedName("created_at")
+		@Expose
+		private String createdAt;
+		@SerializedName("email")
+		@Expose
+		private String email;
+		@SerializedName("type")
+		@Expose
+		private Integer type;
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
+		public Integer getMoney() {
+			return money;
+		}
+
+		public void setMoney(Integer money) {
+			this.money = money;
+		}
+
+		public String getCreatedAt() {
+			return createdAt;
+		}
+
+		public void setCreatedAt(String createdAt) {
+			this.createdAt = createdAt;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public Integer getType() {
+			return type;
+		}
+
+		public void setType(Integer type) {
+			this.type = type;
+		}
+	}
+
+
 }

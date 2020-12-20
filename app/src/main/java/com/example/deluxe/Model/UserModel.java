@@ -4,8 +4,12 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.API.AddressAPI;
+import com.example.deluxe.API.CoreAPI;
 import com.example.deluxe.Core.Model;
+import com.example.deluxe.Entity.Address;
 import com.example.deluxe.Entity.User;
+import com.example.deluxe.Interface.Model.AddressInterface;
 import com.example.deluxe.Interface.Model.ChangePasswordInterface;
 import com.example.deluxe.Interface.Model.CheckInterface;
 import com.example.deluxe.Interface.Model.DataFirebase;
@@ -28,6 +32,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.UUID;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class UserModel implements Model {
 	ArrayList<String> listUser;
@@ -231,6 +240,45 @@ public class UserModel implements Model {
 			@Override
 			public void onCancelled(@NonNull DatabaseError error) {
 
+			}
+		});
+	}
+
+	public void editAddress(String id, String username, String phone, String address) {
+		Retrofit retrofit = CoreAPI.build();
+		AddressAPI addressAPI = retrofit.create(AddressAPI.class);
+
+		Call<Object> call = addressAPI.editAddress(id, username, phone, address);
+
+		call.enqueue(new Callback<Object>() {
+			@Override
+			public void onResponse(Call<Object> call, Response<Object> response) {
+				int a = 1;
+			}
+
+			@Override
+			public void onFailure(Call<Object> call, Throwable t) {
+				int a = 1;
+
+			}
+		});
+	}
+
+	public void showAddress(String id, final AddressInterface addressInterface) {
+		Retrofit retrofit = CoreAPI.build();
+		AddressAPI addressAPI = retrofit.create(AddressAPI.class);
+
+		Call<Address> call = addressAPI.getAddress(id);
+
+		call.enqueue(new Callback<Address>() {
+			@Override
+			public void onResponse(Call<Address> call, Response<Address> response) {
+				addressInterface.dataIsLoaded(response.body());
+			}
+
+			@Override
+			public void onFailure(Call<Address> call, Throwable t) {
+				int a = 1;
 			}
 		});
 	}

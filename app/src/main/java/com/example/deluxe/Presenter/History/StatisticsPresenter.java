@@ -53,6 +53,38 @@ public class StatisticsPresenter implements StatisticsInterface.StatisticsPresen
 					}
 				});
 				break;
+			case 4:
+//				new StatisticModel().getPerMonth(Auth.getInstance().user().getUid(), new ListGetPerMonth() {
+//					@Override
+//					public void dataIsLoaded(List<Transaction> list) {
+//						HashMap<Date, ArrayList<Transaction>> hashMap = new HashMap<>();
+//						hashMap.put(new Date(), (ArrayList<Transaction>) list);
+//						statisticsFragment.getView(hashMap);
+//					}
+//				});
+				new HistoryModel().getListDeposit(new User(null, null, Auth.getInstance().user().getEmail()), new ListTransactionInterface() {
+					@Override
+					public void dataIsLoaded(HashMap<Date, ArrayList<Transaction>> transactions) {
+						statisticsFragment.getView(transactions);
+					}
+				});
+				break;
+			case 5:
+//				new StatisticModel().getLimit(Auth.getInstance().user().getUid(), new ListGetPerMonth() {
+//					@Override
+//					public void dataIsLoaded(List<Transaction> list) {
+//						HashMap<Date, ArrayList<Transaction>> hashMap = new HashMap<>();
+//						hashMap.put(new Date(), (ArrayList<Transaction>) list);
+//						statisticsFragment.getView(hashMap);
+//					}
+//				});
+				new HistoryModel().getListDeposit(new User(null, null, Auth.getInstance().user().getEmail()), new ListTransactionInterface() {
+					@Override
+					public void dataIsLoaded(HashMap<Date, ArrayList<Transaction>> transactions) {
+						statisticsFragment.getView(transactions);
+					}
+				});
+				break;
 			default:
 				break;
 		}

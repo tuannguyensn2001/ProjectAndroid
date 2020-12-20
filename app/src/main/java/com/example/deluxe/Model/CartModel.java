@@ -84,4 +84,19 @@ public class CartModel {
 		});
 	}
 
+	public void delete(CartItem cartItem, final CartItemInterface cartItemInterface) {
+		Call<CartItem> call = this.cartAPI.delete(cartItem);
+
+		call.enqueue(new Callback<CartItem>() {
+			@Override
+			public void onResponse(Call<CartItem> call, Response<CartItem> response) {
+				cartItemInterface.dataIsLoaded(response.body());
+			}
+
+			@Override
+			public void onFailure(Call<CartItem> call, Throwable t) {
+
+			}
+		});
+	}
 }

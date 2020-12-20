@@ -7,15 +7,17 @@ import java.util.List;
 
 public interface CartInterface {
 
-	public interface CartPresenter {
+	interface CartPresenter {
 		void getCart();
 
 		void increaseNumber(CartItem cartItem, int position);
 
 		void decreaseNumber(CartItem cartItem, int position);
+
+		void delete(CartItem cartItem, int position);
 	}
 
-	public interface CartView extends View {
+	interface CartView extends View {
 		void setAdapter(List<CartItem> cartItemList);
 
 		void AdapterChanged(List<CartItem> cartItemList, CartItem cartItem);

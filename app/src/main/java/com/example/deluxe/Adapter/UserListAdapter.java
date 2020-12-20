@@ -57,10 +57,6 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 		private final ImageView profilePicture;
 		private final View itemView;
 
-		public ImageView getProfilePicture() {
-			return profilePicture;
-		}
-
 		public ViewHolder(@NonNull final View itemView) {
 			super(itemView);
 
@@ -68,6 +64,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 			this.title = itemView.findViewById(R.id.profile_title);
 			this.subtitle = itemView.findViewById(R.id.profile_subtitle);
 			this.profilePicture = itemView.findViewById(R.id.profile_picture);
+		}
+
+		public ImageView getProfilePicture() {
+			return profilePicture;
 		}
 
 		public TextView getTitle() {
