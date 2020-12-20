@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.deluxe.Core.View;
+import com.example.deluxe.Entity.Address;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
@@ -56,8 +57,7 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 		this.address = findViewById(R.id.address_change);
 		this.submitButton = findViewById(R.id.user_information_button);
 
-//		TODO sua tieu de
-		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.information_change_action_bar_title));
 		this.userInformationChangePresenter = new UserInformationChangePresenter(this);
 	}
 
@@ -95,6 +95,13 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 		addTextChanged(username);
 		addTextChanged(number);
 		addTextChanged(address);
+	}
+
+	@Override
+	public void setData(Address address) {
+		usernameInput = address.getFullname();
+		numberInput = address.getPhone();
+		addressInput = address.getAddress();
 	}
 
 	private boolean validate(boolean[] list) {

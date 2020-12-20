@@ -70,12 +70,6 @@
 				layout="@layout/layout_transaction_information"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
-
-			<include
-				android:id="@+id/include7"
-				layout="@layout/layout_transaction_information"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
 		</LinearLayout>
 	</ScrollView>
 

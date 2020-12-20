@@ -55,5 +55,16 @@ public class CartPresenter implements CartInterface.CartPresenter {
 		});
 	}
 
+	@Override
+	public void delete(final CartItem cartItem, final int position) {
+		new CartModel().delete(cartItem, new CartItemInterface() {
+			@Override
+			public void dataIsLoaded(CartItem cardItem) {
+				list.remove(position);
 
+				cartView.AdapterChanged(list, cartItem);
+			}
+
+		});
+	}
 }

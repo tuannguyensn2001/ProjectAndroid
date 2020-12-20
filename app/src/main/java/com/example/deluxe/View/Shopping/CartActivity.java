@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity implements CartInterface.CartView, CartAdapter.OnAddNumberClick, CartAdapter.OnCheckBox {
+public class CartActivity extends AppCompatActivity implements CartInterface.CartView, CartAdapter.OnAddNumberClick, CartAdapter.OnCheckBox, CartAdapter.OnDeleteClick {
 
 	private CartInterface.CartPresenter cartPresenter;
 	private RecyclerView recyclerView;
@@ -63,8 +63,7 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 		this.pickedCartList = new LinkedList<>();
 		this.cartPresenter = new CartPresenter(this);
 
-//		TODO Sua tieu de
-		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.cart_action_bar_title));
 
 		this.recyclerView = findViewById(R.id.cart_list);
 		this.recyclerView.setHasFixedSize(true);
@@ -73,7 +72,7 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 	@Override
 	public void setAdapter(List<CartItem> cartItemList) {
 		this.cartList = cartItemList;
-		this.cartAdapter = new CartAdapter(cartList, this, this, this);
+		this.cartAdapter = new CartAdapter(cartList, this, this, this, this);
 		this.recyclerView.setAdapter(this.cartAdapter);
 	}
 
@@ -153,4 +152,9 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 		startActivity(intent);
 	}
 
+	@Override
+	public void onDelete(CartItem cartItem, int position) {
+		cartPresenter.delete(cartItem, position);
+
+	}
 }

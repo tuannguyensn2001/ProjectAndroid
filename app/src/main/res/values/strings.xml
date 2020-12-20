@@ -120,13 +120,19 @@
 	<string name="message_transaction_status_done">Đã xong</string>
 	<string name="message_transaction_status_cancel">Bùng kèo </string>
 	<string name="message_transaction_status_waiting">Đang chờ phản hồi</string>
+
 	<string name="account_username_change">Đổi thông tin người dùng</string>
 	<string name="account_password_change">Đổi mật khẩu</string>
+
 	<string name="pd_description_text">Mô tả sản phẩm</string>
-	<string name="pd_description">Dùng tạm ổn</string>
 	<string name="pd_detail_text">Chi tiết sản phẩm</string>
-	<string name="useless_text">Đã bán: 200</string>
 	<string name="more_detail_image">Ảnh minh họa</string>
+
 	<string name="add_to_cart_button_text">Add to cart</string>
 	<string name="cart_sum_money">Tổng tiền:</string>
+
+	<string name="cart_action_bar_title">Giỏ hàng</string>
+	<string name="order_action_bar_title">Đặt hàng</string>
+	<string name="product_detail_action_bar_title">Chi tiết sản phẩm</string>
+	<string name="information_change_action_bar_title">Thay đổi thông tin người dùng</string>
 </resources>

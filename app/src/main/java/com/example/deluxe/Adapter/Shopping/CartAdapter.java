@@ -28,12 +28,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 	Context context;
 	OnAddNumberClick onChangeNumberClick;
 	OnCheckBox onCheckBox;
+	OnDeleteClick onDeleteClick;
 
-	public CartAdapter(List<CartItem> list, Context context, OnAddNumberClick onChangeNumberClick, OnCheckBox onCheckBox) {
+	public CartAdapter(List<CartItem> list, Context context, OnAddNumberClick onChangeNumberClick, OnCheckBox onCheckBox, OnDeleteClick onDeleteClick) {
 		this.cartItemList = list;
 		this.context = context;
 		this.onChangeNumberClick = onChangeNumberClick;
 		this.onCheckBox = onCheckBox;
+		this.onDeleteClick = onDeleteClick;
 	}
 
 	@NonNull
@@ -48,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 			itemView.findViewById(R.id.choose_button).setVisibility(View.GONE);
 			return new ViewHolder(itemView, cartItemList);
 		} else
-			return new ViewHolder(itemView, this.onChangeNumberClick, cartItemList, onCheckBox);
+			return new ViewHolder(itemView, this.onChangeNumberClick, cartItemList, onCheckBox, onDeleteClick);
 	}
 
 	@Override
@@ -84,6 +86,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 		void onCheckFalse(CartItem cartItem);
 	}
 
+	public interface OnDeleteClick {
+		void onDelete(CartItem cartItem, int position);
+	}
+
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		EditText number;
 		ImageView thumbnail;
@@ -100,7 +106,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 		public ViewHolder(@NonNull final View itemView,
 						  final OnAddNumberClick onChangeNumberClick,
 						  final List<CartItem> list,
-						  final OnCheckBox onCheckBox) {
+						  final OnCheckBox onCheckBox,
+						  final OnDeleteClick onDeleteClick) {
 			super(itemView);
 			this.list = list;
 			this.onChangeNumberClick = onChangeNumberClick;
@@ -148,7 +155,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 			this.remove.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-//					TODO nut xoa
+					onDeleteClick.onDelete(list.get(getAdapterPosition()), getAdapterPosition());
 				}
 			});
 			this.number.setEnabled(true);

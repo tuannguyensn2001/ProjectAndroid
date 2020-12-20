@@ -29,4 +29,7 @@ public interface CartAPI {
 
 	@PUT("cart/decrease")
 	Call<CartItem> decreaseNumber(@Body CartItem cartItem);
+
+	@PUT("cart/delete")
+	Call<CartItem> delete(@Body CartItem cartItem);
 }

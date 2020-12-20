@@ -14,7 +14,10 @@ import com.example.deluxe.Adapter.Shopping.CartAdapter;
 import com.example.deluxe.Entity.Address;
 import com.example.deluxe.Entity.CartItem;
 import com.example.deluxe.Helper.ConvertData;
+import com.example.deluxe.Interface.Model.WalletInterface;
 import com.example.deluxe.Interface.PresenterView.Shopping.OrderInterface;
+import com.example.deluxe.Model.Auth;
+import com.example.deluxe.Model.WalletModel;
 import com.example.deluxe.Presenter.Shopping.OrderPresenter;
 import com.example.deluxe.R;
 import com.google.gson.Gson;
@@ -74,7 +77,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 
 		this.recyclerView = findViewById(R.id.order_list);
 		this.recyclerView.setHasFixedSize(true);
-		CartAdapter orderAdapter = new CartAdapter(this.cartItemList, this, null, null);
+		CartAdapter orderAdapter = new CartAdapter(this.cartItemList, this, null, null, null);
 		recyclerView.setAdapter(orderAdapter);
 
 		this.name = findViewById(R.id.name);
@@ -83,8 +86,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 		this.totalMoney = findViewById(R.id.total_money);
 		this.buyProduct = findViewById(R.id.buy_button);
 
-		//		TODO Sua tieu de
-		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.order_action_bar_title));
 	}
 
 	@Override
@@ -105,8 +107,9 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 	}
 
 	public void confirmBuyProduct() {
-		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 		dialog.setTitle("Bạn chấp nhận thanh toán trước chứ ?");
+
 		dialog.setPositiveButton("Chấp nhận", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -120,6 +123,16 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 			}
 		});
 		AlertDialog alertDialog = dialog.create();
+
+		new WalletModel().getMoneyOnce(Auth.getInstance().user().getUid(), new WalletInterface() {
+			@Override
+			public void dataIsLoaded(double money_now) {
+				if (getTotalMoney() > money_now) {
+					dialog.setMessage("Số tiền này vượt úa hạn mức một lần của bạn");
+				}
+			}
+		});
+
 		alertDialog.show();
 	}
 }
