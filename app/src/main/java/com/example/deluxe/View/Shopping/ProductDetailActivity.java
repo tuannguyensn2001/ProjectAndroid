@@ -3,14 +3,15 @@ package com.example.deluxe.View.Shopping;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
-import com.example.deluxe.Adapter.ProductDetailAdapter;
 import com.example.deluxe.Entity.Attribute;
 import com.example.deluxe.Entity.Product;
 import com.example.deluxe.Helper.ConvertData;
@@ -33,32 +34,33 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 	private TextView price;
 	private TextView description;
 	private TextView addToCart;
-	private TextView cart;
 	private CollapsingToolbarLayout collapsingToolbarLayout;
-	private ListView listView;
+	private LinearLayout listDescription;
 	private List<Attribute> attributes;
-	private ProductDetailAdapter adapter;
-	private ImageView backbutton, homebutton, cartbutton;
+	private ImageView backButton, homeButton, cartButton;
+	private NestedScrollView scrollView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_product_detail);
+
 		this.id = getIntent().getIntExtra("id", 0);
 		this.init();
-		backbutton.setOnClickListener(new View.OnClickListener() {
+
+		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				onBackPressed();
 			}
 		});
-		homebutton.setOnClickListener(new View.OnClickListener() {
+		homeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				loadView(MainActivity.class);
 			}
 		});
-		cartbutton.setOnClickListener(new View.OnClickListener() {
+		cartButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				loadView(CartActivity.class);
@@ -71,7 +73,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 			public void onClick(View v) {
 				new CartModel().addToCart(Auth.getInstance().user().getUid(), id);
 				loadView(CartActivity.class);
-
 			}
 		});
 
@@ -90,15 +91,22 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 	}
 
 	public void init() {
-		this.backbutton = findViewById(R.id.pd_back_button);
-		this.cartbutton = findViewById(R.id.pd_cart_button);
-		this.homebutton = findViewById(R.id.pd_home_button);
+		//		TODO Sua tieu de
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
 		this.productDetailPresenter = new ProductDetailPresenter(this);
-		this.listView = findViewById(R.id.list_description);
+
+		this.backButton = findViewById(R.id.pd_back_button);
+		this.cartButton = findViewById(R.id.pd_cart_button);
+		this.homeButton = findViewById(R.id.pd_home_button);
+
 		this.thumbnail = findViewById(R.id.thumbnail);
 		this.collapsingToolbarLayout = findViewById(R.id.collapse_toolbar);
+
+		this.listDescription = findViewById(R.id.list_description);
+
 		this.price = findViewById(R.id.product_detail_price);
 		this.description = findViewById(R.id.product_detail_description);
+		this.scrollView = findViewById(R.id.scroll_view);
 		this.name = findViewById(R.id.product_detail_name);
 		this.addToCart = findViewById(R.id.add_to_cart_button);
 	}
@@ -112,7 +120,21 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 		this.description.setText(product.getDescription());
 		Picasso.get().load(product.getThumbnail()).into(this.thumbnail);
 		attributes = product.getAttributes();
-		adapter = new ProductDetailAdapter(this, attributes);
-		listView.setAdapter(adapter);
+		bindAttributes();
+	}
+
+	private void bindAttributes() {
+		if (attributes.isEmpty()) return;
+		for (Attribute attribute : attributes) {
+			bindView(attribute);
+		}
+	}
+
+	private void bindView(Attribute attribute) {
+		View convertView = LayoutInflater.from(this).inflate(R.layout.component_product_detail, scrollView, false);
+		((TextView) convertView.findViewById(R.id.info_description_title)).setText(attribute.getName());
+		((TextView) convertView.findViewById(R.id.info_description)).setText(attribute.getValue());
+
+		listDescription.addView(convertView);
 	}
 }

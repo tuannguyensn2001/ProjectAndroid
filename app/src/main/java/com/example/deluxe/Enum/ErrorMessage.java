@@ -57,6 +57,7 @@ public enum ErrorMessage {
 	// Doi thong tin nguoi dung-----
 	ERR600000("Trống trường"),
 	ERR600001("Ngắn quá"),
+	ERR600002("Mật khẩu mới không được trùng cái cũ"),
 	//
 	ERR710001("Lỗi rồi, thử lại");
 

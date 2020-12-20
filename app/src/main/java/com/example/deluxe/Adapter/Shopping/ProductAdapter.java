@@ -50,16 +50,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 	}
 
 	public interface OnProductListener {
-		public void onClick(Product product);
+		void onClick(Product product);
 	}
 
-	public class ViewHolder extends RecyclerView.ViewHolder {
+	public static class ViewHolder extends RecyclerView.ViewHolder {
 		ImageView image;
 		TextView name;
 		TextView price;
 		OnProductListener onProductListener;
 
-		public ViewHolder(@NonNull View itemView, final OnProductListener onProductListener, final List<Product> list) {
+		public ViewHolder(@NonNull final View itemView, final OnProductListener onProductListener, final List<Product> list) {
 			super(itemView);
 			this.onProductListener = onProductListener;
 			this.image = itemView.findViewById(R.id.product_image);

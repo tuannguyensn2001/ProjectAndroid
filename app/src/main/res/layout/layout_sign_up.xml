@@ -24,7 +24,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/title" />
 
 	<EditText
-		android:id="@+id/password_current"
+		android:id="@+id/username_input"
 		style="@style/Field"
 		android:autofillHints=""
 		android:hint="@string/sign_up_username_input"
@@ -34,7 +34,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
 
 	<EditText
-		android:id="@+id/password_new"
+		android:id="@+id/password_input"
 		style="@style/Field"
 		android:autofillHints=""
 		android:hint="@string/password_input"
@@ -44,14 +44,14 @@
 		app:layout_constraintTop_toBottomOf="@+id/email_input" />
 
 	<EditText
-		android:id="@+id/password_check_new"
+		android:id="@+id/password_check_input"
 		style="@style/Field"
 		android:autofillHints=""
 		android:hint="@string/sign_up_password_check_input"
 		android:inputType="textPassword"
-		app:layout_constraintEnd_toEndOf="@+id/password_new"
-		app:layout_constraintStart_toStartOf="@+id/password_new"
-		app:layout_constraintTop_toBottomOf="@+id/password_new" />
+		app:layout_constraintEnd_toEndOf="@+id/password_input"
+		app:layout_constraintStart_toStartOf="@+id/password_input"
+		app:layout_constraintTop_toBottomOf="@+id/password_input" />
 
 	<EditText
 		android:id="@+id/email_input"
@@ -59,9 +59,9 @@
 		android:autofillHints=""
 		android:hint="@string/email_input"
 		android:inputType="textEmailAddress"
-		app:layout_constraintEnd_toEndOf="@+id/password_current"
-		app:layout_constraintStart_toStartOf="@+id/password_current"
-		app:layout_constraintTop_toBottomOf="@+id/password_current" />
+		app:layout_constraintEnd_toEndOf="@+id/username_input"
+		app:layout_constraintStart_toStartOf="@+id/username_input"
+		app:layout_constraintTop_toBottomOf="@+id/username_input" />
 
 	<Button
 		android:id="@+id/submit_button"
@@ -69,9 +69,9 @@
 		android:layout_width="320dp"
 		android:layout_marginTop="38dp"
 		android:text="@string/sign_up_button"
-		app:layout_constraintEnd_toEndOf="@+id/password_check_new"
-		app:layout_constraintStart_toStartOf="@+id/password_check_new"
-		app:layout_constraintTop_toBottomOf="@+id/password_check_new" />
+		app:layout_constraintEnd_toEndOf="@+id/password_check_input"
+		app:layout_constraintStart_toStartOf="@+id/password_check_input"
+		app:layout_constraintTop_toBottomOf="@+id/password_check_input" />
 
 
 </merge>

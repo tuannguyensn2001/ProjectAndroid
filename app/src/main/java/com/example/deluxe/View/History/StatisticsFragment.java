@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.StatisticsCard.StatisticsCardChild;
@@ -127,9 +126,6 @@ public class StatisticsFragment extends Fragment implements StatisticsInterface.
 
 
 //		Gan adapter, cac thu cac thu
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
-		transactionRecyclerList.setLayoutManager(layoutManager);
-
 		StatisticsCardRecyclerAdapter recyclerAdapter = new StatisticsCardRecyclerAdapter(transactionDads);
 		transactionRecyclerList.setAdapter(recyclerAdapter);
 	}

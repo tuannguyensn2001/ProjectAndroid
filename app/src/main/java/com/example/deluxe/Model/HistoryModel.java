@@ -2,7 +2,10 @@ package com.example.deluxe.Model;
 
 import androidx.annotation.NonNull;
 
+import com.example.deluxe.API.CoreAPI;
+import com.example.deluxe.API.OrderAPI;
 import com.example.deluxe.Entity.Deposit;
+import com.example.deluxe.Entity.Object;
 import com.example.deluxe.Entity.Transaction;
 import com.example.deluxe.Entity.Transfer;
 import com.example.deluxe.Entity.User;
@@ -20,15 +23,40 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class HistoryModel {
+	private Retrofit retrofit;
+	private OrderAPI orderAPI;
+
+	public HistoryModel() {
+		this.retrofit = CoreAPI.build();
+		this.orderAPI = retrofit.create(OrderAPI.class);
+	}
+
 
 	public Date convertDate(String date) throws ParseException {
 		Date dateConvert = null;
 		try {
 			SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+			dateConvert = formatter.parse(date);
+		} catch (Exception ignored) {
+
+		}
+		return dateConvert;
+	}
+
+	public Date convertDateFromAPI(String date) throws ParseException {
+		Date dateConvert = null;
+		try {
+			SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss ", Locale.ENGLISH);
 			dateConvert = formatter.parse(date);
 		} catch (Exception ignored) {
 
@@ -183,7 +211,6 @@ public class HistoryModel {
 		final String email = user.getEmail();
 		final ArrayList<Transfer> list = new ArrayList<>();
 
-		final ArrayList<Transaction> listTransferReceiver = new ArrayList<>();
 		final ArrayList<Transaction> listTransfer = new ArrayList<>();
 
 
@@ -260,6 +287,63 @@ public class HistoryModel {
 		});
 
 
+	}
+
+	public void getDetailOrder(String id, final ListTransactionInterface listTransactionInterface) {
+
+		Call<List<Object.ResponeOrderAPI>> call = this.orderAPI.getDetailOrder(id);
+
+		call.enqueue(new Callback<List<Object.ResponeOrderAPI>>() {
+			@Override
+			public void onResponse(Call<List<Object.ResponeOrderAPI>> call, Response<List<Object.ResponeOrderAPI>> response) {
+
+				List<Transaction> transactionList = new ArrayList<>();
+
+				List<Object.ResponeOrderAPI> list = response.body();
+
+				for (Object.ResponeOrderAPI item : list) {
+					try {
+						Date date = convertDateFromAPI(item.getUpdate());
+						long money = (long) item.getMoney();
+						Transaction transaction = new Transaction(TransactionType.USE, money, date, true, null, null);
+						transaction.setId(item.getId() + "");
+						transactionList.add(transaction);
+
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}
+
+				Collections.reverse(transactionList);
+				ArrayList<Date> listKey = new ArrayList<>();
+
+				for (Transaction item : transactionList) {
+					if (!contains(listKey, item.getDate())) {
+						listKey.add(item.getDate());
+					}
+				}
+
+				HashMap<Date, ArrayList<Transaction>> result = new HashMap<>();
+
+				for (Date item : listKey) {
+					result.put(item, new ArrayList<Transaction>());
+				}
+
+				for (Transaction item : transactionList) {
+					Date date = checkKey(listKey, item.getDate());
+					Objects.requireNonNull(result.get(date)).add(item);
+				}
+
+				listTransactionInterface.dataIsLoaded(result);
+
+
+			}
+
+			@Override
+			public void onFailure(Call<List<Object.ResponeOrderAPI>> call, Throwable t) {
+
+			}
+		});
 	}
 
 }

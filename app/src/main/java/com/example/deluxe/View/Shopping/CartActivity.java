@@ -62,6 +62,10 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 		this.buyProduct = (TextView) findViewById(R.id.buy_button);
 		this.pickedCartList = new LinkedList<>();
 		this.cartPresenter = new CartPresenter(this);
+
+//		TODO Sua tieu de
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+
 		this.recyclerView = findViewById(R.id.cart_list);
 		this.recyclerView.setHasFixedSize(true);
 	}
@@ -96,8 +100,9 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 
 
 	@Override
-	public void loadView(Class view) {
-
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
+		Intent intent = new Intent(this, view);
+		startActivity(intent);
 	}
 
 	@Override

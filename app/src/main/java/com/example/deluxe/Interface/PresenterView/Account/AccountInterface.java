@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import com.example.deluxe.Core.Presenter;
 import com.example.deluxe.Core.View;
+import com.example.deluxe.Entity.User;
 
 public interface AccountInterface {
 
@@ -16,5 +17,7 @@ public interface AccountInterface {
 
 	interface AccountView extends View {
 		void setAvatar(String url);
+
+		void setUserInfo(User user);
 	}
 }

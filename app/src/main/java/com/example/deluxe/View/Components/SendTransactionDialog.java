@@ -130,7 +130,7 @@ public class SendTransactionDialog extends ConfirmPasswordDialog implements Send
 		this.receiveMoneyTab = alertLayout.findViewById(R.id.receive_money_tab);
 
 		this.notiText = alertLayout.findViewById(R.id.notification_text);
-		this.password = alertLayout.findViewById(R.id.password_new);
+		this.password = alertLayout.findViewById(R.id.password_input);
 		this.showPasswordButton = alertLayout.findViewById(R.id.show_password_button);
 		this.money = alertLayout.findViewById(R.id.money_input);
 		this.message = alertLayout.findViewById(R.id.message_input);

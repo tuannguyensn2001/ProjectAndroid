@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.example.deluxe.Presenter.Transaction.TransferPresenter;
 import com.example.deluxe.R;
 import com.example.deluxe.View.Components.ConfirmPasswordDialog;
 import com.example.deluxe.View.Status.TransferSuccessActivity;
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 
@@ -48,6 +50,7 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 		if (user != null) {
 			username.setText(user.getUser());
 			email.setText(user.getEmail());
+			Picasso.get().load(user.getAvatar()).into((ImageView) findViewById(R.id.avatar1));
 		}
 		money.addTextChangedListener(new TextWatcher() {
 			private String current = "";
@@ -89,13 +92,9 @@ public class TransferActivity extends AppCompatActivity implements TransferInter
 	private void init() {
 		username = findViewById(R.id.account_username);
 		email = findViewById(R.id.account_email);
-
 		notiText = findViewById(R.id.notification_text);
-
 		money = findViewById(R.id.money_input);
-
 		message = findViewById(R.id.message_input);
-
 		submitButton = findViewById(R.id.submit_button);
 
 		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));

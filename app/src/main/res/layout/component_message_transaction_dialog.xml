@@ -13,7 +13,6 @@
 		android:layout_height="wrap_content"
 		android:layout_marginEnd="8dp"
 		android:backgroundTint="@color/light_mainColor"
-		android:backgroundTintMode="src_atop"
 		android:text="Gửi tiền"
 		app:layout_constraintEnd_toStartOf="@+id/receive_money_tab"
 		app:layout_constraintHorizontal_bias="0.5"
@@ -27,7 +26,6 @@
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:backgroundTint="@color/red"
-		android:backgroundTintMode="screen"
 		android:text="Đòi tiền"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
@@ -96,7 +94,7 @@
 			app:layout_constraintTop_toTopOf="parent" />
 
 		<EditText
-			android:id="@+id/password_new"
+			android:id="@+id/password_input"
 			style="@style/Field"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

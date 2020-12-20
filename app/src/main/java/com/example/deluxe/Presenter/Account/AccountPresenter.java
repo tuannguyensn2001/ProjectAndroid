@@ -11,8 +11,15 @@ import com.example.deluxe.Model.UserModel;
 public class AccountPresenter implements AccountInterface.AccountPresenter {
 	private AccountInterface.AccountView accountView;
 
-	public AccountPresenter(AccountInterface.AccountView accountView) {
+	public AccountPresenter(final AccountInterface.AccountView accountView) {
 		this.accountView = accountView;
+
+		new UserModel().show(Auth.getInstance().user().getUid(), new UserDetailsInterface() {
+			@Override
+			public void dataIsLoaded(User user) {
+				accountView.setUserInfo(user);
+			}
+		});
 	}
 
 

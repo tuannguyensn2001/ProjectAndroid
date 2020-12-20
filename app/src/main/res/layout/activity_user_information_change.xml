@@ -4,7 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".View.History.StatisticsActivity">
+	android:background="@drawable/background">
 
 	<fragment
 		android:id="@+id/action_bar"
@@ -17,22 +17,39 @@
 		app:layout_constraintTop_toTopOf="parent"
 		tools:layout="@layout/fragment_action_bar" />
 
+
+	<TextView
+		android:id="@+id/title"
+		style="@style/Title"
+		android:layout_marginTop="@dimen/standard_alignX4"
+		android:text="ĐỔI THÔNG TIN NGƯỜI DÙNG"
+		android:textSize="20sp"
+		app:layout_constraintEnd_toEndOf="@+id/action_bar"
+		app:layout_constraintStart_toStartOf="@+id/action_bar"
+		app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+	<TextView
+		android:id="@+id/notification_text"
+		style="@style/ErrorText"
+		android:text="@string/error_text"
+		android:visibility="invisible"
+		app:layout_constraintEnd_toEndOf="@+id/title"
+		app:layout_constraintStart_toStartOf="@+id/title"
+		app:layout_constraintTop_toBottomOf="@+id/title" />
+
 	<EditText
 		android:id="@+id/name_change"
 		style="@style/Field"
-		android:layout_marginTop="100dp"
 		android:autofillHints=""
 		android:hint="Nhập tên người dùng mới"
 		android:inputType="textPersonName"
-		app:layout_constraintEnd_toEndOf="@+id/user_information_title"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="@+id/user_information_title"
-		app:layout_constraintTop_toBottomOf="@+id/user_information_title" />
+		app:layout_constraintEnd_toEndOf="@+id/notification_text"
+		app:layout_constraintStart_toStartOf="@+id/notification_text"
+		app:layout_constraintTop_toBottomOf="@+id/notification_text" />
 
 	<EditText
 		android:id="@+id/number_change"
 		style="@style/Field"
-		android:layout_marginTop="20dp"
 		android:autofillHints=""
 		android:hint="Nhập số điện thoại mới"
 		android:inputType="textPassword"
@@ -44,7 +61,6 @@
 	<EditText
 		android:id="@+id/address_change"
 		style="@style/Field"
-		android:layout_marginTop="20dp"
 		android:autofillHints=""
 		android:hint="Nhập địa chỉ mới"
 		android:inputType="textPassword"
@@ -53,23 +69,13 @@
 		app:layout_constraintStart_toStartOf="@+id/number_change"
 		app:layout_constraintTop_toBottomOf="@+id/number_change" />
 
-	<TextView
-		android:id="@+id/user_information_title"
-		style="@style/Title"
-		android:layout_marginTop="144dp"
-		android:text="ĐỔI THÔNG TIN NGƯỜI DÙNG"
-		android:textSize="20dp"
-		app:layout_constraintEnd_toEndOf="@+id/action_bar"
-		app:layout_constraintHorizontal_bias="0.505"
-		app:layout_constraintStart_toStartOf="@+id/action_bar"
-		app:layout_constraintTop_toTopOf="parent" />
 
 	<Button
 		android:id="@+id/user_information_button"
 		style="@style/SubmitButton"
 		android:layout_width="320dp"
-		android:layout_marginTop="96dp"
-		android:text="Change"
+		android:layout_marginTop="38dp"
+		android:text="Đổi"
 		app:layout_constraintEnd_toEndOf="@+id/address_change"
 		app:layout_constraintStart_toStartOf="@+id/address_change"
 		app:layout_constraintTop_toBottomOf="@+id/address_change" />

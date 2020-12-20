@@ -45,6 +45,14 @@ public class StatisticsPresenter implements StatisticsInterface.StatisticsPresen
 					}
 				});
 				break;
+			case 3:
+				new HistoryModel().getDetailOrder(Auth.getInstance().user().getUid(), new ListTransactionInterface() {
+					@Override
+					public void dataIsLoaded(HashMap<Date, ArrayList<Transaction>> transactions) {
+						statisticsFragment.getView(transactions);
+					}
+				});
+				break;
 			default:
 				break;
 		}

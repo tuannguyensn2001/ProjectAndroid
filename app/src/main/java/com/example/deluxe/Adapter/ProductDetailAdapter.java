@@ -45,20 +45,20 @@ public class ProductDetailAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(context).inflate(R.layout.component_product_detail, parent, false);
 			holder = new ViewHolder();
 			holder.title = (TextView) convertView.findViewById(R.id.info_description_title);
-			holder.descripsion = (TextView) convertView.findViewById(R.id.info_description);
+			holder.description = (TextView) convertView.findViewById(R.id.info_description);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Attribute productDetailListInfo = this.listInfos.get(position);
 		holder.title.setText(productDetailListInfo.getName());
-		holder.descripsion.setText(productDetailListInfo.getValue());
+		holder.description.setText(productDetailListInfo.getValue());
 
 		return convertView;
 	}
 
 	static class ViewHolder {
 		TextView title;
-		TextView descripsion;
+		TextView description;
 	}
 }

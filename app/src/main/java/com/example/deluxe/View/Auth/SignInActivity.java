@@ -71,10 +71,10 @@ public class SignInActivity extends AppCompatActivity implements SignInInterface
 		this.Login = new com.example.deluxe.Presenter.Auth.SignInPresenter(this);
 
 		this.email = findViewById(R.id.email_input);
-		this.password = findViewById(R.id.password_new);
+		this.password = findViewById(R.id.password_input);
 
-		findViewById(R.id.password_current).setVisibility(View.GONE);
-		findViewById(R.id.password_check_new).setVisibility(View.GONE);
+		findViewById(R.id.username_input).setVisibility(View.GONE);
+		findViewById(R.id.password_check_input).setVisibility(View.GONE);
 
 		this.title.setText(getString(R.string.sign_in_title));
 		this.submitButton.setText(getString(R.string.sign_in_button));

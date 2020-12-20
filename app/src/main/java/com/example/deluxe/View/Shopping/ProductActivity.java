@@ -71,7 +71,6 @@ public class ProductActivity extends AppCompatActivity implements ProductInterfa
 		startActivity(intent);
 	}
 
-
 	@Override
 	public void onClick(Product product) {
 		productPresenter.pickProduct(product);

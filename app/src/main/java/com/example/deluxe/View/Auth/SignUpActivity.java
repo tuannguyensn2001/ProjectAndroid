@@ -106,10 +106,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 	private void init() {
 		notiText = findViewById(R.id.notification_text);
 
-		username = findViewById(R.id.password_current);
+		username = findViewById(R.id.username_input);
 		email = findViewById(R.id.email_input);
-		password = findViewById(R.id.password_new);
-		passwordCheck = findViewById(R.id.password_check_new);
+		password = findViewById(R.id.password_input);
+		passwordCheck = findViewById(R.id.password_check_input);
 
 		submitButton = findViewById(R.id.submit_button);
 		SignInButton = findViewById(R.id.sign_in_button);

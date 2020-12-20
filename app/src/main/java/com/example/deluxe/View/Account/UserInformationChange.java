@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +21,7 @@ import com.example.deluxe.R;
 
 
 public class UserInformationChange extends AppCompatActivity implements UserInformationChangeInterface.UserInformationChangeView {
-
-	UserInformationChangeInterface.UserInformationChangePresenter Change;
-	ProgressBar progressBar;
+	UserInformationChangeInterface.UserInformationChangePresenter userInformationChangePresenter;
 	private TextView notiText;
 	private EditText username, number, address;
 	private Button submitButton;
@@ -33,7 +30,7 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_user_information_change);
+		setContentView(R.layout.activity_user_information_change);
 
 		init();
 
@@ -52,12 +49,16 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 
 
 	public void init() {
+		this.notiText = findViewById(R.id.notification_text);
+
 		this.username = findViewById(R.id.name_change);
 		this.number = findViewById(R.id.number_change);
 		this.address = findViewById(R.id.address_change);
 		this.submitButton = findViewById(R.id.user_information_button);
 
-		this.Change = new UserInformationChangePresenter(this);
+//		TODO sua tieu de
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+		this.userInformationChangePresenter = new UserInformationChangePresenter(this);
 	}
 
 	@Override
@@ -71,7 +72,7 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 		boolean check = validate(list);
 
 		if (check) {
-			Change.handleInformationChange(usernameInput, numberInput, addressInput);
+			userInformationChangePresenter.handleInformationChange(usernameInput, numberInput, addressInput);
 			setSubmitable(false);
 		} else {
 			if (!list[0]) {
@@ -144,12 +145,6 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 	}
 
 	public void setSubmitable(boolean can) {
-		if (can) {
-			progressBar.setVisibility(android.view.View.INVISIBLE);
-			submitButton.setClickable(true);
-		} else {
-			progressBar.setVisibility(android.view.View.VISIBLE);
-			submitButton.setClickable(false);
-		}
+		submitButton.setClickable(can);
 	}
 }

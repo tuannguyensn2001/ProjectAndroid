@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,86 +19,91 @@ import com.example.deluxe.Presenter.Auth.PasswordChangePresenter;
 import com.example.deluxe.R;
 
 public class PasswordChangeActivity extends AppCompatActivity implements PasswordChangeInterface.PasswordChangeView {
-	PasswordChangeInterface.PasswordChangePresenter passwordChange;
-	ProgressBar progressBar;
-	private TextView passwordcurrent, passwordnew, passwordchecknew;
+	PasswordChangeInterface.PasswordChangePresenter passwordChangePresenter;
+	private TextView passwordCurrent, passwordNew, passwordCheckNew;
 	private Button changePass;
 	private TextView notiText;
-	private String passwordcurrentInput, passwordnewInput, passwordchecknewInput;
+	private String passwordCurrentInput, passwordNewInput, passwordCheckNewInput;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_password_change);
+		setContentView(R.layout.activity_password_change);
 		init();
 		changePass.setOnClickListener(new android.view.View.OnClickListener() {
 			@Override
 			public void onClick(android.view.View v) {
 
-				passwordcurrentInput = passwordcurrent.getText().toString();
-				passwordnewInput = passwordnew.getText().toString();
-				passwordchecknewInput = passwordchecknew.getText().toString();
+				passwordCurrentInput = passwordCurrent.getText().toString();
+				passwordNewInput = passwordNew.getText().toString();
+				passwordCheckNewInput = passwordCheckNew.getText().toString();
 
 				boolean[] list = {
-						Rules.required(passwordcurrentInput),
-						Rules.required(passwordnewInput),
-						Rules.required(passwordchecknewInput),
+						Rules.required(passwordCurrentInput),
+						Rules.required(passwordNewInput),
+						Rules.required(passwordCheckNewInput),
 
-						Rules.min(passwordcurrentInput, 6),
-						Rules.min(passwordnewInput, 6),
-						Rules.min(passwordchecknewInput, 6),
-						passwordchecknewInput.equals(passwordnewInput),
+						Rules.min(passwordCurrentInput, 6),
+						Rules.min(passwordNewInput, 6),
+						Rules.min(passwordCheckNewInput, 6),
+						passwordCheckNewInput.equals(passwordNewInput),
 
-						Rules.isPassword(passwordcurrentInput),
-						Rules.isPassword(passwordnewInput),
-						Rules.isPassword(passwordchecknewInput),
+						Rules.isPassword(passwordCurrentInput),
+						Rules.isPassword(passwordNewInput),
+						Rules.isPassword(passwordCheckNewInput),
+
+						!passwordNewInput.equals(passwordCurrentInput),
 				};
 				boolean check = validate(list);
 
 				if (check) {
-					passwordChange.handlePassChange(passwordcurrentInput, passwordnewInput, passwordchecknewInput);
+					passwordChangePresenter.handlePassChange(passwordCurrentInput, passwordNewInput, passwordCheckNewInput);
 					setSubmitable(false);
 				} else {
 					if (!list[0]) {
-						passwordcurrent.setError(ErrorMessage.ERR000000.getValue());
+						passwordCurrent.setError(ErrorMessage.ERR000000.getValue());
 					} else if (!list[3]) {
-						passwordcurrent.setError(ErrorMessage.ERR000002.getValue());
+						passwordCurrent.setError(ErrorMessage.ERR000002.getValue());
 					} else if (!list[7]) {
-						passwordcurrent.setError(ErrorMessage.ERR000004.getValue());
+						passwordCurrent.setError(ErrorMessage.ERR000004.getValue());
 					}
 					if (!list[1]) {
-						passwordnew.setError(ErrorMessage.ERR000000.getValue());
+						passwordNew.setError(ErrorMessage.ERR000000.getValue());
 					} else if (!list[4]) {
-						passwordnew.setError(ErrorMessage.ERR000002.getValue());
+						passwordNew.setError(ErrorMessage.ERR000002.getValue());
 					} else if (!list[8]) {
-						passwordnew.setError(ErrorMessage.ERR000004.getValue());
+						passwordNew.setError(ErrorMessage.ERR000004.getValue());
 					}
 					if (!list[2]) {
-						passwordchecknew.setError(ErrorMessage.ERR000000.getValue());
+						passwordCheckNew.setError(ErrorMessage.ERR000000.getValue());
 					} else if (!list[5]) {
-						passwordchecknew.setError(ErrorMessage.ERR000002.getValue());
+						passwordCheckNew.setError(ErrorMessage.ERR000002.getValue());
 					} else if (!list[6]) {
-						passwordchecknew.setError(ErrorMessage.ERR000001.getValue());
+						passwordCheckNew.setError(ErrorMessage.ERR000001.getValue());
 					} else if (!list[9]) {
-						passwordchecknew.setError(ErrorMessage.ERR000004.getValue());
+						passwordCheckNew.setError(ErrorMessage.ERR000004.getValue());
+					}
+					if (!list[10]) {
+						passwordNew.setError(ErrorMessage.ERR000004.getValue());
 					}
 				}
 			}
 
 		});
-		addTextChanged(passwordcurrent);
-		addTextChanged(passwordnew);
-		addTextChanged(passwordchecknew);
-
+		addTextChanged(passwordCurrent);
+		addTextChanged(passwordNew);
+		addTextChanged(passwordCheckNew);
 	}
 
 	private void init() {
-		this.passwordcurrent = findViewById(R.id.password_current);
-		this.passwordnew = findViewById(R.id.password_new);
-		this.passwordchecknew = findViewById(R.id.password_check_new);
-		this.changePass = findViewById(R.id.password_change_button);
+		this.notiText = findViewById(R.id.notification_text);
 
-		this.passwordChange = new PasswordChangePresenter(this);
+		this.passwordCurrent = findViewById(R.id.password_input);
+		this.passwordNew = findViewById(R.id.password_new_input);
+		this.passwordCheckNew = findViewById(R.id.password_new_check_input);
+		this.changePass = findViewById(R.id.submit_button);
+
+		this.passwordChangePresenter = new PasswordChangePresenter(this);
 	}
 
 	public void addTextChanged(final TextView textView) {

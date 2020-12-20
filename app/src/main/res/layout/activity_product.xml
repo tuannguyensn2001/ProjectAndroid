@@ -4,6 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@drawable/background"
 	tools:context=".View.Shopping.ProductActivity">
 
 	<fragment
@@ -20,7 +21,7 @@
 	<FrameLayout
 		android:id="@+id/cart_button"
 		android:layout_width="0dp"
-		android:layout_height="50dp"
+		android:layout_height="48dp"
 		android:background="@color/light_mainColor"
 		app:layout_constraintBottom_toBottomOf="@+id/action_bar"
 		app:layout_constraintDimensionRatio="w,1:1"

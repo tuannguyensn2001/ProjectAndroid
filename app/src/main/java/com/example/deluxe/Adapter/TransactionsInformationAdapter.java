@@ -45,7 +45,7 @@ public class TransactionsInformationAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		if (convertView == null) {
-			convertView = layoutInflater.inflate(R.layout.transaction_information_view, parent);
+			convertView = layoutInflater.inflate(R.layout.layout_transaction_information, parent);
 			holder = new ViewHolder();
 			holder.title = (TextView) convertView.findViewById(R.id.info_title);
 			holder.subtitle = (TextView) convertView.findViewById(R.id.info_subtitle);

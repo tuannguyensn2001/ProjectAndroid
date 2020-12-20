@@ -14,8 +14,8 @@
 		<com.google.android.material.appbar.AppBarLayout
 			android:id="@+id/appbar"
 			android:layout_width="match_parent"
-			android:layout_height="300dp"
-			android:background="@color/light_background"
+			android:layout_height="192dp"
+			android:background="@color/light_form"
 			android:fitsSystemWindows="true"
 			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -23,7 +23,7 @@
 				android:id="@+id/collapse_toolbar"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="@drawable/app_bar_background"
+				android:background="@color/light_form"
 				android:fitsSystemWindows="true"
 				app:contentScrim="@color/light_mainColor"
 				app:expandedTitleTextAppearance="@style/exBarText"
@@ -36,17 +36,13 @@
 					android:orientation="vertical"
 					app:layout_collapseMode="parallax">
 
-
 					<ImageView
 						android:id="@+id/thumbnail"
 						android:layout_width="match_parent"
-						android:layout_height="280dp"
+						android:layout_height="192dp"
 						android:layout_gravity="center|end"
-						android:layout_marginBottom="15dp"
 						android:scaleType="centerCrop"
 						tools:ignore="ContentDescription" />
-
-
 				</LinearLayout>
 
 				<androidx.appcompat.widget.Toolbar
@@ -58,12 +54,12 @@
 				<RelativeLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="#834E4E4E">
+					android:background="@color/light_mainColorAlpha.5">
 
 					<ImageView
 						android:id="@+id/pd_back_button"
-						android:layout_width="50dp"
-						android:layout_height="50dp"
+						android:layout_width="48dp"
+						android:layout_height="48dp"
 						android:clickable="true"
 						android:contentDescription="@string/action_bar_back_button"
 						android:scaleX="0.5"
@@ -77,8 +73,8 @@
 
 						<ImageView
 							android:id="@+id/pd_home_button"
-							android:layout_width="50dp"
-							android:layout_height="50dp"
+							android:layout_width="48dp"
+							android:layout_height="48dp"
 							android:clickable="true"
 							android:contentDescription="@string/action_bar_back_button"
 							android:scaleX="0.5"
@@ -87,20 +83,19 @@
 
 						<ImageView
 							android:id="@+id/pd_cart_button"
-							android:layout_width="50dp"
-							android:layout_height="50dp"
+							android:layout_width="48dp"
+							android:layout_height="48dp"
 							android:scaleX="0.5"
 							android:scaleY="0.5"
 							android:src="@drawable/ic_baseline_shopping_cart_24"
 							tools:ignore="ContentDescription" />
 					</LinearLayout>
 				</RelativeLayout>
-
-
 			</com.google.android.material.appbar.CollapsingToolbarLayout>
 		</com.google.android.material.appbar.AppBarLayout>
 
 		<androidx.core.widget.NestedScrollView
+			android:id="@+id/scroll_view"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:background="@color/light_background"
@@ -109,66 +104,51 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_marginHorizontal="20dp"
+				android:layout_marginHorizontal="@dimen/standard_align"
 				android:background="@color/light_background"
 				android:orientation="vertical">
 
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:background="@color/light_background"
-					android:orientation="horizontal"
-					android:paddingStart="10dp"
-					tools:ignore="RtlSymmetry">
-
-					<TextView
-						android:id="@+id/product_detail_price"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:textColor="@color/light_title"
-						android:textSize="25sp"
-						android:textStyle="bold" />
-				</LinearLayout>
-
 				<TextView
 					android:id="@+id/product_detail_name"
-					android:layout_width="match_parent"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:paddingStart="10dp"
+					android:fontFamily="sans-serif-black"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:textColor="@color/light_title"
-					android:textSize="20sp"
+					android:textSize="30sp" />
+
+				<TextView
+					android:id="@+id/product_detail_price"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="sans-serif"
+					android:paddingVertical="@dimen/standard_alignX.25"
+					android:textColor="@color/red"
+					android:textSize="18sp"
+					android:textStyle="bold"
 					tools:ignore="RtlSymmetry" />
 
-				<LinearLayout
-					android:layout_width="match_parent"
+				<RatingBar
+					style="@style/Widget.AppCompat.RatingBar.Small"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:orientation="horizontal"
-					android:paddingStart="10dp"
-					tools:ignore="RtlSymmetry">
+					android:layout_gravity="center|start"
+					android:numStars="5"
+					android:paddingVertical="@dimen/standard_alignX.25"
+					android:rating="4.5" />
 
-					<RatingBar
-						style="@style/Widget.AppCompat.RatingBar.Small"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="10dp"
-						android:numStars="5"
-						android:rating="4.6" />
-
-					<TextView
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:paddingStart="50dp"
-						android:text="@string/useless_text"
-						android:textColor="@color/light_title" />
-				</LinearLayout>
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginTop="@dimen/standard_align"
+					android:layout_marginBottom="@dimen/standard_alignX.25"
+					android:background="?android:attr/listDivider" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:fontFamily="@font/segoeuib"
+					android:fontFamily="sans-serif"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:text="@string/pd_description_text"
 					android:textColor="@color/light_title"
 					android:textSize="20sp"
@@ -179,19 +159,26 @@
 					android:id="@+id/product_detail_description"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:paddingStart="25dp"
-					android:text="@string/pd_description"
+					android:fontFamily="sans-serif"
+					android:paddingHorizontal="@dimen/standard_align"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:textColor="@color/light_title"
-					android:textSize="20sp"
+					android:textSize="18sp"
 					tools:ignore="RtlSymmetry" />
+
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginTop="@dimen/standard_align"
+					android:layout_marginBottom="@dimen/standard_alignX.25"
+					android:background="?android:attr/listDivider"
+					android:visibility="gone" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:fontFamily="@font/segoeuib"
-					android:paddingStart="20dp"
+					android:fontFamily="sans-serif"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:text="@string/more_detail_image"
 					android:textColor="@color/light_title"
 					android:textSize="20sp"
@@ -201,33 +188,38 @@
 
 				<androidx.recyclerview.widget.RecyclerView
 					android:layout_width="match_parent"
-					android:layout_height="120dp"
-					android:layout_marginTop="10dp"
+					android:layout_height="wrap_content"
 					android:orientation="horizontal"
-					android:padding="10dp"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:visibility="gone"
 					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginTop="@dimen/standard_align"
+					android:layout_marginBottom="@dimen/standard_alignX.25"
+					android:background="?android:attr/listDivider" />
 
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:fontFamily="@font/segoeuib"
+					android:fontFamily="sans-serif"
+					android:paddingVertical="@dimen/standard_alignX.25"
 					android:text="@string/pd_detail_text"
 					android:textColor="@color/light_title"
 					android:textSize="20sp"
 					android:textStyle="bold"
 					tools:ignore="RtlSymmetry" />
 
-				<ListView
+				<LinearLayout
 					android:id="@+id/list_description"
 					android:layout_width="match_parent"
-					android:layout_height="100dp"
-					android:layout_marginTop="10dp"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
 					android:outlineProvider="none"
-					android:paddingHorizontal="10dp" />
-
-
+					android:paddingHorizontal="@dimen/standard_align"
+					android:paddingVertical="@dimen/standard_alignX.25" />
 			</LinearLayout>
 		</androidx.core.widget.NestedScrollView>
 	</androidx.coordinatorlayout.widget.CoordinatorLayout>

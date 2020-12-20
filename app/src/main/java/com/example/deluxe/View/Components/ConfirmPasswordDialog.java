@@ -96,7 +96,7 @@ public class ConfirmPasswordDialog extends AlertDialog.Builder implements Confir
 		this.authEmail = alertLayout.findViewById(R.id.auth_email);
 
 		this.notiText = alertLayout.findViewById(R.id.notification_text);
-		this.password = alertLayout.findViewById(R.id.password_new);
+		this.password = alertLayout.findViewById(R.id.password_input);
 		this.showPasswordButton = alertLayout.findViewById(R.id.show_password_button);
 
 		password.addTextChangedListener(new TextWatcher() {
