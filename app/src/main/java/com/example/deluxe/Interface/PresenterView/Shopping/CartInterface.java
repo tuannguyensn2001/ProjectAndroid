@@ -13,6 +13,8 @@ public interface CartInterface {
 		void increaseNumber(CartItem cartItem, int position);
 
 		void decreaseNumber(CartItem cartItem, int position);
+
+		void delete(CartItem cartItem,int position);
 	}
 
 	public interface CartView extends View {

@@ -74,7 +74,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 
 		this.recyclerView = findViewById(R.id.order_list);
 		this.recyclerView.setHasFixedSize(true);
-		CartAdapter orderAdapter = new CartAdapter(this.cartItemList, this, null, null);
+		CartAdapter orderAdapter = new CartAdapter(this.cartItemList, this, null, null,null);
 		recyclerView.setAdapter(orderAdapter);
 
 		this.name = findViewById(R.id.name);

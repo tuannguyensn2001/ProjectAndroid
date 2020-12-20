@@ -2,6 +2,7 @@ package com.example.deluxe.View.Shopping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.google.gson.Gson;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity implements CartInterface.CartView, CartAdapter.OnAddNumberClick, CartAdapter.OnCheckBox {
+public class CartActivity extends AppCompatActivity implements CartInterface.CartView, CartAdapter.OnAddNumberClick, CartAdapter.OnCheckBox, CartAdapter.OnDeleteClick {
 
 	private CartInterface.CartPresenter cartPresenter;
 	private RecyclerView recyclerView;
@@ -73,7 +74,7 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 	@Override
 	public void setAdapter(List<CartItem> cartItemList) {
 		this.cartList = cartItemList;
-		this.cartAdapter = new CartAdapter(cartList, this, this, this);
+		this.cartAdapter = new CartAdapter(cartList, this, this, this,this);
 		this.recyclerView.setAdapter(this.cartAdapter);
 	}
 
@@ -153,4 +154,9 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 		startActivity(intent);
 	}
 
+	@Override
+	public void onDelete(CartItem cartItem, int position) {
+		cartPresenter.delete(cartItem,position);
+
+	}
 }

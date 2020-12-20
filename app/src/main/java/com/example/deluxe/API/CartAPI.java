@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -29,4 +30,7 @@ public interface CartAPI {
 
 	@PUT("cart/decrease")
 	Call<CartItem> decreaseNumber(@Body CartItem cartItem);
+
+	@PUT("cart/delete")
+	Call<CartItem> delete(@Body CartItem cartItem);
 }

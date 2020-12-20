@@ -27,7 +27,7 @@ public class TransactionInformationActivity extends AppCompatActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transaction_information);
-		listView = (ListView) findViewById(R.id.list_info);
+//		listView = (ListView) findViewById(R.id.list_info);
 		List<ListViewInfo> listViewInfos = getListData();
 		listView.setAdapter(new TransactionsInformationAdapter(this, listViewInfos));
 

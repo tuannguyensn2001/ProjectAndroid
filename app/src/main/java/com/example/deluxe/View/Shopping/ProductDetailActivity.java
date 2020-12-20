@@ -92,7 +92,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
 
 	public void init() {
 		//		TODO Sua tieu de
-		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
 		this.productDetailPresenter = new ProductDetailPresenter(this);
 
 		this.backButton = findViewById(R.id.pd_back_button);
