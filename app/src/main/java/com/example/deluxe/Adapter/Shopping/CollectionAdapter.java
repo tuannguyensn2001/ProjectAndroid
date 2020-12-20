@@ -60,8 +60,8 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
 		public ViewHolder(@NonNull View itemView) {
 			super(itemView);
 
-			this.collectionName = itemView.findViewById(R.id.collectionItemName);
-			this.recyclerView = itemView.findViewById(R.id.itemproduct);
+			this.collectionName = itemView.findViewById(R.id.category_name);
+			this.recyclerView = itemView.findViewById(R.id.item_product);
 		}
 	}
 }

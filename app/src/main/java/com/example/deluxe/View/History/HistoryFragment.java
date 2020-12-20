@@ -17,7 +17,6 @@ import com.example.deluxe.Entity.StandardCard;
 import com.example.deluxe.Interface.PresenterView.History.HistoryInterface;
 import com.example.deluxe.Presenter.History.HistoryPresenter;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Account.AccountFragment;
 
 import java.util.ArrayList;
 import java.util.Objects;

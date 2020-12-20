@@ -10,14 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Entity.Message;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Helper.Rules;
-import com.example.deluxe.Interface.PresenterView.Chat.ChatInterface;
 import com.example.deluxe.Model.Auth;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Chat.ChatActivity;
 import com.example.deluxe.View.Components.ReplyTransactionDialog;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
@@ -72,7 +70,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			String tao = Auth.getInstance().user().getEmail();
 
 
-
 			transactionPart = holder.itemView.findViewById(R.id.transaction_part);
 			statusPart = holder.itemView.findViewById(R.id.status_part);
 			actionPart = holder.itemView.findViewById(R.id.action_part);
@@ -81,7 +78,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 			transactionMoneyFirst = holder.itemView.findViewById(R.id.transaction_money_first);
 			transactionMoneySecond = holder.itemView.findViewById(R.id.transaction_money_second);
 
-			moneySecond = new DecimalFormat("#,###,###").format(message.getSecondMoney());
+			moneySecond = ConvertData.moneyToString(message.getSecondMoney());
 
 			if (message.getType() == -1) {
 				transactionPart.setVisibility(View.VISIBLE);
@@ -116,7 +113,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
 				if (message.getType() == 1) {
 					title = context.getString(R.string.message_transaction_title, tao, "đòi", "nó");
-					moneyFirst = "+ " + new DecimalFormat("#,###,###").format(message.getFirstMoney());
+					moneyFirst = "+ " + ConvertData.moneyToString(message.getFirstMoney());
 					transactionMoneyFirst.setTextColor(context.getColor(R.color.light_hint));
 
 					if (message.getStatus() == 1) {
@@ -126,13 +123,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 					}
 				} else {
 					title = context.getString(R.string.message_transaction_title, tao, "gửi", "nó");
-					moneyFirst = "- " + new DecimalFormat("#,###,###").format(message.getFirstMoney());
+					moneyFirst = "- " + ConvertData.moneyToString(message.getFirstMoney());
 					transactionMoneyFirst.setTextColor(context.getColor(R.color.red));
 				}
 			} else {
 				if (message.getType() == 1) {
 					title = context.getString(R.string.message_transaction_title, "Nó", "đòi", tao);
-					moneyFirst = "- " + new DecimalFormat("#,###,###").format(message.getFirstMoney());
+					moneyFirst = "- " + ConvertData.moneyToString(message.getFirstMoney());
 					transactionMoneyFirst.setTextColor(context.getColor(R.color.light_hint));
 
 					if (message.getStatus() == 1) {
@@ -142,7 +139,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 					}
 				} else {
 					title = context.getString(R.string.message_transaction_title, "Nó", "gửi", tao);
-					moneyFirst = "+ " + new DecimalFormat("#,###,###").format(message.getFirstMoney());
+					moneyFirst = "+ " + ConvertData.moneyToString(message.getFirstMoney());
 					transactionMoneyFirst.setTextColor(context.getColor(R.color.green));
 				}
 			}

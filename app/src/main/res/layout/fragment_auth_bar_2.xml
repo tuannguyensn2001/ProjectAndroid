@@ -69,6 +69,7 @@
 		android:scaleX="0.5"
 		android:scaleY="0.5"
 		android:src="@drawable/ic_outline_info_24"
+		android:visibility="gone"
 		app:layout_constraintDimensionRatio="1:1"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"

@@ -3,16 +3,15 @@ package com.example.deluxe.View.Shopping;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.deluxe.Adapter.Shopping.CartAdapter;
 import com.example.deluxe.Entity.CartItem;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.Shopping.CartInterface;
 import com.example.deluxe.Presenter.Shopping.CartPresenter;
 import com.example.deluxe.R;
@@ -26,7 +25,7 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 	private CartInterface.CartPresenter cartPresenter;
 	private RecyclerView recyclerView;
 	private List<CartItem> pickedCartList;
-	private Button buyProduct;
+	private TextView buyProduct;
 	private TextView totalMoney;
 	private List<CartItem> cartList;
 	private CartAdapter cartAdapter;
@@ -59,14 +58,16 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 
 
 	public void init() {
-		this.totalMoney = (TextView) findViewById(R.id.totalMoney);
-		this.buyProduct = (Button) findViewById(R.id.buyProduct);
+		this.totalMoney = (TextView) findViewById(R.id.total_money);
+		this.buyProduct = (TextView) findViewById(R.id.buy_button);
 		this.pickedCartList = new LinkedList<>();
 		this.cartPresenter = new CartPresenter(this);
-		this.recyclerView = findViewById(R.id.cartList);
+
+//		TODO Sua tieu de
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
+
+		this.recyclerView = findViewById(R.id.cart_list);
 		this.recyclerView.setHasFixedSize(true);
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		this.recyclerView.setLayoutManager(layoutManager);
 	}
 
 	@Override
@@ -80,14 +81,14 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 	public void AdapterChanged(List<CartItem> cartItemList, CartItem cartItem) {
 		this.cartList = cartItemList;
 		this.changeListPicked(cartItem);
-		this.totalMoney.setText(this.getTotalMoney() + "");
+		this.totalMoney.setText(ConvertData.moneyToString(this.getTotalMoney()));
 		this.cartAdapter.notifyDataSetChanged();
 	}
 
 	public void changeListPicked(CartItem cartItem) {
 		int index = -1;
 		for (int i = 0; i < this.pickedCartList.size(); ++i) {
-			if (this.pickedCartList.get(i).getId() == cartItem.getId()) {
+			if (this.pickedCartList.get(i).getId().equals(cartItem.getId())) {
 				index = i;
 				break;
 			}
@@ -99,8 +100,9 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 
 
 	@Override
-	public void loadView(Class view) {
-
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
+		Intent intent = new Intent(this, view);
+		startActivity(intent);
 	}
 
 	@Override
@@ -125,13 +127,13 @@ public class CartActivity extends AppCompatActivity implements CartInterface.Car
 	@Override
 	public void onCheckTrue(CartItem cartItem) {
 		this.pickedCartList.add(cartItem);
-		this.totalMoney.setText(this.getTotalMoney() + "");
+		this.totalMoney.setText(ConvertData.moneyToString(this.getTotalMoney()));
 	}
 
 	@Override
 	public void onCheckFalse(CartItem cartItem) {
 		this.pickedCartList.remove(cartItem);
-		this.totalMoney.setText(this.getTotalMoney() + "");
+		this.totalMoney.setText(ConvertData.moneyToString(this.getTotalMoney()));
 	}
 
 	public Double getTotalMoney() {

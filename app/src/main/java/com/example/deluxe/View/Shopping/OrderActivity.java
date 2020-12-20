@@ -1,19 +1,19 @@
 package com.example.deluxe.View.Shopping;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.deluxe.Adapter.Shopping.OrderAdapter;
+import com.example.deluxe.Adapter.Shopping.CartAdapter;
 import com.example.deluxe.Entity.Address;
 import com.example.deluxe.Entity.CartItem;
+import com.example.deluxe.Helper.ConvertData;
 import com.example.deluxe.Interface.PresenterView.Shopping.OrderInterface;
 import com.example.deluxe.Presenter.Shopping.OrderPresenter;
 import com.example.deluxe.R;
@@ -31,7 +31,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 	private TextView phone;
 	private TextView address;
 	private TextView totalMoney;
-	private Button buyProduct;
+	private TextView buyProduct;
 	private Address addressUser;
 
 	@Override
@@ -43,7 +43,7 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 
 		orderPresenter.getAddress();
 
-		this.totalMoney.setText(this.getTotalMoney() + "");
+		this.totalMoney.setText(ConvertData.moneyToString(this.getTotalMoney()));
 
 		this.buyProduct.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -51,11 +51,13 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 				confirmBuyProduct();
 			}
 		});
+
 	}
 
 	@Override
-	public void loadView(Class view) {
-
+	public void loadView(Class<? extends com.example.deluxe.Core.View> view) {
+		Intent intent = new Intent(this, view);
+		startActivity(intent);
 	}
 
 	@Override
@@ -69,18 +71,20 @@ public class OrderActivity extends AppCompatActivity implements OrderInterface.O
 		String json = getIntent().getStringExtra("list");
 		this.cartItemList = gson.fromJson(json, new TypeToken<List<CartItem>>() {
 		}.getType());
-		this.recyclerView = findViewById(R.id.orderlist);
+
+		this.recyclerView = findViewById(R.id.order_list);
 		this.recyclerView.setHasFixedSize(true);
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		this.recyclerView.setLayoutManager(layoutManager);
-		OrderAdapter orderAdapter = new OrderAdapter(this.cartItemList, this);
+		CartAdapter orderAdapter = new CartAdapter(this.cartItemList, this, null, null);
 		recyclerView.setAdapter(orderAdapter);
 
-		this.name = (TextView) findViewById(R.id.name);
-		this.phone = (TextView) findViewById(R.id.phone);
-		this.address = (TextView) findViewById(R.id.address);
-		this.totalMoney = (TextView) findViewById(R.id.totalMoney);
-		this.buyProduct = (Button) findViewById(R.id.buyProduct);
+		this.name = findViewById(R.id.name);
+		this.phone = findViewById(R.id.phone);
+		this.address = findViewById(R.id.address);
+		this.totalMoney = findViewById(R.id.total_money);
+		this.buyProduct = findViewById(R.id.buy_button);
+
+		//		TODO Sua tieu de
+		((TextView) findViewById(R.id.action_bar_title)).setText(getString(R.string.transfer_action_bar_title));
 	}
 
 	@Override

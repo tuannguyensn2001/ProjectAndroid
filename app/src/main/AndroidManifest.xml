@@ -12,6 +12,7 @@
 
 		android:theme="@style/AppTheme"
 		android:usesCleartextTraffic="true">
+		<activity android:name=".View.Status.OrderSuccessActivity"></activity>
 		<activity android:name=".View.Transaction.TransferSearchActivity" />
 		<activity android:name=".View.Transaction.TransactionInformationActivity" />
 		<activity android:name=".View.Chat.ChatActivity" />
@@ -24,6 +25,8 @@
 		<activity android:name=".View.Status.TransferSuccessActivity" />
 		<activity android:name=".View.Transaction.WithdrawActivity" />
 		<activity android:name=".View.Transaction.TransferActivity" />
+		<activity android:name=".View.Auth.PasswordChangeActivity" />
+		<activity android:name=".View.Account.UserInformationChange" />
 		<activity android:name=".View.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -33,11 +36,8 @@
 		</activity>
 		<activity android:name=".View.Shopping.CartActivity" />
 		<activity android:name=".View.Shopping.OrderActivity" />
-		<activity android:name=".View.Shopping.ProductActivity">
-
-		</activity>
+		<activity android:name=".View.Shopping.ProductActivity"></activity>
 		<activity android:name=".View.Shopping.ProductDetailActivity" />
-
 		<activity android:name=".View.Transaction.DepositActivity" />
 		<activity android:name=".View.Auth.SignUpActivity" />
 		<activity android:name=".View.Auth.SignInActivity" /> <!-- [START firebase_service] -->

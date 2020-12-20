@@ -1,6 +1,5 @@
 package com.example.deluxe.Adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.deluxe.Entity.ListViewInfo;
 import com.example.deluxe.R;
-import com.example.deluxe.View.Components.AuthBarFragment;
-import com.example.deluxe.View.Transaction.TransactionFragment;
 
 import java.util.List;
 
@@ -48,7 +45,7 @@ public class TransactionsInformationAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		if (convertView == null) {
-			convertView = layoutInflater.inflate(R.layout.transaction_information_view, parent);
+			convertView = layoutInflater.inflate(R.layout.layout_transaction_information, parent);
 			holder = new ViewHolder();
 			holder.title = (TextView) convertView.findViewById(R.id.info_title);
 			holder.subtitle = (TextView) convertView.findViewById(R.id.info_subtitle);

@@ -15,10 +15,12 @@ import com.example.deluxe.Entity.User;
 import com.example.deluxe.Interface.PresenterView.Components.AuthBarInterface;
 import com.example.deluxe.Presenter.Components.AuthBarPresenter;
 import com.example.deluxe.R;
+import com.squareup.picasso.Picasso;
 
 public class AuthBar2Fragment extends Fragment implements AuthBarInterface.AuthBarView {
 	TextView authUsername, authEmail;
 	ImageView profilePicture;
+	ImageView infoButton;
 
 	AuthBarInterface.AuthBarPresenter authBarPresenter;
 
@@ -37,7 +39,6 @@ public class AuthBar2Fragment extends Fragment implements AuthBarInterface.AuthB
 		v.findViewById(R.id.info_button).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 			}
 		});
 
@@ -52,5 +53,6 @@ public class AuthBar2Fragment extends Fragment implements AuthBarInterface.AuthB
 	public void setUserInfo(User user) {
 		authUsername.setText(user.getUser());
 		authEmail.setText(user.getEmail());
+		Picasso.get().load(user.getAvatar()).into(profilePicture);
 	}
 }

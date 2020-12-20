@@ -106,7 +106,7 @@ public class StatisticsCardChildViewHolder extends ChildViewHolder {
 		} else userEmailText.setVisibility(View.GONE);
 
 //		Tin nhan
-		if (type != TransactionType.DEPOSIT) {
+		if (type != TransactionType.DEPOSIT && type != TransactionType.USE) {
 			messageText.setText(view.getResources().getString(R.string.statistics_card_message));
 			Spannable mess2 = new SpannableString(" " + message);
 			mess2.setSpan(new ForegroundColorSpan(ContextCompat.getColor(view.getContext(), R.color.light_title)), 0, mess2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

@@ -4,23 +4,58 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@drawable/background"
 	tools:context=".View.Shopping.ProductActivity">
 
-	<TextView
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toStartOf="@+id/cart_button"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
+	<FrameLayout
+		android:id="@+id/cart_button"
+		android:layout_width="0dp"
+		android:layout_height="48dp"
+		android:background="@color/light_mainColor"
+		app:layout_constraintBottom_toBottomOf="@+id/action_bar"
+		app:layout_constraintDimensionRatio="w,1:1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/action_bar"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:scaleX="0.5"
+			android:scaleY="0.5"
+			android:src="@drawable/ic_baseline_shopping_cart_24" />
+	</FrameLayout>
+
+	<fragment
+		android:id="@+id/auth_bar"
+		android:name="com.example.deluxe.View.Components.AuthBarFragment"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="Dcmmcddddd" />
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/action_bar"
+		tools:layout="@layout/fragment_auth_bar" />
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/products"
-		android:layout_width="409dp"
-		android:layout_height="729dp"
-		android:layout_marginStart="1dp"
-		android:layout_marginTop="1dp"
-		android:layout_marginEnd="1dp"
-		android:layout_marginBottom="1dp"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:orientation="vertical"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@+id/auth_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

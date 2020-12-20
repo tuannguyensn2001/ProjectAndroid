@@ -3,9 +3,9 @@ package com.example.deluxe.Enum;
 public enum ErrorMessage {
 	//	Dang ky ---------------------------
 	ERR000000("Trống trường"),
-	ERR000001("Có khớp quái đâu mà đòi đăng ký?"),
+	ERR000001("Mật khẩu không khớp"),
 	ERR000002("Ngắn quá!"),
-	ERR000003("Đấy mà là email à???"),
+	ERR000003("Phải là email bạn ơi?"),
 	ERR000004("Không được chứa kí tự đặc biệt"),
 
 	//	---------
@@ -15,7 +15,7 @@ public enum ErrorMessage {
 
 	//	Dang nhap ---------------------------
 	ERR100000("Trống trường"),
-	ERR100001("Nhập email má ơi."),
+	ERR100001("Nhập email bạn ơi."),
 	ERR100002("Ngắn quá!"),
 	ERR100003("Không được chứa kí tự đặc biệt"),
 
@@ -35,24 +35,31 @@ public enum ErrorMessage {
 
 	//	Chuyen tien --------------------------
 	ERR300000("Trống trường"),
-	ERR300001("Ki bo vừa thôi!"),
+	ERR300001("Sồ tiền phải lớn hơn 1000 nhé!"),
 	//	---------
-	ERR310000("Có đủ đâu mà đòi chuyển?"),
+	ERR310000("Số tiền bạn có không đủ"),
 	ERR310001("Mạng lag, đợi nha."),
-	ERR310002("Thất bại chả vì lí do gì"),
+	ERR310002("Thất bại, vui lòng thử lại!"),
 
 	//	Rut tien --------------------------
 	ERR400000("Trống trường"),
-	ERR400001("Ki bo vừa thôi!"),
+	ERR400001("Số tiền phải lớn hơn 1000 nhé!"),
 	//	---------
-	ERR410000("Có đủ đâu mà đòi rút?"),
+	ERR410000("Số tiền bạn có không đủ"),
 	ERR410001("Mạng lag, đợi nha."),
 
 	// Xac nhan mat khau------
 	ERR500000("Trống trường"),
-	ERR500001("Mat khau xac nhan ngan qua"),
-	ERR500002("Day ma la mat khau a?"),
-	ERR500003("Sai roi ban oi!");
+	ERR500001("Mật khẩu xác nhận ngắn quá, độ dài tối thiểu 6 kí tự nha"),
+	ERR500002("Mật khẩu không được chứa kí tự đặc biệt"),
+	ERR500003("Nhập sai rồi, vui lòng nhập lại!"),
+
+	// Doi thong tin nguoi dung-----
+	ERR600000("Trống trường"),
+	ERR600001("Ngắn quá"),
+	ERR600002("Mật khẩu mới không được trùng cái cũ"),
+	//
+	ERR710001("Lỗi rồi, thử lại");
 
 	private final String value;
 

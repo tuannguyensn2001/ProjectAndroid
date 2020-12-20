@@ -12,6 +12,7 @@ public class Transaction implements Serializable {
 	private boolean isComplete;
 	private String userEmail;
 	private String message;
+	private String id;
 
 	public Transaction(TransactionType type, long money, Date date, boolean isComplete, String userEmail, String message) {
 		this.type = type;
@@ -68,5 +69,13 @@ public class Transaction implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

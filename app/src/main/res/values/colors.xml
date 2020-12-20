@@ -6,6 +6,7 @@
 	<color name="light_title">#303030</color>
 	<color name="light_error">#ff3e3e</color>
 	<color name="light_mainColor">#1f72a0</color>
+	<color name="light_mainColorAlpha.5">#801F72A0</color>
 	<color name="light_mainColorLighter">#84B2CC</color>
 
 	<color name="dark_background">#012744</color>

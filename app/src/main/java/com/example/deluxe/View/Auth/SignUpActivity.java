@@ -78,7 +78,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpInterface
 					} else if (!list[7]) {
 						password.setError(ErrorMessage.ERR000004.getValue());
 					}
-
 					if (!list[3]) {
 						passwordCheck.setError(ErrorMessage.ERR000000.getValue());
 					} else if (!list[6]) {

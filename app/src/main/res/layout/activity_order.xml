@@ -4,103 +4,227 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@drawable/background"
+	android:orientation="vertical"
 	tools:context=".View.Shopping.OrderActivity">
 
+	<fragment
+		android:id="@+id/action_bar"
+		android:name="com.example.deluxe.View.Components.ActionBarFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout="@layout/fragment_action_bar" />
+
 	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/orderlist"
-		android:layout_width="356dp"
-		android:layout_height="381dp"
-		android:layout_marginStart="1dp"
-		android:layout_marginTop="1dp"
-		android:layout_marginBottom="254dp"
-		app:layout_constraintBottom_toBottomOf="parent"
+		android:id="@+id/order_list"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:orientation="vertical"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constraintBottom_toTopOf="@+id/address_nav"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
-	<TextView
-		android:id="@+id/textView"
-		android:layout_width="wrap_content"
+	<View
+		android:id="@+id/divider"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintBottom_toTopOf="@+id/address_nav"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<TableLayout
+		android:background="@color/light_background"
+		android:id="@+id/address_nav"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="45dp"
-		android:layout_marginTop="32dp"
-		android:layout_marginEnd="258dp"
-		android:layout_marginBottom="205dp"
-		android:text="Địa chỉ nhận hàng"
+		android:paddingVertical="@dimen/standard_align"
+		android:stretchColumns="1"
+		app:layout_constraintBottom_toTopOf="@+id/cart_bottom_bar"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/name_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:paddingStart="@dimen/standard_alignX2"
+				android:text="Name:"
+				android:textAlignment="viewStart"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:typeface="normal" />
+
+			<TextView
+				android:id="@+id/name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingHorizontal="@dimen/standard_alignX2"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:text="Aaa"
+				android:textAlignment="viewStart"
+				android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:typeface="normal" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/phone_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:paddingStart="@dimen/standard_alignX2"
+				android:text="Phone:"
+				android:textAlignment="viewStart"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:typeface="normal" />
+
+			<TextView
+				android:id="@+id/phone"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingHorizontal="@dimen/standard_alignX2"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:text="012345"
+				android:textAlignment="viewStart"
+				android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:typeface="normal" />
+
+
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/address_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:paddingStart="@dimen/standard_alignX2"
+				android:text="Address: "
+				android:textAlignment="viewStart"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:typeface="normal" />
+
+			<TextView
+				android:id="@+id/address"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="sans-serif"
+				android:paddingHorizontal="@dimen/standard_alignX2"
+				android:paddingVertical="@dimen/standard_alignX.5"
+				android:text="HaNoi"
+				android:textAlignment="viewStart"
+				android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+				android:textColor="@color/light_title"
+				android:textSize="18sp"
+				android:typeface="normal" />
+
+
+		</TableRow>
+
+	</TableLayout>
+
+	<View
+		android:id="@+id/divider4"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_marginHorizontal="@dimen/standard_align"
+		android:background="?android:attr/listDivider"
+		app:layout_constraintBottom_toBottomOf="@+id/address_nav"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/cart_bottom_bar"
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:background="@color/light_background"
+		android:orientation="horizontal"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/orderlist"
-		app:layout_constraintVertical_bias="0.076" />
+		app:layout_constraintStart_toStartOf="parent">
 
-	<TextView
-		android:id="@+id/name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="17dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="175dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-	<TextView
-		android:id="@+id/phone"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="22dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="134dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/name"
-		app:layout_constraintVertical_bias="0.0" />
+		<TextView
+			android:id="@+id/total_money_title"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginVertical="16dp"
+			android:gravity="center"
+			android:paddingStart="@dimen/standard_alignX2"
+			android:text="Tổng tiền: "
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/total_money"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<TextView
-		android:id="@+id/address"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="18dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="97dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/phone" />
+		<TextView
+			android:id="@+id/total_money"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_margin="16dp"
+			android:layout_marginVertical="16dp"
+			android:gravity="end|center"
+			android:textColor="@color/red"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/buy_button"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/total_money_title"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<TextView
-		android:id="@+id/totalMoney"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="49dp"
-		android:layout_marginTop="23dp"
-		android:layout_marginEnd="262dp"
-		android:layout_marginBottom="57dp"
-		android:text="TextView"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/address" />
+		<TextView
+			android:id="@+id/buy_button"
+			style="@style/visual_tab_background"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginVertical="16dp"
+			android:layout_marginRight="10dp"
+			android:backgroundTintMode="src_atop"
+			android:text="@string/cart_buyProduct"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/total_money"
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<Button
-		android:id="@+id/buyProduct"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="111dp"
-		android:layout_marginTop="120dp"
-		android:layout_marginEnd="63dp"
-		android:text="Thanh toán"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/phone"
-		app:layout_constraintTop_toBottomOf="@+id/orderlist" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
