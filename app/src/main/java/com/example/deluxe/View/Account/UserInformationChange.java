@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.deluxe.Core.View;
+import com.example.deluxe.Entity.Address;
 import com.example.deluxe.Enum.ErrorMessage;
 import com.example.deluxe.Enum.SuccessMessage;
 import com.example.deluxe.Helper.Rules;
@@ -95,6 +96,11 @@ public class UserInformationChange extends AppCompatActivity implements UserInfo
 		addTextChanged(username);
 		addTextChanged(number);
 		addTextChanged(address);
+	}
+
+	@Override
+	public void setData(Address address) {
+
 	}
 
 	private boolean validate(boolean[] list) {
